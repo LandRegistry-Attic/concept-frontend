@@ -1,0 +1,12 @@
+language: python
+python:
+- '2.7'
+install: pip install -r requirements.txt
+script: python app_tests.py
+deploy:
+  provider: heroku
+  api_key:
+    secure: KB96MMK6PHJqkQkNHOaAwtIrBX/7swhX3e7zhU3QphvZ16ETrIELINjRnEEvRt9Qi7lpF1+Y0Tr9FUEBYU/FzA1VjiAbDczv+zfkEGaotqNySjtdEX2iNsN2S99nNeI/YDgx8B9wO953VCtwN+nrXgNjwMQHGk6RyMYPerbfHOQ=
+  app: land-registry-gds-concept
+  on:
+    repo: LandRegistry/concept-my-property
