@@ -18,7 +18,7 @@ class HomeTestCase(unittest.TestCase):
 
     def test_empty_db(self):
         rv = self.app.get('/')
-        assert 'Concept Land Registry Digital Services' in rv.data
+        assert 'My house' in rv.data
 
 if __name__ == '__main__':
     unittest.main()
