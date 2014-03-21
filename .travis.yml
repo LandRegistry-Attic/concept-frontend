@@ -10,3 +10,4 @@ deploy:
   app: lr-concept-my-property 
   on:
     repo: LandRegistry/concept-my-property
+  strategy: git
