@@ -6,7 +6,7 @@ script: python app_tests.py
 deploy:
   provider: heroku
   api_key:
-    secure: KB96MMK6PHJqkQkNHOaAwtIrBX/7swhX3e7zhU3QphvZ16ETrIELINjRnEEvRt9Qi7lpF1+Y0Tr9FUEBYU/FzA1VjiAbDczv+zfkEGaotqNySjtdEX2iNsN2S99nNeI/YDgx8B9wO953VCtwN+nrXgNjwMQHGk6RyMYPerbfHOQ=
-  app: land-registry-gds-concept
+    secure: oaP27p4X8SFQpI5NzS6uvp4QGhY9xO5qLtmAMtgSUS2gRMPOYRbPlXqEzpzksiLS7Rz+prkYNCEIc6HQNxVMXY8TviW/qWrDL8F9IFFCCl6oHb5Va4wAZTcaVaMl46sz3WVwb2JEHWoDzBEoUElKA0DQObNBEDq/0/MBb02oMTo=
+  app: concept-my-property
   on:
     repo: LandRegistry/concept-my-property
