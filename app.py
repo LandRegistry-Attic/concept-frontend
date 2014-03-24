@@ -3,10 +3,14 @@ from flask import Flask
 from flask import render_template
 from functools import wraps
 from flask import request, Response
+from flask.ext.assets import Environment, Bundle
 import string
 
-
 app = Flask(__name__)
+assets = Environment(app)
+
+css_main = Bundle('stylesheets/*.scss', filters='scss', output='build/stylesheets/main.css')
+assets.register('css_main', css_main)
 
 def check_auth(username, password):
     expectedUsr = os.environ['LAND_REG_USR']
@@ -36,5 +40,3 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
-
-
