@@ -4,6 +4,7 @@ from flask import render_template
 from functools import wraps
 from flask import request, Response
 from flask.ext.assets import Environment, Bundle
+import logging
 from raven.contrib.flask import Sentry
 import string
 
@@ -16,6 +17,11 @@ assets.register('css_main', css_main)
 if 'SENTRY_DSN' in os.environ:
     sentry = Sentry(app, dsn=os.environ['SENTRY_DSN'])
 
+@app.before_first_request
+def setup_logging():
+    if not app.debug:
+        app.logger.addHandler(logging.StreamHandler())
+        app.logger.setLevel(logging.INFO)
 
 def check_auth(username, password):
     expectedUsr = os.environ['LAND_REG_USR']
