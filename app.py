@@ -4,6 +4,7 @@ from flask import render_template
 from functools import wraps
 from flask import request, Response
 from flask.ext.assets import Environment, Bundle
+from raven.contrib.flask import Sentry
 import string
 
 app = Flask(__name__)
@@ -11,6 +12,10 @@ assets = Environment(app)
 
 css_main = Bundle('stylesheets/*.scss', filters='scss', output='build/stylesheets/main.css')
 assets.register('css_main', css_main)
+
+if 'SENTRY_DSN' in os.environ:
+    sentry = Sentry(app, dsn=os.environ['SENTRY_DSN'])
+
 
 def check_auth(username, password):
     expectedUsr = os.environ['LAND_REG_USR']
