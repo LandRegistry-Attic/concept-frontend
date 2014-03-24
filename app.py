@@ -11,8 +11,8 @@ import string
 app = Flask(__name__)
 assets = Environment(app)
 
-css_main = Bundle('stylesheets/*.scss', filters='scss', output='build/stylesheets/main.css')
-assets.register('css_main', css_main)
+css_base = Bundle('stylesheets/base.scss', filters='scss', output='build/stylesheets/base.css')
+assets.register('css_base', css_base)
 
 if 'SENTRY_DSN' in os.environ:
     sentry = Sentry(app, dsn=os.environ['SENTRY_DSN'])
@@ -47,7 +47,7 @@ def requires_auth(f):
 @app.route('/')
 #@requires_auth
 def home():
-    return render_template('home.html')
+    return render_template('my-property.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

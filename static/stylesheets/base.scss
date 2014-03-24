@@ -1,0 +1,13 @@
+@import "../govuk_frontend_toolkit/stylesheets/_colours.scss";
+@import "../govuk_frontend_toolkit/stylesheets/_conditionals.scss";
+@import "../govuk_frontend_toolkit/stylesheets/_css3.scss";
+@import "../govuk_frontend_toolkit/stylesheets/_measurements.scss";
+@import "../govuk_frontend_toolkit/stylesheets/_typography.scss";
+@import "../govuk_frontend_toolkit/stylesheets/_shims.scss";
+
+#landregistry-wrapper {
+  @import "views/_my-property.scss";
+
+
+  @import "_layout.scss";
+}
