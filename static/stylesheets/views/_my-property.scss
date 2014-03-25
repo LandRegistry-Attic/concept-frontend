@@ -104,4 +104,11 @@
       float: left;
     }
   }
+
+  .block {
+    h2 {
+      @include bold-27;
+      margin: 0 0 $gutter;
+    }
+  }
 }
