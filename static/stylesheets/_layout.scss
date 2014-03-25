@@ -1,5 +1,24 @@
 .landregistry-content {
-  margin: 0 auto;
-  padding: $gutter 0;
-  max-width: 960px;
+  max-width: 1020px;
+  width: auto;
+  margin: 0 auto 90px;
+  @extend %contain-floats;
+
+  @include ie-lte(6)  {
+    width: 990px;
+  }
+}
+
+.inner-block {
+  @include media(tablet) {
+    padding: 0 $gutter-half;
+  }
+}
+
+@mixin grid-wrapper {
+  @extend %contain-floats;
+  padding: 0 $gutter-half;
+  @include media(tablet) {
+    padding: 0 $gutter-half;
+  }
 }

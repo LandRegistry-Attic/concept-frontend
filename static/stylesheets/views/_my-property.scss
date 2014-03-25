@@ -1,5 +1,31 @@
 .my-property {
+  @include grid-wrapper;
+
   h1 {
-    @include core-48;
+    @include bold-48;
+    margin: $gutter*2 0 $gutter;
+  }
+
+  .address,
+  .map {
+    @include media(tablet) {
+      float: left;
+      width: 50%;
+    }
+  }
+
+  .address {
+    margin: $gutter 0;
+
+    p {
+      margin: 0;
+      @include core-36;
+    }
+  }
+
+  .map {
+    img {
+      width: 100%;
+    }
   }
 }

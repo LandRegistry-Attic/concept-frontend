@@ -93,9 +93,11 @@
   -->
 
     <div id="landregistry-wrapper">
-      <div class="landregistry-content">
-        {% block content %}{% endblock %}
-      </div>
+      <main id="content" class="landregistry-content">
+        <div class="grid-wrapper">
+          {% block content %}{% endblock %}
+        </div>
+      </main>
     </div>
 
     <footer class="group js-footer" id="footer" role="contentinfo">
