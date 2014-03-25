@@ -14,13 +14,10 @@ class HomeTestCase(unittest.TestCase):
     def tearDown(self):
         os.close(self.db_fd)
         os.unlink(app.app.config['DATABASE'])
-	
 
     def test_empty_db(self):
         rv = self.app.get('/')
-        assert 'My house' in rv.data
+        assert 'My property' in rv.data
 
 if __name__ == '__main__':
     unittest.main()
-
-    
