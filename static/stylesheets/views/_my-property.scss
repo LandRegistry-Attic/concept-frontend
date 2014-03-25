@@ -66,11 +66,9 @@
   }
 
   .dashboard-item {
-    box-sizing: border-box;
     float: left;
     width: 25%;
-    text-align: center;
-    padding: $gutter;
+    text-align: left;
 
     h2 {
       @include bold-24;
@@ -78,13 +76,13 @@
     }
 
     .data-big {
-      @include core-80($tabular-numbers: true);
-      line-height: 80px;
+      @include bold-80($tabular-numbers: true);
+      margin-bottom: $gutter-half;
     }
 
     .data-small {
-      @include core-48($tabular-numbers: true);
-      line-height: 80px;
+      @include bold-48($tabular-numbers: true);
+      margin-bottom: $gutter-half;
     }
 
     .data-good {
