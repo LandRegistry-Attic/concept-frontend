@@ -8,6 +8,7 @@
 #landregistry-wrapper {
   @import "base/grid";
   @import "helpers/grid-wrapper";
+  @import "helpers/table";
   @import "helpers/unstyled-list";
   @import "views/my-property";
 }
