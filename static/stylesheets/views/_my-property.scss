@@ -94,6 +94,13 @@
     }
   }
 
+  .things {
+    @include media(tablet) {
+      width: $two-thirds;
+      float: left;
+    }
+  }
+
   .actions {
     ul {
       @include unstyled-list;
@@ -142,7 +149,7 @@
       margin: $gutter/4 0;
     }
     @include media(tablet) {
-      width: $one-third;
+      width: 25%;
       float: left;
     }
   }
