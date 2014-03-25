@@ -2,11 +2,12 @@
   @include grid-wrapper;
 
   h1 {
-    @include bold-48;
+    @include core-36;
     margin: $gutter*2 0 $gutter;
+    color: $secondary-text-colour;
   }
 
-  .address,
+  .metadata,
   .map {
     @include media(tablet) {
       float: left;
@@ -14,12 +15,26 @@
     }
   }
 
-  .address {
-    margin: $gutter 0;
+  .metadata {
+    .address {
+      padding-bottom: $gutter-half;
+      p {
+        @include bold-48;
+        margin: 0 0 $gutter-half;
+      }
+    }
 
-    p {
-      margin: 0;
-      @include core-36;
+    dl {
+      @include core-19;
+    }
+    dt {
+      width: 120px;
+      float: left;
+      clear: left;
+      font-weight: bold;
+    }
+    dd {
+      float: left;
     }
   }
 
