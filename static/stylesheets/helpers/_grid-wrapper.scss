@@ -1,0 +1,7 @@
+@mixin grid-wrapper {
+  @extend %contain-floats;
+  padding: 0 $gutter-half;
+  @include media(tablet) {
+    padding: 0 $gutter-half;
+  }
+}

@@ -6,6 +6,7 @@
 @import "../govuk_frontend_toolkit/stylesheets/_shims.scss";
 
 #landregistry-wrapper {
-  @import "_layout.scss";
-  @import "views/_my-property.scss";
+  @import "base/grid";
+  @import "helpers/grid-wrapper";
+  @import "views/my-property";
 }
