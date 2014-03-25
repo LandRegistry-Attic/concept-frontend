@@ -11,7 +11,12 @@ import string
 app = Flask(__name__)
 assets = Environment(app)
 
-css_base = Bundle('stylesheets/base.scss', filters='scss', output='build/stylesheets/base.css')
+css_base = Bundle(
+    'stylesheets/base.scss',
+    filters='scss',
+    output='build/stylesheets/base.css',
+    depends="**/*.scss"
+)
 assets.register('css_base', css_base)
 
 if 'SENTRY_DSN' in os.environ:
