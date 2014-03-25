@@ -1,5 +1,15 @@
 .my-property {
   @include grid-wrapper;
+  @include core-19;
+
+  .heading-row {
+    @extend %contain-floats;
+  }
+
+  .row {
+    @extend %contain-floats;
+    margin-bottom: $gutter*2;
+  }
 
   h1 {
     @include core-36;
@@ -24,9 +34,6 @@
       }
     }
 
-    dl {
-      @include core-19;
-    }
     dt {
       width: 120px;
       float: left;
@@ -41,6 +48,60 @@
   .map {
     img {
       width: 100%;
+    }
+  }
+
+  .dashboard {
+    @include media(tablet) {
+      width: 100%;
+      float: left;
+    }
+  }
+
+  .dashboard-item {
+    box-sizing: border-box;
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding: $gutter;
+
+    h2 {
+      @include bold-24;
+      margin-bottom: $gutter-half;
+    }
+
+    .data-big {
+      @include core-80($tabular-numbers: true);
+      line-height: 80px;
+    }
+
+    .data-small {
+      @include core-48($tabular-numbers: true);
+      line-height: 80px;
+    }
+
+    .data-good {
+      color: $green;
+    }
+
+    .data-bad {
+      color: $red;
+    }
+  }
+
+  .actions {
+    ul {
+      @include unstyled-list;
+      margin: 0;
+    }
+
+    li {
+      margin: $gutter/4 0;
+    }
+
+    @include media(tablet) {
+      width: 25%;
+      float: left;
     }
   }
 }
