@@ -111,4 +111,17 @@
       margin: 0 0 $gutter;
     }
   }
+
+  .activity {
+    ul {
+      @include unstyled-list;
+    }
+
+    h3 {
+      @include bold-19;
+    }
+    p {
+      margin-top: 0;
+    }
+  }
 }
