@@ -146,6 +146,14 @@
     }
   }
 
+  .third {
+    @include media(tablet) {
+      width: $one-third;
+      float: left;
+    }
+  }
+
+
   .section {
     margin-bottom: $gutter;
   }
