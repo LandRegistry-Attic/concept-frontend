@@ -2,6 +2,10 @@
   @include grid-wrapper;
   @include core-19;
 
+  .inner-block {
+    margin-bottom: $gutter;
+  }
+
   .heading-row {
     @extend %contain-floats;
   }
@@ -41,6 +45,11 @@
       }
     }
 
+    dl {
+    @extend %contain-floats;
+      margin-bottom: $gutter;
+    }
+
     dt {
       width: 160px;
       float: left;
@@ -49,6 +58,11 @@
     }
     dd {
       float: left;
+    }
+
+    button {
+      @include button;
+      display: block;
     }
   }
 
@@ -95,15 +109,6 @@
     }
   }
 
-  .things {
-    @include media(tablet) {
-      width: $two-thirds;
-      float: left;
-    }
-    padding-right: $gutter;
-    box-sizing: border-box;
-  }
-
   .actions {
     li {
       margin: $gutter/4 0;
@@ -129,14 +134,20 @@
   }
 
   .mortgages {
+    table {
+      width: 100%;
+    }
+  }
+
+  .half {
     @include media(tablet) {
       width: 50%;
       float: left;
     }
+  }
 
-    table {
-      width: 100%;
-    }
+  .section {
+    margin-bottom: $gutter;
   }
 
   .historical-information,
