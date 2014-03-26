@@ -52,7 +52,7 @@ def requires_auth(f):
 @app.route('/')
 #@requires_auth
 def home():
-    return render_template('my-property.html')
+    return render_template('property.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
