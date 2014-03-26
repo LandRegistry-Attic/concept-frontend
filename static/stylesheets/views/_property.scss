@@ -11,6 +11,13 @@
     margin-bottom: $gutter*2;
   }
 
+  .block {
+    h2 {
+      @include bold-27;
+      margin: 0 0 $gutter;
+    }
+  }
+
   h1 {
     @include core-36;
     margin: $gutter*2 0 $gutter;
@@ -35,7 +42,7 @@
     }
 
     dt {
-      width: 120px;
+      width: 160px;
       float: left;
       clear: left;
       font-weight: bold;
@@ -48,6 +55,7 @@
   .map {
     img {
       width: 100%;
+      border: 1px solid $border-colour;
     }
   }
 
@@ -59,11 +67,9 @@
   }
 
   .dashboard-item {
-    box-sizing: border-box;
     float: left;
     width: 25%;
-    text-align: center;
-    padding: $gutter;
+    text-align: left;
 
     h2 {
       @include bold-24;
@@ -71,13 +77,13 @@
     }
 
     .data-big {
-      @include core-80($tabular-numbers: true);
-      line-height: 80px;
+      @include bold-80($tabular-numbers: true);
+      margin-bottom: $gutter-half;
     }
 
     .data-small {
-      @include core-48($tabular-numbers: true);
-      line-height: 80px;
+      @include bold-48($tabular-numbers: true);
+      margin-bottom: $gutter-half;
     }
 
     .data-good {
@@ -89,39 +95,58 @@
     }
   }
 
-  .actions {
-    ul {
-      @include unstyled-list;
-      margin: 0;
+  .things {
+    @include media(tablet) {
+      width: $two-thirds;
+      float: left;
     }
+    padding-right: $gutter;
+    box-sizing: border-box;
+  }
 
+  .actions {
     li {
       margin: $gutter/4 0;
     }
 
     @include media(tablet) {
-      width: 25%;
+      width: $one-third;
       float: left;
     }
   }
 
-  .block {
-    h2 {
-      @include bold-27;
-      margin: 0 0 $gutter;
-    }
-  }
-
   .activity {
-    ul {
-      @include unstyled-list;
-    }
-
     h3 {
       @include bold-19;
     }
     p {
       margin-top: 0;
+    }
+    @include media(tablet) {
+      width: $one-third;
+      float: left;
+    }
+  }
+
+  .mortgages {
+    @include media(tablet) {
+      width: 50%;
+      float: left;
+    }
+
+    table {
+      width: 100%;
+    }
+  }
+
+  .historical-information,
+  .related-documents {
+    li {
+      margin: $gutter/4 0;
+    }
+    @include media(tablet) {
+      width: $one-third;
+      float: left;
     }
   }
 }

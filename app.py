@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, redirect
 from flask import render_template
 from functools import wraps
 from flask import request, Response
@@ -52,7 +52,11 @@ def requires_auth(f):
 @app.route('/')
 #@requires_auth
 def home():
-    return render_template('my-property.html')
+    return redirect('/properties/cs72510')
+
+@app.route('/properties/<property_id>')
+def property(property_id):
+    return render_template('property.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
