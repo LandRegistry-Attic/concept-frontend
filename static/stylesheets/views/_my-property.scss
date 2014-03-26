@@ -100,14 +100,11 @@
       width: $two-thirds;
       float: left;
     }
+    padding-right: $gutter;
+    box-sizing: border-box;
   }
 
   .actions {
-    ul {
-      @include unstyled-list;
-      margin: 0;
-    }
-
     li {
       margin: $gutter/4 0;
     }
@@ -119,10 +116,6 @@
   }
 
   .activity {
-    ul {
-      @include unstyled-list;
-    }
-
     h3 {
       @include bold-19;
     }
@@ -130,7 +123,7 @@
       margin-top: 0;
     }
     @include media(tablet) {
-      width: 50%;
+      width: $one-third;
       float: left;
     }
   }
@@ -142,15 +135,13 @@
     }
   }
 
-  .historical-information {
-    ul {
-      @include unstyled-list;
-    }
+  .historical-information,
+  .related-documents {
     li {
       margin: $gutter/4 0;
     }
     @include media(tablet) {
-      width: 25%;
+      width: $one-third;
       float: left;
     }
   }
