@@ -17,7 +17,7 @@ class HomeTestCase(unittest.TestCase):
 
     def test_empty_db(self):
         rv = self.app.get('/')
-        assert 'My property' in rv.data
+        assert 'Your property' in rv.data
 
 if __name__ == '__main__':
     unittest.main()
