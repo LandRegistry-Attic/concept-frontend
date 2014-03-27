@@ -1,16 +1,23 @@
 import os
-from flask import Flask, redirect
-from flask import render_template
+from flask import Flask, redirect, render_template
 from functools import wraps
-from flask import request, Response
 from flask.ext.assets import Environment, Bundle
+from flask.ext.basicauth import BasicAuth
 import logging
 from raven.contrib.flask import Sentry
 import string
 
 app = Flask(__name__)
-assets = Environment(app)
 
+# Auth
+if os.environ.get('BASIC_AUTH_USERNAME'):
+    app.config['BASIC_AUTH_USERNAME'] = os.environ['BASIC_AUTH_USERNAME']
+    app.config['BASIC_AUTH_PASSWORD'] = os.environ['BASIC_AUTH_PASSWORD']
+    app.config['BASIC_AUTH_FORCE'] = True
+    basic_auth = BasicAuth(app)
+
+# Static assets
+assets = Environment(app)
 css_main = Bundle(
     'stylesheets/main.scss',
     filters='scss',
@@ -19,38 +26,18 @@ css_main = Bundle(
 )
 assets.register('css_main', css_main)
 
+# Sentry exception reporting
 if 'SENTRY_DSN' in os.environ:
     sentry = Sentry(app, dsn=os.environ['SENTRY_DSN'])
 
+# Logging
 @app.before_first_request
 def setup_logging():
     if not app.debug:
         app.logger.addHandler(logging.StreamHandler())
         app.logger.setLevel(logging.INFO)
 
-def check_auth(username, password):
-    expectedUsr = os.environ['LAND_REG_USR']
-    expectedPasswd = os.environ['LAND_REG_PSWD']
-    return username == expectedUsr and password == expectedPasswd
-
-
-def authenticate():
-    return Response(
-    'Could not verify your access level for that URL.\n'
-    'You have to login with proper credentials', 401,
-    {'WWW-Authenticate': 'Basic realm="Login Required"'})
-
-def requires_auth(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        auth = request.authorization
-        if not auth or not check_auth(auth.username, auth.password):
-            return authenticate()
-        return f(*args, **kwargs)
-    return decorated
-
 @app.route('/')
-#@requires_auth
 def home():
     return redirect('/properties/cs72510')
 
