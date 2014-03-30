@@ -11,19 +11,17 @@
       <div class="metadata">
         <div class="inner-block">
           <div class="address">
-            <p>13 Isleworth Road</p>
-            <p>Exeter</p>
-            <p>EX4 1QU</p>
+            <p>{{ title["propertyAddress"] }}</p>
           </div>
           <dl>
             <dt>Council</dt>
             <dd>Exeter City Council</dd>
             <dt>Owner</dt>
-            <dd>Paul John Dawkins</dd>
+            <dd> {{ title["registeredOwners"][0]["registeredOwner"] }} </dd>
             <dt>Type</dt>
             <dd>Semi-detached house</dd>
             <dt>Title number</dt>
-            <dd>CS72510</dd>
+            <dd> {{ title["titleId"] }} </dd>
             <dt>Price paid</dt>
             <dd>£178,000 (4th March 2009)</dd>
           </dl>
