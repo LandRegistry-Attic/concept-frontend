@@ -6,6 +6,7 @@ from flask.ext.basicauth import BasicAuth
 import logging
 from raven.contrib.flask import Sentry
 import string
+import json
 
 app = Flask(__name__)
 
@@ -39,11 +40,17 @@ def setup_logging():
 
 @app.route('/')
 def home():
-    return redirect('/properties/cs72510')
+    return redirect('/properties/EX32736')
 
 @app.route('/properties/<property_id>')
 def property(property_id):
-    return render_template('property.html')
+    title_info = load_title(property_id)
+    return render_template("property.html", title = title_info)
+
+def load_title(property_id):
+    json_file = open('titles/' + property_id + '.json')
+    title = json.load(json_file)
+    return title    
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
