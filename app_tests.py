@@ -16,7 +16,7 @@ class HomeTestCase(unittest.TestCase):
         os.unlink(app.app.config['DATABASE'])
 
     def test_property(self):
-        rv = self.app.get('/properties/cs72510')
+        rv = self.app.get('/properties/EX1354')
         assert 'Your property' in rv.data
 
 if __name__ == '__main__':
