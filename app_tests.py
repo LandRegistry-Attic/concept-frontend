@@ -2,6 +2,7 @@ import os
 import app
 import unittest
 import tempfile
+import mock
 
 class HomeTestCase(unittest.TestCase):
 
@@ -15,9 +16,24 @@ class HomeTestCase(unittest.TestCase):
         os.close(self.db_fd)
         os.unlink(app.app.config['DATABASE'])
 
-    def test_property(self):
+    @mock.patch('requests.get')
+    def test_property(self, get_mock):
+        class MockResponse(object):
+            status_code = 200
+            def json(self):
+                return {
+                    "title": {
+                        "content": {
+                            "title_id": "AB1234",
+                            "address": "123 Fake St",
+                            "registered_owners": [{'name': 'Victor'}],
+                        }
+                    }
+                }
+        get_mock.return_value = MockResponse()
         rv = self.app.get('/properties/EX1354')
         assert 'Your property' in rv.data
+        assert '123 Fake St' in rv.data
 
 if __name__ == '__main__':
     unittest.main()

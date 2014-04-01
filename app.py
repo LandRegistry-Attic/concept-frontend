@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, abort
 from functools import wraps
 from flask.ext.assets import Environment, Bundle
 from flask.ext.basicauth import BasicAuth
@@ -7,6 +7,9 @@ import logging
 from raven.contrib.flask import Sentry
 import string
 import json
+import requests
+
+TITLES_SCHEME_DOMAIN_PORT = os.environ.get('TITLES_SCHEME_DOMAIN_PORT')
 
 app = Flask(__name__)
 
@@ -37,7 +40,6 @@ def setup_logging():
     if not app.debug:
         app.logger.addHandler(logging.StreamHandler())
         app.logger.setLevel(logging.INFO)
-
 @app.route('/')
 def home():
     return redirect('/properties/EX32736')
@@ -45,12 +47,16 @@ def home():
 @app.route('/properties/<property_id>')
 def property(property_id):
     title_info = load_title(property_id)
-    return render_template("property.html", title = title_info)
+    if title_info:
+        return render_template("property.html", title = title_info)
+    else:
+        return abort(404)
 
 def load_title(property_id):
-    json_file = open('titles/' + property_id + '.json')
-    title = json.load(json_file)
-    return title    
+    res = requests.get("%s/titles/%s" % (TITLES_SCHEME_DOMAIN_PORT, property_id))
+    if res.status_code == 404:
+        return None
+    return res.json()
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0", port=7000)

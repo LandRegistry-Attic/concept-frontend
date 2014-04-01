@@ -11,17 +11,17 @@
       <div class="metadata">
         <div class="inner-block">
           <div class="address">
-            <p>{{ title["propertyAddress"] }}</p>
+            <p>{{ title["title"]["content"]["address"] }}</p>
           </div>
           <dl>
             <dt>Council</dt>
             <dd>Exeter City Council</dd>
             <dt>Owner</dt>
-            <dd> {{ title["registeredOwners"][0]["registeredOwner"] }} </dd>
+            <dd> {{ title["title"]["content"]["registered_owners"][0]["name"] }} </dd>
             <dt>Type</dt>
             <dd>Semi-detached house</dd>
             <dt>Title number</dt>
-            <dd> {{ title["titleId"] }} </dd>
+            <dd> {{ title["title"]["content"]["title_id"] }} </dd>
             <dt>Price paid</dt>
             <dd>£178,000 (4th March 2009)</dd>
           </dl>

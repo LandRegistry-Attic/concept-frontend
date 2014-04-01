@@ -2,8 +2,9 @@ web:
   build: .
   command: python app.py
   ports:
-   - 5000:5000
+   - "7000:7000"
   volumes:
    - .:/code
   environment:
     PYTHONUNBUFFERED: "1"
+    TITLES_SCHEME_DOMAIN_PORT : "http://172.16.42.43:5000"
