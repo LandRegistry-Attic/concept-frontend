@@ -40,7 +40,7 @@ def setup_logging():
 
 @app.route('/')
 def home():
-    return redirect('/properties/EX32736')
+    return render_template('/index.html')
 
 @app.route('/properties/<property_id>')
 def property(property_id):
