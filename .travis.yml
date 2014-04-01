@@ -8,7 +8,7 @@ script: python app_tests.py
 deploy:
   provider: heroku
   api_key:
-    secure: Z4oiFHZoamHwTxb4QFK8jAnCF/QtkUUY8dATtfTyN/DwBHKW2FtAfNhFjboL7WngkV+PQfdzoHfmFqTjoYQZeOaFT7lkvnSfVFby2/4EMkv8eZoyop86ad/QMJ8pRAVG+nEUSu0gFBKUMb/iuvVbDDQSGtuaiwoojyOPv/owAF4=
+    secure: iiz+tNyeFB/76aLDd6dIKCUjJW7MQG6Ukg0RxghxhaTwm8GOh7CBQQxyME+GPSatkF3glT2DLnrgZviKAqfsT5VbUjVuxFeybVuzsWkbuVjIu8DOrxZ8qU7diSN8qORblduc/GiFDzObVJ7iTIFBj+8pProeYEDEHKw1Yf68fFE=
   app: lr-concept-my-property
   on:
     repo: LandRegistry/concept-my-property
