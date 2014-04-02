@@ -66,11 +66,8 @@
     }
   }
 
-  .map {
-    img {
-      width: 100%;
-      border: 1px solid $border-colour;
-    }
+  #map{
+    height: 350px;
   }
 
   .dashboard {
