@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<script src="http://ol3js.org/en/master/build/ol.js" type="text/javascript"></script>
 
   <div class="my-property">
     <div class="heading-row">
@@ -34,7 +33,6 @@
 
       <div class="map">
         <div id="map" class="inner-block">
-          <script src="../static/javascripts/vector_layer.js" type="text/javascript"></script>
         </div>
       </div>
     </div>
@@ -180,4 +178,9 @@
       </div>
     </div>
   </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="http://ol3js.org/en/master/build/ol.js" type="text/javascript"></script>
+  <script src="/static/javascripts/vector_layer.js" type="text/javascript"></script>
 {% endblock %}
