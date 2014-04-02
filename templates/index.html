@@ -1,31 +1,21 @@
 {% extends "base.html" %}
-{% block content %}          
-  <div class="my-property">
-	<div class="heading-row">
-	  <div class="inner-block">
-		<h1>Concept Links</h1>
-	  </div>
-	</div>
+{% block content %}
+  <div class="index">
+  	<div class="heading-row">
+  	  <div class="inner-block">
+    		<h1>Properties</h1>
+  	  </div>
+  	</div>
 
-	<div class="row">
-	  <div class="metadata">
-		<div class="inner-block">
-		  <dl>
-			<dt><a href="http://172.16.42.43:5000/properties/EX32736"> EX32736 </a></dt>
-			<dt><a href="http://172.16.42.43:5000/properties/EX22684"> EX22684 </a></dt>
-			<dt><a href="http://172.16.42.43:5000/properties/EX23540"> EX23540 </a></dt>
-			<dt><a href="http://172.16.42.43:5000/properties/EX26424"> EX26424 </a></dt>
-			<dt><a href="http://172.16.42.43:5000/properties/EX27650"> EX27650 </a></dt>
-			<dt><a href="http://172.16.42.43:5000/properties/EX35095"> EX35095 </a></dt>
-			<dt><a href="http://172.16.42.43:5000/properties/EX36202"> EX36202 </a></dt>
-			<dt><a href="http://172.16.42.43:5000/properties/EX36261"> EX36261 </a></dt>
-			<dt><a href="http://172.16.42.43:5000/properties/EX1354">  EX1354  </a></dt>
-			<dt><a href="http://172.16.42.43:5000/properties/BD251159"> BD251159 </a></dt>
-		  </dl>
-		</div>
-	 </div>
-	</div>
-   </div>
-
-	
+  	<div class="row">
+  		<div class="inner-block">
+        <ul>
+          {% for title in titles %}
+            <li><a href="/properties/{{ title['title']['content']['title_id'] }}">{{ title['title']['content']['address'] }}</a></li>
+          {% endfor %}
+        </ul>
+  		</div>
+  	 </div>
+  	</div>
+ </div>
  {% endblock %}

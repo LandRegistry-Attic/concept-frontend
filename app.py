@@ -42,7 +42,9 @@ def setup_logging():
         app.logger.setLevel(logging.INFO)
 @app.route('/')
 def home():
-    return render_template('/index.html')
+    res = requests.get("%s/titles" % TITLES_SCHEME_DOMAIN_PORT)
+    res.raise_for_status()
+    return render_template('/index.html', titles=res.json()['titles'])
 
 @app.route('/properties/<property_id>')
 def property(property_id):
