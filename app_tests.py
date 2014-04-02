@@ -22,14 +22,34 @@ class HomeTestCase(unittest.TestCase):
             status_code = 200
             def json(self):
                 return {
-                    "title": {
-                        "content": {
-                            "title_id": "AB1234",
-                            "address": "123 Fake St",
-                            "registered_owners": [{'name': 'Victor'}],
+                "title": {
+                    "content": {
+                        "title_id": "AB1234",
+                        "address": "123 Fake St",
+                        "registered_owners": [
+                            {
+                                "name": "Victor"
+                            }
+                        ]
+                    ,
+                    "extent": {
+                        "geometry": {
+                            "type": "MultiPolygon",
+                            "coordinates": [
+                                [
+                                    [
+                                        [
+                                            14708.755563011973,
+                                            6761018.225448865
+                                        ]
+                                    ]
+                                ]
+                            ]
                         }
                     }
+                    }
                 }
+            }
         get_mock.return_value = MockResponse()
         rv = self.app.get('/properties/EX1354')
         assert 'Your property' in rv.data
