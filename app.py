@@ -47,8 +47,13 @@ def home():
 @app.route('/properties/<property_id>')
 def property(property_id):
     title_info = load_title(property_id)
+    title_extent_json = json.dumps(title_info['title']['content']['extent']['geometry'])
+    title_centroid_json = json.dumps(title_info['title']['content']['extent']['geometry']['coordinates'][0][0][0])
     if title_info:
-        return render_template("property.html", title = title_info)
+        return render_template("property.html",
+            title=title_info,
+        title_extent_json=title_extent_json,
+        title_centroid_json=title_centroid_json)
     else:
         return abort(404)
 
