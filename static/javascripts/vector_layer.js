@@ -86,8 +86,7 @@ var vectorSource = new ol.source.GeoJSON(
         'features': [
           {
             "type":"Feature",
-            "geometry":
-              window.titleExtent
+            "geometry": window.titleExtent['geometry']
           }
         ]
       }
@@ -109,7 +108,7 @@ var map = new ol.Map({
   renderer: 'canvas',
   target: 'map',
   view: new ol.View2D({
-    center: window.titleCentroid,
+    center: window.titleExtent['geometry']['coordinates'][0][0][0],
     zoom: 18
   })
 });
