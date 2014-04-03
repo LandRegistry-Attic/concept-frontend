@@ -23,15 +23,13 @@ class HomeTestCase(unittest.TestCase):
             def json(self):
                 return {
                 "title": {
-                    "content": {
-                        "title_id": "AB1234",
-                        "address": "123 Fake St",
-                        "registered_owners": [
-                            {
-                                "name": "Victor"
-                            }
-                        ]
-                    ,
+                    "title_id": "AB1234",
+                    "address": "123 Fake St",
+                    "registered_owners": [
+                        {
+                            "name": "Victor"
+                        }
+                    ],
                     "extent": {
                         "geometry": {
                             "type": "MultiPolygon",
@@ -46,7 +44,6 @@ class HomeTestCase(unittest.TestCase):
                                 ]
                             ]
                         }
-                    }
                     }
                 }
             }
