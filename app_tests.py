@@ -52,5 +52,68 @@ class HomeTestCase(unittest.TestCase):
         assert 'Your property' in rv.data
         assert '123 Fake St' in rv.data
 
+    @mock.patch('requests.get')
+    def test_postcode_filter(self, get_mock):
+        class MockResponse(object):
+            status_code = 200
+            def json(self):
+                return 
+                {
+                    "titles": [
+                        {
+                            "title_id": "AB1234",
+                            "address": "123 Fake St",
+                            "registered_owners": [
+                                {
+                                    "name": "Victor"
+                                }
+                            ],
+                            "extent": {
+                                "geometry": {
+                                    "type": "MultiPolygon",
+                                    "coordinates": [
+                                        [
+                                            [
+                                                [
+                                                    14708.755563011973,
+                                                    6761018.225448865
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "title_id": "AB1235",
+                            "address": "124 Fake St",
+                            "registered_owners": [
+                                {
+                                    "name": "Kiam"
+                                }
+                            ],
+                            "extent": {
+                                "geometry": {
+                                    "type": "MultiPolygon",
+                                    "coordinates": [
+                                        [
+                                            [
+                                                [
+                                                    14709.755563011973,
+                                                    6761010.225448865
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }                    
+        get_mock.return_value = MockResponse()
+        rv = self.app.get('/properties?postcode=AB12 3CD')
+        assert '123 Fake St' in rv.data
+        assert '124 Fake St' in rv.data
+
 if __name__ == '__main__':
     unittest.main()
