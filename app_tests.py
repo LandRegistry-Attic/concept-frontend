@@ -63,6 +63,7 @@ class HomeTestCase(unittest.TestCase):
                         {
                             "title_id": "AB1234",
                             "address": "123 Fake St",
+                            "postcode" : "AB12 3CD",
                             "registered_owners": [
                                 {
                                     "name": "Victor"
@@ -87,6 +88,7 @@ class HomeTestCase(unittest.TestCase):
                         {
                             "title_id": "AB1235",
                             "address": "124 Fake St",
+                            "postcode" : "AB12 3CD",
                             "registered_owners": [
                                 {
                                     "name": "Kiam"
