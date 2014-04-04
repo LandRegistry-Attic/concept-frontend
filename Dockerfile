@@ -7,3 +7,4 @@ RUN bundle install
 ADD requirements.txt /code/
 RUN pip install -r requirements.txt
 ADD . /code
+ENV PYTHONUNBUFFERED 1

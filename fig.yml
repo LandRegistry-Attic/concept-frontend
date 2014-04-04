@@ -6,5 +6,4 @@ web:
   volumes:
    - .:/code
   environment:
-    PYTHONUNBUFFERED: "1"
     TITLES_SCHEME_DOMAIN_PORT : "http://titles.service.landregistryconcept.co.uk"
