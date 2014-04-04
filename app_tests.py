@@ -52,5 +52,50 @@ class HomeTestCase(unittest.TestCase):
         assert 'Your property' in rv.data
         assert '123 Fake St' in rv.data
 
+    @mock.patch('requests.get')
+    def test_property_not_found(self, get_mock):
+        class MockResponse(object):
+            status_code = 404
+            def json(self):
+                return 
+        get_mock.return_value = MockResponse()
+        rv = self.app.get('/properties/EX1354')
+        assert 'Not Found' in rv.data
+
+    @mock.patch('requests.get')
+    def test_postcode_filter(self, get_mock):
+        class MockResponse(object):
+            status_code = 200
+            def json(self):
+                return { 
+                "titles" : [{"address" : "123 Fake St"}, {"address" : "124 Fake St"
+                }]
+            }
+                 
+        get_mock.return_value = MockResponse()
+        rv = self.app.get('/properties?postcode=ABC')
+        assert '123 Fake St' in rv.data
+        assert '124 Fake St' in rv.data
+
+    @mock.patch('requests.get')
+    def test_properties(self, get_mock):
+        rv = self.app.get('/properties')
+        assert 'not supported' in rv.data
+
+
+
+    @mock.patch('requests.get')
+    def test_postcode_filter_none_found(self, get_mock):
+        class MockResponse(object):
+            status_code = 200
+            def json(self):
+                return 
+                { "titles" : []
+                }
+        get_mock.return_value = MockResponse()
+        rv = self.app.get('/properties?postcode=ABC')
+        assert 'No titles found' in rv.data
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,10 +1,11 @@
 import os
-from flask import Flask, redirect, render_template, abort
+from flask import Flask, redirect, render_template, abort, request
 from functools import wraps
 from flask.ext.assets import Environment, Bundle
 from flask.ext.basicauth import BasicAuth
 import logging
 from raven.contrib.flask import Sentry
+from flask import jsonify
 import string
 import json
 import requests
@@ -49,8 +50,8 @@ def home():
 @app.route('/properties/<property_id>')
 def property(property_id):
     title_info = load_title(property_id)
-    title_extent_json = json.dumps(title_info['title'].get('extent', {}))
     if title_info:
+        title_extent_json = json.dumps(title_info['title']['extent'])
         return render_template("property.html",
             title=title_info['title'],
             title_extent_json=title_extent_json
@@ -61,8 +62,26 @@ def property(property_id):
 def load_title(property_id):
     res = requests.get("%s/titles/%s" % (TITLES_SCHEME_DOMAIN_PORT, property_id))
     if res.status_code == 404:
+        return None  
+    return res.json()
+
+def load_titles_by_postcode(postcode):
+    res = requests.get("%s/titles?postcode=%s" % (TITLES_SCHEME_DOMAIN_PORT, postcode))
+    if res.status_code == 404:
         return None
     return res.json()
+
+@app.route('/properties')
+def properties():
+        if 'postcode' in request.args:
+            titles_info = load_titles_by_postcode( request.args['postcode'] )
+            if titles_info:
+                return render_template('/index.html', titles=titles_info['titles'])
+            else:
+                return "No titles found", 200
+        else:
+            return "Request for all titles not supported", 403
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
