@@ -57,65 +57,35 @@ class HomeTestCase(unittest.TestCase):
         class MockResponse(object):
             status_code = 200
             def json(self):
-                return 
-                {
-                    "titles": [
-                        {
-                            "title_id": "AB1234",
-                            "address": "123 Fake St",
-                            "postcode" : "AB12 3CD",
-                            "registered_owners": [
-                                {
-                                    "name": "Victor"
-                                }
-                            ],
-                            "extent": {
-                                "geometry": {
-                                    "type": "MultiPolygon",
-                                    "coordinates": [
-                                        [
-                                            [
-                                                [
-                                                    14708.755563011973,
-                                                    6761018.225448865
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                }
-                            }
-                        },
-                        {
-                            "title_id": "AB1235",
-                            "address": "124 Fake St",
-                            "postcode" : "AB12 3CD",
-                            "registered_owners": [
-                                {
-                                    "name": "Kiam"
-                                }
-                            ],
-                            "extent": {
-                                "geometry": {
-                                    "type": "MultiPolygon",
-                                    "coordinates": [
-                                        [
-                                            [
-                                                [
-                                                    14709.755563011973,
-                                                    6761010.225448865
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                }
-                            }
-                        }
-                    ]
-                }                    
+                return { 
+                "titles" : [{"address" : "123 Fake St"}, {"address" : "124 Fake St"
+                }]
+            }
+                 
         get_mock.return_value = MockResponse()
-        rv = self.app.get('/properties?postcode=AB12 3CD')
+        rv = self.app.get('/properties?postcode=ABC')
         assert '123 Fake St' in rv.data
         assert '124 Fake St' in rv.data
+
+    @mock.patch('requests.get')
+    def test_properties(self, get_mock):
+        rv = self.app.get('/properties')
+        assert 'not supported' in rv.data
+
+
+
+    @mock.patch('requests.get')
+    def test_postcode_filter_none_found(self, get_mock):
+        class MockResponse(object):
+            status_code = 200
+            def json(self):
+                return 
+                { "titles" : []
+                }
+        get_mock.return_value = MockResponse()
+        rv = self.app.get('/properties?postcode=ABC')
+        assert 'No titles found' in rv.data
+
 
 if __name__ == '__main__':
     unittest.main()
