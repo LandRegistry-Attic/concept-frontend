@@ -1,9 +1,0 @@
-web:
-  build: .
-  command: python app.py
-  ports:
-   - "7000:7000"
-  volumes:
-   - .:/code
-  environment:
-    TITLES_SCHEME_DOMAIN_PORT : "http://titles.service.landregistryconcept.co.uk"
