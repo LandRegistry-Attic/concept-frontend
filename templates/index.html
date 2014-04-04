@@ -11,7 +11,7 @@
   		<div class="inner-block">
         <ul>
           {% for title in titles %}
-            <li><a href="/properties/{{ title['title']['content']['title_number'] }}">{{ title['title']['content']['address'] }}</a></li>
+            <li><a href="/properties/{{ title['title_number'] }}">{{ title['address'] }}</a></li>
           {% endfor %}
         </ul>
   		</div>
