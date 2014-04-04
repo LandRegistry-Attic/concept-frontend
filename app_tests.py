@@ -23,7 +23,7 @@ class HomeTestCase(unittest.TestCase):
             def json(self):
                 return {
                 "title": {
-                    "title_id": "AB1234",
+                    "title_number": "AB1234",
                     "address": "123 Fake St",
                     "registered_owners": [
                         {
