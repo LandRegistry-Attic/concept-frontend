@@ -53,6 +53,16 @@ class HomeTestCase(unittest.TestCase):
         assert '123 Fake St' in rv.data
 
     @mock.patch('requests.get')
+    def test_property_not_found(self, get_mock):
+        class MockResponse(object):
+            status_code = 404
+            def json(self):
+                return 
+        get_mock.return_value = MockResponse()
+        rv = self.app.get('/properties/EX1354')
+        assert 'Not Found' in rv.data
+
+    @mock.patch('requests.get')
     def test_postcode_filter(self, get_mock):
         class MockResponse(object):
             status_code = 200
