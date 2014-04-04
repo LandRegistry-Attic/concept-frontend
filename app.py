@@ -76,7 +76,7 @@ def properties():
         if 'postcode' in request.args:
             titles_info = load_titles_by_postcode( request.args['postcode'] )
             if titles_info:
-                return jsonify(titles_info)
+                return render_template('/index.html', titles=titles_info['titles'])
             else:
                 return "No titles found", 200
         else:
