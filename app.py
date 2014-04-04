@@ -9,7 +9,7 @@ import string
 import json
 import requests
 
-TITLES_SCHEME_DOMAIN_PORT = os.environ.get('TITLES_SCHEME_DOMAIN_PORT')
+TITLES_SCHEME_DOMAIN_PORT = os.environ.get('TITLES_SCHEME_DOMAIN_PORT', os.environ.get('TITLES_1_PORT_8004_TCP', '').replace('tcp://', 'http://'))
 
 app = Flask(__name__)
 
@@ -65,4 +65,4 @@ def load_title(property_id):
     return res.json()
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=7000)
+    app.run(debug=True, host="0.0.0.0", port=8001)
