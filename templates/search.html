@@ -1,0 +1,26 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+{% block content %}
+    <div class="index">
+        <div class="heading-row">
+            <div class="inner-block">
+                <h1>Search results {{latlng}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="inner-block">
+                <form action="/search" method="get">
+                    {{ render_field(form.q) }}
+                    <button class="button">Search</button>
+                </form>
+                {% if titles %}
+                    <ul>
+                        {% for title in titles %}
+                            <li><a href="/properties/{{ title['title_number'] }}">{{ title['title_number'] }},  {{ title['address'] }} </a> </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+ {% endblock %}
