@@ -96,6 +96,27 @@ class HomeTestCase(unittest.TestCase):
         rv = self.app.get('/properties?postcode=ABC')
         assert 'No titles found' in rv.data
 
+    
+    @mock.patch('requests.get')
+    def test_property_no_extent(self, get_mock):
+        class MockResponse(object):
+            status_code = 200
+            def json(self):
+                return {
+                "title": {
+                    "title_number": "AB1234",
+                    "address": "123 Fake St",
+                    "registered_owners": [
+                        {
+                            "name": "Victor"
+                        }
+                    ]
+                }
+            }
+        get_mock.return_value = MockResponse()
+        rv = self.app.get('/properties/EX1354')
+        assert 'Your property' in rv.data
+        assert '123 Fake St' in rv.data
 
 if __name__ == '__main__':
     unittest.main()
