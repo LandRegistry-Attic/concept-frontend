@@ -51,7 +51,7 @@ def home():
 def property(property_id):
     title_info = load_title(property_id)
     if title_info:
-        title_extent_json = json.dumps(title_info['title']['extent'])
+        title_extent_json = json.dumps(title_info['title'].get('extent', {}))
         return render_template("property.html",
             title=title_info['title'],
             title_extent_json=title_extent_json
