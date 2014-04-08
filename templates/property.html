@@ -195,8 +195,8 @@
           <h2>Related titles</h2>
             {% if title['related_titles'][0] is defined %}
               <ul class="list-bullet">
-              {% for title_number in title['related_titles'] %}
-                <li><strong><a href="/properties/{{ title_number }}">{{ title_number }}</a></strong></li>
+              {% for title in title['related_titles'] %}
+                <li><strong><a href="/properties/{{ title['title_number'] }}">{{ title['title_number'] }}</a></strong></li>
               {% endfor %}
             {% else %}
               <p>No related titles.</p>
