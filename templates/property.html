@@ -193,14 +193,21 @@
 
         <div class="inner-block">
           <h2>Related titles</h2>
-            {% if title['related_titles'][0] is defined %}
-              <ul class="list-bullet">
-              {% for title in title['related_titles'] %}
-                <li><strong><a href="/properties/{{ title['title_number'] }}">{{ title['title_number'] }}</a></strong></li>
-              {% endfor %}
+            {% if title['related_titles'] is defined %}
+              {% if title['related_titles'][0] is defined %}
+                <ul class="list-bullet">
+                {% for title in title['related_titles'] %}
+                  <li><strong><a href="/properties/{{ title['title_number'] }}">{{ title['title_number'] }}</a></strong></li>
+                {% endfor %}
+              {% else %}
+                <p>No related titles.</p>
+              {% endif %}
             {% else %}
               <p>No related titles.</p>
             {% endif %}
+
+
+            
         </div>
 
       </div>
