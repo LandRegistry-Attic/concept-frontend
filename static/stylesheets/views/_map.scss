@@ -1,15 +1,8 @@
 .map {
-  @include grid-wrapper;
   @include core-19;
 
-  margin-top: $gutter*2;
-
-  h1 {
-    @include bold-48;
-    margin-bottom: $gutter;
-  }
-
   .ol-container {
-    height: 500px;
+    height: 100%;
+    width: 100%;
   }
 }

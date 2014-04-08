@@ -7,10 +7,13 @@
   };
   Map.prototype = {
     init: function() {
+      this.vectorLayer = null;
+      this.currentHighlight = null;
+
+      // Init map
       var raster = new ol.layer.Tile({
         source: new ol.source.OSM()
       });
-
       this.map = new ol.Map({
         layers: [raster],
         target: this.$el[0],
@@ -24,10 +27,45 @@
           zoom: 18
         })
       });
-      this.map.on('moveend', this.onMoveEnd, this);
-      this.currentLayer = null;
+      this.map.on('moveend', this.onMoveend, this);
+      this.featureOverlay = new ol.FeatureOverlay({
+        map: this.map,
+        style: function(feature, resolution) {
+          return [new ol.style.Style({
+            stroke: new ol.style.Stroke({
+              color: '#f00',
+              width: 1
+            }),
+            fill: new ol.style.Fill({
+              color: 'rgba(255,0,0,0.2)'
+            }),
+          })];
+        }
+      });
+
+      // Init mouse events
+      $(this.map.getViewport()).on('mousemove', _.bind(this.onMousemove, this));
     },
-    onMoveEnd: function() {
+    onMousemove: function(event) {
+      var pixel = this.map.getEventPixel(event.originalEvent);
+      var feature = this.map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+        return feature;
+      });
+      if (feature !== this.currentHighlight) {
+        if (this.currentHighlight) {
+          this.featureOverlay.removeFeature(this.currentHighlight);
+        }
+        if (feature) {
+          this.featureOverlay.addFeature(feature);
+        }
+        this.currentHighlight = feature;
+      }
+    },
+    onMoveend: function() {
+      if (!this.hasMapMoved()) {
+        return;
+      }
+      console.log('onMoveend')
       this.onGeoSuccess([{
         "address": "11 Fore Street, Harlow (CM17 0AA)",
         "extent": {
@@ -173,7 +211,7 @@
       }]);
     },
     onGeoSuccess: function(results) {
-      this.removeCurrentLayer();
+      this.removeVectorLayer();
 
       var vectorLayer = new ol.layer.Vector({
         source: this.getSourceFromTitle(results[0]),
@@ -188,7 +226,7 @@
         })],
       });
 
-      this.setCurrentLayer(vectorLayer);
+      this.setVectorLayer(vectorLayer);
     },
     getSourceFromTitle: function(title) {
       return new ol.source.GeoJSON({
@@ -203,6 +241,7 @@
           },
           'features': [
             {
+              "id": title['title_number'],
               "type":"Feature",
               "geometry": title['extent']['geometry'],
             }
@@ -210,14 +249,14 @@
         },
       });
     },
-    removeCurrentLayer: function() {
-      if (this.currentLayer) {
-        this.map.removeLayer(this.currentLayer);
+    removeVectorLayer: function() {
+      if (this.vectorLayer) {
+        this.map.removeLayer(this.vectorLayer);
       }
     },
-    setCurrentLayer: function(layer) {
+    setVectorLayer: function(layer) {
       this.map.addLayer(layer);
-      this.currentLayer = layer;
+      this.vectorLayer = layer;
     },
     getViewExtent: function() {
       return this.map.getView().calculateExtent(this.map.getSize());
@@ -227,6 +266,17 @@
         "type": "multi_polygon",
         "coordinates": [[this.getViewExtent()]]
       };
-    }
+    },
+    // Returns whether or not the map has moved since this function
+    // was last called
+    hasMapMoved: function() {
+      var extent = this.getViewExtent();
+      var result = false;
+      if (!_.isEqual(extent, this._previousExtent)) {
+        result = true;
+      }
+      this._previousExtent = this.getViewExtent()
+      return result;
+    },
   };
 })();

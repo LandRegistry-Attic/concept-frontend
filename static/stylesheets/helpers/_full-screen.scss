@@ -1,0 +1,15 @@
+.full-screen {
+  #global-header .header-wrapper {
+    max-width: none;
+  }
+  footer {
+    display: none;
+  }
+  #landregistry-wrapper {
+    .landregistry-content {
+      max-width: none;
+      margin: 0;
+      overflow: hidden;
+    }
+  }
+}
