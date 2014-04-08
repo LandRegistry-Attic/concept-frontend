@@ -194,7 +194,7 @@
         <div class="inner-block">
           <h2>Related titles</h2>
           <ul class="list-bullet">
-            {% for related_title in title %}
+            {% for title_number in title['related_titles'] %}
             <li><strong><a href="/properties/{{ related_title['title_number'] }}">{{ related_title['title_number'] }}</a></strong></li>
             {% endfor %}
         </div>
