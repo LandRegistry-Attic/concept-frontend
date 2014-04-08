@@ -98,13 +98,15 @@ def search():
         if latlng:
 
             #make a geojson point
-            geojson_point = geojson.Point(latlng)
+            geojson_point = geojson.Point([latlng[1], latlng[0]])
 
             #call the geo service
-            res = requests.get("%s/titles?near=%s" % ('http://172.16.42.43:8005', geojson.dumps(geojson_point)))
+            url = "%s/titles?near=%s" % (GEO_SCHEME_DOMAIN_PORT, geojson.dumps(geojson_point))
+            res = requests.get(url)
+
             titles = res.json()
 
-    return render_template('/search.html', titles=titles, form=form, search_term=search_term, latlng=latlng)
+    return render_template('/search.html', titles=titles['objects'], form=form, search_term=search_term, latlng=latlng)
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
