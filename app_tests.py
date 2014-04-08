@@ -44,7 +44,18 @@ class HomeTestCase(unittest.TestCase):
                                 ]
                             ]
                         }
-                    }
+                    },
+                    "related_titles": [
+                        {
+                            "title_number": "DN1234"
+                        },
+                        {
+                            "title_number": "DN2345"
+                        },
+                        {
+                            "title_number": "DN3456"
+                        }
+                    ]
                 }
             }
         get_mock.return_value = MockResponse()
@@ -111,6 +122,42 @@ class HomeTestCase(unittest.TestCase):
                             "name": "Victor"
                         }
                     ]
+                }
+            }
+        get_mock.return_value = MockResponse()
+        rv = self.app.get('/properties/EX1354')
+        assert 'Your property' in rv.data
+        assert '123 Fake St' in rv.data
+
+    @mock.patch('requests.get')
+    def test_no_related_titles(self, get_mock):
+        class MockResponse(object):
+            status_code = 200
+            def json(self):
+                return {
+                "title": {
+                    "title_number": "AB1234",
+                    "address": "123 Fake St",
+                    "registered_owners": [
+                        {
+                            "name": "Victor"
+                        }
+                    ],
+                    "extent": {
+                        "geometry": {
+                            "type": "MultiPolygon",
+                            "coordinates": [
+                                [
+                                    [
+                                        [
+                                            14708.755563011973,
+                                            6761018.225448865
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        }
+                    }
                 }
             }
         get_mock.return_value = MockResponse()
