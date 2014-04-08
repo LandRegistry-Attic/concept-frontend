@@ -6,11 +6,15 @@ from flask.ext.basicauth import BasicAuth
 import logging
 from raven.contrib.flask import Sentry
 from flask import jsonify
+import forms
 import string
 import json
 import requests
+import geojson
+from utils import geo
 
 TITLES_SCHEME_DOMAIN_PORT = os.environ.get('TITLES_SCHEME_DOMAIN_PORT', os.environ.get('TITLES_1_PORT_8004_TCP', '').replace('tcp://', 'http://'))
+GEO_SCHEME_DOMAIN_PORT = os.environ.get('GEO_SCHEME_DOMAIN_PORT', os.environ.get('GEO_1_PORT_8005_TCP', '').replace('tcp://', 'http://'))
 
 app = Flask(__name__)
 
@@ -35,17 +39,26 @@ assets.register('css_main', css_main)
 if 'SENTRY_DSN' in os.environ:
     sentry = Sentry(app, dsn=os.environ['SENTRY_DSN'])
 
+def load_title(property_id):
+    res = requests.get("%s/titles/%s" % (TITLES_SCHEME_DOMAIN_PORT, property_id))
+    if res.status_code == 404:
+        return None
+    return res.json()
+    
 # Logging
 @app.before_first_request
 def setup_logging():
     if not app.debug:
         app.logger.addHandler(logging.StreamHandler())
         app.logger.setLevel(logging.INFO)
+
 @app.route('/')
 def home():
+    form = forms.SearchForm()
+
     res = requests.get("%s/titles" % TITLES_SCHEME_DOMAIN_PORT)
     res.raise_for_status()
-    return render_template('/index.html', titles=res.json()['titles'])
+    return render_template('/index.html', titles=res.json()['titles'], form=form)
 
 @app.route('/properties/<property_id>')
 def property(property_id):
@@ -59,29 +72,39 @@ def property(property_id):
     else:
         return abort(404)
 
-def load_title(property_id):
-    res = requests.get("%s/titles/%s" % (TITLES_SCHEME_DOMAIN_PORT, property_id))
-    if res.status_code == 404:
-        return None  
-    return res.json()
-
-def load_titles_by_postcode(postcode):
-    res = requests.get("%s/titles?postcode=%s" % (TITLES_SCHEME_DOMAIN_PORT, postcode))
-    if res.status_code == 404:
-        return None
-    return res.json()
-
 @app.route('/properties')
 def properties():
-        if 'postcode' in request.args:
-            titles_info = load_titles_by_postcode( request.args['postcode'] )
-            if titles_info:
-                return render_template('/index.html', titles=titles_info['titles'])
-            else:
-                return "No titles found", 200
-        else:
-            return "Request for all titles not supported", 403
+    return "Request for all titles not supported", 403
 
+@app.route('/search')
+def search():
+
+    search_term = None
+    form = forms.SearchForm()
+    titles = []
+    latlng = False
+
+    if 'q' in request.args:
+        search_term = request.args['q']
+        form.q.data = search_term
+
+        #work out the type of search, they try and get a latlng for it
+        if geo.is_postcode(search_term):
+            latlng = geo.postcode_to_latlng(search_term)
+        else:
+            latlng = geo.geocode_place_name(search_term)
+
+        #if we have a location, then do a search
+        if latlng:
+
+            #make a geojson point
+            geojson_point = geojson.Point(latlng)
+
+            #call the geo service
+            res = requests.get("%s/titles?near=%s" % ('http://172.16.42.43:8005', geojson.dumps(geojson_point)))
+            titles = res.json()
+
+    return render_template('/search.html', titles=titles, form=form, search_term=search_term, latlng=latlng)
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)

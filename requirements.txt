@@ -9,4 +9,7 @@ gunicorn==18.0
 itsdangerous==0.23
 raven[flask]==4.1.1
 requests==2.2.1
+WTForms==1.0.4
+Flask-WTF==0.9.1
 mock
+geojson==1.0.6
