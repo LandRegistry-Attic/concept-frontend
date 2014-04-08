@@ -65,156 +65,19 @@
       if (!this.hasMapMoved()) {
         return;
       }
-      console.log('onMoveend')
-      this.onGeoSuccess([{
-        "address": "11 Fore Street, Harlow (CM17 0AA)",
-        "extent": {
-          "geometry": {
-            "coordinates": [
-              [
-                [
-                  [
-                    14708.755563011973,
-                    6761018.225448865
-                  ],
-                  [
-                    14709.161068287178,
-                    6761018.294465071
-                  ],
-                  [
-                    14708.435732840697,
-                    6761024.966253572
-                  ],
-                  [
-                    14708.398674280676,
-                    6761025.355691914
-                  ],
-                  [
-                    14714.628369111884,
-                    6761025.901180545
-                  ],
-                  [
-                    14717.462192686182,
-                    6761026.222616948
-                  ],
-                  [
-                    14717.677197182695,
-                    6761025.2939769225
-                  ],
-                  [
-                    14725.204510948624,
-                    6761026.060307912
-                  ],
-                  [
-                    14736.21162987126,
-                    6761027.161480935
-                  ],
-                  [
-                    14746.571356929484,
-                    6761028.200718575
-                  ],
-                  [
-                    14747.634241033204,
-                    6761019.269821937
-                  ],
-                  [
-                    14747.80142376746,
-                    6761017.808601182
-                  ],
-                  [
-                    14747.361857752814,
-                    6761008.274526637
-                  ],
-                  [
-                    14747.14251453567,
-                    6761000.756663681
-                  ],
-                  [
-                    14745.669362713881,
-                    6760988.98754546
-                  ],
-                  [
-                    14737.630035003409,
-                    6760990.032371336
-                  ],
-                  [
-                    14732.52917425383,
-                    6760989.45379999
-                  ],
-                  [
-                    14732.80216481544,
-                    6760987.746763348
-                  ],
-                  [
-                    14730.376216412868,
-                    6760987.575185578
-                  ],
-                  [
-                    14728.694414239853,
-                    6760987.462691532
-                  ],
-                  [
-                    14728.6877217654,
-                    6760987.786512725
-                  ],
-                  [
-                    14719.15462008965,
-                    6760987.418812016
-                  ],
-                  [
-                    14717.909630210603,
-                    6760987.342050606
-                  ],
-                  [
-                    14710.83331394239,
-                    6760987.096473619
-                  ],
-                  [
-                    14710.360977361106,
-                    6761004.100649248
-                  ],
-                  [
-                    14709.200607157567,
-                    6761008.584527049
-                  ],
-                  [
-                    14708.77297452414,
-                    6761013.28964111
-                  ],
-                  [
-                    14709.420367678382,
-                    6761013.351564559
-                  ],
-                  [
-                    14708.755563011973,
-                    6761018.225448865
-                  ]
-                ]
-              ]
-            ],
-            "type": "MultiPolygon"
-          }
-        },
-        "lenders": [
-          {
-            "name": "HSBC"
-          }
-        ],
-        "registered_owners": [
-          {
-            "address": "123 Fake Street",
-            "name": "Chris"
-          }
-        ],
-        "title_number": "EX27651",
-        "postcode" : "KT23 3AA"
-      }]);
+      console.log('Updating map')
+      var url = 'http://localdocker:8005/titles?partially_contained_by=' + encodeURIComponent(JSON.stringify(this.getViewExtentAsGeoJSON()))
+      $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        success: _.bind(this.onGeoSuccess, this),
+      });
     },
     onGeoSuccess: function(results) {
       this.removeVectorLayer();
 
       var vectorLayer = new ol.layer.Vector({
-        source: this.getSourceFromTitle(results[0]),
+        source: this.getSourceFromTitles(results['objects']),
         style: [new ol.style.Style({
           stroke: new ol.style.Stroke({
             color: 'red',
@@ -228,7 +91,15 @@
 
       this.setVectorLayer(vectorLayer);
     },
-    getSourceFromTitle: function(title) {
+
+    getSourceFromTitles: function(titles) {
+      var features = _.map(titles, function(title) {
+        return {
+          "id": title['title_number'],
+          "type":"Feature",
+          "geometry": title['extent']['geometry'],
+        };
+      });
       return new ol.source.GeoJSON({
         projection: 'EPSG:3857',
         object: {
@@ -239,13 +110,7 @@
               'name': 'EPSG:3857'
             }
           },
-          'features': [
-            {
-              "id": title['title_number'],
-              "type":"Feature",
-              "geometry": title['extent']['geometry'],
-            }
-          ]
+          'features': features,
         },
       });
     },
@@ -261,10 +126,27 @@
     getViewExtent: function() {
       return this.map.getView().calculateExtent(this.map.getSize());
     },
+    getViewExtentPolygon: function() {
+      e = this.getViewExtent();
+      // min(x), min(y), max(x), max(y)
+      return [
+        [e[0], e[1]],
+        [e[2], e[1]],
+        [e[2], e[3]],
+        [e[0], e[3]],
+        [e[0], e[1]],
+      ];
+    },
     getViewExtentAsGeoJSON: function() {
       return {
-        "type": "multi_polygon",
-        "coordinates": [[this.getViewExtent()]]
+        "type": "Polygon",
+        "coordinates": [this.getViewExtentPolygon()],
+        'crs': {
+          'type': 'name',
+          'properties': {
+            'name': 'EPSG:3857'
+          }
+        },
       };
     },
     // Returns whether or not the map has moved since this function
