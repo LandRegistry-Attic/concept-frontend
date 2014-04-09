@@ -58,7 +58,7 @@
       if (feature) {
         this.$infoEl.show();
 
-        template = _.template('<h2><%= address %></h2><p><%= title_number %></p><p><a href="/properties/<%= title_number %>">View property page</a>');
+        template = _.template('<h2><%= address %></h2><p><a href="/properties/<%= title_number %>">View full details</a>');
         this.$infoEl.html(template(this.currentTitles[feature.getId()]));
       }
       else {
@@ -106,6 +106,7 @@
 
       // hash indexed by title number
       this.currentTitles = _.object(_.map(results['objects'], function(title) {
+        title['address'] = title['address'].replace(',', ',<br>').replace('(', '<br>').replace(')', '')
         return [title['title_number'], title];
       }));
 
