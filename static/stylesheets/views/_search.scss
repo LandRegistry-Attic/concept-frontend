@@ -1,0 +1,47 @@
+.search {
+  @include grid-wrapper;
+  @include core-19;
+  margin-top: $gutter*2;
+
+  h1 {
+    @include bold-24;
+  }
+
+  input {
+    @include core-19;
+    padding: $gutter / 4;
+    border: 1px solid $border-colour;
+    width: 50%;
+    margin-bottom: $gutter-half;
+  }
+
+  button {
+    @include button;
+    display: inline-block;
+    padding: 8px;
+  }
+
+  form {
+    margin-bottom: $gutter*2;
+  }
+
+  .result {
+    @extend %contain-floats;
+    padding-bottom: $gutter;
+    margin-bottom: $gutter;
+    border-bottom: 1px solid $border-colour;
+  }
+
+  .address {
+    float: left;
+    width: 250px;
+  }
+
+  .full-details {
+    padding-top: $gutter-half;
+  }
+
+  p {
+    margin: 0;
+  }
+}

@@ -102,6 +102,9 @@ def search():
             res = requests.get(url)
             titles = res.json()['objects']
 
+            for title in titles:
+                title['address'] = title['address'].replace(',', ',<br>').replace('(', '<br>').replace(')', '')
+
     return render_template('/search.html', titles=titles, form=form, search_term=search_term, latlng=latlng)
 
 @app.route('/map')
