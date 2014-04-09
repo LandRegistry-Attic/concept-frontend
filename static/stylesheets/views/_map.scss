@@ -5,4 +5,14 @@
     height: 100%;
     width: 100%;
   }
+
+  .map-info {
+    position: absolute;
+    top: 60px;
+    right: $gutter;
+    width: 150px;
+    height: 300px;
+    background: white;
+    padding: $gutter;
+  }
 }

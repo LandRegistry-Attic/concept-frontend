@@ -3,12 +3,14 @@
 
   var Map = window.LR.Map = function(options) {
     this.$el = $(options.el);
+    this.$infoEl = $(options.infoEl);
     this.init();
   };
   Map.prototype = {
     init: function() {
       this.vectorLayer = null;
       this.currentHighlight = null;
+      this.currentTitles = null;
 
       // Init map
       var raster = new ol.layer.Tile({
@@ -51,6 +53,14 @@
       var feature = this.map.forEachFeatureAtPixel(pixel, function(feature, layer) {
         return feature;
       });
+
+      if (feature) {
+        this.$infoEl.text(this.currentTitles[feature.getId()]['address'])
+      }
+      else {
+        this.$infoEl.text('');
+      }
+
       if (feature !== this.currentHighlight) {
         if (this.currentHighlight) {
           this.featureOverlay.removeFeature(this.currentHighlight);
@@ -88,6 +98,11 @@
           })
         })],
       });
+
+      // hash indexed by title number
+      this.currentTitles = _.object(_.map(results['objects'], function(title) {
+        return [title['title_number'], title];
+      }));
 
       this.setVectorLayer(vectorLayer);
     },
