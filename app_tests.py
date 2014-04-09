@@ -68,102 +68,16 @@ class HomeTestCase(unittest.TestCase):
         class MockResponse(object):
             status_code = 404
             def json(self):
-                return 
+                return
         get_mock.return_value = MockResponse()
         rv = self.app.get('/properties/EX1354')
         assert 'Not Found' in rv.data
 
-    @mock.patch('requests.get')
-    def test_postcode_filter(self, get_mock):
-        class MockResponse(object):
-            status_code = 200
-            def json(self):
-                return { 
-                "titles" : [{"address" : "123 Fake St"}, {"address" : "124 Fake St"
-                }]
-            }
-                 
-        get_mock.return_value = MockResponse()
-        rv = self.app.get('/properties?postcode=ABC')
-        assert '123 Fake St' in rv.data
-        assert '124 Fake St' in rv.data
 
-    @mock.patch('requests.get')
-    def test_properties(self, get_mock):
+    def test_properties(self):
         rv = self.app.get('/properties')
         assert 'not supported' in rv.data
 
-
-
-    @mock.patch('requests.get')
-    def test_postcode_filter_none_found(self, get_mock):
-        class MockResponse(object):
-            status_code = 200
-            def json(self):
-                return 
-                { "titles" : []
-                }
-        get_mock.return_value = MockResponse()
-        rv = self.app.get('/properties?postcode=ABC')
-        assert 'No titles found' in rv.data
-
-    
-    @mock.patch('requests.get')
-    def test_property_no_extent(self, get_mock):
-        class MockResponse(object):
-            status_code = 200
-            def json(self):
-                return {
-                "title": {
-                    "title_number": "AB1234",
-                    "address": "123 Fake St",
-                    "registered_owners": [
-                        {
-                            "name": "Victor"
-                        }
-                    ]
-                }
-            }
-        get_mock.return_value = MockResponse()
-        rv = self.app.get('/properties/EX1354')
-        assert 'Your property' in rv.data
-        assert '123 Fake St' in rv.data
-
-    @mock.patch('requests.get')
-    def test_no_related_titles(self, get_mock):
-        class MockResponse(object):
-            status_code = 200
-            def json(self):
-                return {
-                "title": {
-                    "title_number": "AB1234",
-                    "address": "123 Fake St",
-                    "registered_owners": [
-                        {
-                            "name": "Victor"
-                        }
-                    ],
-                    "extent": {
-                        "geometry": {
-                            "type": "MultiPolygon",
-                            "coordinates": [
-                                [
-                                    [
-                                        [
-                                            14708.755563011973,
-                                            6761018.225448865
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        }
-                    }
-                }
-            }
-        get_mock.return_value = MockResponse()
-        rv = self.app.get('/properties/EX1354')
-        assert 'Your property' in rv.data
-        assert '123 Fake St' in rv.data
 
 if __name__ == '__main__':
     unittest.main()
