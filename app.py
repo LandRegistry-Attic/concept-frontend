@@ -55,10 +55,7 @@ def setup_logging():
 @app.route('/')
 def home():
     form = forms.SearchForm()
-
-    res = requests.get("%s/titles" % TITLES_SCHEME_DOMAIN_PORT)
-    res.raise_for_status()
-    return render_template('/index.html', titles=res.json()['titles'], form=form)
+    return render_template('/index.html', form=form)
 
 @app.route('/properties/<property_id>')
 def property(property_id):
