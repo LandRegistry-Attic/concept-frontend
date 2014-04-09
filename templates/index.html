@@ -1,19 +1,22 @@
 {% from "_formhelpers.html" import render_field %}
 {% extends "base.html" %}
 {% block content %}
-<div class="index">
+  <div class="index">
     <div class="heading-row">
-        <div class="inner-block">
-            <h1>Search for a property</h1>
-        </div>
+      <div class="inner-block">
+        <h1>Land registry</h1>
+        <h2>Find a property <span class="phase-tag">concept</span></h2>
+      </div>
     </div>
     <div class="row">
-        <div class="inner-block">
-            <form action="/search" method="get">
-                {{ render_field(form.q) }}
-                <button class="button">Search</button>
-            </form>
-        </div>
+      <div class="inner-block">
+        <form action="/search" method="get">
+          <label for="q">Search the land registry</label>
+          <input class="form-control" id="q" name="q" type="text" placeholder="E.g. postcode, city or town">
+          <button class="button">Search</button>
+        </form>
+        <p><a href="/map">Advanced search</a></p>
+      </div>
     </div>
- </div>
- {% endblock %}
+   </div>
+{% endblock %}
