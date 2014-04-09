@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body_class %}full-screen{% endblock %}
+{% block extra_css %}
+  <link href="/static/stylesheets/vendor/ol.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+  <div class="map">
+    <div class="ol-container"></div>
+    <div class="map-info"></div>
+  </div>
+{% endblock %}
+{% block extra_js %}
+  <script src="/static/javascripts/vendor/ol.js" type="text/javascript"></script>
+  <script src="/static/javascripts/map.js" type="text/javascript"></script>
+  <script>
+    window.LR.map = new window.LR.Map({
+      el: '.ol-container',
+      infoEl: '.map-info'
+    });
+  </script>
+{% endblock %}

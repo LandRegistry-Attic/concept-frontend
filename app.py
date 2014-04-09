@@ -107,5 +107,10 @@ def search():
 
     return render_template('/search.html', titles=titles, form=form, search_term=search_term, latlng=latlng)
 
+@app.route('/map')
+def map():
+    return render_template('map.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
