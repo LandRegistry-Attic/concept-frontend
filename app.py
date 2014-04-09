@@ -105,7 +105,7 @@ def search():
             for title in titles:
                 title['address'] = title['address'].replace(',', ',<br>').replace('(', '<br>').replace(')', '')
 
-    return render_template('/search.html', titles=titles, form=form, search_term=search_term, latlng=latlng)
+    return render_template('/search.html', titles=titles, form=form, search_term=search_term, latlng=latlng, q=request.args.get('q'))
 
 @app.route('/map')
 def map():
