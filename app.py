@@ -100,7 +100,8 @@ def search():
             #make a geojson point
             geojson_point = geojson.Point([latlng[1], latlng[0]], crs={"type": "name","properties": {"name": "EPSG:4326"}})
 
-            #call the geo service
+
+            #call the geo service - 
             url = "%s/titles?near=%s" % (GEO_SCHEME_DOMAIN_PORT, geojson.dumps(geojson_point))
             res = requests.get(url)
             titles = res.json()
