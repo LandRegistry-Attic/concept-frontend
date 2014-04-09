@@ -4,6 +4,7 @@
   var Map = window.LR.Map = function(options) {
     this.$el = $(options.el);
     this.$infoEl = $(options.infoEl);
+    this.geoUrl = options.geoUrl;
     this.init();
   };
   Map.prototype = {
@@ -80,7 +81,7 @@
         return;
       }
       console.log('Updating map')
-      var url = 'http://localdocker:8005/titles?partially_contained_by=' + encodeURIComponent(JSON.stringify(this.getViewExtentAsGeoJSON()))
+      var url = this.geoUrl + '/titles?partially_contained_by=' + encodeURIComponent(JSON.stringify(this.getViewExtentAsGeoJSON()))
       $.ajax({
         url: url,
         dataType: 'jsonp',

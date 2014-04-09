@@ -44,7 +44,7 @@ def load_title(property_id):
     if res.status_code == 404:
         return None
     return res.json()
-    
+
 # Logging
 @app.before_first_request
 def setup_logging():
@@ -109,7 +109,7 @@ def search():
 
 @app.route('/map')
 def map():
-    return render_template('map.html')
+    return render_template('map.html', geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
 
 
 if __name__ == '__main__':
