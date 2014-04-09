@@ -26,7 +26,7 @@
                     14708.755563011973,
                     6761018.225448865
           ],
-          zoom: 18
+          zoom: 16
         })
       });
       this.map.on('moveend', this.onMoveend, this);
@@ -46,19 +46,23 @@
       });
 
       // Init mouse events
-      $(this.map.getViewport()).on('mousemove', _.bind(this.onMousemove, this));
+      $(this.map.getViewport()).on('click', _.bind(this.onClick, this));
     },
-    onMousemove: function(event) {
+    onClick: function(event) {
       var pixel = this.map.getEventPixel(event.originalEvent);
       var feature = this.map.forEachFeatureAtPixel(pixel, function(feature, layer) {
         return feature;
       });
 
       if (feature) {
-        this.$infoEl.text(this.currentTitles[feature.getId()]['address'])
+        this.$infoEl.show();
+
+        template = _.template('<h2><%= address %></h2><p><%= title_number %></p><p><a href="/properties/<%= title_number %>">View property page</a>');
+        this.$infoEl.html(template(this.currentTitles[feature.getId()]));
       }
       else {
         this.$infoEl.text('');
+        this.$infoEl.hide();
       }
 
       if (feature !== this.currentHighlight) {
