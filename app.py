@@ -34,6 +34,10 @@ css_main = Bundle(
     depends="**/*.scss"
 )
 assets.register('css_main', css_main)
+# govuk_template asset path
+@app.context_processor
+def asset_path_context_processor():
+    return {'asset_path': '/static/govuk_template/'}
 
 # Sentry exception reporting
 if 'SENTRY_DSN' in os.environ:

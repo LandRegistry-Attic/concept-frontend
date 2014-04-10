@@ -45,7 +45,7 @@
    }
 
 */
-#global-header .header-wrapper:after, #global-header .header-wrapper .header-global:after, #global-header .header-wrapper .header-global .header-logo:after {
+#global-header .header-wrapper:after, #global-header .header-wrapper .header-global:after, #global-header .header-wrapper .header-global .header-logo:after, #global-header .header-proposition #proposition-links:after {
   content: "";
   display: block;
   clear: both; }
@@ -80,7 +80,7 @@ Example usage:
 
 */
 /* local styleguide includes */
-/* New Greys */
+/* Old depricated greys, new things should use the toolkit greys */
 html, body, button, input, table, td, th {
   font-family: "nta", Arial, sans-serif; }
 
@@ -133,9 +133,11 @@ fieldset {
   border: none;
   padding: 0; }
 
-a,
+a:link {
+  color: #005ea5; }
+
 a:visited {
-  color: #2e3191; }
+  color: #2e8aca; }
 
 a:hover {
   color: #2e8aca; }
@@ -144,11 +146,11 @@ a:active {
   color: #2e8aca; }
 
 a[rel="external"]:after {
-  background-image: url(external-link.png);
+  background-image: url(external-links/external-link.png?0.7.1);
   background-repeat: no-repeat; }
   @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 20 / 10), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     a[rel="external"]:after {
-      background-image: url(external-link-24x24.png);
+      background-image: url(external-links/external-link-24x24.png?0.7.1);
       background-size: 12px 400px; } }
 a[rel="external"]:after {
   content: "\A0\A0\A0\A0";
@@ -168,11 +170,11 @@ a[rel="external"]:hover:after {
 .external-link:hover:after {
   background-position: right 0px; }
 .external-link:after {
-  background-image: url(external-link-black-12x12.png);
+  background-image: url(external-links/external-link-black-12x12.png?0.7.1);
   background-repeat: no-repeat; }
   @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 20 / 10), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .external-link:after {
-      background-image: url(external-link-black-24x24.png);
+      background-image: url(external-links/external-link-black-24x24.png?0.7.1);
       background-size: 12px 400px; } }
 
 /*
@@ -207,6 +209,9 @@ body {
 b,
 strong {
   font-weight: 600; }
+
+img {
+  border: 0; }
 
 button {
   *overflow: visible; }
@@ -301,6 +306,7 @@ a:focus {
 input:focus,
 textarea:focus,
 select:focus,
+button:focus,
 #global-header input:focus {
   outline: 3px solid #ffbf47; }
 
@@ -336,15 +342,22 @@ select:focus,
    }
 
 */
-#global-header .header-wrapper:after, #global-header .header-wrapper .header-global:after, #global-header .header-wrapper .header-global .header-logo:after {
+#global-header .header-wrapper:after, #global-header .header-wrapper .header-global:after, #global-header .header-wrapper .header-global .header-logo:after, #global-header .header-proposition #proposition-links:after {
   content: "";
   display: block;
   clear: both; }
+
+@-ms-viewport {
+  width: device-width; }
+
+@-o-viewport {
+  width: device-width; }
 
 #global-header {
   background-color: #0b0c0c;
   width: 100%; }
   #global-header .header-wrapper {
+    background-color: #0b0c0c;
     max-width: 990px;
     margin: 0 auto;
     padding: 0.5em 15px; }
@@ -352,7 +365,6 @@ select:focus,
       #global-header .header-wrapper {
         padding: 0.5em 0; } }
     #global-header .header-wrapper .header-global .header-logo {
-      width: 49%;
       float: left; }
       @media (min-width: 769px) {
         #global-header .header-wrapper .header-global .header-logo {
@@ -365,22 +377,153 @@ select:focus,
         margin: 0 15px; }
     #global-header .header-wrapper .header-global .header-logo {
       margin: 5px 0 2px; }
+  @media (min-width: 769px) {
+    #global-header.with-proposition .header-wrapper .header-global {
+      float: left;
+      width: 33.33%; }
+      #global-header.with-proposition .header-wrapper .header-global .header-logo,
+      #global-header.with-proposition .header-wrapper .header-global .site-search {
+        width: 100%; } }
+  @media (min-width: 769px) {
+    #global-header.with-proposition .header-wrapper .header-proposition {
+      width: 66.66%;
+      float: left; } }
+  #global-header.with-proposition .header-wrapper .header-proposition .content {
+    margin: 0 15px; }
   #global-header #logo {
     float: left;
     position: relative;
-    width: 166px;
+    top: 1px;
     height: 30px;
-    overflow: hidden; }
+    overflow: visible;
+    vertical-align: baseline;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1em;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    margin-bottom: -1px;
+    padding-bottom: 1px; }
     #global-header #logo img {
-      position: absolute;
-      left: -166px;
-      top: 0;
-      border: none;
-      /* scale oversized image to container bounds */
-      width: 200%;
-      height: 300%; }
-    #global-header #logo:hover img {
-      top: -30px; }
+      position: relative;
+      top: -2px;
+      width: 35px;
+      height: 31px;
+      padding-right: 6px;
+      float: left;
+      display: inline;
+      line-height: inherit;
+      border: none; }
+    #global-header #logo:hover, #global-header #logo:focus {
+      text-decoration: none;
+      border-bottom: 1px solid;
+      padding-bottom: 0; }
+    #global-header #logo:active {
+      color: #2b8cc4; }
+  #global-header .header-proposition {
+    padding-top: 10px; }
+    @media (min-width: 769px) {
+      #global-header .header-proposition {
+        padding-top: 0; } }
+    #global-header .header-proposition #proposition-name {
+      font-family: "nta", Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 400;
+      text-transform: none;
+      font-weight: bold;
+      color: white;
+      text-decoration: none; }
+      @media (max-width: 640px) {
+        #global-header .header-proposition #proposition-name {
+          font-size: 20px;
+          line-height: 1.2; } }
+    #global-header .header-proposition a.menu {
+      font-family: "nta", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 300;
+      text-transform: none;
+      color: white;
+      display: block;
+      float: right;
+      text-decoration: none;
+      padding-top: 6px; }
+      @media (max-width: 640px) {
+        #global-header .header-proposition a.menu {
+          font-size: 14px;
+          line-height: 1.14286; } }
+      @media (min-width: 769px) {
+        #global-header .header-proposition a.menu {
+          display: none; } }
+      #global-header .header-proposition a.menu:hover {
+        text-decoration: underline; }
+      #global-header .header-proposition a.menu:after {
+        display: inline-block;
+        font-size: 8px;
+        height: 8px;
+        padding-left: 5px;
+        vertical-align: middle;
+        content: " \25BC"; }
+      #global-header .header-proposition a.menu.js-hidden:after {
+        content: " \25B2"; }
+    #global-header .header-proposition #proposition-menu {
+      margin-top: 5px; }
+    #global-header .header-proposition #proposition-links {
+      clear: both;
+      margin: 2px 0 0 0;
+      padding: 0; }
+      .js-enabled #global-header .header-proposition #proposition-links {
+        display: none; }
+        @media (min-width: 769px) {
+          .js-enabled #global-header .header-proposition #proposition-links {
+            display: block; } }
+        .js-enabled #global-header .header-proposition #proposition-links.js-visible {
+          display: block; }
+      #global-header .header-proposition #proposition-links li {
+        float: left;
+        width: 50%;
+        padding: 3px 0;
+        border-bottom: 1px solid #2e3133; }
+        @media (min-width: 769px) {
+          #global-header .header-proposition #proposition-links li {
+            display: block;
+            width: auto;
+            padding: 0 15px 0 0;
+            border-bottom: 0; }
+            #global-header .header-proposition #proposition-links li.clear-child {
+              clear: left; } }
+        #global-header .header-proposition #proposition-links li a {
+          color: white;
+          text-decoration: none;
+          font-family: "nta", Arial, sans-serif;
+          font-size: 14px;
+          line-height: 1.42857;
+          font-weight: 400;
+          text-transform: none;
+          font-weight: 700; }
+          @media (max-width: 640px) {
+            #global-header .header-proposition #proposition-links li a {
+              font-size: 12px;
+              line-height: 1.25; } }
+          @media (min-width: 769px) {
+            #global-header .header-proposition #proposition-links li a {
+              font-family: "nta", Arial, sans-serif;
+              font-size: 16px;
+              line-height: 1.25;
+              font-weight: 300;
+              text-transform: none;
+              font-weight: 700;
+              line-height: 23px; } }
+            @media (min-width: 769px) and (max-width: 640px) {
+              #global-header .header-proposition #proposition-links li a {
+                font-size: 14px;
+                line-height: 1.14286; } }
+          #global-header .header-proposition #proposition-links li a:hover {
+            text-decoration: underline; }
+          #global-header .header-proposition #proposition-links li a.active {
+            color: #28a197; }
 
 /* Global cookie message */
 .js-enabled #global-cookie-message {
@@ -388,7 +531,7 @@ select:focus,
   /* shown with JS, always on for non-JS */ }
 
 #global-cookie-message {
-  padding: 0.5em 2em;
+  padding: 8px 15px;
   background-color: #d5e8f3; }
   #global-cookie-message p {
     font-family: "nta", Arial, sans-serif;
@@ -402,21 +545,23 @@ select:focus,
       #global-cookie-message p {
         font-size: 16px;
         line-height: 1.25; } }
-  @media (max-width: 640px) {
+  @media (min-width: 641px) {
     #global-cookie-message {
-      padding: 0.5em 1em; } }
+      padding-left: 30px;
+      padding-right: 30px; } }
 
 /* Global footer */
 #footer {
   background-color: #dee0e2;
   border-top: 1px solid #a1acb2; }
   #footer .footer-wrapper {
-    max-width: 60em;
+    background-color: #dee0e2;
+    max-width: 990px;
     margin: 0 auto;
-    padding: 60px 1em 0 1em; }
-    @media (max-width: 640px) {
+    padding: 20px 0 0; }
+    @media (min-width: 641px) {
       #footer .footer-wrapper {
-        padding-top: 20px; } }
+        padding: 60px 15px 0; } }
   #footer a {
     color: #454a4c; }
     #footer a:hover {
@@ -440,7 +585,7 @@ select:focus,
     clear: both;
     font-size: 0;
     color: #454a4c;
-    padding-bottom: 60px; }
+    padding: 0 15px 60px; }
     @media (max-width: 640px) {
       #footer .footer-meta {
         margin: 0; } }
@@ -491,10 +636,17 @@ select:focus,
               position: static;
               width: auto;
               margin-bottom: 1em; } }
-          #footer .footer-meta .footer-meta-inner .open-government-licence h2 a, #footer .footer-meta .footer-meta-inner .open-government-licence h2 img {
+          #footer .footer-meta .footer-meta-inner .open-government-licence h2 a {
             display: block;
-            width: 43px;
-            height: 17px; }
+            width: 41px;
+            height: 17px;
+            overflow: hidden;
+            text-indent: -999em;
+            background: url(images/open-government-licence.png?0.7.1) 0 0 no-repeat; }
+            @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 20 / 10), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+              #footer .footer-meta .footer-meta-inner .open-government-licence h2 a {
+                background-image: url(images/open-government-licence_2x.png?0.7.1);
+                background-size: 41px 17px; } }
         #footer .footer-meta .footer-meta-inner .open-government-licence p {
           font-family: "nta", Arial, sans-serif;
           font-size: 16px;
@@ -507,19 +659,6 @@ select:focus,
             #footer .footer-meta .footer-meta-inner .open-government-licence p {
               font-size: 14px;
               line-height: 1.14286; } }
-          #footer .footer-meta .footer-meta-inner .open-government-licence p a {
-            font-family: "nta", Arial, sans-serif;
-            font-size: 14px;
-            line-height: 1.42857;
-            font-weight: 400;
-            text-transform: none; }
-            @media (max-width: 640px) {
-              #footer .footer-meta .footer-meta-inner .open-government-licence p a {
-                font-size: 12px;
-                line-height: 1.25; } }
-            @media (max-width: 640px) {
-              #footer .footer-meta .footer-meta-inner .open-government-licence p a {
-                font-size: 1em; } }
     #footer .footer-meta .copyright {
       font-family: "nta", Arial, sans-serif;
       font-size: 16px;
@@ -538,12 +677,12 @@ select:focus,
       #footer .footer-meta .copyright a {
         display: block;
         padding: 115px 0 0 0;
-        background: transparent url(images/govuk-crest.png) no-repeat 100% 0;
+        background: transparent url(images/govuk-crest.png?0.7.1) no-repeat 100% 0;
         text-align: right;
         text-decoration: none; }
         @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 20 / 10), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
           #footer .footer-meta .copyright a {
-            background-image: url(images/govuk-crest-2x.png);
+            background-image: url(images/govuk-crest-2x.png?0.7.1);
             background-size: 125px 102px; } }
       @media (max-width: 640px) {
         #footer .footer-meta .copyright {
