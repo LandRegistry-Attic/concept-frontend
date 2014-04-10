@@ -7,6 +7,18 @@
 @import "../govuk_frontend_toolkit/stylesheets/design-patterns/_alpha-beta.scss";
 @import "../govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss";
 
+// GDS patterns and helpers
+@import "helpers/_phase-block.scss";
+@import "base/_typography-base.scss";
+@import "base/_typography-general.scss";
+@import "base/_typography-headings.scss";
+@import "base/_forms.scss";
+@import "base/_buttons.scss";
+
+// GDS grid (pretty basic)
+@import "base/_grid-unit.scss";
+@import "base/_grid-unit-widths.scss";
+
 #landregistry-wrapper {
   @import "base/grid";
   @import "base/lists";

@@ -1,22 +1,57 @@
 {% from "_formhelpers.html" import render_field %}
 {% extends "base.html" %}
 {% block content %}
-  <div class="index">
-    <div class="heading-row">
-      <div class="inner-block">
-        <h1>Land registry</h1>
-        <h2>Find a property <span class="phase-tag">concept</span></h2>
+
+<div class="index">
+
+  <div class="text full-width">
+
+    <h1 class="heading-48">
+      <span class="heading-27">Land registry</span>
+      Find a property
+      <span class="phase-block">
+        <span class="alpha">Concept</span>
+      </span>
+    </h1>
+
+    <p class="lede">Find out details about a property, such as:</p>
+
+    <ul class="list-bullet">
+      <li>The Land registry title number</li>
+      <li>Prices paid for the property in the past</li>
+      <li>A map of the property</li>
+      <li>Lease details</li>
+    </ul>
+
+  </div>
+
+  <div class="full-width">
+    <form action="/search" method="get">
+
+      <fieldset>
+        <div class="form-group">
+          <label class="form-label" for="q">Search the land registry</label>
+          <p class="form-hint">E.g. postcode, city or town, street name</p>
+          <input type="text" class="form-control" id="q" name="q" />
+        </div>
+      </fieldset>
+
+      <div class="form-group">
+        <button type="submit" class="button">Search</button>
       </div>
+
+    </form>
+  </div>
+
+  <div class="full-width">
+    <div class="alternate-routes">
+
+      <h2 class="grid grid-1-2">Other ways to find property</h2>
+      <p class="grid grid-1-2">You can also search using <a href="/map">advanced map based tools</a>.</p>
+
     </div>
-    <div class="row">
-      <div class="inner-block">
-        <form action="/search" method="get">
-          <label for="q">Search the land registry</label>
-          <input class="form-control" id="q" name="q" type="text" placeholder="E.g. postcode, city or town">
-          <button class="button">Search</button>
-        </form>
-        <p><a href="/map">Advanced search</a></p>
-      </div>
-    </div>
-   </div>
+  </div>
+
+</div>
+
 {% endblock %}
