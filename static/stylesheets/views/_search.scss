@@ -16,7 +16,7 @@
 
   .result {
 
-    padding: $gutter-half;
+    padding: $gutter $gutter-half;
 
     h3 {
       @include core-24;
