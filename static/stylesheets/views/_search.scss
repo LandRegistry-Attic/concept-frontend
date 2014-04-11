@@ -1,47 +1,54 @@
 .search {
-  @include grid-wrapper;
-  @include core-19;
-  margin-top: $gutter*2;
 
   h1 {
-    @include bold-24;
-  }
-
-  input {
-    @include core-19;
-    padding: $gutter / 4;
-    border: 1px solid $border-colour;
-    width: 50%;
-    margin-bottom: $gutter-half;
-  }
-
-  button {
-    @include button;
-    display: inline-block;
-    padding: 8px;
+    @include bold-36;
   }
 
   form {
     margin-bottom: $gutter*2;
   }
 
+  .results {
+    margin: $gutter;
+    border-top: 3px solid $grey-4;
+    border-bottom: 3px solid $grey-4;
+  }
+
   .result {
+
+    padding: $gutter-half;
+
+    h3 {
+      @include core-24;
+
+      a {
+        color: $black;
+        text-decoration: none;
+      }
+      br { display: none; } // cheeky ;)
+    }
+
+    &:nth-child(even) {
+      background-color: $grey-4;
+    }
+
+  }
+
+  .meta {
     @extend %contain-floats;
-    padding-bottom: $gutter;
-    margin-bottom: $gutter;
-    border-bottom: 1px solid $border-colour;
+
+    .grid {
+      padding-top: $gutter / 4;
+    }
   }
 
-  .address {
+  dt, dd {
     float: left;
-    width: 250px;
   }
-
-  .full-details {
-    padding-top: $gutter-half;
+  dt {
+    clear: left;
   }
-
-  p {
-    margin: 0;
+  dd {
+    margin-left: $gutter / 5;
   }
 }
