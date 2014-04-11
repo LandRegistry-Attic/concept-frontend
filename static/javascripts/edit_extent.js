@@ -57,33 +57,33 @@
       // Init mouse events
       $(this.map.getViewport()).on('click', _.bind(this.onClick, this));
     },
-    onClick: function(event) {
-      var pixel = this.map.getEventPixel(event.originalEvent);
-      var feature = this.map.forEachFeatureAtPixel(pixel, function(feature, layer) {
-        return feature;
-      });
+     onClick: function(event) {
+       var pixel = this.map.getEventPixel(event.originalEvent);
+       var feature = this.map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+         return feature;
+       });
 
-      if (feature) {
-        this.$infoEl.show();
+       if (feature) {
+         this.$infoEl.show();
 
-        template = _.template('<h2><%= address %></h2><p><a href="/properties/<%= title_number %>">View full details</a>');
-        this.$infoEl.html(template(this.currentTitles[feature.getId()]));
-      }
-      else {
-        this.$infoEl.text('');
-        this.$infoEl.hide();
-      }
+         template = _.template('<h2><%= address %></h2><p><a href="/properties/<%= title_number %>">View full details</a>');
+         this.$infoEl.html(template(this.currentTitles[feature.getId()]));
+       }
+       else {
+         this.$infoEl.text('');
+         this.$infoEl.hide();
+       }
 
-      if (feature !== this.currentHighlight) {
-        if (this.currentHighlight) {
-          this.featureOverlay.removeFeature(this.currentHighlight);
-        }
-        if (feature) {
-          this.featureOverlay.addFeature(feature);
-        }
-        this.currentHighlight = feature;
-      }
-    },
+       if (feature !== this.currentHighlight) {
+         if (this.currentHighlight) {
+           this.featureOverlay.removeFeature(this.currentHighlight);
+         }
+         if (feature) {
+           this.featureOverlay.addFeature(feature);
+         }
+         this.currentHighlight = feature;
+       }
+     },
     onMoveend: function() {
       if (!this.hasMapMoved()) {
         return;
