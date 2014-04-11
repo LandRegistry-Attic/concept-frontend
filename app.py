@@ -115,6 +115,10 @@ def search():
 def map():
     return render_template('map.html', geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
 
+@app.route('/editextent')
+def editextent():
+    return render_template('edit_extent.html', geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
