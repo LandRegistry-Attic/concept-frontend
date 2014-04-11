@@ -1,32 +1,60 @@
 {% from "_formhelpers.html" import render_field %}
 {% extends "base.html" %}
 {% block landregistry_grid %}
-  <div class="search">
-    <div class="heading-row">
-        <div class="inner-block">
-            <h1>Search results for {{search_term}}</h1>
-        </div>
-    </div>
-    <div class="row">
-      <div class="inner-block">
-        <form action="/search" method="get" class="search-form">
-          <input class="form-control" id="q" name="q" type="text" value="{{ q }}">
-          <button class="button">Search</button>
-        </form>
-        {% if titles %}
-          {% for title in titles %}
-            <div class="result">
-              <div class="address">
-                <p>{{ title['address'] | safe }}</p>
-                <p class="full-details"><a href="/properties/{{ title['title_number'] }}">View full details</a></p>
-              </div>
-              <div class="meta">
-                <p>Title number: {{ title['title_number'] }}</p>
-              </div>
-            </div>
-          {% endfor %}
-        {% endif %}
+
+<div class="breadcrumb">
+  <nav role="navigation">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/">Find a property</a></li>
+    </ol>
+  </nav>
+</div>
+
+<div class="search">
+
+  <div class="text full-width">
+
+    <form action="/search" method="get">
+
+      <div class="form-group">
+        <label class="form-label" for="q">Search the land registry</label>
+        <p class="form-hint">E.g. postcode, city or town, street name</p>
+        <input type="text" class="form-control" id="q" name="q" />
+        <button type="submit" class="button">Search</button>
       </div>
-    </div>
+
+    </form>
+
   </div>
- {% endblock %}
+
+  <div class="text full-width">
+    <h1>Search results for &ldquo;{{search_term}}&rdquo;</h1>
+  </div>
+
+  {% if titles %}
+    <ul class="results">
+    {% for title in titles %}
+      <li class="result">
+        <h3>
+          <a href="/properties/{{ title['title_number'] }}">{{ title['address'] | safe }}</a>
+        </h3>
+        <div class="meta">
+          <div class="grid grid-1-4">
+            <a href="/properties/{{ title['title_number'] }}">View full details</a>
+          </div>
+          <div class="grid grid-1-4">
+            <dl>
+              <dt>Title number:</dt>
+              <dd>{{ title['title_number'] }}</dd>
+            </dl>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+</div>
+
+{% endblock %}
