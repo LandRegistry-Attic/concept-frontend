@@ -119,6 +119,13 @@ def map():
 def editextent():
     return render_template('edit_extent.html', geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
 
+@app.route('/sell/find-property')
+def sell_find_property():
+    return render_template('sell_find_property.html')
+
+@app.route('/sell/done')
+def sell_done():
+    return render_template('sell_done.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
