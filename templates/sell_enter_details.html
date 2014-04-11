@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block landregistry_grid %}
+
   <div class="breadcrumb">
     <nav role="navigation">
       <ol>
@@ -8,11 +9,71 @@
        </ol>
     </nav>
   </div>
+
   <div class="sell-enter-details">
-    <div class="text full-width">
+
+    <div class="full-width">
       <h1 class="heading-36">
         Your details
       </h1>
+
+      <form class="form">
+
+        <fieldset>
+
+          <div class="form-group form-group-compound">
+            <label for="street-address" class="form-label">Street address</label>
+            <input type="text" id="street-address" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="street-address-2" class="visuallyhidden">Street address line 2</label>
+            <input type="text" id="street-address-2" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="town" class="form-label">Town or City</label>
+            <input type="text" id="town" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="county" class="form-label">County (optional)</label>
+            <input type="text" id="county" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="postcode" class="form-label">Postcode</label>
+            <input type="text" id="postcode" class="postcode form-control" />
+          </div>
+
+        </fieldset>
+
+        <fieldset>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="text" id="email" name="email" class="form-control" />
+          </div>
+
+        </fieldset>
+
+        <fieldset>
+
+          <div class="form-group">
+            <label for="conveyancer-search">Your solicitor or conveyancer</label>
+            <p class="form-hint">Enter a name or ID</p>
+            <input type="text" id="conveyancer-search" name="conveyancer-search" class="form-control" />
+            <button class="button-link">Search</button>
+
+            <label for="checkbox-conveyancer-opt-out" class="form-checkbox">
+              <input id="checkbox-conveyancer-opt-out" name="checkbox-conveyancer-opt-out" type="checkbox" value="">
+              I will not be using a solicitor or conveyancer
+            </label>
+          </div>
+
+        </fieldset>
+
+        <div class="form-group">
+          <button class="button">Next</button>
+        </div>
+
+      </form>
 
     </div>
   </div>
