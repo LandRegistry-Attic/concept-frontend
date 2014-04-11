@@ -126,7 +126,7 @@ def sell_find_property():
 @app.route('/sell/done')
 def sell_done():
     return render_template('sell_done.html')
-
+    
 @app.route('/sell/enter-details')
 def sell_enter_details():
     return render_template('sell_enter_details.html')
