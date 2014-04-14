@@ -1,7 +1,7 @@
 (function() {
   window.LR = window.LR || {};
 
-  var Map = window.LR.Map = function(options) {
+  var EditExtentMap = window.LR.EditExtentMap = function(options) {
     this.$el = $(options.el);
     this.$infoEl = $(options.infoEl);
     this.geoUrl = options.geoUrl;
@@ -14,7 +14,7 @@
     features: select.getFeatures()
   });
   
-  Map.prototype = {
+  EditExtentMap.prototype = {
     init: function() {
       this.vectorLayer = null;
       this.currentHighlight = null;
