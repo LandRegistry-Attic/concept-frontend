@@ -143,5 +143,9 @@ def buy_enter_details():
 def conveyance_sale():
     return render_template('sell_solicitor_todo_list.html')
 
+@app.route('/conveyance-sale/agree-to-transact')
+def conveyance_agree_transact():
+    return render_template('sell_solicitor_agree.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
