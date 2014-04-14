@@ -135,6 +135,10 @@ def sell_done():
 def sell_enter_details():
     return render_template('sell_enter_details.html')
 
+@app.route('/buy/enter-details')
+def buy_enter_details():
+    return render_template('buy_enter_details.html')
+
 @app.route('/conveyance-sale/task-list')
 def conveyance_sale():
     return render_template('sell_solicitor_todo_list.html')
