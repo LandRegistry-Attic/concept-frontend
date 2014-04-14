@@ -127,10 +127,6 @@ def sell_ida():
 def sell_find_property():
     return render_template('sell_find_property.html')
 
-@app.route('/sell/done')
-def sell_done():
-    return render_template('sell_done.html')
-
 @app.route('/sell/enter-details')
 def sell_enter_details():
     return render_template('sell_enter_details.html')
@@ -142,6 +138,14 @@ def buy_enter_details():
 @app.route('/buy/done')
 def buy_done():
     return render_template('buy_done.html')
+
+@app.route('/sell/solicitor-details')
+def sell_solicitor_details():
+    return render_template('sell_solicitor_details.html')
+
+@app.route('/sell/done')
+def sell_done():
+    return render_template('sell_done.html')
 
 @app.route('/conveyance-sale/task-list')
 def conveyance_sale():
