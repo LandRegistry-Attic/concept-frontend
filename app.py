@@ -131,5 +131,9 @@ def sell_done():
 def sell_enter_details():
     return render_template('sell_enter_details.html')
 
+@app.route('/buy/enter-details')
+def buy_enter_details():
+    return render_template('buy_enter_details.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
