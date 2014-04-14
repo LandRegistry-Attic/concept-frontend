@@ -1,13 +1,13 @@
 (function() {
   window.LR = window.LR || {};
 
-  var Map = window.LR.Map = function(options) {
+  var MapSearch = window.LR.MapSearch = function(options) {
     this.$el = $(options.el);
     this.$infoEl = $(options.infoEl);
     this.geoUrl = options.geoUrl;
     this.init();
   };
-  Map.prototype = {
+  MapSearch.prototype = {
     init: function() {
       this.vectorLayer = null;
       this.currentHighlight = null;
