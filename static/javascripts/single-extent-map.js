@@ -50,6 +50,7 @@
 
     if (this.extent) {
       this.setExtent(this.extent);
+      this.setCenter(this.extent);
     }
   };
   SingleExtentMap.prototype = {
@@ -73,12 +74,13 @@
           ]
         }
       }));
-      this.map.getView().setCenter(extent['geometry']['coordinates'][0][0][0]);
-
       this.setVectorLayer(new ol.layer.Vector({
         source: vectorSource,
         style: styleFunction
       }));
+    },
+    setCenter: function(extent) {
+      this.map.getView().setCenter(extent['geometry']['coordinates'][0][0][0]);
     },
     removeVectorLayer: function() {
       if (this.vectorLayer) {
