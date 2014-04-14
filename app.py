@@ -130,7 +130,7 @@ def sell_ida():
 @app.route('/sell/done')
 def sell_done():
     return render_template('sell_done.html')
-    
+   
 @app.route('/sell/enter-details')
 def sell_enter_details():
     return render_template('sell_enter_details.html')
@@ -150,6 +150,10 @@ def conveyance_sale():
 @app.route('/conveyance-sale/agree-to-transact')
 def conveyance_agree_transact():
     return render_template('sell_solicitor_agree.html')
+
+@app.route('/conveyance-sale/complete')
+def conveyance_sale_complete():
+    return render_template('sell_solicitor_complete.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
