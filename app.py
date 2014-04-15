@@ -179,9 +179,9 @@ def solicitor_find_property():
 def solicitor_confirm_client():
     return render_template('solicitor_confirm_client.html')
 
-@app.route('/solicitors/done')
-def solicitor_done():
-    return render_template('solicitor_done.html')
+@app.route('/solicitors/add-client/done')
+def solicitor_add_client_done():
+    return render_template('solicitor_add_client_done.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
