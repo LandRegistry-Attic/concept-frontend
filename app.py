@@ -159,7 +159,7 @@ def conveyance_agree_transact():
 def conveyance_sale_complete():
     return render_template('sell_solicitor_complete.html')
 
-@app.route('/authorise-solicitor/start')
+@app.route('/authorise-solicitor')
 def authorise_solicitor_start():
     return render_template('authorise_solicitor_start.html')
 
