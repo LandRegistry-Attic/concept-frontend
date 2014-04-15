@@ -1,7 +1,55 @@
-{% from "_formhelpers.html" import render_field %}
 {% extends "base.html" %}
 {% block landregistry_grid %}
 
-Authorise solicitor - start
+  <div class="breadcrumb">
+    <nav role="navigation">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Authorise a solicitor or conveyancer</li>
+       </ol>
+    </nav>
+  </div>
+
+  <div class="authorise-solicitor-start">
+
+    <div class="text full-width">
+
+      <h1 class="heading-48">
+        <span class="heading-27">Land registry</span>
+        Authorise a solicitor or conveyancer
+        <span class="phase-block">
+          <span class="alpha">Concept</span>
+        </span>
+      </h1>
+
+      <p class="lede">
+        You can authorise your solicitor or conveyancer to update the land registry on your behalf when buying or selling a property.
+      </p>
+      <p>Before you start you must have talked to your conveyancer or solicitor.</p>
+
+    </div>
+
+    <div class="full-width">
+      <div class="ida-signin grid grid-2-3">
+        <div class="register-signin-container">
+          <h2>Sign in to GOV.UK</h2>
+          <h3>
+            <span class="light1">To </span>
+            <span class="transaction-name">Authorise your solicitor or conveyancer</span>
+            <span class="light2">you must prove your identity using an identity profile.</span>
+          </h3>
+          <div class="register-box">
+            <p id="get-started" class="get-started"><a href="/authorise-solicitor/confirm" rel="" class="button">Register now</a></p>
+          </div>
+          <div class="signin">
+            <div id="js-signin" class="get-started js-show">
+              <p><a href="/authorise-solicitor/confirm" rel="external" class="button">Sign in</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 {% endblock %}
