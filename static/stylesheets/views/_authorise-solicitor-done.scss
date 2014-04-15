@@ -34,21 +34,6 @@
   }
 
   dl {
-    @extend %contain-floats;
-    margin-bottom: $gutter;
-  }
-  dt, dd {
-    float: left;
-  }
-  dt {
-    clear: left;
-    width: 25%;
-    &:after {
-      content: ': ';
-    }
-  }
-  dd {
-    font-weight: 700;
-    margin-left: $gutter / 5;
+    @include metadata-dl;
   }
 }
