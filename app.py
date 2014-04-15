@@ -171,5 +171,29 @@ def authorise_solicitor_confirm():
 def authorise_solicitor_done():
     return render_template('authorise_solicitor_done.html')
 
+@app.route('/solicitors')
+def solicitor_start():
+    return render_template('solicitor_start.html')
+
+@app.route('/solicitors/case-list')
+def solicitor_case_list():
+    return render_template('solicitor_case_list.html')
+
+@app.route('/solicitors/add-client')
+def solicitor_add_client():
+    return render_template('solicitor_add_client.html')
+
+@app.route('/solicitors/find-property')
+def solicitor_find_property():
+    return render_template('solicitor_find_property.html')
+
+@app.route('/solicitors/confirm-client')
+def solicitor_confirm_client():
+    return render_template('solicitor_confirm_client.html')
+
+@app.route('/solicitors/done')
+def solicitor_done():
+    return render_template('solicitor_done.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
