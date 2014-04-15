@@ -1,15 +1,116 @@
 {% extends "base.html" %}
 {% block landregistry_grid %}
+
   <div class="breadcrumb">
     <nav role="navigation">
       <ol>
         <li><a href="/">Home</a></li>
-        <li>NAME OF PAGE</li>
+        <li><a href="/solicitors">For solicitors and conveyancers</a></li>
        </ol>
     </nav>
   </div>
+
   <div class="solicitor-add-client">
-    <div class="full-width">
+
+    <div class="text full-width">
+
+      <h1 class="heading-48">
+        <span class="heading-27">Land registry</span>
+        Add a new client
+        <span class="phase-block">
+          <span class="alpha">Concept</span>
+        </span>
+      </h1>
+
     </div>
+
+    <div class="full-width">
+
+      <form class="form">
+
+        <fieldset>
+          <legend class="heading-36">What are they doing?</legend>
+
+          <div class="form-group inline">
+
+            <label for="radio-1" class="block-label">
+              <input id="radio-1" type="radio" name="radio-group" value="1">
+              Buying
+            </label>
+
+            <label for="radio-2" class="block-label">
+              <input id="radio-2" type="radio" name="radio-group" value="2">
+              Selling
+            </label>
+
+          </div>
+
+        </fieldset>
+
+        <fieldset>
+          <legend class="heading-36">Who are they?</legend>
+
+          <div class="form-group">
+            <label for="client-name" class="form-label">Name</label>
+            <input type="text" id="client-name" class="form-control" />
+          </div>
+
+          <fieldset class="date-of-birth">
+
+            <legend>
+              Date of birth
+            </legend>
+            <div class="form-group">
+              <label for="dob-day">Day</label>
+              <input type="text" class="form-control" pattern="[0-9]*" id="dob-day">
+            </div>
+            <div class="form-group">
+              <label for="dob-month">Month</label>
+              <input type="text" class="form-control" id="dob-month">
+            </div>
+            <div class="form-group form-group-year">
+              <label for="dob-year">Year</label>
+              <input type="text" class="form-control" pattern="[0-9]*" id="dob-year">
+            </div>
+
+          </fieldset>
+
+        </fieldset>
+
+        <fieldset>
+          <legend class="heading-36">Current residential address</legend>
+
+          <div class="form-group form-group-compound">
+            <label for="street-address" class="form-label">Street address</label>
+            <input type="text" id="street-address" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="street-address-2" class="visuallyhidden">Street address line 2</label>
+            <input type="text" id="street-address-2" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="town" class="form-label">Town or City</label>
+            <input type="text" id="town" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="county" class="form-label">County (optional)</label>
+            <input type="text" id="county" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="postcode" class="form-label">Postcode</label>
+            <input type="text" id="postcode" class="postcode form-control" />
+          </div>
+
+        </fieldset>
+
+
+        <div class="form-group">
+          <a href="/sell/done" class="button">Next</a>
+        </div>
+
+      </form>
+
+    </div>
+
   </div>
 {% endblock %}
