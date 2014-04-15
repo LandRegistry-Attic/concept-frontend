@@ -1,3 +1,7 @@
 .solicitor-start {
-
+  .alternates .grid {
+    margin-top: $gutter;
+    padding-top: $gutter;
+    border-top: 1px solid $grey-3;
+  }
 }
