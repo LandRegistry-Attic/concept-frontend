@@ -1,79 +1,42 @@
 .solicitor-case-list {
-  .splash {
-    text-align: center;
-    color: $white;
-    margin-bottom: $gutter;
-    padding: $gutter $gutter*2;
-    background-color: $turquoise;
 
-
-    h1 {
-      @include bold-48;
-      font-size: 72px;
-    }
-
-    p {
-      margin-top: $gutter-half;
-    }
-
-    .ref strong {
-      @include bold-36;
-      display: block;
-    }
-
+  .results {
+    margin: $gutter;
+    border-top: 3px solid $grey-4;
   }
 
-  .status {
-    text-align: left;
-    color: $white;
-    margin-bottom: $gutter;
-    padding: $gutter $gutter*2;
-    background-color: $turquoise;
+  .result {
 
-
-    h1 {
-      @include bold-48;
-      font-size: 72px;
-    }
-
-    p {
-      margin-top: $gutter-half;
-    }
-
-    .ref strong {
-      @include bold-36;
-      display: block;
-    }
-
-  }
-
-  .property {
     @extend %contain-floats;
-    padding: 0 $gutter;
+    padding: $gutter $gutter-half;
+    margin: 0;
+
+    h3 {
+      @include core-24;
+
+      a {
+        color: $black;
+        text-decoration: none;
+      }
+      br { display: none; } // cheeky ;)
+    }
+
+    &:nth-child(even) {
+      background-color: $grey-4;
+    }
+
   }
 
-  .address {
-    p {
-      @include core-36;
-    }
+  .flag {
+    @include core-24;
+    border-bottom: 2px solid;
   }
-
-  dl {
-    @extend %contain-floats;
+  .active .flag {
+    border-color: $yellow;
   }
-  dt, dd {
-    float: left;
-  }
-  dt {
-    clear: left;
-    width: 25%;
-    &:after {
-      content: ': ';
-    }
-  }
-  dd {
-    font-weight: 700;
-    margin-left: $gutter / 5;
+  .complete .flag {
+    color: $green;
+    border-color: $green;
   }
 
 }

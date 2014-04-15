@@ -1,19 +1,32 @@
 {% extends "base.html" %}
 {% block landregistry_grid %}
+
   <div class="breadcrumb">
     <nav role="navigation">
       <ol>
         <li><a href="/">Home</a></li>
-        <li>Add client</li>
+        <li><a href="/solicitors">For solicitors and conveyancers</a></li>
+        <li><a href="/solicitors/add-client">Add client</a></li>
        </ol>
     </nav>
   </div>
+
   <div class="solicitor-find-property">
-    <div class="full-width">
-      <h1 class="heading-36">
-        Find the property your client is buying or selling
+
+
+    <div class="text full-width">
+
+      <h1 class="heading-48">
+        Add a new client
+        <span class="phase-block">
+          <span class="alpha">Concept</span>
+        </span>
       </h1>
 
+    </div>
+
+    <div class="text full-width">
+      
       <fieldset>
         <div class="form-group">
           <label class="form-label" for="q">Search the land registry</label>
@@ -23,8 +36,12 @@
       </fieldset>
 
       <div class="form-group">
-        <button type="submit" class="button search-submit">Search</button>
+        <button class="button search-submit">Search</button>
       </div>
+
+    </div>
+
+    <div class="full-width">
 
       <div class="results">
         <div class="grid grid-1-2">
