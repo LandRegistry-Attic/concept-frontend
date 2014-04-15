@@ -183,5 +183,13 @@ def solicitor_confirm_client():
 def solicitor_add_client_done():
     return render_template('solicitor_add_client_done.html')
 
+@app.route('/solicitors/agree-to-transact')
+def solicitor_agree_to_transact():
+    return render_template('solicitor_agree_to_transact.html')
+
+@app.route('/solicitors/agree-to-transact/done')
+def solicitor_agree_to_transact_done():
+    return render_template('solicitor_agree_to_transact_done.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
