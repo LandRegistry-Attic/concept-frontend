@@ -119,34 +119,6 @@ def map():
 def editextent():
     return render_template('edit_extent.html', geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
 
-@app.route('/sell')
-def sell_ida():
-    return render_template('sell_ida.html')
-
-@app.route('/sell/enter-details')
-def sell_enter_details():
-    return render_template('sell_enter_details.html')
-
-@app.route('/sell/solicitor-details')
-def sell_solicitor_details():
-    return render_template('sell_solicitor_details.html')
-
-@app.route('/buy/enter-details')
-def buy_enter_details():
-    return render_template('buy_enter_details.html')
-
-@app.route('/conveyance-sale/task-list')
-def conveyance_sale():
-    return render_template('sell_solicitor_todo_list.html')
-
-@app.route('/conveyance-sale/agree-to-transact')
-def conveyance_agree_transact():
-    return render_template('sell_solicitor_agree.html')
-
-@app.route('/conveyance-sale/complete')
-def conveyance_sale_complete():
-    return render_template('sell_solicitor_complete.html')
-
 @app.route('/authorise-solicitor')
 def authorise_solicitor_start():
     return render_template('authorise_solicitor_start.html')
