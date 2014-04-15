@@ -22,52 +22,40 @@
       </span>
     </h1>
 
-    <p class="lede">Find out details about a property, such as:</p>
-
-    <ul class="list-bullet">
-      <li>The Land registry title number</li>
-      <li>Prices paid for the property in the past</li>
-      <li>A map of the property</li>
-      <li>Lease details</li>
-    </ul>
-
   </div>
 
   <div class="full-width">
-    <form action="/search" method="get">
+    <div class="grid grid-2-3">
 
-      <fieldset>
+      <p class="lede">Find out details about a property, such as:</p>
+
+      <ul class="list-bullet">
+        <li>The Land registry title number</li>
+        <li>Prices paid for the property in the past</li>
+        <li>A map of the property</li>
+        <li>Lease details</li>
+      </ul>
+
+      <form action="/search" method="get">
+
+        <fieldset>
+          <div class="form-group">
+            <label class="form-label" for="q">Search the land registry</label>
+            <p class="form-hint">E.g. postcode, city or town, street name</p>
+            <input type="text" class="form-control" id="q" name="q" />
+          </div>
+        </fieldset>
+
         <div class="form-group">
-          <label class="form-label" for="q">Search the land registry</label>
-          <p class="form-hint">E.g. postcode, city or town, street name</p>
-          <input type="text" class="form-control" id="q" name="q" />
+          <button type="submit" class="button">Search</button>
         </div>
-      </fieldset>
 
-      <div class="form-group">
-        <button type="submit" class="button">Search</button>
-      </div>
+      </form>
+    </div>
 
-    </form>
-  </div>
-
-  <div class="text full-width">
-
-    <h1 class="heading-48">
-      Sell a property
-      <span class="phase-block">
-        <span class="alpha">Concept</span>
-      </span>
-    </h1>
-
-  </div>
-    <div class="full-width">
-    <form action="/sell/ida" method="get">
-      <div class="form-group">
-        <button type="submit" class="button">Sell</button>
-      </div>
-
-    </form>
+    <div class="grid grid-1-3">
+      <p><a href="/sell">Authorise a solicitor to sell your house</a></p>
+    </div>
   </div>
 
   <div class="full-width">

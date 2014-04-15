@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block landregistry_grid %}
+
+  <div class="breadcrumb">
+    <nav role="navigation">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Sell your property</li>
+       </ol>
+    </nav>
+  </div>
+
+  <div class="sell-solicitor-details">
+
+    <div class="full-width">
+      <h1 class="heading-36">
+        Your solicitor's details
+      </h1>
+
+      <fieldset>
+
+        <div class="form-group">
+          <p class="form-hint">Enter a name or registration number</p>
+          <input type="text" id="conveyancer-search" name="conveyancer-search" class="form-control" />
+          <button class="button search-button">Search</button>
+
+          <label for="checkbox-conveyancer-opt-out" class="form-checkbox">
+            <input id="checkbox-conveyancer-opt-out" name="checkbox-conveyancer-opt-out" type="checkbox" value="">
+            I will not be using a solicitor or conveyancer
+          </label>
+          <div class="next-button form-group">
+            <a href="/sell/enter-details" class="button">Next</a>
+          </div>
+
+        </div>
+
+      </fieldset>
+
+      <div class="results">
+        <div class="result">
+          <h3>Jeff Koons & Co</h3>
+          <p>Reference no: 9ABCDEF</p>
+
+          <div class="address">
+            The Senate<br>
+            Southernhay Gardens Exeter<br>
+            Exeter, Devon EX1 1UG<br>
+          </div>
+
+          <a href="/sell/enter-details" class="button">This is my solicitor</a>
+        </div>
+
+        <div class="result">
+          <h3>Koons, Peters & Smith</h3>
+          <p>Reference no: 76JSC244</p>
+          <div class="address">
+            31 Queen St<br>
+            Exeter, Devon EX4 3SR
+          </div>
+          <a href="/sell/enter-details" class="button">This is my solicitor</a>
+        </div>
+
+        <div class="address">
+          <h3>Carrie Koons & Jeff Cheng</h3>
+          <p>Reference no: 76JSC244</p>
+
+          <div class="address">
+            Ashford House<br>
+            Grenadier Rd<br>
+            Exeter, Devon EX1 3LH
+          </div>
+          <a href="/sell/enter-details" class="button">This is my solicitor</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    $(function() {
+      $('.next-button').hide();
+      $('#checkbox-conveyancer-opt-out').change(function() {
+        $('.next-button').toggle();
+      })
+
+      $('.results').hide();
+      $('.search-button').click(function() {
+        $('.results').show();
+      });
+    });
+
+  </script>
+{% endblock %}
