@@ -159,5 +159,9 @@ def conveyance_sale_complete():
 def authorise_solicitor_start():
     return render_template('authorise_solicitor_start.html')
 
+@app.route('/authorise-solicitor/confirm')
+def authorise_solicitor_confirm():
+    return render_template('authorise_solicitor_confirm.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
