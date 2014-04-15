@@ -18,7 +18,7 @@
   }
 
   .your-solicitor {
-    margin-bottom: $gutter*2;
+    margin: $gutter*2 0;
   }
 
   .your-details {
@@ -27,7 +27,6 @@
 
   .map-container {
     height: 300px;
-    margin-top: $gutter*2;
-    padding-left: $gutter*2;
+    padding-left: $gutter;
   }
 }

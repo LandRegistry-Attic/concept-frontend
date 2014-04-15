@@ -6,34 +6,48 @@
     margin-bottom: $gutter*2;
     background-color: $turquoise;
 
-    a {
-      color: $white;
-    }
-
     h1 {
       @include bold-48;
       font-size: 72px;
       margin-bottom: $gutter;
     }
 
-    .ref strong {
+    strong {
       @include bold-36;
       display: block;
     }
   }
 
-  .property {
-    @extend %contain-floats;
-    padding: 0 $gutter;
-  }
 
-  .address {
-    p {
-      @include core-36;
+  .property-details {
+    @extend %contain-floats;
+
+    .address {
+      p {
+        @include core-24;
+      }
     }
   }
 
   dl {
     @include metadata-dl;
+
+    dt {
+      width: 150px;
+    }
   }
+
+  .your-solicitor {
+    margin: $gutter*2 0;
+  }
+
+  .your-details {
+    margin-bottom: $gutter*2;
+  }
+
+  .map-container {
+    height: 300px;
+    padding-left: $gutter;
+  }
+
 }
