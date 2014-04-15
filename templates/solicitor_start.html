@@ -1,15 +1,75 @@
 {% extends "base.html" %}
 {% block landregistry_grid %}
+
   <div class="breadcrumb">
     <nav role="navigation">
       <ol>
         <li><a href="/">Home</a></li>
-        <li>NAME OF PAGE</li>
+        <li>For solicitors and conveyancers</li>
        </ol>
     </nav>
   </div>
+
   <div class="solicitor-start">
-    <div class="full-width">
+
+    <div class="text full-width">
+
+      <h1 class="heading-48">
+        <span class="heading-27">Land registry</span>
+        For solicitors and conveyancers
+        <span class="phase-block">
+          <span class="alpha">Concept</span>
+        </span>
+      </h1>
+
+      <p class="lede">
+        You can use this service to verify clients’ identities and properties.
+      </p>
+
     </div>
+
+    <div class="full-width">
+      <div class="ida-signin grid grid-2-3">
+        <div class="register-signin-container">
+          <h2>Sign in to GOV.UK</h2>
+          <h3>
+            <span class="light1">To </span>
+            <span class="transaction-name">Authorise your solicitor or conveyancer</span>
+            <span class="light2">you must prove your identity using an identity profile.</span>
+          </h3>
+          <div class="register-box">
+            <p id="get-started" class="get-started"><a href="/authorise-solicitor/confirm" rel="" class="button">Register now</a></p>
+          </div>
+          <div class="signin">
+            <div id="js-signin" class="get-started js-show">
+              <p><a href="/authorise-solicitor/confirm" rel="external" class="button">Sign in</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="full-width alternates">
+        <div class="grid grid-1-2">
+          
+          <form action="/search" method="get">
+
+            <div class="form-group">
+              <label class="form-label" for="q"><h2>Search the land registry</h2></label>
+              <p class="form-hint">E.g. postcode, city or town, street name</p>
+              <input type="text" class="form-control" id="q" name="q" />
+              <button type="submit" class="button">Search</button>
+            </div>
+
+          </form>
+
+        </div>
+        <div class="grid grid-1-2">
+          
+
+        </div>
+      </div>
+    </div>
+
   </div>
 {% endblock %}
