@@ -123,10 +123,6 @@ def editextent():
 def sell_ida():
     return render_template('sell_ida.html')
 
-@app.route('/sell/find-property')
-def sell_find_property():
-    return render_template('sell_find_property.html')
-
 @app.route('/sell/enter-details')
 def sell_enter_details():
     return render_template('sell_enter_details.html')
