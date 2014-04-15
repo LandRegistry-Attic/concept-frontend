@@ -163,5 +163,9 @@ def authorise_solicitor_start():
 def authorise_solicitor_confirm():
     return render_template('authorise_solicitor_confirm.html')
 
+@app.route('/authorise-solicitor/done')
+def authorise_solicitor_done():
+    return render_template('authorise_solicitor_done.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
