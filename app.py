@@ -131,6 +131,15 @@ def sell_find_property():
 def sell_enter_details():
     return render_template('sell_enter_details.html')
 
+
+@app.route('/buy/enter-details')
+def buy_enter_details():
+    return render_template('buy_enter_details.html')
+
+@app.route('/buy/done')
+def buy_done():
+    return render_template('buy_done.html')
+
 @app.route('/sell/solicitor-details')
 def sell_solicitor_details():
     return render_template('sell_solicitor_details.html')
@@ -142,6 +151,14 @@ def sell_done():
 @app.route('/conveyance-sale/task-list')
 def conveyance_sale():
     return render_template('sell_solicitor_todo_list.html')
+
+@app.route('/conveyance-sale/agree-to-transact')
+def conveyance_agree_transact():
+    return render_template('sell_solicitor_agree.html')
+
+@app.route('/conveyance-sale/complete')
+def conveyance_sale_complete():
+    return render_template('sell_solicitor_complete.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)

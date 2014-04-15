@@ -1,4 +1,4 @@
-.sell-solicitor-todo {
+.buy-done {
 
   .splash {
     text-align: center;
@@ -29,12 +29,6 @@
   }
 
   .address {
-    p {
-      @include core-36;
-    }
-  }
-
-  .owner {
     p {
       @include core-36;
     }
