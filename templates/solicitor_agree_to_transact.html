@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block landregistry_grid %}
+
   <div class="breadcrumb">
     <nav role="navigation">
       <ol>
@@ -8,72 +9,69 @@
        </ol>
     </nav>
   </div>
+
   <div class="solicitor-agree-to-transact">
+
     <div class="full-width">
 
-      <div class="full-width">
+      <h1 class="heading-48">
+        <span class="heading-27">Land registry</span>
+        Agree to transact
+        <span class="phase-block">
+          <span class="alpha">Concept</span>
+        </span>
+      </h1>
 
-        <h1 class="heading-48">
-          <span class="heading-27">Land registry</span>
-          Agree to transact
-        </h1>
+    </div>
 
-        <p class="lede">
-          This will allow you to see the buyers solicitors details. It will also make the full register available to them to view.
+    <div class="text full-width">
+      <p class="lede">
+        This will allow you to see the buyers solicitors details. It will also make the full register available to them to view.
+      </p>
+      <p>
+        Please review these details before you proceed.
+      </p>
+    </div>
 
-          Please review these details before you proceed.
-        </p>
+    <div class="full-width buyer-details">
+      <h2 class="heading-36">Buyer's details</h2>
+      <dl>
+        <dt>Buyer</dt>
+        <dd>Mr Geoff Bridges</dd>
+        <dt>Solicitor</dt>
+        <dd>Baldwin and Robinson Law</dd>
+      </dl>
+    </div>
+
+    <div class="full-width property-details">
+
+      <div class="grid grid-1-2">
+        <h2 class="heading-26">Property</h2>
+        <div class="address">
+          <p>26 The Stow<br>Harlow<br>CM20 3AN</p>
+        </div>
+        <dl>
+          <dt>Owner</dt>
+          <dd>Ms Fiona Wright</dd>
+          <dt>Type</dt>
+          <dd>Semi-detached house</dd>
+          <dt>Title number</dt>
+          <dd>EX802883</dd>
+        </dl>
       </div>
 
-      <div class="full-width buyer-details">
-
-        <div class="grid grid-1-2">
-          <h2>Buyer's details</h2>
-          <dl>
-            <dt>Buyer</dt>
-            <dd>Mr Geoff Bridges</dd>
-            <dt>Solicitor</dt>
-            <dd>Baldwin and Robinson Law</dd>
-          </dl>
-        </div>
-
+      <div class="grid grid-1-2">
+        <div class="map-container"></div>
       </div>
 
     </div>
 
-    <div class="full-width">
-      <div class="full-width property-details">
-
-        <div class="grid grid-1-2">
-          <h2>Property</h2>
-          <div class="address">
-            <p>26 The Stow<br>Harlow<br>CM20 3AN</p>
-          </div>
-          <dl>
-            <dt>Owner</dt>
-            <dd>Ms Fiona Wright</dd>
-            <dt>Type</dt>
-            <dd>Semi-detached house</dd>
-            <dt>Title number</dt>
-            <dd>EX802883</dd>
-          </dl>
-        </div>
-
-        <div class="grid grid-1-2">
-          <div class="map-container"></div>
-        </div>
-      </div>
-
-  </div>
-  
-  <br>
-
-  <div class="full-width">
     <div class="full-width text">
       <p>
         <a href="/solicitors/agree-to-transact/done" class="button">Agree to transact</a>
       </p>
     </div>
+
   </div>
 {% endblock %}
 
