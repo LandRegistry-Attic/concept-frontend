@@ -29,12 +29,16 @@
 
       <li class="result">
         <div class="grid grid-2-3">
-          <h3>Mr Lesley Sawyer</h3>
-          <p>27 The Stow, Harlow</p>
+          <h3>Ms Fiona Wright</h3>
+          <p>26 The Stow, Harlow</p>
           <p>Title number <a href="#">EX802884</a></p>
         </div>
         <div class="grid grid-1-3">
-          <a href="/solicitors/agree-to-transact" class="button">Agree to transact and share</a>
+          {% if session.user == "seller-solicitor-agree" %}
+            <a href="/solicitors/agree-to-transact" class="button">Agree to transact and share</a>
+          {% else %}
+            <a href="/solicitors/initiate-exchange" class="button">Initiate electronic exchange</a>
+          {% endif %}
         </div>
       </li>
 
@@ -51,8 +55,8 @@
 
       <li class="result active">
         <div class="grid grid-2-3">
-          <h3>Ms Fiona Wright</h3>
-          <p>26 The Stow, Harlow</p>
+          <h3>Mr Kurt Vonnegut</h3>
+          <p>10 Field Road, Harlow</p>
           <p>Title number <a href="#">EX802883</a></p>
         </div>
         <div class="grid grid-1-3">
