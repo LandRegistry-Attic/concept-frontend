@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block landregistry_grid %}
+
   <div class="breadcrumb">
     <nav role="navigation">
       <ol>
@@ -8,72 +9,73 @@
        </ol>
     </nav>
   </div>
+
   <div class="solicitor-confirm-client">
-    <div class="full-width">
-      <div class="property">
-        <div class="heading-row">
-          <div class="inner-block">
-            <h1>ABC Solicitors</h1>
-          </div>
-        </div>
-        <div class="heading-row">
-          <div class="inner-block">
-            <h1>Your client</h1>
-          </div>
-        </div>
-         <section>
-              <div class="owner">
-                <p>Mrs F Nightingale
-                </p>
-              </div>
-              <dl>
-              <div class="address">
-                <p>40 The Hill, Harlow</p>
-              </div>
-              <div class="grid grid-1-2">
-                <dl>
-                  <dt>Transaction</dt>
-                  <dd>Selling</dd>
-                </dl>
-              </div>
-         </section>
-         <br></br>
-         <section>
-          <div class="heading-row">
-            <div class="inner-block">
-            <h1>Property in question</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="metadata">
-            <div class="inner-block">
-              <div class="address">
-                <p>26 The Stow, Harlow</p>
-              </div>
-              <dl>
-                <dt>Council</dt>
-                <dd>Exeter City Council</dd>
-                <dt>Owner</dt>
-                <dd>Hugh Ram</dd>
-                <dt>Type</dt>
-                <dd>Semi-detached house</dd>
-                <dt>Title number</dt>
-                <dd>EX802883</dd>
-                <dt>Price paid</dt>
-                <dd>£178,000 (4th March 2009)</dd>
-              </dl>
 
-            </div>
-          </div>
 
-          <div class="map">
-            <div id="map" class="inner-block"></div>
-          </div>
-        </div>
-      </div>
-      <a href="/solicitors/add-client/done" class="button">Confirm</a>
-    </section>
+    <div class="text full-width">
+
+      <h1 class="heading-48">
+        Add a new client
+        <span class="phase-block">
+          <span class="alpha">Concept</span>
+        </span>
+      </h1>
+
     </div>
+
+    <div class="text full-width">
+
+      <h2 class="heading-36">Your client</h2>
+
+      <div class="client">
+        <p>Ms Florence Nightingale</p>
+      </div>
+
+      <dl>
+        <dt>Address</dt>
+        <dd>40 The Hill, Harlow</dd>
+        <dt>Email address</dt>
+        <dd>f.nightingale@nhs.gov.uk</dd>
+        <dt>Transaction</dt>
+        <dd>Selling</dd>
+      </dl>
+    </div>
+
+    <div class="text full-width">
+
+      <h2 class="heading-36">Property in question</h2>
+
+    </div>
+
+    <div class="full-width property-details">
+
+      <div class="grid grid-1-2">
+        <div class="address">
+          <p>26 The Stow<br>Harlow<br>CM20 3AN</p>
+        </div>
+        <dl>
+          <dt>Title number</dt>
+          <dd>EX802883</dd>
+          <dt>Type</dt>
+          <dd>Semi-detached house</dd>
+          <dt>Owner</dt>
+          <dd>Hugh Ram</dd>
+          <dt>Price paid</dt>
+          <dd>£178,000 (4th March 2009)</dd>
+        </dl>
+      </div>
+
+      <div class="grid grid-1-2">
+        <div class="map-container" id="map"></div>
+      </div>
+
+    </div>
+
+    <div class="text full-width">
+      <p><a href="/solicitors/add-client/done" class="button">Confirm</a></p>
+    </div>
+
   </div>
 {% endblock %}
 
