@@ -147,7 +147,7 @@ def authorise_solicitor_done():
             "https://api.mailgun.net/v2/sandbox96c2d499b2ef4495ac3443874fd995ad.mailgun.org/messages",
             auth=("api", API_KEY_MAILGUN),
             data={"from": "LandRegistry Concept <postmaster@sandbox96c2d499b2ef4495ac3443874fd995ad.mailgun.org>",
-                  "to": "",
+                  "to": email,
                   "subject": "GOV.UK - new land registry authorisation",
                   "text": "\nYou have a new pending authorisation to change the land registry.\n\n Log in to GOV.UK to accept."} )
     except:
