@@ -15,6 +15,7 @@ from utils import geo
 
 TITLES_SCHEME_DOMAIN_PORT = os.environ.get('TITLES_SCHEME_DOMAIN_PORT', os.environ.get('TITLES_1_PORT_8004_TCP', '').replace('tcp://', 'http://'))
 GEO_SCHEME_DOMAIN_PORT = os.environ.get('GEO_SCHEME_DOMAIN_PORT', os.environ.get('GEO_1_PORT_8005_TCP', '').replace('tcp://', 'http://'))
+API_KEY_MAILGUN = os.environ.get('API_KEY_MAILGUN')
 
 app = Flask(__name__)
 
@@ -129,6 +130,18 @@ def authorise_solicitor_confirm():
 
 @app.route('/authorise-solicitor/done')
 def authorise_solicitor_done():
+    print API_KEY_MAILGUN
+    try:
+        requests.post(
+            "https://api.mailgun.net/v2/sandbox96c2d499b2ef4495ac3443874fd995ad.mailgun.org/messages",
+            auth=("api", API_KEY_MAILGUN),
+            data={"from": "LandRegistry Concept <postmaster@sandbox96c2d499b2ef4495ac3443874fd995ad.mailgun.org>",
+                  "to": "James Hart <lrdemo@mailinator.com>",
+                  "subject": "GOV.UK - new land registry authorisation",
+                  "text": "\nYou have a new pending authorisation to change the land registry.\n\n Log in to GOV.UK to accept."} )
+    except:
+        pass
+
     return render_template('authorise_solicitor_done.html')
 
 @app.route('/solicitors')
