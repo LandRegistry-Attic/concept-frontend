@@ -13,7 +13,7 @@
   var modify = new ol.interaction.Modify({
     features: select.getFeatures()
   });
-  
+
   EditExtentMap.prototype = {
     init: function() {
       this.vectorLayer = null;
@@ -21,12 +21,15 @@
       this.currentTitles = null;
 
       // Init map
-      var raster = new ol.layer.Tile({
-        source: new ol.source.OSM()
+      var layer = new ol.layer.Tile({
+        name: 'TMS',
+        source: new ol.source.XYZ({
+          url: 'http://atlas1.viaeuropa.uk.com/viaeuropa/lreg140411/hybrid/{z}/{x}/{y}.png'
+        })
       });
       this.map = new ol.Map({
         interactions: ol.interaction.defaults().extend([select, modify]),
-        layers: [raster],
+        layers: [layer],
         target: this.$el[0],
         view: new ol.View2D({
           //center: [-500000, 7300000],

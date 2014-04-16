@@ -33,13 +33,15 @@
 
     this.vectorLayer = null;
 
+    var layer = new ol.layer.Tile({
+      name: 'TMS',
+      source: new ol.source.XYZ({
+        url: 'http://atlas1.viaeuropa.uk.com/viaeuropa/lreg140411/hybrid/{z}/{x}/{y}.png'
+      })
+    });
     this.map = new ol.Map({
       controls:[],
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        }),
-      ],
+      layers: [layer],
       renderer: 'canvas',
       target: this.$el[0],
       view: new ol.View2D({
