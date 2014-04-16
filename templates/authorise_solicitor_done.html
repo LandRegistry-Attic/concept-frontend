@@ -15,7 +15,13 @@
     <div class="full-width">
       <div class="splash">
         <h1>Done</h1>
-        <p class="lede">You have authorised <strong>Enact</strong> to help you sell your property.</p>
+        <p class="lede">
+          {% if session.user == "seller" %}
+            You have authorised <strong>Enact</strong> to help you sell your property.
+          {% else %}
+            You have authorised <strong>Enact</strong> to help you buy a property.
+          {% endif %}
+        </p>
       </div>
     </div>
 
