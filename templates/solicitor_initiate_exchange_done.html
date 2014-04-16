@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block landregistry_grid %}
+  <div class="breadcrumb">
+    <nav role="navigation">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Initiate electronic exchange</li>
+       </ol>
+    </nav>
+  </div>
+  <div class="solicitor-initiate-exchange-done">
+    <div class="full-width">
+      <div class="splash">
+        <h1>Done</h1>
+        <p class="lede">You have agreed to initiate electronic exchange with <strong>XXX Solicitors</strong></p>
+      </div>
+    </div>
+
+    <div class="full-width property-details">
+
+      <div class="grid grid-1-2">
+        <div class="address">
+          <p>26 The Stow<br>Harlow<br>CM20 3AN</p>
+        </div>
+        <dl>
+          <dt>Owner</dt>
+          <dd>Fiona Wright</dd>
+          <dt>Type</dt>
+          <dd>Semi-detached house</dd>
+          <dt>Title number</dt>
+          <dd>EX802883</dd>
+        </dl>
+        <p><a href="#">View property page</a></p>
+      </div>
+
+      <div class="grid grid-1-2">
+        <div id="map" class="map-container"></div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    window.LR.extentMap = new LR.SingleExtentMap({
+      el: '#map',
+      extent: {"geometry": {"crs": {"type": "name", "properties": {"name": "EPSG:3857"}}, "type": "MultiPolygon", "coordinates": [[[[12715.636420080258, 6759785.153577343], [12719.102122105665, 6759785.803515486], [12719.734944721547, 6759782.631865009], [12718.149520609404, 6759782.326878414], [12719.197740892372, 6759776.779428467], [12717.218036119606, 6759776.400157347], [12720.895142760743, 6759756.073005967], [12711.712628213394, 6759754.382339404], [12708.968760391492, 6759769.427477924], [12706.420223719875, 6759783.415341181], [12715.636420080258, 6759785.153577343]]]]}},
+    });
+  </script>
+{% endblock %}

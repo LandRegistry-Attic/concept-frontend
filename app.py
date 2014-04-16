@@ -181,6 +181,10 @@ def solicitor_agree_to_transact_done():
 def solicitor_initiate_exchange():
     return render_template('solicitor_initiate_exchange.html')
 
+@app.route('/solicitors/initiate-exchange/done')
+def solicitor_initiate_exchange_done():
+    return render_template('solicitor_initiate_exchange_done.html')
+
 @app.route('/signin', methods=['GET', 'POST'])
 def sign_in():
 

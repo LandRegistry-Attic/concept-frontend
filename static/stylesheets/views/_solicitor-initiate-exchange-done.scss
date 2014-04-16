@@ -1,0 +1,55 @@
+.solicitor-initiate-exchange-done {
+  .splash {
+    text-align: center;
+    color: $white;
+    padding: $gutter*2 $gutter*2;
+    margin-bottom: $gutter*2;
+    background-color: $turquoise;
+
+    h1 {
+      @include bold-48;
+      font-size: 72px;
+      margin-bottom: $gutter;
+    }
+
+    strong {
+      @include bold-36;
+      display: block;
+      padding-top: $gutter/2;
+    }
+  }
+
+
+  .property-details {
+    @extend %contain-floats;
+
+    .address {
+      p {
+        @include core-24;
+      }
+    }
+  }
+
+  dl {
+    @include metadata-dl;
+
+    dt {
+      width: 150px;
+    }
+  }
+
+  .your-solicitor {
+    margin: $gutter*2 0;
+  }
+
+  .your-details {
+    margin-bottom: $gutter*2;
+  }
+
+  .map-container {
+    height: 300px;
+    padding-left: $gutter;
+  }
+
+
+}
