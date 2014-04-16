@@ -176,14 +176,15 @@ def solicitor_confirm_client():
     return render_template('solicitor_confirm_client.html')
 
 def send_sms(text, number):
-    # Your Account Sid and Auth Token from twilio.com/user/account
-    account_sid = "AC8f255468ed1d8e298bdc390dadc0b001"
-    auth_token = TWILIO_AUTH_TOKEN
-    client = TwilioRestClient(account_sid, auth_token)
-    message = client.sms.messages.create(body=text,
-    to=number, # Recipient phone number
-    from_="+441522246068") #  Twilio number
-    print message.sid
+    if TWILIO_AUTH_TOKEN:
+        # Your Account Sid and Auth Token from twilio.com/user/account
+        account_sid = "AC8f255468ed1d8e298bdc390dadc0b001"
+        auth_token = TWILIO_AUTH_TOKEN
+        client = TwilioRestClient(account_sid, auth_token)
+        message = client.sms.messages.create(body=text,
+        to=number, # Recipient phone number
+        from_="+441522246068") #  Twilio number
+        print message.sid
 
 @app.route('/solicitors/add-client/done')
 def solicitor_add_client_done():
