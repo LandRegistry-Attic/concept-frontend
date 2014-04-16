@@ -140,7 +140,7 @@ def authorise_solicitor_done():
     print API_KEY_MAILGUN
     try:
         email = 'Enact <lrdemo@mailinator.com>'
-        if session['user'] == 'buyer-solicitor':
+        if session['user'] == 'buyer':
             email = 'Baldwin and Robinson Law  <lrdemo1@mailinator.com>'
 
         requests.post(
