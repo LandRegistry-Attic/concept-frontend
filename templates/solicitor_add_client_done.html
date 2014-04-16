@@ -14,7 +14,13 @@
     <div class="full-width">
       <div class="splash">
         <h1>Done</h1>
-        <p class="lede">You have added <strong>Ms Florence Nightingale</strong> as a client.</p>
+        <p class="lede">
+          {% if "seller" in session.user %}
+            You have added <strong>Ms Fiona Wright</strong> as a client.
+          {% else %}
+            You have added <strong>Mr Geoff Bridges</strong> as a client.
+          {% endif %}
+        </p>
         <p>Your client now needs to authorise you at <a href="#">www.gov.uk/authorise-a-solicitor</a></p>
       </div>
     </div>
