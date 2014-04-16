@@ -6,37 +6,41 @@
     margin-bottom: $gutter*2;
     background-color: $turquoise;
 
-    a {
-      color: $white;
-    }
-
     h1 {
       @include bold-48;
       font-size: 72px;
+      margin-bottom: $gutter;
     }
 
-    p {
-      margin-top: $gutter-half;
-    }
-
-    .ref strong {
+    strong {
       @include bold-36;
       display: block;
     }
+
+    a {
+      display: block;
+      color: $white;
+      font-weight: 700;
+    }
   }
 
-  .property {
-    @extend %contain-floats;
-    padding: 0 $gutter;
-  }
-
+  .client,
   .address {
     p {
-      @include core-36;
+      @include core-24;
     }
   }
 
   dl {
     @include metadata-dl;
+
+    dt {
+      width: 150px;
+    }
+  }
+
+  .map-container {
+    height: 300px;
+    padding-left: $gutter;
   }
 }

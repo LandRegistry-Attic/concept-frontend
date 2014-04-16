@@ -1,4 +1,5 @@
 {% extends "base.html" %} {% block landregistry_grid %}
+
   <div class="breadcrumb">
     <nav role="navigation">
       <ol>
@@ -7,44 +8,41 @@
        </ol>
     </nav>
   </div>
+
   <div class="solicitor-add-client-done">
+
     <div class="full-width">
       <div class="splash">
         <h1>Done</h1>
-        <p class="lede"><strong>A N Other</strong> has been added as a client.</p>
-        <p class="lede">Your client now needs to authorise you as their solicitor by going to <strong><a href="#">https://www.gov.uk/authorise-a-solicitor</a></strong></p>
+        <p class="lede">You have added <strong>Ms Florence Nightingale</strong> as a client.</p>
+        <p>Your client now needs to authorise you at <a href="#">www.gov.uk/authorise-a-solicitor</a></p>
       </div>
     </div>
 
-    <div class="property">
+    <div class="full-width property-details">
+
       <div class="grid grid-1-2">
         <div class="address">
-          <p>A N Other</p>
+          <p>26 The Stow<br>Harlow<br>CM20 3AN</p>
         </div>
         <dl>
-        <div class="address">
-          <p>26 The Stow, Harlow</p>
-        </div>
-        <dl>
-          <dt>Council</dt>
-          <dd>Exeter City Council</dd>
-          <dt>Owner</dt>
-          <dd>Hugh Ram</dd>
-          <dt>Type</dt>
-          <dd>Semi-detached house</dd>
           <dt>Title number</dt>
           <dd>EX802883</dd>
+          <dt>Type</dt>
+          <dd>Semi-detached house</dd>
+          <dt>Owner</dt>
+          <dd>Hugh Ram</dd>
           <dt>Price paid</dt>
           <dd>£178,000 (4th March 2009)</dd>
         </dl>
-
-        <p><a href="#">View property page</a></p>
       </div>
 
       <div class="grid grid-1-2">
-        <div id="map"></div>
+        <div class="map-container" id="map"></div>
       </div>
+
     </div>
+
   </div>
 {% endblock %}
 
