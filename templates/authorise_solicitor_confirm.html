@@ -23,14 +23,25 @@
       </h1>
 
       <p class="lede">
-        You are authorising a solicitor or conveyancer help you sell your property. Make sure the details of your property and those of your solicitor or conveyancer are correct.
+        {% if session.user == "seller" %}
+          You are authorising a solicitor or conveyancer help you sell your property.
+        {% else %}
+          You are authorising a solicitor or conveyancer help you buy a property.
+        {% endif %}
+        Make sure the details of the property and those of your solicitor or conveyancer are correct.
       </p>
 
     </div>
 
     <div class="text full-width">
 
-      <h2 class="heading-36">Your property</h2>
+      <h2 class="heading-36">
+        {% if session.user == "seller" %}
+          Your property
+        {% else %}
+          Property you are buying
+        {% endif %}
+      </h2>
 
     </div>
 
