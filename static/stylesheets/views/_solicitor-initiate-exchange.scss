@@ -1,3 +1,30 @@
 .solicitor-initiate-exchange {
 
+  .dual {
+    @extend %contain-floats;
+    margin-top: $gutter;
+  }
+
+  .buyer {
+    margin-left: $gutter;
+    margin-right: -$gutter;
+  }
+
+  .heading-26 {
+    margin-bottom: $gutter;
+  }
+
+  .map-container {
+    height: 300px;
+    padding-left: $gutter;
+  }
+
+  dl {
+    @include metadata-dl;
+
+    dt {
+      width: 150px;
+    }
+  }
+
 }
