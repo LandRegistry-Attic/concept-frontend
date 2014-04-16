@@ -195,8 +195,6 @@ def solicitor_agree_to_transact():
 
 @app.route('/solicitors/agree-to-transact/done')
 def solicitor_agree_to_transact_done():
-    send_sms("XXX Solicitors has agreed to transact with YYY Solicitors on the purchase of ZZZ", BUYER_RECIPIENT_PHONE_NO) #buyer   
-    send_sms("XXX Solicitors has agreed to transact with YYY Solicitors on the sale ZZZ", SELLER_RECIPIENT_PHONE_NO) #seller
     return render_template('solicitor_agree_to_transact_done.html')
 
 @app.route('/solicitors/initiate-exchange')
@@ -205,6 +203,8 @@ def solicitor_initiate_exchange():
 
 @app.route('/solicitors/initiate-exchange/done')
 def solicitor_initiate_exchange_done():
+    send_sms("XXX Solicitors has agreed to transact with YYY Solicitors on the purchase of ZZZ", BUYER_RECIPIENT_PHONE_NO) #buyer   
+    send_sms("XXX Solicitors has agreed to transact with YYY Solicitors on the sale ZZZ", SELLER_RECIPIENT_PHONE_NO) #seller
     return render_template('solicitor_initiate_exchange_done.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
