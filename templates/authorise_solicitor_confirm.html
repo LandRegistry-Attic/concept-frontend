@@ -70,19 +70,33 @@
     <div class="full-width text your-solicitor">
 
       <h2 class="heading-36">Your solicitor or conveyancer</h2>
-      <p class="lede">Enact</p>
-      <dl>
-        <dt>Reference</dt><dd>76JSC244<dd>
-        <dt>Address</dt><dd>Cardinal House, 9 Manor Road, Leeds LS11 9AH</dd>
-      </dl>
+      {% if session.user == "seller" %}
+        <p class="lede">Enact</p>
+        <dl>
+          <dt>Reference</dt><dd>76JSC244<dd>
+          <dt>Address</dt><dd>Cardinal House, 9 Manor Road, Leeds LS11 9AH</dd>
+        </dl>
+      {% else %}
+        <p class="lede">Baldwin &amp; Robinson Law</p>
+        <dl>
+          <dt>Reference</dt><dd>76JSC244<dd>
+          <dt>Address</dt><dd>185-187 Station Road East, Oxted, RH8 0QE</dd>
+        </dl>
+      {% endif %}
     </div>
 
     <div class="full-width text your-details">
       <h2 class="heading-36">Your details</h2>
       <dl>
-        <dt>Name</dt><dd>Fiona Wright<dd>
-        <dt>Date of birth</dt><dd>2 February 1974<dd>
-        <dt>Address</dt><dd>26 The Stow, Harlow, CM20 3AN</dd>
+        {% if session.user == "seller" %}
+          <dt>Name</dt><dd>Fiona Wright</dd>
+          <dt>Date of birth</dt><dd>2 February 1974</dd>
+          <dt>Address</dt><dd>26 The Stow, Harlow, CM20 3AN</dd>
+        {% else %}
+          <dt>Name</dt><dd>Geoff Bridges</dd>
+          <dt>Date of birth</dt><dd>2 February 1974</dd>
+          <dt>Address</dt><dd>22 Meadow Way, Theale, RG7 10JX</dd>
+        {% endif %}
       </dl>
     </div>
 
