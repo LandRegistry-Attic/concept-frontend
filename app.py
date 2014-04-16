@@ -12,12 +12,18 @@ import json
 import requests
 import geojson
 from utils import geo
+from twilio.rest import TwilioRestClient
+
 
 TITLES_SCHEME_DOMAIN_PORT = os.environ.get('TITLES_SCHEME_DOMAIN_PORT', os.environ.get('TITLES_1_PORT_8004_TCP', '').replace('tcp://', 'http://'))
 GEO_SCHEME_DOMAIN_PORT = os.environ.get('GEO_SCHEME_DOMAIN_PORT', os.environ.get('GEO_1_PORT_8005_TCP', '').replace('tcp://', 'http://'))
 API_KEY_MAILGUN = os.environ.get('API_KEY_MAILGUN')
+TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
+SELLER_RECIPIENT_PHONE_NO = os.environ.get('SELLER_RECIPIENT_PHONE_NO')
+BUYER_RECIPIENT_PHONE_NO = os.environ.get('BUYER_RECIPIENT_PHONE_NO')
 
 app = Flask(__name__)
+
 
 # Auth
 if os.environ.get('BASIC_AUTH_USERNAME'):
@@ -164,12 +170,24 @@ def solicitor_find_property():
 def solicitor_confirm_client():
     return render_template('solicitor_confirm_client.html')
 
+def send_sms(text, number):
+    # Your Account Sid and Auth Token from twilio.com/user/account
+    account_sid = "AC8f255468ed1d8e298bdc390dadc0b001"
+    auth_token = TWILIO_AUTH_TOKEN
+    client = TwilioRestClient(account_sid, auth_token)
+    message = client.sms.messages.create(body=text,
+    to=number, # Recipient phone number
+    from_="+441522246068") #  Twilio number
+    print message.sid
+
 @app.route('/solicitors/add-client/done')
 def solicitor_add_client_done():
     return render_template('solicitor_add_client_done.html')
 
 @app.route('/solicitors/agree-to-transact')
 def solicitor_agree_to_transact():
+    send_sms("XXX Solicitors has agreed to transact with YYY Solicitors on the purchase of ZZZ", BUYER_RECIPIENT_PHONE_NO) #buyer   
+    send_sms("XXX Solicitors has agreed to transact with YYY Solicitors on the sale ZZZ", SELLER_RECIPIENT_PHONE_NO) #seller
     return render_template('solicitor_agree_to_transact.html')
 
 @app.route('/solicitors/agree-to-transact/done')
