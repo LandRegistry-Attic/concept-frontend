@@ -133,11 +133,15 @@ def authorise_solicitor_confirm():
 def authorise_solicitor_done():
     print API_KEY_MAILGUN
     try:
+        email = 'Enact <lrdemo@mailinator.com>'
+        if session['user'] == 'buyer-solicitor':
+            email = 'Baldwin and Robinson Law  <lrdemo1@mailinator.com>'
+
         requests.post(
             "https://api.mailgun.net/v2/sandbox96c2d499b2ef4495ac3443874fd995ad.mailgun.org/messages",
             auth=("api", API_KEY_MAILGUN),
             data={"from": "LandRegistry Concept <postmaster@sandbox96c2d499b2ef4495ac3443874fd995ad.mailgun.org>",
-                  "to": "James Hart <lrdemo@mailinator.com>",
+                  "to": "",
                   "subject": "GOV.UK - new land registry authorisation",
                   "text": "\nYou have a new pending authorisation to change the land registry.\n\n Log in to GOV.UK to accept."} )
     except:
@@ -190,7 +194,6 @@ def sign_in():
             return redirect(url_for('solicitor_case_list'))
         else:
             return redirect(url_for('authorise_solicitor_confirm'))
-
 
     return render_template('sign-in.html')
 
