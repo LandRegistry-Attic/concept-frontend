@@ -29,18 +29,34 @@
 
       <h2 class="heading-36">Your client</h2>
 
-      <div class="client">
-        <p>Ms Fiona Wright</p>
-      </div>
+      {% if "seller" in session.user %}
+        <div class="client">
+          <p>Ms Fiona Wright</p>
+        </div>
 
-      <dl>
-        <dt>Address</dt>
-        <dd>26 The Stow, Harlow, CM20 3AN</dd>
-        <dt>Email address</dt>
-        <dd>f.wright@nhs.gov.uk</dd>
-        <dt>Transaction</dt>
-        <dd>Selling</dd>
-      </dl>
+        <dl>
+          <dt>Address</dt>
+          <dd>26 The Stow, Harlow, CM20 3AN</dd>
+          <dt>Email address</dt>
+          <dd>f.wright@nhs.gov.uk</dd>
+          <dt>Transaction</dt>
+          <dd>Selling</dd>
+        </dl>
+      {% else %}
+          <div class="client">
+          <p>Mr Geoff Bridges</p>
+        </div>
+
+        <dl>
+          <dt>Address</dt>
+          <dd>22 Meadow Way, Theale, RG7 10JX</dd>
+          <dt>Email address</dt>
+          <dd>f.wright@nhs.gov.uk</dd>
+          <dt>Transaction</dt>
+          <dd>Buying</dd>
+        </dl>
+
+      {% endif %}
     </div>
 
     <div class="text full-width">
