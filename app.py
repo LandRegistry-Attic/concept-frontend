@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, render_template, abort, request
+from flask import Flask, redirect, render_template, abort, request, session, url_for
 from functools import wraps
 from flask.ext.assets import Environment, Bundle
 from flask.ext.basicauth import BasicAuth
@@ -18,6 +18,7 @@ GEO_SCHEME_DOMAIN_PORT = os.environ.get('GEO_SCHEME_DOMAIN_PORT', os.environ.get
 API_KEY_MAILGUN = os.environ.get('API_KEY_MAILGUN')
 
 app = Flask(__name__)
+app.secret_key='dsadsadsa784932bh43nbjkfd890vd'
 
 # Auth
 if os.environ.get('BASIC_AUTH_USERNAME'):
@@ -175,6 +176,23 @@ def solicitor_agree_to_transact():
 @app.route('/solicitors/agree-to-transact/done')
 def solicitor_agree_to_transact_done():
     return render_template('solicitor_agree_to_transact_done.html')
+
+@app.route('/signin', methods=['GET', 'POST'])
+def sign_in():
+
+    # logout whoever is logged in
+    session.pop('user', None)
+
+    if request.method == 'POST':
+        session['user'] = request.form['user']
+
+        if 'solicitor' in session['user']:
+            return redirect(url_for('solicitor_case_list'))
+        else:
+            return redirect(url_for('authorise_solicitor_confirm'))
+
+
+    return render_template('sign-in.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
