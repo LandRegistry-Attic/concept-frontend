@@ -1,0 +1,42 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+{% block landregistry_grid %}
+
+<div class="breadcrumb">
+  <nav role="navigation">
+    <ol>
+      <li><a href="/">Home</a></li>
+     </ol>
+  </nav>
+</div>
+
+<div class="index">
+  <div class="text full-width">
+    <h1 class="heading-48">
+      <span class="heading-27">Step 1 of 2</span>
+      Freeze register
+      <span class="phase-block">
+        <span class="alpha">Concept</span>
+      </span>
+    </h1>
+
+    <p class="lede">I am protecting a:</p>
+        <form class="form-checkbox" action="">
+        <input type="checkbox" name="protecting" value="Purchase">Purchase<br>
+        <input type="checkbox" name="protecting" value="Mortgage">Mortgage<br>
+        <input type="checkbox" name="protecting" value="Lease">Lease<br>
+        <input type="checkbox" name="protecting" value="Easement">Easement<br>
+        <input type="checkbox" name="protecting" value="Other">Other<br>
+        </form>
+    <p>
+        <input type="text" class="form-control" id="q" name="q" />
+    </p>
+
+    <div class="form-group">
+      <button type="submit" class="button">Next</button>
+      <a href="/">Save and return later</a> 
+    </div>
+  </div>
+</div>
+
+{% endblock %}
