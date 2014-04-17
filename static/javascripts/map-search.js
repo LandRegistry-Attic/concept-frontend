@@ -5,6 +5,7 @@
     this.$el = $(options.el);
     this.$infoEl = $(options.infoEl);
     this.geoUrl = options.geoUrl;
+    this.postcodeCentre = options.postcodeCentre;
     this.init();
   };
   MapSearch.prototype = {
@@ -27,8 +28,8 @@
           //center: [-500000, 7300000],
           //zoom: 5
           center: [
-                    14708.755563011973,
-                    6761018.225448865
+                    this.postcodeCentre['coordinates'][0],
+                    this.postcodeCentre['coordinates'][1]
           ],
           zoom: 16
         })
