@@ -1,2 +1,21 @@
 .solicitor-freeze-confirmation {
+
+	.md-ref-details {
+		@extend %contain-floats;
+	}
+
+	.link-indent {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	.p-indent {
+ 	
+ 	    margin-left: 20px;
+ 	}	
+
+ 	.embolden {
+ 		font-weight: bold;
+
+ 	}
 }
