@@ -1,0 +1,111 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+{% block landregistry_grid %}
+
+<div class="breadcrumb">
+  <nav role="navigation">
+    <ol>
+      <li><a href="/">Home</a></li>
+     </ol>
+  </nav>
+</div>
+
+<div class="solicitor-transfer-title">
+  <div class="full-width">
+
+
+    <h1 class="heading-48">
+      <span class="heading-27">Step 1 of 6 - Title details</span>
+      Apply to change register
+      <span class="phase-block">
+        <span class="alpha">Concept</span>
+      </span>
+    </h1>
+
+    <h2>
+      Existing title
+    </h2> 
+    
+    <div class="full-width">    
+      <div class="grid grid-1-3">
+        <p>Existing title number</p>
+      </div>
+      <div class="grid grid-2-3">
+        <b>CS72510</b>
+      </div>
+    </div>
+
+    <div class="full-width"> 
+      <div class="grid grid-1-3">
+        <p>Property Address</p>
+      </div>
+      <div class="grid grid-2-3">
+        <b>13 Isleworth Road<br>Exeter<br>EX4 1QU<br><br></b>
+      </div>
+    </div>
+
+    <div class="full-width"> 
+      <div class="grid grid-1-3">
+        <p>Existing proprietor name</p>
+      </div>
+      <div class="grid grid-2-3">
+        <b>Paul John Dawkins</b>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-width">
+    <h2>Evidence required to change the register</h2> 
+    <p> <label class="form-indent">RESTRICTION: No disposition of the registered estate by the proprietor of the registered estate is to be registered without a written consent signed by Moon Properties Limited of 3 Fleet Street, London E1 3BC.</label> </p>
+    <input id="evidence" type="checkbox" value="checkbox"><b>I / we certify that we have evidence to comply with this restriction</b><br><br>
+  </div>
+
+  <div class="full-width">
+    <h2>New proprietor</h2> 
+    <p> <label class="form-hint">These are addresses for service for entry on the register.</label> </p>
+  </div>
+
+  <div class="full-width">
+        
+    <div class="grid grid-1-3">
+      <p>New proprietor name</p>
+    </div>
+    <div class="grid grid-1-3">
+      <b>Patricia Elmsworth</b>
+    </div>
+    <div class="grid grid-1-3">
+      <a href="/">change</a>
+    </div>
+  </div>
+  <div class="full-width">
+    <div class="grid grid-1-3">
+      <p>Postal address</p>
+    </div>
+    <div class="grid grid-1-3">
+      <b>64 Green Parade<br>Norwich<br>NR4 2PD<br></b>
+    </div>
+    <div class="grid grid-1-3">
+      <a href="/">change</a>
+    </div>
+  </div>
+  <div class="full-width">
+    <div class="grid grid-1-3">
+      <p>Email</p>
+    </div>
+    <div class="grid grid-1-3">
+      <b>pelmsworth@good.email.co.uk</b>
+    </div>
+    <div class="grid grid-1-3">
+      <a href="/">change</a>
+    </div>
+  </div>
+
+  <div class="text full-width">
+    <div class="form-group">
+      <button type="submit" class="button">Next</button>
+      <a href="/">Save and return later</a> 
+    </div>
+  </div>
+</div>
+
+{% endblock %}
