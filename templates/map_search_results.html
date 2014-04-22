@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body_classes %}full-screen{% endblock %}
+{% block extra_css %}
+  <link href="/static/stylesheets/vendor/ol.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block landregistry_content %}
+  <div class="map">
+    <div class="ol-container"></div>
+    <div class="map-info"></div>
+  </div>
+{% endblock %}
+{% block extra_js %}
+  <script>
+    window.LR.mapSearch = new window.LR.MapSearchResults({
+      el: '.ol-container',
+      infoEl: '.map-info',
+      geoUrl: '{{ geo_url }}',
+      postcodeCentre: {{ postcode_centre|safe }},
+      postcode4326: {{ postcode_4326|safe }}
+      
+    });
+  </script>
+{% endblock %}
