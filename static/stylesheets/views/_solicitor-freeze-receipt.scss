@@ -1,2 +1,49 @@
 .solicitor-freeze-receipt {
+
+  .splash {
+    text-align: center;
+    color: $white;
+    padding: $gutter*2 $gutter*2;
+    margin-bottom: $gutter*2;
+    background-color: $turquoise;
+
+    h1 {
+      @include bold-48;
+      font-size: 72px;
+      margin-bottom: $gutter;
+    }
+
+    strong {
+      @include bold-36;
+      display: block;
+    }
+
+    a {
+      display: block;
+      color: $white;
+      font-weight: 700;
+    }
+  }
+
+  .client,
+  .address {
+    p {
+      @include core-24;
+    }
+  }
+
+  dl {
+    @include metadata-dl;
+
+    dt {
+      width: 150px;
+    }
+  }
+
+  .map-container {
+    height: 300px;
+    padding-left: $gutter;
+  }
 }
+
+
