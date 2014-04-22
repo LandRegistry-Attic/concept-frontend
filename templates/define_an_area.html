@@ -1,0 +1,50 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+{% block landregistry_grid %}
+
+<div class="breadcrumb">
+  <nav role="navigation">
+    <ol>
+      <li><a href="/">Home</a></li>
+        <li><a href="/solicitors/define_an_area">For solicitors and conveyancers</a></li>
+     </ol>
+  </nav>
+</div>
+
+<div class="solicitor-define-area">
+
+  <div class="text full-width">
+
+    <h1 class="heading-48">
+      <span class="heading-27">Land registry</span>
+      Define an area
+      <span class="phase-block">
+        <span class="alpha">Concept</span>
+      </span>
+    </h1>
+
+  </div>
+
+  <div class="full-width"> <!--row -->
+    <div class="grid grid-2-3"> <!-- 2/3 s column  -->
+
+      <p class="lede">Provide a plan or chose the part of the title which this transaction relates to.</p>
+
+      <button type="button" class="button">Upload file</button>
+
+      <button type="button" class="button">Chose plot from estate plan</button>
+
+    </div>
+
+    <img src="/static/images/map.png" alt="some_text">
+
+  </div>
+
+  <div class="full-width"> 
+    <br></br>
+    <button type="button" class="button">Define an area</button>
+  </div>
+
+</div>
+
+{% endblock %}
