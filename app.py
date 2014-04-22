@@ -229,6 +229,50 @@ def solicitor_initiate_exchange_done():
     send_sms("XXX Solicitors has agreed to transact with YYY Solicitors on the sale ZZZ", SELLER_RECIPIENT_PHONE_NO) #seller
     return render_template('solicitor_initiate_exchange_done.html')
 
+@app.route('/solicitors/define_an_area')
+def solicitor_define_an_area():
+    return render_template('define_an_area.html')
+
+@app.route('/solicitors/freeze_interest')
+def solicitor_freeze_interest():
+    return render_template('freeze_interest.html')
+
+@app.route('/solicitors/freeze_mortgage')
+def solicitor_freeze_mortgage():
+    return render_template('freeze_mortgage.html')
+
+@app.route('/solicitors/freeze_confirmation')
+def solicitor_freeze_confirmation():
+    return render_template('freeze_confirmation.html')
+
+@app.route('/solicitors/freeze_receipt')
+def solicitor_freeze_receipt():
+    return render_template('freeze_receipt.html')
+
+@app.route('/solicitors/transfer_title')
+def solicitor_transfer_title():
+    return render_template('transfer_title.html')
+
+@app.route('/solicitors/transfer_property')
+def solicitor_transfer_property():
+    return render_template('transfer_property.html')
+
+@app.route('/solicitors/transfer_provisions')
+def solicitor_transfer_provisions():
+    return render_template('transfer_provisions.html')
+
+@app.route('/solicitors/transfer_mortgage')
+def solicitor_transfer_mortgage():
+    return render_template('transfer_mortgage.html')
+
+@app.route('/solicitors/transfer_confirmation')
+def solicitor_transfer_confirmation():
+    return render_template('transfer_confirmation.html')
+
+@app.route('/solicitors/transfer_receipt')
+def solicitor_transfer_receipt():
+    return render_template('transfer_receipt.html')
+
 @app.route('/signin', methods=['GET', 'POST'])
 def sign_in():
 
