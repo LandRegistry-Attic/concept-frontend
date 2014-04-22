@@ -1,0 +1,79 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+{% block landregistry_grid %}
+
+<div class="breadcrumb">
+  <nav role="navigation">
+    <ol>
+      <li><a href="/">Home</a></li>
+     </ol>
+  </nav>
+</div>
+
+<div class="solicitor-freeze-mortgage">
+  <div class="text full-width">
+    <h1 class="heading-48">
+      <span class="heading-27">Step 2 of 2</span>
+      Freeze register
+      <span class="phase-block">
+        <span class="alpha">Concept</span>
+      </span>
+    </h1>
+
+    <form class="form-radio" action="">
+      <input type="radio" name="md-ref" id="no-md-ref" value="false">No mortgage deed reference<br>
+      <p> <label class="form-hint-indent">E.g. private mortgage</label> </p>
+      <input type="radio" name="md-ref" id="md-ref" value="true">Mortgage deed reference number<br>
+      <p> <input type="text" class="form-control-indent" id="md-ref-no" name="md-ref-no" /> </p>
+      <p class="p-indent" id="lender-info"></p>
+    </form>
+
+    <br><br>
+
+    <div class="form-group">
+      <button type="submit" class="button">Next</button>
+      <a href="/">Save and return later</a> 
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    $(document).ready(function () {
+        var md_ref1 = "MD1234"; 
+        setInterval(checkTextboxChanged, 1);
+
+        function checkTextboxChanged() {
+            var currentValue = $("#md-ref-no").val();
+            if (currentValue == md_ref1) {
+              
+                TextboxChanged();
+            }
+        }
+
+        function TextboxChanged() {
+            document.getElementById("lender-info").innerHTML = "Santander UK PLC (Co. Regn. No 2294747) of Deeds Services, \n 101 Midsummer Bourlevard, Milton Keynes MK9 1AA";
+        }
+
+        function enableMdInput() {
+            document.getElementById('md-ref-no').disabled = false;
+       
+        }
+
+        function disableMdInput() {
+            document.getElementById('md-ref-no').value = "";
+            document.getElementById("lender-info").innerHTML = "";  
+            document.getElementById('md-ref-no').disabled = true;
+        }
+
+        var ex1 = document.getElementById('no-md-ref');
+        var ex2 = document.getElementById('md-ref');
+
+        ex1.onclick = disableMdInput;
+        ex2.onclick = enableMdInput;
+
+    });      
+  </script>
+{% endblock %}
