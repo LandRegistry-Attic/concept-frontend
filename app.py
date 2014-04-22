@@ -233,6 +233,10 @@ def solicitor_initiate_exchange_done():
 def solicitor_define_an_area():
     return render_template('define_an_area.html')
 
+@app.route('/solicitors/define_an_area/conf')
+def solicitor_define_an_area_conf():
+    return render_template('define_an_area_conf.html')
+
 @app.route('/solicitors/freeze_interest')
 def solicitor_freeze_interest():
     return render_template('freeze_interest.html')
