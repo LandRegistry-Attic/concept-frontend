@@ -11,7 +11,7 @@
 </div>
 
 <div class="solicitor-freeze-mortgage">
-  <div class="text full-width">
+  <div class="full-width">
     <h1 class="heading-48">
       <span class="heading-27">Step 2 of 2</span>
       Freeze register
@@ -19,6 +19,7 @@
         <span class="alpha">Concept</span>
       </span>
     </h1>
+
 
     <form class="form-radio" action="">
       <input type="radio" name="md-ref" id="no-md-ref" value="false">No mortgage deed reference<br>
@@ -31,9 +32,10 @@
     <br><br>
 
 
-    <a href="/solicitors/freeze_confirmation" class="button">Freeze confirmation</a>
+    <a href="/solicitors/freeze_confirmation" class="button">Next</a>
 
     <a href="/">Save and return later</a> 
+  </div>
 </div>
 
 {% endblock %}
@@ -53,7 +55,7 @@
         }
 
         function TextboxChanged() {
-            document.getElementById("lender-info").innerHTML = "Santander UK PLC (Co. Regn. No 2294747) of Deeds Services, \n 101 Midsummer Bourlevard, Milton Keynes MK9 1AA";
+            document.getElementById("lender-info").innerHTML = "Santander UK PLC (Co. Regn. No 2294747) of Deeds Services, <br> 101 Midsummer Bourlevard, Milton Keynes MK9 1AA";
         }
 
         function enableMdInput() {
@@ -72,6 +74,8 @@
 
         ex1.onclick = disableMdInput;
         ex2.onclick = enableMdInput;
+
+        window.onload = disableMdInput;
 
     });      
   </script>
