@@ -13,4 +13,39 @@
  		margin-bottom: 5px;
  		margin-left: 20px;
  	}
+
+ .grid-1-10 {
+  width: 100%;
+  @include media(tablet) {
+    width: 10%;
+  }
+  }
+
+
+ .grid-9-10 {
+  width: 100%;
+  @include media(tablet) {
+    width: 90%;
+  }
+  }
+
+
+  .hint {
+    color: $secondary-text-colour;
+  }
+
+  .form-group {
+    width: 40px;
+    float: left;
+    clear: none;
+    margin-right: $gutter-half;
+    @include media(tablet) {
+      margin-right: $gutter;
+    }
+  }
+
+  .form-group-year {
+    width: 60px;
+  }
+  
 }
