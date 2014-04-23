@@ -120,7 +120,6 @@ def search():
 
     return render_template('/search.html', titles=titles, form=form, search_term=search_term, latlng=latlng, q=request.args.get('q'))
 
-#TODO Decide how to display map results
 @app.route('/map')
 def map():
     geojson_point = False
