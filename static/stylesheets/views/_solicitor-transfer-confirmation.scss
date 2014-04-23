@@ -1,2 +1,40 @@
 .solicitor-transfer-confirmation {
+  @include grid-wrapper;
+  @include core-19;
+
+.row {
+@extend %contain-floats;
+margin-bottom: $gutter*2;
 }
+
+  .metadata {
+    .address {
+      padding-bottom: $gutter-half;
+      p {
+        @include bold-48;
+        margin: 0 0 $gutter-half;
+      }
+    }
+
+    dl {
+    @extend %contain-floats;
+      margin-bottom: $gutter;
+    }
+
+    dt {
+      width: 160px;
+      float: left;
+      clear: left;
+      font-weight: bold;
+    }
+    dd {
+      float: left;
+    }
+
+    button {
+      @include button;
+      display: block;
+    }
+  }
+
+  }
