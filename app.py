@@ -124,6 +124,35 @@ def search():
 @app.route('/map')
 def map():
     geojson_point = False
+
+    if 'postcode' in request.args:
+        search_term = request.args['postcode']
+
+        #work out the type of search, they try and get a latlng for it
+        if geo.is_postcode(search_term):
+            latlng = geo.postcode_to_latlng(search_term)
+
+        #if we have a location, then do a search
+        if latlng:
+            #make a geojson point
+            inProj = Proj(init='epsg:4326')
+            outProj = Proj(init='epsg:3857')
+            x2,y2 = transform(inProj,outProj,latlng[1],latlng[0])
+        else:
+            x2 = 14708.755563011973
+            y2 = 6761018.225448865              
+    else:
+        x2 = 14708.755563011973
+        y2 = 6761018.225448865
+
+    geojson_point = json.dumps(geojson.Point([x2, y2], crs={"type": "name","properties": {"name": "EPSG:3857"}}))   
+    return render_template('/map.html', postcode_centre=geojson_point, geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
+
+
+
+@app.route('/search-map-results')
+def map_search_results():
+    geojson_point = False
     postcode_4326 = False
 
     if 'postcode' in request.args:
@@ -149,6 +178,8 @@ def map():
 
     geojson_point = json.dumps(geojson.Point([x2, y2], crs={"type": "name","properties": {"name": "EPSG:3857"}}))   
     return render_template('/map_search_results.html', postcode_centre=geojson_point, postcode_4326=postcode_4326, geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
+
+
 
 @app.route('/editextent')
 def editextent():
