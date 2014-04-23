@@ -1,0 +1,88 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+{% block landregistry_grid %}
+
+  <div class="solicitor-transfer-property">
+
+  <div class="full-width">
+
+    <h1 class="heading-48">
+      <span class="heading-27">Land Registry</span>
+      Apply to change register
+      <span class="phase-block">
+        <span class="alpha">Concept</span>
+      </span>
+    </h1>
+
+  <div>
+    
+      <nav class="progress-indicator progress-indicator-horizontal">
+        <ol>
+          <li><a href="">1. Title details</a></li>
+          <li><a href="">2. New property details</a></li>
+          <li><a href="">3. Provisions</a></li>
+          <li class="active">4. New mortgage</li>
+          <li>5. Confirmation &amp; payment</li>
+        </ol>
+      </nav>
+      
+  </div>
+
+    <h2>Mortgage</h2>
+
+    <br>
+
+    <div class="full-width">
+        <div class="grid grid-1-4">
+          <p>MD reference</p>
+        </div>
+        <div class="grid grid-1-4">
+          <p><b>MD1234F</b></p>
+        </div>
+        <div class="grid grid-1-4">
+          <p><a href="">change</a></p>
+        </div>
+    </div>
+
+    <div class="full-width">
+        <div class="grid grid-1-4">
+          <p>Lender</p>
+        </div>
+        <div class="grid grid-1-4">
+          <p><b>Nationwide</b></p>
+        </div>
+    </div>
+
+    <div class="full-width">
+        <div class="grid grid-1-4">
+          <p>Lender address</p>
+        </div>
+        <div class="grid grid-1-4">
+          <p><b>Nationwide Head Office address - Swindon</b></p>
+          <p><b>Nationwide Building Society<br>Nationwide House<br>Pipers Way<br>Swindon<br>SN38 1NW</b></p>
+        </div>
+    </div>
+
+    <div class="full-width">
+        <div class="grid grid-1-4">
+          <p>Mortgage date</p>
+        </div>
+        <div class="grid grid-1-4">
+          <p><b>21 July 2015</b></p>
+        </div>
+        <div class="grid grid-1-4">
+          <p><a href="">change</a></p>
+        </div>
+    </div>
+      
+   
+
+<br>
+    <div class="form-group">
+      <button type="submit" class="button">Next</button>
+      <a href="/">Save and return later</a> 
+    </div>
+  </div>
+</div>
+
+{% endblock %}
