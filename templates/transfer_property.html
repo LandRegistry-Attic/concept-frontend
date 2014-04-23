@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block landregistry_grid %}
+
+  <div class="breadcrumb">
+    <nav role="navigation">
+      <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/solicitors/define_an_area">For solicitors and conveyancers</a></li>
+       </ol>
+    </nav>
+  </div>
+
+  <div class="solicitor-transfer-property">
+
+  <div class="text full-width">
+
+    <h1 class="heading-48">
+      <span class="heading-27">Land Registry</span>
+      <span class="heading-27">Step 2 of 4 - New property details</span>
+      Apply to change register
+      <span class="phase-block">
+        <span class="alpha">Concept</span>
+      </span>
+    </h1>
+
+  </div>
+  <div class="text full-width">
+  <fieldset>
+  <div class="form-group">
+    <label class="form-label" for="q">New property description</label>
+    <p class="form-hint">Eg, Postal address or 'Land at the back of...'</p>
+    <textarea rows="10" cols="80" id="q" name="q" /> </textarea>
+  </div>
+</fieldset>
+  </div>
+
+<div class="full-width">
+  <div class="grid grid-1-2">
+     <h2 class="heading-no-margin">Proposed title plan</h2>
+  </div>
+  <div class="grid grid-1-2">
+   <a href="">Upload new plan</a>
+  </div>
+
+</div>
+
+<div class="full-width">
+  <p>This plan must reflect the final extent and all matters referred to in the transfer.</p>
+</div>
+
+<div class="full-width">
+  <img src="/static/images/map.png" alt="some_text">   
+</div>  
+
+<div class="full-width"><br></div>
+
+<div class="full-width">
+  <div class="grid grid-1-3">
+    <a class="button" href="">Next</a>
+   <a href="/solicitors">Save and return later</a>
+  </div>  
+</div>  
+{% endblock %}
+
+
