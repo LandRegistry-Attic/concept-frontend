@@ -155,7 +155,7 @@ def map_search_results():
     geojson_point = False
     postcode_4326 = False
 
-    if 'postcode' in request.args:
+    if 'place' in request.args:
         search_term = request.args['place']
 
         #work out the type of search, they try and get a latlng for it
