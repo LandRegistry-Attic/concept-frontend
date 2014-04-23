@@ -156,11 +156,13 @@ def map_search_results():
     postcode_4326 = False
 
     if 'postcode' in request.args:
-        search_term = request.args['postcode']
+        search_term = request.args['place']
 
         #work out the type of search, they try and get a latlng for it
         if geo.is_postcode(search_term):
             latlng = geo.postcode_to_latlng(search_term)
+        else:
+            latlng = geo.geocode_place_name(search_term)    
 
         #if we have a location, then do a search
         if latlng:
