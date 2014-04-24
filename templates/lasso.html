@@ -30,30 +30,16 @@
                 var wmsLayer = new OpenLayers.Layer.WMS( "OpenLayers WMS",
                     "http://vmap0.tiles.osgeo.org/wms/vmap0?", {layers: 'basic'});
 
-                var pointLayer = new OpenLayers.Layer.Vector("Point Layer");
-                var lineLayer = new OpenLayers.Layer.Vector("Line Layer");
-                var polygonLayer = new OpenLayers.Layer.Vector("Polygon Layer");
-                var boxLayer = new OpenLayers.Layer.Vector("Box layer");
 
-                map.addLayers([wmsLayer, pointLayer, lineLayer, polygonLayer, boxLayer]);
+                var polygonLayer = new OpenLayers.Layer.Vector("Polygon Layer");
+
+                map.addLayers([wmsLayer, polygonLayer]);
                 map.addControl(new OpenLayers.Control.LayerSwitcher());
                 map.addControl(new OpenLayers.Control.MousePosition());
 
                 drawControls = {
-                    point: new OpenLayers.Control.DrawFeature(pointLayer,
-                        OpenLayers.Handler.Point),
-                    line: new OpenLayers.Control.DrawFeature(lineLayer,
-                        OpenLayers.Handler.Path),
                     polygon: new OpenLayers.Control.DrawFeature(polygonLayer,
-                        OpenLayers.Handler.Polygon),
-                    box: new OpenLayers.Control.DrawFeature(boxLayer,
-                        OpenLayers.Handler.RegularPolygon, {
-                            handlerOptions: {
-                                sides: 4,
-                                irregular: true
-                            }
-                        }
-                    )
+                        OpenLayers.Handler.Polygon)
                 };
 
                 for(var key in drawControls) {
@@ -83,18 +69,22 @@
                     drawControls[key].handler.stopUp = stop;
                 }
             }
-        </script>
+
+            function features()
+            {
+                
+                x = document.getElementById("features"); 
+                polyLayer = map.getLayersByName("Polygon Layer")[0];
+                lasso = polyLayer.features[0].geometry;
+                geometryString = OpenLayers.Format.GeoJSON.write( polyLayer.features[0].geometry );
+                
+                x.InnerHTML = geometryString;
+                
+            }
+
+</script>
     </head>
     <body onload="init()">
-        <h1 id="title">OpenLayers Draw Feature Example</h1>
-
-        <div id="tags">
-            point, line, linestring, polygon, box, digitizing, geometry, draw, drag
-        </div>
-
-        <p id="shortdesc">
-            Demonstrate on-screen digitizing tools for point, line, polygon and box creation.
-        </p>
 
         <div id="map" class="smallmap"></div>
     
@@ -105,20 +95,8 @@
                 <label for="noneToggle">navigate</label>
             </li>
             <li>
-                <input type="radio" name="type" value="point" id="pointToggle" onclick="toggleControl(this);" />
-                <label for="pointToggle">draw point</label>
-            </li>
-            <li>
-                <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
-                <label for="lineToggle">draw line</label>
-            </li>
-            <li>
                 <input type="radio" name="type" value="polygon" id="polygonToggle" onclick="toggleControl(this);" />
                 <label for="polygonToggle">draw polygon</label>
-            </li>
-            <li>
-                <input type="radio" name="type" value="box" id="boxToggle" onclick="toggleControl(this);" />
-                <label for="boxToggle">draw box</label>
             </li>
             <li>
                 <input type="checkbox" name="allow-pan" value="allow-pan" id="allowPanCheckbox" checked=true onclick="allowPan(this);" />
@@ -127,17 +105,13 @@
         </ul>
 
         <div id="docs">
-            <p>With the point drawing control active, click on the map to add a point.</p>
-            <p>With the line drawing control active, click on the map to add the points that make up your line.
-            Double-click to finish drawing.</p>
             <p>With the polygon drawing control active, click on the map to add the points that make up your
             polygon.  Double-click to finish drawing.</p>
-            <p>With the box drawing control active, click in the map and drag the mouse to get a rectangle. Release
-            the mouse to finish.</p>
             <p>With any drawing control active, paning the map can still be achieved.  Drag the map as
             usual for that.</p>
-            <p>Hold down the shift key while drawing to activate freehand mode.  While drawing lines or polygons
-            in freehand mode, hold the mouse down and a point will be added with every mouse movement.<p>
         </div>
+        <button type="button" onclick="features()">Features</button>
+        <p>Features:</p>
+        <p id="features"></p>
     </body>
 </html>
