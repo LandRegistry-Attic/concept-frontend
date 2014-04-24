@@ -1,2 +1,96 @@
 .solicitor-transfer-confirmation {
+  @include grid-wrapper;
+  @include core-19;
+
+.row {
+@extend %contain-floats;
+margin-bottom: $gutter*2;
 }
+
+  .metadata {
+    .address {
+      padding-bottom: $gutter-half;
+      p {
+        @include bold-48;
+        margin: 0 0 $gutter-half;
+      }
+    }
+
+    dl {
+    @extend %contain-floats;
+      margin-bottom: $gutter;
+    }
+
+    dt {
+      width: 160px;
+      float: left;
+      clear: left;
+      font-weight: bold;
+    }
+    dd {
+      float: left;
+    }
+
+    button {
+      @include button;
+      display: block;
+    }
+  }
+
+.progress-indicator {
+  
+  margin-bottom: $gutter;
+  
+  ol, 
+  ul{
+    @extend %contain-floats;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    border-color: $border-colour;
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  li {
+    color: $secondary-text-colour;
+    padding: 12px 0 5px 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  .active {
+    border-bottom: 5px solid $text-colour;
+    color: $text-colour;
+  }
+  .active a {
+    color: $text-colour;
+    text-decoration: none;
+  }
+  
+}
+
+.progress-indicator-horizontal {
+  
+  li {
+    @include media(tablet) {
+      float: left;
+      margin-right: $gutter;
+    }
+  }
+  li.active {
+    @include media(tablet) {
+      margin-bottom: -5px;
+    }
+  }
+  
+}
+
+.progress-indicator-vertical {
+  
+  // Reduce width for desktop (for this example only)
+  @include media(tablet) {
+    width: 50%; 
+  }
+  }
+  }
