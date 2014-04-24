@@ -73,12 +73,12 @@
             function features()
             {
                 
-                x = document.getElementById("features"); 
+                x = document.getElementById("features_json"); 
                 polyLayer = map.getLayersByName("Polygon Layer")[0];
                 lasso = polyLayer.features[0].geometry;
-                geometryString = OpenLayers.Format.GeoJSON.write( polyLayer.features[0].geometry );
+                geometryString = new OpenLayers.Format.GeoJSON().write( polyLayer.features[0].geometry );
                 
-                x.InnerHTML = geometryString;
+                x.innerHTML = geometryString;
                 
             }
 
@@ -112,6 +112,6 @@
         </div>
         <button type="button" onclick="features()">Features</button>
         <p>Features:</p>
-        <p id="features"></p>
+        <p id="features_json"></p>
     </body>
 </html>
