@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block landregistry_grid %}
+
+  <div class="team_leader_casework_status">
+
+  <div class="full-width">
+    <h1 class="heading-48">
+      <span class="heading-27">Land Registry</span>
+      Casework Status
+      <span class="phase-block">
+        <span class="alpha">Concept</span>
+      </span>
+    </h1>
+   </div>
+
+	<div class="full-width">
+		<b>Team name:</b><input type="text" id="teamname"><br><br>
+	</div>
+
+	<div class="full-width">
+		<p>Worklist view: Today oustanding</p>
+	</div>	
+
+  <div class="full-width">
+	<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Type</th>
+      <th>..</th>
+      <th>..</th>
+      <th>Status</th>
+      <th>Who</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TP</td>
+      <td>...</td>
+      <td>...</td>
+      <td>Draft</td>
+      <td>Mary Jones</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>TP</td>
+      <td>...</td>
+      <td>...</td>
+      <td>Draft</td>
+      <td>Jeff Rodrigez</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>DLG</td>
+      <td>...</td>
+      <td>...</td>
+      <td>Notices</td>
+      <td>Brian Long</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>DFL</td>
+      <td>...</td>
+      <td>...</td>
+      <td>New</td>
+      <td>not allocated</td> 
+    </tr>
+  </tbody>
+</table>
+</div>  
+
+  <div>
+{% endblock %}
