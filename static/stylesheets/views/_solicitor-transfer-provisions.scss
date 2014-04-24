@@ -1,61 +1,123 @@
 .solicitor-transfer-provisions {
-.accordian {
-  background: #B0E5B8;
-  border: 1px solid #628066;
-  border-width: 1px 1px 1px 1px;
-  overflow:hidden;
-  margin-bottom:20px;
-}
-.accordian h2 a {
-  font-size: 18px;
-  background: url("/static/images/sprite.png") 15px 13px no-repeat;
-  display: block;
-  padding: 9px;
-  padding-left: 32px;
-  margin: 0;
-  color: #628066;
-  text-decoration: none;
-  font-weight: normal;
-  border-top: 1px solid #628066;
+  .accordian {
+    background: #B0E5B8;
+    border: 1px solid #628066;
+    border-width: 1px 1px 1px 1px;
+    overflow:hidden;
+    margin-bottom:20px;
+  }
+  .accordian h2 a {
+    font-size: 18px;
+    background: url("/static/images/sprite.png") 15px 13px no-repeat;
+    display: block;
+    padding: 9px;
+    padding-left: 32px;
+    margin: 0;
+    color: #628066;
+    text-decoration: none;
+    font-weight: normal;
+    border-top: 1px solid #628066;
 
-}
+  }
 
-.accordian h2.complete a {
-  font-size: 18px;
-  background: url("/static/images/sprite.png") 15px 13px no-repeat, url("/static/images/tick.png") 900px 7px no-repeat;
-  display: block;
-  padding: 9px;
-  padding-left: 32px;
-  margin: 0;
-  color: #628066;
-  text-decoration: none;
-  font-weight: normal;
-  border-top: 1px solid #628066;
+  .accordian h2.complete a {
+    font-size: 18px;
+    background: url("/static/images/sprite.png") 15px 13px no-repeat, url("/static/images/tick.png") 900px 7px no-repeat;
+    display: block;
+    padding: 9px;
+    padding-left: 32px;
+    margin: 0;
+    color: #628066;
+    text-decoration: none;
+    font-weight: normal;
+    border-top: 1px solid #628066;
 
-}
+  }
 
-.accordian textarea {
-  width: 100%;	
-  height: 200px;
-  margin-top: 20px;
+  .accordian textarea {
+    width: 100%;	
+    height: 200px;
+    margin-top: 20px;
 
-  margin-bottom: 20px;
-}
+    margin-bottom: 20px;
+  }
 
-.accordian div {
-  padding-left: 20px;
-  padding-right: 22px;
-  background: #B0E5B8;
-}
+  .accordian div {
+    padding-left: 20px;
+    padding-right: 22px;
+    background: #B0E5B8;
+  }
 
 
-.accordian h2.open a {background-position: 14px -24px, 900px 7px;}
+  .accordian h2.open a {background-position: 14px -24px, 900px 7px;}
 
-.accordian h2 + ul,
-.accordian h2 + p {
-  padding: 10px;
-  background: #fff;
-  margin:0;
-}
+  .accordian h2 + ul,
+  .accordian h2 + p {
+    padding: 10px;
+    background: #fff;
+    margin:0;
+  }
+
+  .progress-indicator {
+    
+    margin-bottom: $gutter;
+    
+    ol, 
+    ul{
+      @extend %contain-floats;
+      border-bottom: 1px solid;
+      border-top: 1px solid;
+      border-color: $border-colour;
+      list-style-type: none;
+      padding-left: 0;
+    }
+    
+    li {
+      color: $secondary-text-colour;
+      padding: 12px 0 5px 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    
+    .active {
+      border-bottom: 5px solid $text-colour;
+      color: $text-colour;
+    }
+    .active a {
+      color: $text-colour;
+      text-decoration: none;
+    }
+    
+  }
+
+  .progress-indicator-horizontal {
+    
+    li {
+      @include media(tablet) {
+        float: left;
+        margin-right: $gutter;
+      }
+    }
+    li.active {
+      @include media(tablet) {
+        margin-bottom: -5px;
+      }
+    }
+    
+  }
+
+  .progress-indicator-vertical {
+    
+    // Reduce width for desktop (for this example only)
+    @include media(tablet) {
+      width: 50%; 
+    }
+    
+    span {
+      float: right;
+    }
+    
+  }
 
 }
