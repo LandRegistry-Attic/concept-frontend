@@ -315,6 +315,20 @@ def solicitor_transfer_confirmation():
 def solicitor_transfer_receipt():
     return render_template('transfer_receipt.html')
 
+
+@app.route('/team-leader/casework-status') #route to a team leader's casework status control view.
+def team_leader_casework_status():
+    return render_template('casework_status.html')
+
+@app.route('/caseworker/worklist') # route to a caseworker's worklist view
+def caseworker_worklist():
+    return render_template('worklist.html')
+
+@app.route('/caseworker/case') #route to a caseworker's individual case view
+def caseworker_case():
+    return render_template('caseworker_case.html')
+
+
 @app.route('/signin', methods=['GET', 'POST'])
 def sign_in():
 
