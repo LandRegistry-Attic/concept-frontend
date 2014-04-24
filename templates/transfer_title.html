@@ -54,11 +54,19 @@
     </div>
   </div>
 
+  <h2>
+    <br>
+  </h2>  
+
   <div class="full-width">
     <h2>Evidence required to change the register</h2> 
     <p> <label class="form-indent">RESTRICTION: No disposition of the registered estate by the proprietor of the registered estate is to be registered without a written consent signed by Moon Properties Limited of 3 Fleet Street, London E1 3BC.</label> </p>
     <input id="evidence" type="checkbox" value="checkbox"><b>I / we certify that we have evidence to comply with this restriction</b><br><br>
   </div>
+
+  <h2>
+    <br>
+  </h2>  
 
   <div class="full-width">
     <h2>New proprietor</h2> 
@@ -110,6 +118,10 @@
     </div>
   </div>
 
+  <h2>
+    <br>
+  </h2>  
+
   <div class="full-width">
     <h2>Transfer details</h2>
   </div>
@@ -128,16 +140,20 @@
       <p>Transfer date</p>
     </div>
     <div class="grid grid-2-3"> 
-      <input type="text" name="TransferDay" value="" maxlength="2" size="3"> <input type="text" name="TransferMonth" value="" maxlength="2" size="3"> <input type="text" name="TransferYear" value="" maxlength="4" size="5">
-    </div>
-  </div>
-
-  <div class="full-width"> 
-    <div class="grid grid-1-3">
-      <p>Transfer date</p>
-    </div>
-    <div class="grid grid-2-3"> 
-      <label for="day" size="3"> 
+      <fieldset class="date-of-birth">
+          <div class="form-group">
+            <label for="day">Day</label>
+            <input type="text" pattern="[0-9]*" id="day" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="month">Month</label>
+            <input type="text" id="month" class="form-control">
+          </div>
+          <div class="form-group form-group-year">
+            <label for="year">Year</label>
+            <input type="text" pattern="[0-9]*" id="year" class="form-control">
+          </div>
+        </fieldset>
     </div>
   </div>
 
@@ -150,12 +166,23 @@
     </div>
   </div>
 
-  <div class="full-width">
-    <div class="form-group">
-      <button type="submit" class="button">Next</button>
-      <a href="/">Save and return later</a> 
+   <div class="full-width"> 
+    <div class="grid grid-1-3">
+      <p>Fee payable after transfer</p>
+    </div>
+    <div class="grid grid-2-3"> 
+      <b>£400 will be deducted by DirectDebit</b>
     </div>
   </div>
+
+  <div class="full-width">
+    <div class="grid grid-1-10">
+      <button type="submit" class="button">Next</button>
+    </div>
+    <div class="grid grid-9-10">
+      <a href="/">Save and return later</a> 
+    </div>
+  </div>  
 </div>
 
 {% endblock %}
