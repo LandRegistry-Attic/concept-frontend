@@ -345,5 +345,11 @@ def sign_in():
 
     return render_template('sign-in.html')
 
+
+@app.route('/lasso') #route to a caseworker's individual case view
+def lasso():
+    return render_template('lasso.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
