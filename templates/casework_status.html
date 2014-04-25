@@ -17,9 +17,12 @@
 		<b>Team name:</b><input type="text" id="teamname"><br><br>
 	</div>
 
+  <h2><br></h2>
+
 	<div class="full-width">
-		<p>Worklist view: Today oustanding</p>
+		<h2>Worklist view: Today outstanding</h2>
 	</div>	
+  <br>
 
   <div class="full-width">
 	<table>
@@ -70,5 +73,44 @@
 </table>
 </div>  
 
-  <div>
+<h2><br><br></h2>
+
+<div class="full-width">
+  <h2>Work allocation: Today outstanding</h2>
+
+    <br>
+    <h3>Team Profile</h3>
+    <div class="full-width">
+      <br>
+      <h3>Today</h3>
+      <img src="/static/images/daily.png" alt="some_text"><br><br>   
+      <h3>This week</h3>
+      <img src="/static/images/weekly.png" alt="some_text">
+      <br><br>
+      <img src="/static/images/skill.png" alt="some_text">   
+      <br><br>
+    </div>
+
+    <div class="full-width">
+      <h3>Reallocate</h3>
+        <form class="form-radio" action="">
+          <input type="radio" name="md-ref" id="no-md-ref" value="false">select from worklist<br>
+          <input type="radio" name="md-ref" id="md-ref" value="true">select type by worklist<br>
+          <input type="radio" name="md-ref" id="md-ref" value="true">select ...<br>
+          <input type="radio" name="md-ref" id="md-ref" value="true">charge allocation profile<br>
+          <input type="radio" name="md-ref" id="md-ref" value="true">other team directories and profile<br>
+          <input type="radio" name="md-ref" id="md-ref" value="true">allocate to team members<br>
+        </form>
+    </div>
+
+</div>  
+
+<h2><br><br></h2>
+
+<div class="full-width">
+  <h2>Team production</h2>
+  <br>
+  <img src="/static/images/team-production.jpg" alt="some_text">   
+</div>
+
 {% endblock %}
