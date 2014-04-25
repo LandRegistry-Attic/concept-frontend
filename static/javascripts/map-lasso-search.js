@@ -92,6 +92,15 @@
         success: _.bind(this.onGeoSuccess, this),
       });
     },
+    search: function() {
+      console.log('Updating map for search')
+      var url = this.geoUrl + '/titles?partially_contained_by=' + lasso
+      $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        success: _.bind(this.onGeoSuccess, this),
+      });
+    },    
     onGeoSuccess: function(results) {
       this.removeVectorLayer();
 

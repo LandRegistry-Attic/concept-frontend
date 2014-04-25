@@ -77,7 +77,7 @@
 
 
     /**
-     * Let user change the geometry type.
+     * Let user change the geometry t
      * @param {Event} e Change event.
      */
     typeSelect.onchange = function(e) {
@@ -105,18 +105,9 @@
         geometry4326String = JSON.stringify( geometryGeoJSON);               
         lasso = geometry4326String;
         
-        //window.LR.mapLassoSearch.map.onMoveend();
+        window.LR.mapLassoSearch.search();
         
-        //document.getElementById("features_4326_json").innerHTML = geometry4326String;    
-        //geoEndPoint = "http://172.16.42.43:8005/titles";
-        //document.getElementById("frm1").action = geoEndPoint;        
-        // var input = document.createElement("INPUT");
-        // input.setAttribute("type", "text"); 
-        // input.setAttribute("value", geometry4326String);
-        // input.setAttribute("name", "partially_contained_by");
-        // input.setAttribute("form", "frm1");
-        // document.getElementById("frm1").appendChild(input);
-        //document.getElementById("frm1").submit();
+
  
     }
 
