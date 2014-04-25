@@ -1,0 +1,70 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+{% block landregistry_grid %}
+
+<div class="caseworker-case">
+
+    <div class="full-width">
+
+      <h1 class="heading-48">
+        <span class="heading-27">Land registry</span>
+        Case Processing System
+        <span class="phase-block">
+          <span class="alpha">Concept</span>
+        </span>
+      </h1>
+
+      <div id="top" class="full-width">
+	      <form>
+	      	<label for="appn">Application: </label><input id="appn" type="text" value="X123-TP-124"/>
+
+	      	<label class="middle-label" for="status">Status: </label><input id="status" type="text" value="New"/>
+	      </form>
+      </div>
+
+      <br>
+      <br>
+
+
+      <div id="middle-block" class="full-width">
+      	<div id="draft-register" class="draft-register">
+      	</div>
+      	
+      	<div id="register" class="register">
+      	</div>
+      	
+      	<div id="left-container" class="left-container">
+	      	<div id="daylist" class="daylist">
+	      	</div>
+
+	      	<div id="gold" class="gold">
+	      	</div>
+
+	      	<div id="fee" class="fee">
+	      	</div>
+      	</div>
+      </div>
+
+      <br>
+      <br>
+
+	  <div id="bottom-block" class="full-width">
+	  	<div id="draft-tp" class="draft-tp">
+	  	</div>
+	  	
+	  	<div id="current-tp" class="current-tp">
+	  		
+	  	</div>
+
+	  	<div id="evidence" class="evidence">
+	  		
+	  	</div>
+
+      </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}
