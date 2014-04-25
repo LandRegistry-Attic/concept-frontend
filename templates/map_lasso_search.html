@@ -12,7 +12,7 @@
    <!--<div id="map" class="smallmap"></div><-->
 
    <form class="form-inline">
-        <label>Geometry type &nbsp;</label>
+        <label>Lasso type &nbsp;</label>
           <select id="type">
             <option value="Point">Point</option>
             <option value="LineString">LineString</option>
@@ -20,13 +20,7 @@
           </select>
       </form>
 
-    <button type="button" onclick="features()">Features</button>
-    <p>Features:</p>
-    <p id="features_3857_json"></p>
-    <br>
-    <p id="features_4326_json"></p>
-    <form id="frm1" method="get" action="">
-    </form>        
+    <a onclick="features()" class="button">Search</a>
 
 {% endblock %}
 {% block extra_js %}
