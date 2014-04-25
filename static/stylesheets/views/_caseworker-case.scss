@@ -1,0 +1,78 @@
+.caseworker-case {
+
+	.middle-label {
+		margin-left: 25px;
+	}
+
+	.register {
+		float: left;
+		margin-left: 10px;
+		width: 280px;
+		height: 300px;
+		border: 1px solid $black;
+
+	}
+
+	.draft-register {
+		float: left;
+		width: 280px;
+		height: 300px;
+		border: 1px solid $black;
+
+	}	
+
+	.left-container {
+		float: left;
+		margin-left: 5px;
+		width: 280px;
+		height: 300px;
+		
+	}
+
+	.daylist {
+		vertical-align: middle;
+		width: 250px;
+		height: 95px;
+		margin: 0px 5px 0px 5px;
+		border: 1px solid $black;
+	}
+	.gold {
+		vertical-align: middle;
+		width: 250px;
+		height: 95px;
+		margin: 5px 5px 0px 5px;
+		border: 1px solid $black;
+	}
+	.fee {
+		vertical-align: middle;
+		width: 250px;
+		height: 95px;
+		margin: 5px 5px 0px 5px;
+		border: 1px solid $black;
+	}
+
+	.draft-tp {
+		float: left;
+		width: 280px;
+		height: 300px;
+		border: 1px solid $black;
+
+	}
+
+	.current-tp {
+		float: left;
+		margin-left: 10px;		
+		width: 280px;
+		height: 300px;
+		border: 1px solid $black;
+
+	}	
+	.evidence {
+		float: left;
+		margin-left: 10px;		
+		width: 280px;
+		height: 300px;
+		border: 1px solid $black;
+
+	}		
+}
