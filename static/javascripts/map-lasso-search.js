@@ -22,14 +22,14 @@
         })
       });
       this.map = new ol.Map({
-        layers: [layer],
+        layers: [layer,vector],
         target: this.$el[0],
         view: new ol.View2D({
           //center: [-500000, 7300000],
           //zoom: 5
           center: [
-                    this.postcodeCentre['coordinates'][0],
-                    this.postcodeCentre['coordinates'][1]
+            14708.755563011973,
+            6761018.225448865   
           ],
           zoom: 16
         })

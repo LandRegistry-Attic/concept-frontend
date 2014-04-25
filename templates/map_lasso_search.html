@@ -9,30 +9,17 @@
     <div class="map-info"></div>
   </div>
 
-   <div id="map" class="smallmap"></div>
+   <!--<div id="map" class="smallmap"></div><-->
 
-    <ul id="controlToggle">
-        <li>
-            <input type="radio" name="type" value="none" id="noneToggle"
-                   onclick="window.LR.mapLassoSearch.toggleControl(this);" checked="checked" />
-            <label for="noneToggle">navigate</label>
-        </li>
-        <li>
-            <input type="radio" name="type" value="polygon" id="polygonToggle" onclick="window.LR.mapLassoSearch.toggleControl(this);" />
-            <label for="polygonToggle">draw polygon</label>
-        </li>
-        <li>
-            <input type="checkbox" name="allow-pan" value="allow-pan" id="allowPanCheckbox" checked=true onclick="window.LR.mapLassoSearch.allowPan(this);" />
-            <label for="allowPanCheckbox">allow pan while drawing</label>
-        </li>
-    </ul>
+   <form class="form-inline">
+        <label>Geometry type &nbsp;</label>
+          <select id="type">
+            <option value="Point">Point</option>
+            <option value="LineString">LineString</option>
+            <option value="Polygon">Polygon</option>
+          </select>
+      </form>
 
-    <div id="docs">
-        <p>With the polygon drawing control active, click on the map to add the points that make up your
-        polygon.  Double-click to finish drawing.</p>
-        <p>With any drawing control active, paning the map can still be achieved.  Drag the map as
-        usual for that.</p>
-    </div>
     <button type="button" onclick="features()">Features</button>
     <p>Features:</p>
     <p id="features_3857_json"></p>
@@ -44,10 +31,59 @@
 {% endblock %}
 {% block extra_js %}
   <script>
+
+    var raster = new ol.layer.Tile({
+    source: new ol.source.MapQuest({layer: 'sat'})
+    });
+
+    var source = new ol.source.Vector();
+
+    var vector = new ol.layer.Vector({
+      source: source,
+      style: new ol.style.Style({
+        fill: new ol.style.Fill({
+          color: 'rgba(255, 255, 255, 0.2)'
+        }),
+        stroke: new ol.style.Stroke({
+          color: '#ffcc33',
+          width: 2
+        }),
+        image: new ol.style.Circle({
+          radius: 7,
+          fill: new ol.style.Fill({
+            color: '#ffcc33'
+          })
+        })
+      })
+    });
+
     window.LR.mapLassoSearch = new window.LR.MapLassoSearch({
       el: '.ol-container',
       infoEl: '.map-info',
       geoUrl: '{{ geo_url }}'
     });
+
+    var typeSelect = document.getElementById('type');
+
+    var draw; // global so we can remove it later
+    function addInteraction() {
+      draw = new ol.interaction.Draw({
+        source: source,
+        type: /** @type {ol.geom.GeometryType} */ (typeSelect.value)
+      });
+      window.LR.mapLassoSearch.map.addInteraction(draw);
+    }
+
+
+    /**
+     * Let user change the geometry type.
+     * @param {Event} e Change event.
+     */
+    typeSelect.onchange = function(e) {
+      window.LR.mapLassoSearch.map.removeInteraction(draw);
+      addInteraction();
+    };
+
+    addInteraction(); 
   </script>
 {% endblock %}
