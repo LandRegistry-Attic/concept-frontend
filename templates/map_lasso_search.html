@@ -102,7 +102,8 @@
         polygonGeometry = features[0].getGeometry();
         var format = new ol.format.GeoJSON();
         featureGeoJSON = format.writeFeature(features[0]); 
-        geometry4326String = JSON.stringify( featureGeoJSON);               
+        geometryGeoJSON = featureGeoJSON['geometry'];
+        geometry4326String = JSON.stringify( geometryGeoJSON);               
         document.getElementById("features_4326_json").innerHTML = geometry4326String;    
 
         //var fromProjection = new OpenLayers.Projection("EPSG:4326");   
@@ -115,7 +116,7 @@
         
         var input = document.createElement("INPUT");
         input.setAttribute("type", "text"); 
-        input.setAttribute("value", geometry3857String);
+        input.setAttribute("value", geometry4326String);
         input.setAttribute("name", "partially_contained_by");
         input.setAttribute("form", "frm1");
         document.getElementById("frm1").appendChild(input);
