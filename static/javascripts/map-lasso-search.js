@@ -31,7 +31,7 @@
             14708.755563011973,
             6761018.225448865   
           ],
-          zoom: 16
+          zoom: 13
         })
       });
       this.map.on('moveend', this.onMoveend, this);
@@ -85,7 +85,7 @@
         return;
       }
       console.log('Updating map')
-      var url = this.geoUrl + '/titles?partially_contained_by=' + encodeURIComponent(JSON.stringify(this.getViewExtentAsGeoJSON()))
+      var url = this.geoUrl + '/titles?partially_contained_by=' + lasso
       $.ajax({
         url: url,
         dataType: 'jsonp',

@@ -65,7 +65,7 @@
     });
 
     var typeSelect = document.getElementById('type');
-
+    var lasso;
     var draw; // global so we can remove it later
     function addInteraction() {
       draw = new ol.interaction.Draw({
@@ -96,7 +96,6 @@
              polyLayer = layer;
           }
         });
-        //polygonGeometry = polyLayer.features[0].geometry;  
         source = polyLayer.getSource();
         features = source.getFeatures();
         polygonGeometry = features[0].getGeometry();
@@ -104,24 +103,21 @@
         featureGeoJSON = format.writeFeature(features[0]); 
         geometryGeoJSON = featureGeoJSON['geometry'];
         geometry4326String = JSON.stringify( geometryGeoJSON);               
-        document.getElementById("features_4326_json").innerHTML = geometry4326String;    
-
-        //var fromProjection = new OpenLayers.Projection("EPSG:4326");   
-        //var toProjection   = new OpenLayers.Projection("EPSG:3857"); 
-        //var geometry3857   = polyLayer.features[0].geometry.transform(fromProjection, toProjection);
-        //geometry3857String = new OpenLayers.Format.GeoJSON().write(geometry3857);
-        //document.getElementById("features_3857_json").innerHTML = geometry3857String;
-        geoEndPoint = "http://172.16.42.43:8005/titles";
-        document.getElementById("frm1").action = geoEndPoint;
+        lasso = geometry4326String;
         
-        var input = document.createElement("INPUT");
-        input.setAttribute("type", "text"); 
-        input.setAttribute("value", geometry4326String);
-        input.setAttribute("name", "partially_contained_by");
-        input.setAttribute("form", "frm1");
-        document.getElementById("frm1").appendChild(input);
-        document.getElementById("frm1").submit();
-    
+        //window.LR.mapLassoSearch.map.onMoveend();
+        
+        //document.getElementById("features_4326_json").innerHTML = geometry4326String;    
+        //geoEndPoint = "http://172.16.42.43:8005/titles";
+        //document.getElementById("frm1").action = geoEndPoint;        
+        // var input = document.createElement("INPUT");
+        // input.setAttribute("type", "text"); 
+        // input.setAttribute("value", geometry4326String);
+        // input.setAttribute("name", "partially_contained_by");
+        // input.setAttribute("form", "frm1");
+        // document.getElementById("frm1").appendChild(input);
+        //document.getElementById("frm1").submit();
+ 
     }
 
     addInteraction(); 
