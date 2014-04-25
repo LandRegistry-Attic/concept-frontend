@@ -48,7 +48,8 @@
 
                 map.setCenter(new OpenLayers.LonLat(0, 0), 3);
 
-                document.getElementById('noneToggle').checked = true;
+                document.getElementById('polygonToggle').checked = true;
+                toggleControl(document.getElementById('polygonToggle'));
             }
 
             function toggleControl(element) {

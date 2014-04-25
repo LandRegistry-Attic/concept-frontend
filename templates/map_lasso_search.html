@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block body_classes %}full-screen{% endblock %}
+{% block extra_css %}
+  <link href="/static/stylesheets/vendor/ol.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block landregistry_content %}
+  <div class="map">
+    <div class="ol-container"></div>
+    <div class="map-info"></div>
+  </div>
+
+   <div id="map" class="smallmap"></div>
+
+    <ul id="controlToggle">
+        <li>
+            <input type="radio" name="type" value="none" id="noneToggle"
+                   onclick="window.LR.mapLassoSearch.toggleControl(this);" checked="checked" />
+            <label for="noneToggle">navigate</label>
+        </li>
+        <li>
+            <input type="radio" name="type" value="polygon" id="polygonToggle" onclick="window.LR.mapLassoSearch.toggleControl(this);" />
+            <label for="polygonToggle">draw polygon</label>
+        </li>
+        <li>
+            <input type="checkbox" name="allow-pan" value="allow-pan" id="allowPanCheckbox" checked=true onclick="window.LR.mapLassoSearch.allowPan(this);" />
+            <label for="allowPanCheckbox">allow pan while drawing</label>
+        </li>
+    </ul>
+
+    <div id="docs">
+        <p>With the polygon drawing control active, click on the map to add the points that make up your
+        polygon.  Double-click to finish drawing.</p>
+        <p>With any drawing control active, paning the map can still be achieved.  Drag the map as
+        usual for that.</p>
+    </div>
+    <button type="button" onclick="features()">Features</button>
+    <p>Features:</p>
+    <p id="features_3857_json"></p>
+    <br>
+    <p id="features_4326_json"></p>
+    <form id="frm1" method="get" action="">
+    </form>        
+
+{% endblock %}
+{% block extra_js %}
+  <script>
+    window.LR.mapLassoSearch = new window.LR.MapLassoSearch({
+      el: '.ol-container',
+      infoEl: '.map-info',
+      geoUrl: '{{ geo_url }}'
+    });
+  </script>
+{% endblock %}
