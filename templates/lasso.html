@@ -73,13 +73,26 @@
             function features()
             {
                 
-                x = document.getElementById("features_json"); 
                 polyLayer = map.getLayersByName("Polygon Layer")[0];
-                lasso = polyLayer.features[0].geometry;
-                geometryString = new OpenLayers.Format.GeoJSON().write( polyLayer.features[0].geometry );
+                geometry4326String = new OpenLayers.Format.GeoJSON().write( polyLayer.features[0].geometry );               
+                document.getElementById("features_4326_json").innerHTML = geometry4326String;    
+
+                var fromProjection = new OpenLayers.Projection("EPSG:4326");   
+                var toProjection   = new OpenLayers.Projection("EPSG:3857"); 
+                var geometry3857   = polyLayer.features[0].geometry.transform(fromProjection, toProjection);
+                geometry3857String = new OpenLayers.Format.GeoJSON().write(geometry3857);
+                document.getElementById("features_3857_json").innerHTML = geometry3857String;
+                geoEndPoint = "http://172.16.42.43:8005/titles";
+                document.getElementById("frm1").action = geoEndPoint;
                 
-                x.innerHTML = geometryString;
-                
+                var input = document.createElement("INPUT");
+                input.setAttribute("type", "text"); 
+                input.setAttribute("value", geometry3857String);
+                input.setAttribute("name", "partially_contained_by");
+                input.setAttribute("form", "frm1");
+                document.getElementById("frm1").appendChild(input);
+                document.getElementById("frm1").submit();
+            
             }
 
 </script>
@@ -112,6 +125,10 @@
         </div>
         <button type="button" onclick="features()">Features</button>
         <p>Features:</p>
-        <p id="features_json"></p>
+        <p id="features_3857_json"></p>
+        <br>
+        <p id="features_4326_json"></p>
+        <form id="frm1" method="get" action="">
+        </form>        
     </body>
 </html>
