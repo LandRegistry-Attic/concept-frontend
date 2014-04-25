@@ -4,23 +4,21 @@
   <link href="/static/stylesheets/vendor/ol.css" media="all" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block landregistry_content %}
-  <div class="map">
+  <div class="map-lasso-search">
     <div class="ol-container"></div>
     <div class="map-info"></div>
+  
+  <div class="full-width">
+    <div class="grid grid-1-3">
+      <a onclick="search()" class="button">Search</a>    
+    </div>
+    <div class="grid grid-2-3">
+      <p>Click on the map to add the points that make up a polygon. Double-click to finish drawing.</p>
+    </div>
   </div>
 
-   <!--<div id="map" class="smallmap"></div><-->
-
-   <form class="form-inline">
-        <label>Lasso type &nbsp;</label>
-          <select id="type">
-            <option value="Point">Point</option>
-            <option value="LineString">LineString</option>
-            <option value="Polygon">Polygon</option>
-          </select>
-      </form>
-
-    <a onclick="features()" class="button">Search</a>
+  
+</div>
 
 {% endblock %}
 {% block extra_js %}
@@ -58,29 +56,17 @@
       geoUrl: '{{ geo_url }}'
     });
 
-    var typeSelect = document.getElementById('type');
     var lasso;
     var draw; // global so we can remove it later
     function addInteraction() {
       draw = new ol.interaction.Draw({
         source: source,
-        type: /** @type {ol.geom.GeometryType} */ (typeSelect.value)
+        type: 'Polygon'
       });
       window.LR.mapLassoSearch.map.addInteraction(draw);
     }
 
-
-    /**
-     * Let user change the geometry t
-     * @param {Event} e Change event.
-     */
-    typeSelect.onchange = function(e) {
-      window.LR.mapLassoSearch.map.removeInteraction(draw);
-      addInteraction();
-    };
-
-
-    function features()
+    function search()
     {
         
         var layers = window.LR.mapLassoSearch.map.getLayers();
