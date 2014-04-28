@@ -345,5 +345,9 @@ def sign_in():
 
     return render_template('sign-in.html')
 
+@app.route('/map-lasso-search')
+def map_lasso_search():
+    return render_template('/map_lasso_search.html', geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)

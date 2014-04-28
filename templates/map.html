@@ -4,10 +4,21 @@
   <link href="/static/stylesheets/vendor/ol.css" media="all" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block landregistry_content %}
-  <div class="map">
-    <div class="ol-container"></div>
-    <div class="map-info"></div>
+  
+ <div class="map">
+  
+  <div class="full-width">
+    <div class="grid grid-3-4">
+      <div class="ol-container"></div>
+      <div class="map-info"></div>
+    </div>
+    <div class="grid grid-1-4">
+      <p>You can also search by <a href="/map-lasso-search">defining an area on the map</a>.</p>
+    </div>
   </div>
+
+  
+</div>  
 {% endblock %}
 {% block extra_js %}
   <script>
