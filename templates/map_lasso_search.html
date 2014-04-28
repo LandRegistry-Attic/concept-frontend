@@ -12,7 +12,7 @@
       <div class="map-info"></div>
     </div>
     <div class="grid grid-1-4">
-      <button class=button onclick=search()>Search</button><br>    
+      <button id="search-button" class="button">Search</button><br>    
       <p>Click on the map to add the points that make up a polygon.<br>Double-click to finish drawing.<br>Refresh the page to search again.</p>
     </div>
   </div>
@@ -65,28 +65,6 @@
         type: 'Polygon'
       });
       window.LR.mapLassoSearch.map.addInteraction(draw);
-    }
-
-    function search()
-    {
-        
-        var layers = window.LR.mapLassoSearch.map.getLayers();
-        var polyLayer = null;
-        window.LR.mapLassoSearch.map.getLayers().forEach(function(layer) {
-          if (layer.get('name') == 'Polygon Layer') {
-             polyLayer = layer;
-          }
-        });
-        source = polyLayer.getSource();
-        features = source.getFeatures();
-        var format = new ol.format.GeoJSON();
-        featureGeoJSON = format.writeFeature(features[0]); 
-        geometryGeoJSON = featureGeoJSON['geometry'];
-        geometry4326String = JSON.stringify( geometryGeoJSON);               
-        lasso = geometry4326String;
-        
-        window.LR.mapLassoSearch.search();
-        window.LR.mapLassoSearch.map.removeInteraction(draw);
     }
 
     addInteraction(); 

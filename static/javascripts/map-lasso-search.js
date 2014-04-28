@@ -52,6 +52,8 @@
 
       // Init mouse events
       $(this.map.getViewport()).on('click', _.bind(this.onClick, this));
+      var el = document.getElementById("search-button");
+      el.addEventListener("click", this.search.bind(this), false);
     },
     onClick: function(event) {
       var pixel = this.map.getEventPixel(event.originalEvent);
@@ -93,6 +95,22 @@
       });
     },
     search: function() {
+      var layers = this.map.getLayers();
+      var polyLayer = null;
+      layers.forEach(function(layer) {
+        if (layer.get('name') == 'Polygon Layer') {
+           polyLayer = layer;
+        }
+      });
+      source = polyLayer.getSource();
+      features = source.getFeatures();
+      var format = new ol.format.GeoJSON();
+      featureGeoJSON = format.writeFeature(features[0]); 
+      geometryGeoJSON = featureGeoJSON['geometry'];
+      lasso = JSON.stringify( geometryGeoJSON);               
+      
+      this.map.removeInteraction(draw);
+
       console.log('Updating map for search')
       var url = this.geoUrl + '/titles?partially_contained_by=' + lasso
       $.ajax({
