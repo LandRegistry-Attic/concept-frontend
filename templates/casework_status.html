@@ -14,7 +14,7 @@
    </div>
 
 	<div class="full-width">
-		<b>Team name:</b><input type="text" id="teamname"><br><br>
+		<b>Team name:</b><input type="text" id="teamname" value="Customer Team 1"><br><br>
 	</div>
 
   <h2><br></h2>
@@ -25,7 +25,7 @@
   <br>
 
   <div class="full-width">
-	<table>
+	<table class = "table">
   <thead>
     <tr>
       <th>No</th>
@@ -34,6 +34,8 @@
       <th>..</th>
       <th>Status</th>
       <th>Who</th>
+      <th>Actions</th>
+      <th><a href="" class="button">select all</a></th>
     </tr>
   </thead>
   <tbody>
@@ -44,6 +46,8 @@
       <td>...</td>
       <td>Draft</td>
       <td>Mary Jones</td>
+      <td><a href="/" >View</a><br><br><a href="/" >Reallocate</a></td>
+      <td><input type="checkbox"/></td>
     </tr>
     <tr>
       <td>2</td>
@@ -52,6 +56,8 @@
       <td>...</td>
       <td>Draft</td>
       <td>Jeff Rodrigez</td>
+      <td><a href="/" >View</a><br><br><a href="/" >Reallocate</a></td>
+      <td><input type="checkbox"/></td>
     </tr>
     <tr>
       <td>3</td>
@@ -60,6 +66,8 @@
       <td>...</td>
       <td>Notices</td>
       <td>Brian Long</td>
+      <td><a href="/" >View</a><br><br><a href="/" >Reallocate</a></td>
+      <td><input type="checkbox"/></td>
     </tr>
     <tr>
       <td>4</td>
@@ -67,11 +75,38 @@
       <td>...</td>
       <td>...</td>
       <td>New</td>
-      <td>not allocated</td> 
+      <td>not allocated</td>
+      <td><a href="/">View</a><br><br><a href="/">Allocate</a></td>
+      <td><input type="checkbox"/></td>
     </tr>
   </tbody>
 </table>
-</div>  
+</div> 
+
+<br> 
+
+<div class="full-width">
+  <label>Further worklist actions:</label>
+  <select>
+    <option>allocate multiple applications</option>
+    <option></option>
+    <option></option>
+    <option></option>
+    <option></option>
+    <option></option>
+    <option></option>
+    <option></option>
+  </select>
+  <form class="form-radio" action="">
+    <input type="radio" name="md-ref" id="no-md-ref" value="false">select from worklist<br>
+    <input type="radio" name="md-ref" id="md-ref" value="true">select type by worklist<br>
+    <input type="radio" name="md-ref" id="md-ref" value="true">select ...<br>
+    <input type="radio" name="md-ref" id="md-ref" value="true">charge allocation profile<br>
+    <input type="radio" name="md-ref" id="md-ref" value="true">other team directories and profile<br>
+    <input type="radio" name="md-ref" id="md-ref" value="true">allocate to team members<br>
+    <input type="radio" name="md-ref" id="md-ref" value="true">auto allocate to team members<br>
+  </form>
+</div>
 
 <h2><br><br></h2>
 
@@ -89,18 +124,6 @@
       <br><br>
       <img src="/static/images/skill.png" alt="some_text">   
       <br><br>
-    </div>
-
-    <div class="full-width">
-      <h3>Reallocate</h3>
-        <form class="form-radio" action="">
-          <input type="radio" name="md-ref" id="no-md-ref" value="false">select from worklist<br>
-          <input type="radio" name="md-ref" id="md-ref" value="true">select type by worklist<br>
-          <input type="radio" name="md-ref" id="md-ref" value="true">select ...<br>
-          <input type="radio" name="md-ref" id="md-ref" value="true">charge allocation profile<br>
-          <input type="radio" name="md-ref" id="md-ref" value="true">other team directories and profile<br>
-          <input type="radio" name="md-ref" id="md-ref" value="true">allocate to team members<br>
-        </form>
     </div>
 
 </div>  
