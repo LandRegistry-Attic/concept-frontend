@@ -20,33 +20,32 @@
 
 .outer-block {
   @include outer-block;
-  @extend %contain-floats;
-}
-.inner-block {
-  @include inner-block;
-  // background: pink; testing only
 }
 
-// Grid layout
+.inner-block {
+  @include inner-block;
+}
+
+// Grid wrapper
 @mixin grid-wrapper {
   @extend %contain-floats;
   @include media(tablet) {
-    padding: 0 $gutter-half;
+    padding-left: $gutter-half;
+    padding-right: $gutter-half;
   }
 }
 
 .grid-wrapper {
   @include grid-wrapper;
-  // background: pink; testing only
 }
 
+// Reset grid padding if inside inner block
 .inner-block .grid-wrapper {
   @include grid-wrapper;
-  margin: 0 -$gutter-half;
+  margin: 0px;
   @include media(tablet) {
-    margin: 0 -$gutter;
+    margin: 0px (-$gutter);
   }
-  // background: yellow; testing only
 }
 
 // Grid units take 100% width, unless a .grid-width class is applied
@@ -57,10 +56,11 @@
 
 // Grid 'inner-block' aligns grid content with header and footer
 .grid .inner-block {
-  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
   @include media(tablet) {
-    padding: 0 $gutter-half;
-    margin: 0;
+    padding-left: $gutter-half;
+    padding-right: $gutter-half;
   }
 }
 
@@ -99,15 +99,24 @@
   }
 }
 
-.grid-section {
-  clear: both;
-  @extend %contain-floats;
-  margin-bottom: $gutter-half;
+// Create spacing between grid items
+.grid-space,
+.inner-block .grid-space {
+  margin-bottom: $gutter;
   @include media(tablet) {
-    margin-bottom: $gutter;
+    margin-bottom: $gutter*1.5;
   }
 }
 
+.grid-double-space,
+.inner-block .grid-double-space {
+  margin-bottom: $gutter*1.5;
+  @include media(tablet) {
+    margin-bottom: $gutter*3;
+  }
+}
+
+// Dividing line
 .divider {
   border-top: 1px solid $border-colour;
   padding-top: $gutter;

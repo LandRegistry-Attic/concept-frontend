@@ -155,6 +155,12 @@ fieldset {
   }
 }
 
+// Textareas
+textarea {
+  max-width: 100%;
+  @include box-sizing(border-box);
+}
+
 // Hide toggled content
 .js-enabled .toggle-content {
     display: none;
