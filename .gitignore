@@ -1,3 +1,4 @@
 *.pyc
 static/build
 static/.webassets-cache
+static/images/Thumbs.db
