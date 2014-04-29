@@ -10,6 +10,7 @@
 @import "../govuk_frontend_toolkit/stylesheets/design-patterns/_alpha-beta.scss";
 @import "../govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss";
 
+<<<<<<< HEAD
 // Helpers
 @import "elements/helpers";
 
@@ -23,6 +24,9 @@
 @import "elements/layout";
 // Full screen layout
 @import "modules/full-screen";
+
+// LR base styling
+@import "base/landregistry-base";
 
 // Adjust alignment for GOV.UK template
 // Awaiting merge of pull request
@@ -74,6 +78,7 @@
 
 @import "views/index";
 @import "views/map";
+@import "views/map-lasso-search";
 @import "views/property";
 @import "views/search";
 @import "views/authorise-solicitor-start";
@@ -91,7 +96,7 @@
 @import "views/solicitor-initiate-exchange-done";
 @import "views/solicitor-define-area";
 @import "views/solicitor-define-area-conf";
-// @import "views/solicitor-freeze-interest"; removed as empty
+@import "views/solicitor-freeze-interest";
 @import "views/solicitor-freeze-mortgage";
 @import "views/solicitor-freeze-confirmation";
 @import "views/solicitor-freeze-receipt";
@@ -102,3 +107,4 @@
 @import "views/solicitor-transfer-confirmation";
 @import "views/solicitor-transfer-receipt";
 @import "views/caseworker-worklist";
+
