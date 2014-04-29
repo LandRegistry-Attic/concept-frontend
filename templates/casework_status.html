@@ -7,11 +7,8 @@
     <h1 class="heading-48">
       <span class="heading-27">Land Registry</span>
       Casework Status
-      <span class="phase-block">
-        <span class="alpha">Concept</span>
-      </span>
     </h1>
-   </div>
+  </div>
 
 	<div class="full-width">
 		<b>Team name:</b><input type="text" id="teamname" value="Customer Team 1"><br><br>
@@ -21,6 +18,14 @@
 
 	<div class="full-width">
 		<h2>Worklist view: Today outstanding</h2>
+    <br>
+    <label>Filter work by:</label>
+    <select>
+      <option>None</option>
+      <option>Type</option>
+      <option>Status</option>
+      <option>Caseworker</option>
+    </select>
 	</div>	
   <br>
 
@@ -28,55 +33,50 @@
 	<table class = "table">
   <thead>
     <tr>
-      <th>No</th>
-      <th>Type</th>
-      <th>..</th>
-      <th>..</th>
-      <th>Status</th>
-      <th>Who</th>
-      <th>Actions</th>
+      <th>No <img src="/static/images/sort.png" alt="some_text"></th>
+      <th>Type <img src="/static/images/sort.png" alt="some_text"></th>
+      <th>.. <img src="/static/images/sort.png" alt="some_text"></th>
+      <th>.. <img src="/static/images/sort.png" alt="some_text"></th>
+      <th>Status <img src="/static/images/sort.png" alt="some_text"></th>
+      <th>Who <img src="/static/images/sort.png" alt="some_text"></th>
       <th><a href="" class="button">select all</a></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
+      <td><a href="">1</a></td>
       <td>TP</td>
       <td>...</td>
       <td>...</td>
       <td>Draft</td>
       <td>Mary Jones</td>
-      <td><a href="/" >View</a><br><br><a href="/" >Reallocate</a></td>
       <td><input type="checkbox"/></td>
     </tr>
     <tr>
-      <td>2</td>
+      <td><a href="">2</a></td>
       <td>TP</td>
       <td>...</td>
       <td>...</td>
       <td>Draft</td>
       <td>Jeff Rodrigez</td>
-      <td><a href="/" >View</a><br><br><a href="/" >Reallocate</a></td>
       <td><input type="checkbox"/></td>
     </tr>
     <tr>
-      <td>3</td>
+      <td><a href="">3</a></td>
       <td>DLG</td>
       <td>...</td>
       <td>...</td>
       <td>Notices</td>
       <td>Brian Long</td>
-      <td><a href="/" >View</a><br><br><a href="/" >Reallocate</a></td>
       <td><input type="checkbox"/></td>
     </tr>
     <tr>
-      <td>4</td>
+      <td><a href="">4</a></td>
       <td>DFL</td>
       <td>...</td>
       <td>...</td>
       <td>New</td>
       <td>not allocated</td>
-      <td><a href="/">View</a><br><br><a href="/">Allocate</a></td>
       <td><input type="checkbox"/></td>
     </tr>
   </tbody>
@@ -84,48 +84,53 @@
 </div> 
 
 <br> 
-
+  
 <div class="full-width">
-  <label>Further worklist actions:</label>
-  <select>
-    <option>allocate multiple applications</option>
-    <option></option>
-    <option></option>
-    <option></option>
-    <option></option>
-    <option></option>
-    <option></option>
-    <option></option>
-  </select>
-  <form class="form-radio" action="">
-    <input type="radio" name="md-ref" id="no-md-ref" value="false">select from worklist<br>
-    <input type="radio" name="md-ref" id="md-ref" value="true">select type by worklist<br>
-    <input type="radio" name="md-ref" id="md-ref" value="true">select ...<br>
-    <input type="radio" name="md-ref" id="md-ref" value="true">charge allocation profile<br>
-    <input type="radio" name="md-ref" id="md-ref" value="true">other team directories and profile<br>
-    <input type="radio" name="md-ref" id="md-ref" value="true">allocate to team members<br>
-    <input type="radio" name="md-ref" id="md-ref" value="true">auto allocate to team members<br>
-  </form>
+  <!--<a href="/" class = "button-link">Charge allocation profile</a><br>  Should be done in HR system--> 
+  <label>Assign selected work to another team</label>
+      <select>
+        <option>Select DLR</option>
+        <option>Birkenhead</option>
+        <option>Coventry</option>
+        <option>Croydon</option>
+        <option>Durham</option>
+        <option>Fylde</option>
+        <option>Gloucester</option>
+        <option>Kingston upon Hull</option>
+        <option>Leicester</option>
+        <option>Nottingham</option>
+        <option>Peterborough</option>
+        <option>Plymouth</option>
+        <option>Telford</option>
+        <option>Wales</option>
+        <option>Weymouth</option>
+      </select>
+      <select>
+        <option>Select customer team</option>
+        <option>Customer Team 1</option>
+        <option>Customer Team 2</option>
+        <option>Customer Team 3</option>
+        <option>Customer Team 4</option>
+        <option>Customer Team 5</option>
+        <option>Customer Team 6</option>
+        <option>Customer Team 7</option>
+      </select>
+      <a href="" class="button">assign</a>
+    <br><br>
+    <a href="/" >Change automatic work allocation rules</a>
 </div>
 
-<h2><br><br></h2>
+<h2><br></h2>
 
 <div class="full-width">
-  <h2>Work allocation: Today outstanding</h2>
-
-    <br>
-    <h3>Team Profile</h3>
+  <h2>Team profile</h2>
     <div class="full-width">
       <br>
       <h3>Today</h3>
       <img src="/static/images/daily.png" alt="some_text"><br><br>   
       <h3>This week</h3>
       <img src="/static/images/weekly.png" alt="some_text">
-      <br><br>
-      <img src="/static/images/skill.png" alt="some_text">   
-      <br><br>
     </div>
-
 </div>  
 
 <h2><br><br></h2>
@@ -133,7 +138,15 @@
 <div class="full-width">
   <h2>Team production</h2>
   <br>
-  <img src="/static/images/team-production.jpg" alt="some_text">   
+  <div class="full-width">
+    <img src="/static/images/team-production.jpg" alt="some_text">   
+  </div>
+  <h2><br><br></h2>
+  <h2>Stocks</h2>
+  <br>
+  <div class="full-width">
+    <img src="/static/images/stocks.png" alt="some_text">   
+  </div>
 </div>
 
 {% endblock %}
