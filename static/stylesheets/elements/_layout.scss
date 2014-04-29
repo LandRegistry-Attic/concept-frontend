@@ -1,0 +1,115 @@
+// Layout
+// ==========================================================================
+
+#wrapper {
+  text-align: center;
+  padding-bottom: $gutter;
+  @include media(desktop) {
+    padding-bottom: $gutter*3;
+  }
+}
+
+#content {
+  text-align: left;
+  @include outer-block;
+  @include contain-floats; // TODO: awaiting merge into front end toolkit
+}
+
+// Use .outer-block to create a max width block of 1020px,
+// Use .inner-block to create padding that matches the header and footer
+
+.outer-block {
+  @include outer-block;
+  @extend %contain-floats;
+}
+.inner-block {
+  @include inner-block;
+  // background: pink; testing only
+}
+
+// Grid layout
+@mixin grid-wrapper {
+  @extend %contain-floats;
+  @include media(tablet) {
+    padding: 0 $gutter-half;
+  }
+}
+
+.grid-wrapper {
+  @include grid-wrapper;
+  // background: pink; testing only
+}
+
+.inner-block .grid-wrapper {
+  @include grid-wrapper;
+  margin: 0 -$gutter-half;
+  @include media(tablet) {
+    margin: 0 -$gutter;
+  }
+  // background: yellow; testing only
+}
+
+// Grid units take 100% width, unless a .grid-width class is applied
+.grid {
+  float: left;
+  width: 100%;
+}
+
+// Grid 'inner-block' aligns grid content with header and footer
+.grid .inner-block {
+  margin: 0;
+  @include media(tablet) {
+    padding: 0 $gutter-half;
+    margin: 0;
+  }
+}
+
+.grid-1-4 {
+  width: 100%;
+  @include media(tablet) {
+    width: 25%;
+  }
+}
+
+.grid-1-3 {
+  width: 100%;
+  @include media(tablet) {
+    width: 33.333333333%;
+  }
+}
+
+.grid-1-2 {
+  width: 100%;
+  @include media(tablet) {
+    width: 50%;
+  }
+}
+
+.grid-2-3 {
+  width: 100%;
+  @include media(tablet) {
+    width: 66.666666667%;
+  }
+}
+
+.grid-3-4 {
+  width: 100%;
+  @include media(tablet) {
+    width: 75%;
+  }
+}
+
+.grid-section {
+  clear: both;
+  @extend %contain-floats;
+  margin-bottom: $gutter-half;
+  @include media(tablet) {
+    margin-bottom: $gutter;
+  }
+}
+
+.divider {
+  border-top: 1px solid $border-colour;
+  padding-top: $gutter;
+  margin-top: $gutter;
+}

@@ -1,67 +1,77 @@
 {% extends "base.html" %}
 {% block landregistry_grid %}
 
-  <div class="breadcrumb">
-    <nav role="navigation">
-      <ol>
-      <li><a href="/">Home</a></li>
-      <li><a href="/solicitors/define_an_area">For solicitors and conveyancers</a></li>
-       </ol>
-    </nav>
+<div class="breadcrumb">
+  <nav role="navigation">
+    <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/solicitors/define_an_area">For solicitors and conveyancers</a></li>
+     </ol>
+  </nav>
+</div>
+
+<div class="solicitor-freeze-receipt">
+
+  <h1 class="heading-48">
+    <span class="heading-27">Land registry</span>
+    Freeze register
+    <span class="phase-block">
+      <span class="alpha">Concept</span>
+    </span>
+  </h1>
+
+  <div class="splash">
+    <h1>Done</h1>
+    <p class="lede">
+      You have frozen the title CS72510
+      <br>
+      to protetect a  purchase and a mortgage
+      <br>
+      <br>
+      Your reference number is  9SJND994
+      <br>
+      <br>
+      We have sent you a confirmation email
+    </p>
   </div>
 
-  <div class="solicitor-freeze-receipt">
-
-  <div class="text full-width">
-
-    <h1 class="heading-48">
-      <span class="heading-27">Land registry</span>
-      Freeze register
-      <span class="phase-block">
-        <span class="alpha">Concept</span>
-      </span>
-    </h1>
-
-  </div>
-    <div class="full-width">
-      <div class="splash">
-        <h1>Done</h1>
-        <p class="lede">You have frozen the title CS72510<br>to protetect a  purchase and a mortgage<br><br>Your reference number is  9SJND994<br><br>We have sent you a confirmation email
-        </p>
-      </div>
-    </div>
-    <div class="full-width">
-      <div class="grid grid-2-3">
-        <div class="metadata">
-          <div class="inner-block">
-            <div class="address">
-              <p>13 Isleworth Road<br>Exeter<br>EX4 1QU</p>
-            </div>
-            <dl>
-              <dt>Council</dt>
-              <dd>Exeter City Council</dd>
-              <dt>Type</dt>
-              <dd>Semi-detached house</dd>
-              <dt>Title number</dt>
-              <dd>CS72510</dd>
-            </dl>
-          </div>
+  <div class="grid-wrapper">
+    <div class="grid grid-1-2">
+      <div class="inner-block">
+        <div class="address">
+          <p>13 Isleworth Road<br>Exeter<br>EX4 1QU</p>
         </div>
+        <dl>
+          <dt>Council</dt>
+          <dd>Exeter City Council</dd>
+          <dt>Type</dt>
+          <dd>Semi-detached house</dd>
+          <dt>Title number</dt>
+          <dd>CS72510</dd>
+        </dl>
+        <p><a href="/properties/AB1234">See property details</a></p>
       </div>
-      <div class="grid grid-1-3">
-        <img src="/static/images/map.png" alt="some_text" width="300" height="300">   
-      </div>         
     </div>
-    <div class="full-width">
-      <p><a href="/properties/AB1234">See property details</a></p>
+    <div class="grid grid-1-2">
+      <div class="inner-block">
+        <img src="/static/images/map.png" alt="some_text" class="max-image">
+      </div>
     </div>
-      
-    <div class="full-width">
+  </div>
 
-      <p>Mortgage deed reference number:</p>
-      <p>MD123445234<br>Santander UK PLC (Co. Regn. No 2294747) of Deeds Services,<br>101 Midsummer Bourlevard, Milton Keynes MK9 1AA
-      </p>
+  <div class="grid-wrapper">
+    <div class="grid">
+      <div class="inner-block">
+
+        <div class="panel-indent">
+          <h3 class="heading-19">Mortgage deed reference number:</h3>
+          <p>MD123445234<br>Santander UK PLC (Co. Regn. No 2294747) of Deeds Services,<br>101 Midsummer Bourlevard, Milton Keynes MK9 1AA
+          </p>
+        </div>
+
+      </div>
     </div>
-    {% endblock %}
+  </div>
 
-
+</div>
+{% endblock %}
