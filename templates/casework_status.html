@@ -1,0 +1,152 @@
+{% extends "lr-base.html" %}
+{% block main_grid %}
+
+  <div class="team_leader_casework_status">
+
+  <div class="full-width">
+    <h1 class="heading-48">
+      <span class="heading-27">Land Registry</span>
+      Casework Status
+    </h1>
+   </div>
+
+	<div class="full-width">
+		<b>Team name:</b><input type="text" id="teamname" value="Customer Team 1"><br><br>
+	</div>
+
+ 	<div class="full-width">
+		<h2>Worklist view: Today outstanding</h2>
+    <br>
+    <label>Filter work by:</label>
+    <select>
+      <option>None</option>
+      <option>Type</option>
+      <option>Status</option>
+      <option>Caseworker</option>
+    </select>
+	</div>	
+  <br>
+
+  <div class="full-width">
+	<table class = "table">
+  <thead>
+    <tr>
+      <th>No <img src="/static/images/sort.png" alt="some_text"></th>
+      <th>Type <img src="/static/images/sort.png" alt="some_text"></th>
+      <th>Title number<img src="/static/images/sort.png" alt="some_text"></th>
+      <th>Status <img src="/static/images/sort.png" alt="some_text"></th>
+      <th>Who <img src="/static/images/sort.png" alt="some_text"></th>
+      <th><a href="" class="button">select all</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TP</td>
+      <td><a href="">DN1234</a></td>
+      <td>Draft</td>
+      <td>Mary Jones</td>
+      <td><input type="checkbox"/></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>TP</td>
+      <td><a href="">DN1235</a></td>
+      <td>Draft</td>
+      <td>Jeff Rodrigez</td>
+      <td><input type="checkbox"/></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>DLG</td>
+      <td><a href="">DN1236</a></td>
+      <td>Notices</td>
+      <td>Brian Long</td>
+      <td><input type="checkbox"/></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>DFL</td>
+      <td><a href="">DN1237</a></td>
+      <td>New</td>
+      <td>not allocated</td>
+      <td><input type="checkbox"/></td>
+    </tr>
+  </tbody>
+</table>
+</div> 
+
+<br> 
+  
+<div class="full-width">
+  <!--<a href="/" class = "button-link">Charge allocation profile</a><br>  Should be done in HR system--> 
+  <div class="grid grid-1-4">
+      <label>Assign selected work to another team</label>
+  </div>
+  <div class="grid grid-1-4">
+    <select>
+      <option>Select DLR</option>
+      <option>Birkenhead</option>
+      <option>Coventry</option>
+      <option>Croydon</option>
+      <option>Durham</option>
+      <option>Fylde</option>
+      <option>Gloucester</option>
+      <option>Kingston upon Hull</option>
+      <option>Leicester</option>
+      <option>Nottingham</option>
+      <option>Peterborough</option>
+      <option>Plymouth</option>
+      <option>Telford</option>
+      <option>Wales</option>
+      <option>Weymouth</option>
+    </select>
+  </div>
+  <div class="grid grid-1-2">
+    <select>
+      <option>Select customer team</option>
+      <option>Customer Team 1</option>
+      <option>Customer Team 2</option>
+      <option>Customer Team 3</option>
+      <option>Customer Team 4</option>
+      <option>Customer Team 5</option>
+      <option>Customer Team 6</option>
+      <option>Customer Team 7</option>
+    </select>
+    <br><br>
+    <a href="" class="button">Assign</a>
+    <br><br>
+  </div>
+  
+  <a href="/team-leader/allocation-rules" >Change automatic work allocation rules</a>
+</div>
+
+<h2><br></h2>
+
+<div class="full-width">
+  <h2>Team profile</h2>
+    <div class="full-width">
+      <h3>Today</h3>
+      <img src="/static/images/daily.png" alt="some_text"><br><br>   
+      <h3>This week</h3>
+      <img src="/static/images/weekly.png" alt="some_text">
+    </div>
+</div>  
+
+<h2><br><br></h2>
+
+<div class="full-width">
+  <h2>Team production</h2>
+  <br>
+  <div class="full-width">
+    <img src="/static/images/team-production.jpg" alt="some_text">   
+  </div>
+  <h2><br><br></h2>
+  <h2>Stocks</h2>
+  <br>
+  <div class="full-width">
+    <img src="/static/images/stocks.png" alt="some_text">   
+  </div>
+</div>
+
+{% endblock %}

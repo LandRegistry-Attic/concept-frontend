@@ -24,6 +24,9 @@
 // Full screen layout
 @import "modules/full-screen";
 
+// LR base styling
+@import "base/landregistry-base";
+
 // Adjust alignment for GOV.UK template
 // Awaiting merge of pull request
 // https://github.com/alphagov/govuk_template/pull/70
@@ -92,7 +95,7 @@
 @import "views/solicitor-initiate-exchange-done";
 @import "views/solicitor-define-area";
 @import "views/solicitor-define-area-conf";
-// @import "views/solicitor-freeze-interest"; removed as empty
+@import "views/solicitor-freeze-interest";
 @import "views/solicitor-freeze-mortgage";
 @import "views/solicitor-freeze-confirmation";
 @import "views/solicitor-freeze-receipt";
