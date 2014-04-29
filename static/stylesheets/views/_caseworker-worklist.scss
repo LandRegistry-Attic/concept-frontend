@@ -1,0 +1,33 @@
+.caseworker-worklist {
+
+
+	.filter-label, .prod-label {
+
+		margin-left: 25px;
+
+	}
+	
+	.worklist-detail {
+
+
+
+	}
+
+	.prod-progress[value] {
+
+	  /* Reset the default appearance */
+	  -webkit-appearance: none;
+	   appearance: none;
+
+	  width: 250px;
+	  height: 20px;
+
+	}
+
+	.prod-progress[value]::-webkit-progress-bar {
+	  background-color: #eee;
+	  border-radius: 2px;
+	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	}
+
+}
