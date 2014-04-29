@@ -20,6 +20,10 @@
 @import "base/_grid-unit.scss";
 @import "base/_grid-unit-widths.scss";
 
+// LR base styling
+@import "base/landregistry-base";
+
+
 #landregistry-wrapper {
   @import "base/grid";
   @import "base/lists";
@@ -60,6 +64,8 @@
   @import "views/solicitor-transfer-receipt";
   @import "views/caseworker-worklist";
 }
+
+
 
 // Body class
 @import "helpers/full-screen";
