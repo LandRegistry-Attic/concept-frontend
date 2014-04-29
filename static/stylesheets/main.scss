@@ -1,65 +1,104 @@
+// Import GOV.UK frontend toolkit
+
 @import "../govuk_frontend_toolkit/stylesheets/_colours.scss";
 @import "../govuk_frontend_toolkit/stylesheets/_conditionals.scss";
 @import "../govuk_frontend_toolkit/stylesheets/_css3.scss";
 @import "../govuk_frontend_toolkit/stylesheets/_measurements.scss";
+@import "../govuk_frontend_toolkit/stylesheets/_grid_layout.scss";
 @import "../govuk_frontend_toolkit/stylesheets/_typography.scss";
 @import "../govuk_frontend_toolkit/stylesheets/_shims.scss";
 @import "../govuk_frontend_toolkit/stylesheets/design-patterns/_alpha-beta.scss";
 @import "../govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss";
 
-// GDS patterns and helpers
-@import "base/_typography-base.scss";
-@import "base/_typography-general.scss";
-@import "base/_typography-headings.scss";
-@import "base/_forms.scss";
-@import "base/_buttons.scss";
+// Helpers
+@import "elements/helpers";
 
-@import "helpers/_phase-block.scss";
+// Reset
+@import "elements/reset";
 
-// GDS grid (pretty basic)
-@import "base/_grid-unit.scss";
-@import "base/_grid-unit-widths.scss";
+// Typography
+@import "elements/typography";
 
-#landregistry-wrapper {
-  @import "base/grid";
-  @import "base/lists";
-  @import "helpers/grid-wrapper";
-  @import "helpers/ida-signin";
-  @import "helpers/metadata-dl";
-  @import "helpers/table";
-  @import "helpers/_breadcrumb.scss";
-  @import "views/index";
-  @import "views/map";
-  @import "views/map-lasso-search";
-  @import "views/property";
-  @import "views/search";
-  @import "views/authorise-solicitor-start";
-  @import "views/authorise-solicitor-confirm";
-  @import "views/authorise-solicitor-done";
-  @import "views/solicitor-start";
-  @import "views/solicitor-case-list";
-  @import "views/solicitor-add-client";
-  @import "views/solicitor-find-property";
-  @import "views/solicitor-confirm-client";
-  @import "views/solicitor-add-client-done";
-  @import "views/solicitor-agree-to-transact";
-  @import "views/solicitor-agree-to-transact-done";
-  @import "views/solicitor-initiate-exchange";
-  @import "views/solicitor-initiate-exchange-done";
-  @import "views/solicitor-define-area";
-  @import "views/solicitor-define-area-conf";
-  @import "views/solicitor-freeze-interest";
-  @import "views/solicitor-freeze-mortgage";
-  @import "views/solicitor-freeze-confirmation";
-  @import "views/solicitor-freeze-receipt";
-  @import "views/solicitor-transfer-title";
-  @import "views/solicitor-transfer-property";
-  @import "views/solicitor-transfer-provisions";
-  @import "views/solicitor-transfer-mortgage";
-  @import "views/solicitor-transfer-confirmation";
-  @import "views/solicitor-transfer-receipt";
-  @import "views/caseworker-worklist";
-}
+// Layout
+@import "elements/layout";
+// Full screen layout
+@import "modules/full-screen";
 
-// Body class
-@import "helpers/full-screen";
+// Adjust alignment for GOV.UK template
+// Awaiting merge of pull request
+// https://github.com/alphagov/govuk_template/pull/70
+
+// Global cookie message
+@import "elements/template/cookie-message";
+// Footer alignment
+@import "elements/template/footer";
+
+
+// Modules
+// ==========================================================================
+
+// GOV.UK Page modules
+
+// Breadcrumb
+@import "modules/breadcrumb";
+// Phase tag
+@import "modules/phase-block";
+// IDA Signin
+@import "modules/ida-signin";
+
+// Check your answers
+@import "modules/check-answers";
+
+// Panels
+@import "elements/panels";
+
+// Colours
+@import "elements/colours";
+
+// Lists
+@import "elements/lists";
+@import "modules/metadata-dl";
+
+// Forms
+@import "elements/forms";
+
+// Buttons
+@import "elements/buttons";
+
+// Tables
+@import "elements/tables";
+
+
+// Page views
+// ==========================================================================
+
+@import "views/index";
+@import "views/map";
+@import "views/property";
+@import "views/search";
+@import "views/authorise-solicitor-start";
+@import "views/authorise-solicitor-confirm";
+@import "views/authorise-solicitor-done";
+@import "views/solicitor-start";
+@import "views/solicitor-case-list";
+@import "views/solicitor-add-client";
+@import "views/solicitor-find-property";
+@import "views/solicitor-confirm-client";
+@import "views/solicitor-add-client-done";
+@import "views/solicitor-agree-to-transact";
+@import "views/solicitor-agree-to-transact-done";
+@import "views/solicitor-initiate-exchange";
+@import "views/solicitor-initiate-exchange-done";
+@import "views/solicitor-define-area";
+@import "views/solicitor-define-area-conf";
+// @import "views/solicitor-freeze-interest"; removed as empty
+@import "views/solicitor-freeze-mortgage";
+@import "views/solicitor-freeze-confirmation";
+@import "views/solicitor-freeze-receipt";
+@import "views/solicitor-transfer-title";
+@import "views/solicitor-transfer-property";
+@import "views/solicitor-transfer-provisions";
+@import "views/solicitor-transfer-mortgage";
+@import "views/solicitor-transfer-confirmation";
+@import "views/solicitor-transfer-receipt";
+@import "views/caseworker-worklist";

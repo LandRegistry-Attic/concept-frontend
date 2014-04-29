@@ -1,0 +1,24 @@
+.phase-block {
+  
+  @extend %contain-floats;
+  display: inline !important;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  .alpha,
+  .beta {
+    display: inline;
+    vertical-align: middle;
+    float: none;
+  }
+  
+  .alpha {
+    @include phase-tag(alpha);
+  }
+  
+  .beta {
+    @include phase-tag(beta);
+  }
+  
+}

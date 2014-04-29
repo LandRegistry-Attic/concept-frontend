@@ -1,17 +1,13 @@
 .breadcrumb {
-  max-width: 1020px;
-  margin: 0 auto 35px auto;
+  width: 100%;
+  margin: 0 auto 45px auto;
 }
 
 .breadcrumb ol {
+  margin: 0;
   list-style: none;
-  margin: 0 $gutter-half;
   padding: 12px 0;
-  border-top: 10px solid $light-blue;
-  
-  @include media(tablet) {
-    margin: 0 $gutter;
-  }
+  border-top: 10px solid $govuk-blue;
 }
 
 .breadcrumb li {
@@ -20,7 +16,7 @@
   background: url(https://assets.digital.cabinet-office.gov.uk/static/separator-73822610794bc3a64871f144d93d6526.png) 100% 50% no-repeat;
   margin-right: 8px;
   padding-right: 16px;
-  
+
   &:last-child {
     background-image: none;
     margin-right: 0;
@@ -29,7 +25,7 @@
 
 .breadcrumb a {
   color: $black;
-  
+
   &:hover {
     color: $link-hover-colour;
   }
