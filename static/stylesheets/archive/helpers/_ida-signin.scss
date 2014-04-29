@@ -1,0 +1,30 @@
+.ida-signin {
+  border: 1px solid $grey-2;
+  outline: $gutter-half solid $grey-4;
+  margin: $gutter 0 $gutter*2 0;
+  padding: $gutter-half;
+  background-image: url('/static/images/padlock.png');
+  background-repeat: no-repeat;
+  background-position: 99% $gutter/3;
+
+  h3 {
+    font-weight: normal;
+    margin: $gutter/4 0 $gutter-half;
+  }
+  .transaction-name {
+    font-weight: 700;
+  }
+
+  .button {
+    display: block;
+    margin-right: 0;
+    @media (min-width: 641px) {
+      width: 48%;
+    }
+  }
+
+  .signin .button{
+    background-color: gray;
+  }
+
+}
