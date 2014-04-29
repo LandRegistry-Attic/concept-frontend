@@ -7,72 +7,112 @@
 	.register {
 		float: left;
 		margin-left: 10px;
-		width: 280px;
+		width: 29%;
 		height: 300px;
-		border: 1px solid $black;
+		border: 1px solid $border-colour;
 
 	}
 
 	.draft-register {
 		float: left;
-		width: 280px;
+		width: 48%;
 		height: 300px;
-		border: 1px solid $black;
+		border: 1px solid $border-colour;
 
 	}	
 
 	.left-container {
 		float: left;
 		margin-left: 5px;
-		width: 280px;
+		width: 20%;
 		height: 300px;
 		
 	}
 
 	.daylist {
 		vertical-align: middle;
-		width: 250px;
+		width: 100%;
 		height: 95px;
 		margin: 0px 5px 0px 5px;
-		border: 1px solid $black;
+		border: 1px solid $border-colour;
 	}
-	.gold {
+	
+	.gold, .fee {
 		vertical-align: middle;
-		width: 250px;
+		width: 100%;
 		height: 95px;
 		margin: 5px 5px 0px 5px;
-		border: 1px solid $black;
+		border: 1px solid $border-colour;
 	}
-	.fee {
-		vertical-align: middle;
-		width: 250px;
-		height: 95px;
-		margin: 5px 5px 0px 5px;
-		border: 1px solid $black;
-	}
+
 
 	.draft-tp {
 		float: left;
-		width: 280px;
+		width: 48%;
 		height: 300px;
-		border: 1px solid $black;
+		border: 1px solid $border-colour;
 
 	}
 
 	.current-tp {
 		float: left;
 		margin-left: 10px;		
-		width: 280px;
+		width: 29%;
 		height: 300px;
-		border: 1px solid $black;
+		border: 1px solid $border-colour;
 
 	}	
 	.evidence {
 		float: left;
 		margin-left: 10px;		
-		width: 280px;
+		width: 20%;
 		height: 300px;
-		border: 1px solid $black;
+		border: 1px solid $border-colour;
 
 	}		
+
+	.h-centre {
+		align: centre;
+		text-align: center;
+
+	}
+	.action-buttons {
+		margin-left: 10px;
+		padding-top: 10px;
+	}
+	.small-textarea {
+		width: 95%;
+		height: 85%;
+		border: none;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		margin-left: 5px;		
+	}
+	.img-draft-tp {
+		width: 95%;
+		height: 70%;
+		margin-left: 10px;
+	}
+	.bottom-buttons {
+		display: inline-block;
+	    width: 100%;
+	    text-align: center; 			
+	}
+
+
+	ul {
+		font-size: 12pt;
+		margin-left: 10px;
+	}
+
+	textarea {
+		width: 95%;
+		height: 70%;
+		border: none;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		margin-left: 5px;
+	}
+
+
 }
