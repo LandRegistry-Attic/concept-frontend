@@ -6,17 +6,16 @@
 
 	.register {
 		float: left;
-		margin-left: 10px;
-		width: 29%;
-		height: 300px;
+		width: 96.5%;
+		height: 350px;
 		border: 1px solid $border-colour;
 
 	}
 
 	.draft-register {
 		float: left;
-		width: 48%;
-		height: 300px;
+		width: 75%;
+		height: 350px;
 		border: 1px solid $border-colour;
 
 	}	
@@ -26,39 +25,44 @@
 		margin-left: 5px;
 		width: 20%;
 		height: 300px;
+	
 		
 	}
 
 	.daylist {
 		vertical-align: middle;
 		width: 100%;
-		height: 95px;
+		height: 112px;
 		margin: 0px 5px 0px 5px;
 		border: 1px solid $border-colour;
+
 	}
 	
 	.gold, .fee {
 		vertical-align: middle;
 		width: 100%;
-		height: 95px;
+		height: 112px;
 		margin: 5px 5px 0px 5px;
 		border: 1px solid $border-colour;
+
 	}
 
+	/* .sidebar {
+	position: fixed; 	
+	} */
 
 	.draft-tp {
 		float: left;
-		width: 48%;
-		height: 300px;
+		width: 75%;
+		height: 350px;
 		border: 1px solid $border-colour;
 
 	}
 
 	.current-tp {
-		float: left;
-		margin-left: 10px;		
-		width: 29%;
-		height: 300px;
+		float: left;		
+		width: 96.5%;
+		height: 350px;
 		border: 1px solid $border-colour;
 
 	}	
@@ -66,7 +70,7 @@
 		float: left;
 		margin-left: 10px;		
 		width: 20%;
-		height: 300px;
+		height: 350px;
 		border: 1px solid $border-colour;
 
 	}		
@@ -90,9 +94,14 @@
 	}
 	.img-draft-tp {
 		width: 95%;
-		height: 70%;
+		height: 75%;
 		margin-left: 10px;
 	}
+	.img-current-tp {
+		width: 95%;
+		height: 90%;
+		margin-left: 20px;
+	}	
 	.bottom-buttons {
 		display: inline-block;
 	    width: 100%;
