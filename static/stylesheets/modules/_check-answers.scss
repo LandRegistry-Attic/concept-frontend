@@ -3,6 +3,19 @@
   padding-top: $gutter-half;
 }
 
+.grid-wrapper.check-answers {
+  @include media(tablet) {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.grid-wrapper.check-answers .inner-block {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .check-answers-last {
   border-bottom: 1px solid $border-colour;
 }

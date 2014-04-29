@@ -19,15 +19,19 @@ $(document).ready(function() {
     });
 
     // Add/remove selected class
-    $('.block-label').find('input[type=radio], input[type=checkbox]').click(function() {
+    $('.block-label').click(function() {
 
       $('input:not(:checked)').parent().removeClass('selected');
       $('input:checked').parent().addClass('selected');
 
-      $('.toggle-content').hide();
+      if ($(this).hasClass('selected')) {
+        var target = $(this).attr('data-target');
+        $('#'+target).show();
+      }else {
+        var target = $(this).attr('data-target');
+        $('#'+target).hide();
+      }
 
-      var target = $('input:checked').parent().attr('data-target');
-      $('#'+target).show();
 
     });
 

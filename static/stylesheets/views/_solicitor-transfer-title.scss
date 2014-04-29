@@ -8,7 +8,7 @@
 	}
 
 	.form-indent {
- 		
+
  		display: block;
  		margin-bottom: 5px;
  		margin-left: 20px;
@@ -49,10 +49,8 @@
   }
 
   .progress-indicator {
-    
-    margin-bottom: $gutter;
-    
-    ol, 
+
+    ol,
     ul{
       @extend %contain-floats;
       border-bottom: 1px solid;
@@ -61,7 +59,7 @@
       list-style-type: none;
       padding-left: 0;
     }
-    
+
     li {
       color: $secondary-text-colour;
       padding: 12px 0 5px 0;
@@ -69,7 +67,7 @@
     a {
       text-decoration: none;
     }
-    
+
     .active {
       border-bottom: 5px solid $text-colour;
       color: $text-colour;
@@ -78,11 +76,11 @@
       color: $text-colour;
       text-decoration: none;
     }
-    
+
   }
 
   .progress-indicator-horizontal {
-    
+
     li {
       @include media(tablet) {
         float: left;
@@ -94,20 +92,20 @@
         margin-bottom: -5px;
       }
     }
-    
+
   }
 
   .progress-indicator-vertical {
-    
+
     // Reduce width for desktop (for this example only)
     @include media(tablet) {
-      width: 50%; 
+      width: 50%;
     }
-    
+
     span {
       float: right;
     }
-    
+
   }
-  
+
 }

@@ -37,14 +37,18 @@
 
 .grid-wrapper {
   @include grid-wrapper;
+  @include media(tablet) {
+    margin-bottom: 5px;
+  }
 }
 
 // Reset grid padding if inside inner block
-.inner-block .grid-wrapper {
+.inner-block .grid-wrapper,
+.inner-block .full-width {
   @include grid-wrapper;
-  margin: 0px;
   @include media(tablet) {
-    margin: 0px (-$gutter);
+    margin-left: (-$gutter);
+    margin-right: (-$gutter);
   }
 }
 
@@ -121,4 +125,10 @@
   border-top: 1px solid $border-colour;
   padding-top: $gutter;
   margin-top: $gutter;
+}
+
+.align-right {
+  @include media(tablet) {
+    text-align: right;
+  }
 }
