@@ -320,6 +320,10 @@ def solicitor_transfer_receipt():
 def team_leader_casework_status():
     return render_template('casework_status.html')
 
+@app.route('/team-leader/allocation-rules') #route to a team leader's casework allocation view.
+def team_leader_allocation_rules():
+    return render_template('allocation_rules.html')    
+
 @app.route('/caseworker/worklist') # route to a caseworker's worklist view
 def caseworker_worklist():
     return render_template('worklist.html')

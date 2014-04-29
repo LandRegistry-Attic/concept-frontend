@@ -14,75 +14,45 @@
 
   <h1 class="heading-48">
     <span class="heading-27">Land registry</span>
-    Find a property
+    Find property information
     <span class="phase-block">
       <span class="alpha">Concept</span>
     </span>
   </h1>
 
-  <div class="grid-wrapper">
-    <div class="grid grid-2-3">
-      <div class="inner-block">
+  <div class="full-width"> <!--row -->
+    <p class="lede">You can search the Land Registry for information on property or land such as title number, lease and purchase history. Interactive maps are also available.</p>
 
-        <p class="lede">Find out details about a property, such as:</p>
+    <form action="/search" method="get">
+      <fieldset>
+        <div class="form-group">
+          <label class="form-label" for="q">Search for property or land </label>
+          <p class="form-hint">e.g. postcode, street name, town or city</p>
+          <input type="text" class="form-control" id="q" name="q" />
+        </div>
+      </fieldset>
 
-        <ul class="list-bullet">
-          <li>The Land registry title number</li>
-          <li>Prices paid for the property in the past</li>
-          <li>A map of the property</li>
-          <li>Lease details</li>
-        </ul>
-
-        <form action="/search" method="get">
-
-          <fieldset>
-            <div class="form-group">
-              <label class="form-label-bold" for="q">Search the land registry</label>
-              <p class="form-hint">E.g. postcode, city or town, street name</p>
-              <input type="text" class="form-control" id="q" name="q" />
-            </div>
-          </fieldset>
-
-          <div class="form-group">
-            <button type="submit" class="button">Search</button>
-          </div>
-
-          </form>
-
+      <div class="form-group">
+        <button type="submit" class="button">Search</button> You can also search using <a href="/map">advanced map based tools</a>.
       </div>
-    </div>
-    <div class="grid grid-1-3">
-      <div class="inner-block">
+    </form>
 
-        <p><a href="/authorise-solicitor">Authorise a solicitor</a></p>
+    <h2>Before you start</h2>
 
-      </div>
-    </div>
+    <p>To access the full details of a property you need to <a href="#">create an identity profile</a>.<br>
+      <a href="#">Already registered?</a></p>
+    <p>Available in England and Wales only</p>
   </div>
 
-  <div class="grid-wrapper alternate-routes">
-    <div class="grid">
-      <div class="inner-block">
-        <div class="divider"></div>
-      </div>
-    </div>
-    <div class="grid grid-1-2">
-      <div class="inner-block">
-
-        <h2>
-          Other ways to find property
-        </h2>
-
-      </div>
-    </div>
-    <div class="grid grid-1-2">
-      <div class="inner-block">
-
-        <p>
-          You can also search using <a href="/map">advanced map based tools</a>.
-        </p>
-
-      </div>
+  <div class="full-width">
+    <div class="alternate-routes">
+      <h2 class="grid grid-1-2">Help with your property</h2>
+      <h2 class="grid grid-1-2">For solicitors and conveyancers</h2>
+      <p class="grid grid-1-2"><a href="#">Authorise a solicitor or conveyancer</a><br>
+        <a href="#">Sign up for alerts or notifications</a><br>
+        <a href="#">Register a new title</a><br>
+        <a href="#">Change the register</a></p>
+      <p class="grid grid-1-2"><a href="#">Sign in with GOV.UK</a></p>
     </div>
   </div>
 

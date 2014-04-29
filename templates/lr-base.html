@@ -1,0 +1,29 @@
+<html>
+
+	<head>
+	  <link href="{{ asset_path }}stylesheets/govuk-template-print.css?0.7.1" media="print" rel="stylesheet" type="text/css"/>
+	  {% assets "css_main" %}
+	    <link href="{{ ASSET_URL }}" media="all" rel="stylesheet" type="text/css">
+	  {% endassets %}
+	</head>
+
+	<body class="landregistry-base">
+
+	  <div class="landregistry-heading">
+		<img id="logo-head" title="Land Registry Logo" alt="Land Registry Logo" src="/static/images/lr-logo.png" />	
+	  </div>
+
+	  <div id="landregistry-wrapper">
+	    <main id="content" class="landregistry-content">
+	        <div class="grid-wrapper">
+	          {% block main_grid %}{% endblock %}
+	        </div>
+	    </main>
+	  </div>
+
+	  <div class="landregistry-footer">	
+	  </div>
+
+	</body>
+
+</html>
