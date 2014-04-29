@@ -25,7 +25,6 @@ BUYER_RECIPIENT_PHONE_NO = os.environ.get('BUYER_RECIPIENT_PHONE_NO')
 app = Flask(__name__)
 app.secret_key='dsadsadsa784932bh43nbjkfd890vd'
 
-
 # Auth
 if os.environ.get('BASIC_AUTH_USERNAME'):
     app.config['BASIC_AUTH_USERNAME'] = os.environ['BASIC_AUTH_USERNAME']
@@ -80,6 +79,16 @@ def property(property_id):
         )
     else:
         return abort(404)
+
+@app.route('/properties/<property_id>/title')
+def property_title(property_id):
+    path = os.path.join(os.path.dirname(__file__), 'titles/BD251159.json')
+    with open(path) as fh:
+        title = json.load(fh)
+    return render_template("property_title.html",
+        title=title,
+        title_extent_json=json.dumps(title.get('extent', {}))
+    )
 
 @app.route('/properties')
 def properties():

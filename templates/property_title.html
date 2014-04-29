@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block landregistry_grid %}
+  <div class="breadcrumb">
+    <nav role="navigation">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Property</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="property-title">
+    <div class="text full-width">
+      <h1>Title</h1>
+
+      <h2>Property Register</h2>
+      {% for entry in title['property_register'] %}
+        <p>{{ entry.text|replace("\n", "<br>")|safe }}</p>
+      {% endfor %}
+      <h2>Proprietorship Register</h2>
+      {% for entry in title['proprietorship_register'] %}
+        <p>{{ entry.text|replace("\n", "<br>")|safe }}</p>
+      {% endfor %}
+      <h2>Charges Register</h2>
+      {% for entry in title['charges_register'] %}
+        <p>{{ entry.text|replace("\n", "<br>")|safe }}</p>
+      {% endfor %}
+  </div>
+{% endblock %}
