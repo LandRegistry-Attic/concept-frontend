@@ -13,91 +13,150 @@
   <div class="solicitor-case-list">
 
     <div class="full-width">
+      <div class="grid grid-1-2">
+        <h1 class="heading-48">
+          <span class="heading-27">Land registry</span>
+          Case list
+          <span class="heading-27">Jones-Patterson & Co</span>
+        </h1>
+      </div>
 
-      <h1 class="heading-48">
-        Your cases
-        <span class="phase-block">
-          <span class="alpha">Concept</span>
-        </span>
-      </h1>
-
-      <p><a href="/solicitors/add-client" class="button">Add new client</a></p>
-
+      <div class="grid grid-1-2" align="right">
+        Logged in as solicitor: <a href="#">David Jennings</a><br>
+        <a href="#">Your settings</a><br>
+        <a href="#">Sign out</a><br>
+        <br><a href="/solicitors/add-client" class="button">Add new client</a><br>
+        Search <input type="text" class="form-control"> <a href="#" class="button">Go</a>
+      </div>
     </div>
 
     <ul class="results">
+      <li class="result">
+        <div class="grid grid-1-4">
+          <h3>Buying</h3>
+        </div>
+        <div class="grid grid-1-4">
+          <a href="#">13 Isleworth Road, Exeter EX4 1QU</a><br>
+          Client: Paul John Dawkins
+        </div>
+        <div class="grid grid-1-4"><p></p></div>
+        <div class="grid grid-1-4" align="right">
+            <a href="#" class="button">Protect an interest</a>
+        </div>
+      </li>
 
       <li class="result">
-        <div class="grid grid-2-3">
-          <h3>Ms Fiona Wright</h3>
-          <p>26 The Stow, Harlow</p>
-          <p>Title number <a href="#">EX802884</a></p>
+        <div class="grid grid-1-4">
+          <h3>Selling</h3>
         </div>
-        <div class="grid grid-1-3">
+        <div class="grid grid-1-4">
+          <a href="#">58 Ambertyne Road, Honiton EX13 6FD</a><br>
+          Client: Andrea Peters
+        </div>
+        <div class="grid grid-1-4"><p></p></div>
+        <div class="grid grid-1-4" align="right">
           {% if session.user == "seller-solicitor-agree" %}
-            <a href="/solicitors/agree-to-transact" class="button">Agree to transact and share</a>
+            <a href="/solicitors/agree-to-transact" class="button">Agree to transact</a>
           {% else %}
-            <a href="/solicitors/initiate-exchange" class="button">Initiate electronic exchange</a>
+            <a href="/solicitors/initiate-exchange" class="button">Initiate transfer</a>
           {% endif %}
         </div>
       </li>
 
-      <li class="result complete">
-        <div class="grid grid-2-3">
-          <h3>Ms Jane Knight</h3>
-          <p>40 The Hill, Harlow</p>
-          <p>Title number <a href="#">EX803885</a></p>
+      <li class="result">
+        <div class="grid grid-1-4">
+          <h3>Selling</h3>
         </div>
-        <div class="grid grid-1-3">
-          <span class="flag">Complete</span>
+        <div class="grid grid-1-4">
+          <a href="#">40 St Katherines Rd, Exeter EX4 7JW</a><br>
+          Client: Jeremy Chee
         </div>
-      </li>
-
-      <li class="result active">
-        <div class="grid grid-2-3">
-          <h3>Mr Kurt Vonnegut</h3>
-          <p>10 Field Road, Harlow</p>
-          <p>Title number <a href="#">EX802883</a></p>
-        </div>
-        <div class="grid grid-1-3">
-          <span class="flag">Transfer application pending</span>
+        <div class="grid grid-1-4" align="center"><b>Register frozen</b><br>9 days left</div>
+        <div class="grid grid-1-4" align="right">
+            <a href="#" class="button">Define area</a>
         </div>
       </li>
 
       <li class="result">
-        <div class="grid grid-2-3">
-          <h3>Mr Thomas Stephens</h3>
-          <p>105 Stort Tower, Great Plumtree, Harlow</p>
-          <p>Title number <a href="#">EX851830</a></p>
+        <div class="grid grid-1-4">
+          <h3>Buying</h3>
         </div>
-        <div class="grid grid-1-3">
-          <a href="/solicitors/initiate-exchange" class="button">Initiate electronic exchange</a>
+        <div class="grid grid-1-4">
+          <a href="#">183 Mincinglake Rd, Exeter EX4 7DS</a><br>
+          Client: Jeremy Chee
+        </div>
+        <div class="grid grid-1-4" align="center"><b>Register frozen</b><br>23 days left</div>
+        <div class="grid grid-1-4" align="right">
+            <a href="#" class="button">Apply to transfer</a>
         </div>
       </li>
 
-      <li class="result complete">
-        <div class="grid grid-2-3">
-          <h3>Ms Leslie Smith</h3>
-          <p>59-60 The Stow, Harlow</p>
-          <p>Title number <a href="#">EX800081</a></p>
+      <li class="result">
+        <div class="grid grid-1-4">
+          <h3>Buying</h3>
         </div>
-        <div class="grid grid-1-3">
-          <span class="flag">Complete</span>
+        <div class="grid grid-1-4">
+          <a href="#">Flat 4, Oak House, Grapple Road, Exeter EX4 52Y</a><br>
+          Client: Paul John Dawkins
+        </div>
+        <div class="grid grid-1-4"><p></p></div>
+        <div class="grid grid-1-4" align="right">
+            <a href="#" class="button">Apply to transfer</a>
+        </div>
+      </li>
+
+      <li class="result">
+        <div class="grid grid-1-4">
+          <h3>Selling</h3>
+        </div>
+        <div class="grid grid-1-4">
+          <a href="#">16 New North Rd, Exeter EX4 4HF</a><br>
+          Client: Victoria & Ian Stott
+        </div>
+        <div class="grid grid-1-4"><p></p></div>
+        <div class="grid grid-1-4" align="right">
+            <a href="#" class="button">Initiate transfer</a>
         </div>
       </li>
 
       <li class="result active">
-        <div class="grid grid-2-3">
-          <h3>Ms Toni Morrison</h3>
-          <p>23 Halling Hill, Harlow and storage shed</p>
-          <p>Title number <a href="#">EX839956</a></p>
+        <div class="grid grid-1-4">
+          <h3>Buying</h3>
         </div>
-        <div class="grid grid-1-3">
-          <span class="flag">Register frozen</span>
+        <div class="grid grid-1-4">
+          <a href="#">10 Field Road, Harlow</a><br>
+          Client: Mr Kurt Vonnegut
+        </div>
+        <div class="grid grid-1-4"><p></p></div>
+        <div class="grid grid-1-4" align="right">
+          <span class="flag">Transfer application pending</span>
         </div>
       </li>
 
+      <li class="result complete">
+        <div class="grid grid-1-4">
+          <h3>Selling</h3>
+        </div>
+        <div class="grid grid-1-4">
+          <a href="#">40 The Hill, Harlow</a><br>
+          Client: Ms Jane Knight
+        </div>
+        <div class="grid grid-1-4"><p></p></div>
+        <div class="grid grid-1-4" align="right">
+          <span class="flag">Complete</span>
+        </div>
+      </li>
     </ul>
 
+  <div class="full-width">
+    <div class="grid grid-1-4">
+      <a href="#">Archive</a>
+    </div>
+
+    <div class="grid grid-1-2"><p></p></div>
+
+    <div class="grid grid-1-4" align="right">
+      1  <a href="#">2</a>  <a href="#">3</a>  <a href="#">4</a>  <a href="#">5</a> <a href="#">next</a>
+    </div>
   </div>
 {% endblock %}
