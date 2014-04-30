@@ -10,30 +10,57 @@
   </nav>
 </div>
 
-<div class="index">
-  <div class="text full-width">
-    <h1 class="heading-48">
-      <span class="heading-27">Step 1 of 2</span>
-      Freeze register
-    </h1>
+<h1 class="heading-48">
+  <span class="heading-27">Land registry</span>
+  Protect an interest
+</h1>
 
-    <p class="lede">I am protecting a:</p>
-        <form class="form-checkbox" action="">
-        <input type="checkbox" name="protecting" value="Purchase">Purchase<br>
-        <input type="checkbox" name="protecting" value="Mortgage">Mortgage<br>
-        <input type="checkbox" name="protecting" value="Lease">Lease<br>
-        <input type="checkbox" name="protecting" value="Easement">Easement<br>
-        <input type="checkbox" name="protecting" value="Other">Other<br>
-        </form>
-    <p>
-        <input type="text" class="form-control" id="q" name="q" />
-    </p>
 
-    <div class="form-group">
-      <a href="/solicitors/freeze_mortgage" class="button">Next</a>
-      <a href="/">Save and return later</a> 
+<form action="">
+
+  <h2 class="heading-24">What are you protecting?</h2>
+
+  <div class="form-group-related">
+    <label for="radio-purchase" class="block-label">
+      <input id="radio-purchase" type="radio" name="radio-group" value="">
+      A purchase
+    </label>
+
+    <label for="radio-mortagage" class="block-label">
+      <input id="radio-mortagage" type="radio" name="radio-group" value="">
+      A mortgage
+    </label>
+
+    <label for="radio-lease" class="block-label">
+      <input id="radio-lease" type="radio" name="radio-group" value="">
+      A lease
+    </label>
+
+    <label for="radio-easement" class="block-label">
+      <input id="radio-easement" type="radio" name="radio-group" value="">
+      An easement
+    </label>
+
+    <label for="radio-other" class="block-label" data-target="example-other">
+      <input id="radio-other" type="radio" name="radio-group" value="">
+      Other
+    </label>
+  </div>
+
+  <div class="form-group">
+    <div class="panel-indent toggle-content" id="example-other">
+      <label class="form-label" for="protecting-other">I am protecting: </label>
+      <input type="text" class="form-control" id="protecting-other">
     </div>
   </div>
-</div>
+
+  <div class="form-group">
+    <ul>
+      <li><a href="/solicitors/freeze_mortgage" class="button">Continue</a></li>
+      <li><a href="/">Save and return later</a></li>
+    </ul>
+  </div>
+
+</form>
 
 {% endblock %}

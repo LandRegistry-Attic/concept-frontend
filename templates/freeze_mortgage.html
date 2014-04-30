@@ -12,68 +12,83 @@
 
 <div class="solicitor-freeze-mortgage">
   <div class="full-width">
-    <h1 class="heading-48">
-      <span class="heading-27">Step 2 of 2</span>
-      Freeze register
-    </h1>
 
+  <h1 class="heading-48">
+    <span class="heading-27">Land registry</span>
+    Protect an interest
+  </h1>
 
-    <form class="form-radio" action="">
-      <input type="radio" name="md-ref" id="no-md-ref" value="false">No mortgage deed reference<br>
-      <p> <label class="form-hint-indent">E.g. private mortgage</label> </p>
-      <input type="radio" name="md-ref" id="md-ref" value="true">Mortgage deed reference number<br>
-      <p> <input type="text" class="form-control-indent" id="md-ref-no" name="md-ref-no" /> </p>
-      <p class="p-indent" id="lender-info"></p>
-    </form>
+  <form action="" method="post" class="form form-group-example">
 
-    <br><br>
+    <div class="form-group">
+      <fieldset class="inline">
+        <legend class="heading-24">Do you have a mortage deed reference?</legend>
+        <div class="form-group form-group-related">
+          <label for="radio-indent-1" class="block-label" data-target="mortagage-deed-reference">
+            <input id="radio-indent-1" type="radio" name="radio-indent-group" value="Yes">
+            Yes
+          </label>
+          <label for="radio-indent-2" class="block-label">
+            <input id="radio-indent-2" type="radio" name="radio-indent-group" value="No">
+            No
+          </label>
+        </div>
 
+        <div class="panel-indent toggle-content" id="mortagage-deed-reference">
+          <div class="form-group-related">
+            <label for="md-ref-no" class="form-label">Mortage deed reference</label>
+            <input type="text" class="form-control" id="md-ref-no" name="md-ref-no">
+          </div>
+          <p class="js-show-address">
+          </p>
+        </div>
+      </fieldset>
+    </div>
 
-    <a href="/solicitors/freeze_confirmation" class="button">Next</a>
+    <div class="form-group">
+      <a href="/solicitors/freeze_confirmation" class="button">Continue</a><br>
+      <a href="/">Save and return later</a>
+    </div>
 
-    <a href="/">Save and return later</a> 
-  </div>
+  </form>
+
 </div>
 
 {% endblock %}
 
 {% block extra_js %}
   <script>
+
     $(document).ready(function () {
-        var md_ref1 = "MD1234"; 
-        setInterval(checkTextboxChanged, 1);
 
-        function checkTextboxChanged() {
-            var currentValue = $("#md-ref-no").val();
-            if (currentValue == md_ref1) {
-              
-                TextboxChanged();
-            }
+      // Sample code
+      var md_ref1 = "MD1234";
+      var md_input = $('#md-ref-no');
+
+      // Sample address to display
+      function show_address(){
+        var address = "Santander UK PLC (Co. Regn. No 2294747) of Deeds Services, <br> 101 Midsummer Bourlevard, Milton Keynes MK9 1AA";
+        $('.js-show-address').html(address);
+      }
+
+      function hide_address() {
+        $('.js-show-address').html("");
+      }
+
+      hide_address();
+
+      setInterval(checkTextboxChanged, 1);
+
+      function checkTextboxChanged() {
+        var currentValue = $(md_input).val();
+        // If a sample code is entered, bring up associated adddress
+        if (currentValue == md_ref1) {
+          show_address();
+        }else {
+          hide_address();
         }
+      }
 
-        function TextboxChanged() {
-            document.getElementById("lender-info").innerHTML = "Santander UK PLC (Co. Regn. No 2294747) of Deeds Services, <br> 101 Midsummer Bourlevard, Milton Keynes MK9 1AA";
-        }
-
-        function enableMdInput() {
-            document.getElementById('md-ref-no').disabled = false;
-       
-        }
-
-        function disableMdInput() {
-            document.getElementById('md-ref-no').value = "";
-            document.getElementById("lender-info").innerHTML = "";  
-            document.getElementById('md-ref-no').disabled = true;
-        }
-
-        var ex1 = document.getElementById('no-md-ref');
-        var ex2 = document.getElementById('md-ref');
-
-        ex1.onclick = disableMdInput;
-        ex2.onclick = enableMdInput;
-
-        window.onload = disableMdInput;
-
-    });      
+    });
   </script>
 {% endblock %}

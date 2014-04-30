@@ -7,10 +7,12 @@
 {% endblock %}
 {% block content %}
   <div id="landregistry-wrapper">
-    <main id="content" class="landregistry-content">
+    <main id="wrapper" role="main" class="landregistry-content">
       {% block landregistry_content %}
-        <div class="grid-wrapper">
-          {% block landregistry_grid %}{% endblock %}
+        <div id="content">
+          <div class="inner-block">
+            {% block landregistry_grid %}{% endblock %}
+          </div>
         </div>
       {% endblock %}
     </main>
@@ -27,6 +29,7 @@
   <script src="/static/javascripts/vendor/ol.js" type="text/javascript"></script>
   <script src="/static/javascripts/map-search.js" type="text/javascript"></script>
   <script src="/static/javascripts/single-extent-map.js" type="text/javascript"></script>
-  <script src="/static/javascripts/map-search-results.js" type="text/javascript"></script>  
+  <script src="/static/javascripts/map-search-results.js" type="text/javascript"></script>
+  <script src="/static/javascripts/elements.js"></script>
   {% block extra_js %}{% endblock %}
 {% endblock %}
