@@ -79,7 +79,8 @@
     <div class="headings">
       <p class="document-type">Land Registry</p>
       <h1>Official copy of the register for title number <a href="/properties/{{ title['title_number'] }}">{{ title['title_number'] }}</a></h1>
-      <p>Published <abbr class="published-at date" title="2014-04-23T09:33:23+01:00">23 April 2014 09:22:23 GMT</abbr></p>
+      <p><strong>Address:</strong> {{ title['address'][0] }}, {{ title['address'][1] }}</p>
+      <p><strong>Last updated:</strong> <abbr class="published-at date" title="2014-04-23T09:33:23+01:00">23 April 2014 09:22:23 GMT</abbr></p>
 
       <address>
         <div class="h-card">
