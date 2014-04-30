@@ -110,22 +110,22 @@
       This extract shows information current on {{ title['published_date'] }} and does not take account of any application made after that time even if pending in the Land Registry when this extract was issued. 
     </p>
 
-    <h2 id="property-register"><span class="number">A. </span>Property Register</h2>
+    <h2 id="property-register"><span class="number">2. </span>Property Register</h2>
       {% for entry in title['property_register'] %}
         <p><code>{{ entry.text|replace("\n", "<br>")|safe }}</code></p>
       {% endfor %}
 
-      <h2 id="proprietorship-register"><span class="number">B. </span>Proprietorship Register</h2>
+      <h2 id="proprietorship-register"><span class="number">3. </span>Proprietorship Register</h2>
       {% for entry in title['proprietorship_register'] %}
         <p><code>{{ entry.text|replace("\n", "<br>")|safe }}</code></p>
       {% endfor %}
 
-      <h2 id="charges-register"><span class="number">C. </span>Charges Register</h2>
+      <h2 id="charges-register"><span class="number">4. </span>Charges Register</h2>
       {% for entry in title['charges_register'] %}
         <p><code>{{ entry.text|replace("\n", "<br>")|safe }}</code></p>
       {% endfor %}
 
-      <h2 id="history"><span class="number">X.</span>History of this document</h2>
+      <h2 id="history"><span class="number">5.</span>History of this document</h2>
           <p>
           <ul>
             <li>
