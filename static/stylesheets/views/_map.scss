@@ -21,4 +21,27 @@
       @include bold-24;
     }
   }
+
+  .start-drawing-button {
+    position: absolute;
+    right: $gutter;
+    bottom: $gutter;
+    &:active {
+      top: inherit;
+      bottom: $gutter - 2;
+    }
+  }
+
+  .drawing-help {
+    position: absolute;
+    bottom: $gutter;
+    right: $gutter;
+    width: 250px;
+    background: white;
+    padding: $gutter;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    border: $border-colour;
+    display: none;
+    text-align: left;
+  }
 }

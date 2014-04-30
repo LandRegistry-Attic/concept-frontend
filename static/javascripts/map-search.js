@@ -4,6 +4,9 @@
   var MapSearch = window.LR.MapSearch = function(options) {
     this.$el = $(options.el);
     this.$infoEl = $(options.infoEl);
+    this.$startDrawingButton = $(options.startDrawingButton);
+    this.$stopDrawingButton = $(options.stopDrawingButton);
+    this.$drawingHelp = $(options.drawingHelp);
     this.geoUrl = options.geoUrl;
     this.postcodeCentre = options.postcodeCentre;
     this.init();
@@ -13,6 +16,11 @@
       this.vectorLayer = null;
       this.currentHighlight = null;
       this.currentTitles = null;
+      this.drawInteraction = null;
+
+      // Init buttons
+      this.$startDrawingButton.click(_.bind(this.startDrawing, this));
+      this.$stopDrawingButton.click(_.bind(this.stopDrawing, this));
 
       // Init map
       var layer = new ol.layer.Tile({
@@ -60,6 +68,12 @@
       });
 
       if (feature) {
+        // Hack - don't do interaction when clicking on polygon
+        this.map.removeInteraction(this.drawInteraction);
+        setTimeout(_.bind(function() {
+          this.map.addInteraction(this.drawInteraction);
+        }, this), 0);
+
         this.$infoEl.show();
 
         template = _.template('<h2><%= address %></h2><p><a href="/properties/<%= title_number %>">View full details</a>');
@@ -81,17 +95,27 @@
       }
     },
     onMoveend: function() {
-      if (!this.hasMapMoved()) {
+      if (this.drawInteraction || !this.hasMapMoved()) {
         return;
       }
-      console.log('Updating map')
-      var url = this.geoUrl + '/titles?partially_contained_by=' + encodeURIComponent(JSON.stringify(this.getViewExtentAsGeoJSON()))
+      this.fetchTitlesWithinViewExtent();
+    },
+
+    fetchTitlesWithinViewExtent: function() {
+      this.fetchTitlesWithinPolygon(this.getViewExtentAsGeoJSON());
+    },
+
+    // Fetch the titles within a polygon and display them on the map
+    fetchTitlesWithinPolygon: function(polygon) {
+      console.log('Updating map', polygon);
+      var url = this.geoUrl + '/titles?partially_contained_by=' + encodeURIComponent(JSON.stringify(polygon))
       $.ajax({
         url: url,
         dataType: 'jsonp',
         success: _.bind(this.onGeoSuccess, this),
       });
     },
+
     onGeoSuccess: function(results) {
       this.removeVectorLayer();
 
@@ -185,5 +209,30 @@
       this._previousExtent = this.getViewExtent()
       return result;
     },
+
+    startDrawing: function() {
+      this.removeVectorLayer();
+      this.drawInteraction = new ol.interaction.Draw({
+        type: 'Polygon'
+      });
+      this.drawInteraction.on('drawend', _.bind(this.onDrawEnd, this));
+      this.map.addInteraction(this.drawInteraction);
+      this.$startDrawingButton.hide();
+      this.$drawingHelp.show();
+    },
+
+    onDrawEnd: function(e) {
+      var geojson = new ol.format.GeoJSON().writeFeature(e.feature);
+      this.fetchTitlesWithinPolygon(geojson['geometry']);
+    },
+
+    stopDrawing: function() {
+      this.map.removeInteraction(this.drawInteraction);
+      this.drawInteraction = null;
+      this.fetchTitlesWithinViewExtent();
+      this.removeVectorLayer();
+      this.$startDrawingButton.show();
+      this.$drawingHelp.hide();
+    }
   };
 })();
