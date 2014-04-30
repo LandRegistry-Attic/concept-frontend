@@ -82,7 +82,7 @@ def property(property_id):
 
 @app.route('/properties/<property_id>/title')
 def property_title(property_id):
-    path = os.path.join(os.path.dirname(__file__), 'titles/BD251159.json')
+    path = os.path.join(os.path.dirname(__file__), 'titles/%s.json') % property_id
     with open(path) as fh:
         title = json.load(fh)
     return render_template("property_title.html",
