@@ -12,6 +12,6 @@ requests==2.2.1
 WTForms==1.0.4
 Flask-WTF==0.9.1
 mock==1.0.1
-geojson==1.0.6
+geojson==1.0.7
 twilio==3.6.6
 pyproj==1.9.3
