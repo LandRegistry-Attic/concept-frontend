@@ -1,7 +1,6 @@
 {% from "_formhelpers.html" import render_field %}
 {% extends "lr-base.html" %}
 {% block main_grid %}
-
 <div class="caseworker-case">
 
     <div class="full-width">
@@ -19,65 +18,24 @@
 	      </form>
       </div>
 
-      <br>
-      <br>
-
 
       <div id="middle-block" class="full-width">
       	<div id="draft-register" class="draft-register">
+         <!--<div style="background: red">-->
           <h4>Draft Register</h4>
 
-          <textarea>A: PROPERTY REGISTER
-THIS REGISTER DESCRIBES THE LAND AND ESTATE COMPRISED IN THE TITLE. 
+          <img src="/static/images/draft-register.png"/>
 
-
-
-                                   NORTHUMBERLAND                             
-                                                                              
-1.   (01.11.2011) The Freehold land shown edged with red on the plan of  
-     the above title filed at the Registry and being 76 Allerburn Lea,        
-     Alnmouth, Alnwick (NE66 2NQ).  
-
-
-
-B: PROPRIETORSHIP REGISTER
-THIS REGISTER SPECIFIES THE CLASS OF TITLE AND IDENTIFIES THE OWNER. IT       
-CONTAINS ANY ENTRIES THAT AFFECT THE RIGHT OF DISPOSAL.                       
-
-TITLE ABSOLUTE
-
-
-
-1.   (10.12.2013) PROPRIETOR: %ARON JASPER (DUKE OF LAUNCESTON)% of 50  
-     High Street, *Plymouth* PL1 1AA.        
-
-
-C: CHARGES REGISTER
-THIS REGISTER CONTAINS ANY CHARGES AND OTHER MATTERS THAT AFFECT THE LAND. 
-
-
-
-1.   (09.12.2013) REGISTERED CHARGE dated 9 December 2013.               
-
-2.   (09.12.2013) Proprietor: #ALBION HOME LOANS LIMITED# (Co. Regn. No. 
-     2426562) of 105 Albion Street, Leeds LS1 5AS.      
-          </textarea>
-          <div id="draft-actions" class="action-buttons">
-            <a href="#draft-register" class="button">Approve</a>
-            <a href="#draft-register" class="button">Add</a>
-            <a href="#draft-register" class="button">Amend</a>
-            <a href="#draft-register" class="button">Delete</a>
-          </div>
       	</div>
       	
       	
       	<div id="left-container" class="left-container">
 
   	      	<div id="daylist" class="daylist">
-              <h4 class="h-centre">Daylist</h4>
+              <h4 class="h-centre">Day list</h4>
               <ul>
-                <li>NT: NT12234</li>
-                <li>OT: DN10033</li>
+                <li>NT: EX901675</li>
+                <li>OT: EX802883</li>
               </ul>
   	      	</div>
 
@@ -91,8 +49,17 @@ THIS REGISTER CONTAINS ANY CHARGES AND OTHER MATTERS THAT AFFECT THE LAND.
 
   	      	<div id="fee" class="fee">
               <h4 class="h-centre">Fee</h4>
-              <p>Total: £45<p>
+              <ul>
+                <li>Total: £45</li>
+              </ul>
   	      	</div>
+
+            <div id="evidence" class="evidence">
+              <h4 class="h-centre">Evidence</h4>
+                <ul>
+                  <li>SDLT Return</li>
+                </ul>
+            </div>            
           </div>
 
 
@@ -105,64 +72,22 @@ THIS REGISTER CONTAINS ANY CHARGES AND OTHER MATTERS THAT AFFECT THE LAND.
   	  	<div id="draft-tp" class="draft-tp">
           <h4>Draft Title Plan</h4>
 
-          <img class="img-draft-tp" src="/static/images/map.png" alt="some_text">   
-          <div id="draft-actions" class="action-buttons">
-            <a href="#draft-register" class="button">Approve</a>
-            <a href="#draft-register" class="button">Amend</a>
-          </div>
-  	  	</div>
-
-  	  	<div id="evidence" class="evidence">
-  	  		<h4 class="h-centre">Evidence</h4>
-            <ul>
-              <li>Certificate: re RX1</li>
-              <li>SDLT Return</li>
-              <li>Certificate: re Death</li>
-            </ul>
+          <img class="img-draft-tp" src="/static/images/map.png" alt="some_text">  
+          <br><br> 
+          <a href="#draft-register" class="button">Amend</a>
   	  	</div>
 
       </div>
       
-      <br>
+      <br><br>
+
 
       <div id="seller-info" class="full-width">
         <div id="register" class="register">
           <h4>Seller's Register</h4>
-          <textarea class="small-textarea">A: PROPERTY REGISTER
-  THIS REGISTER DESCRIBES THE LAND AND ESTATE COMPRISED IN THE TITLE. 
 
+          <img src="/static/images/current-register.png"/>
 
-
-                                   NORTHUMBERLAND                             
-                                                                              
-  1.   (01.11.2011) The Freehold land shown edged with red on the plan of  
-     the above title filed at the Registry and being 76 Allerburn Lea,        
-     Alnmouth, Alnwick (NE66 2NQ).  
-
-
-
-  B: PROPRIETORSHIP REGISTER
-  THIS REGISTER SPECIFIES THE CLASS OF TITLE AND IDENTIFIES THE OWNER. IT       
-  CONTAINS ANY ENTRIES THAT AFFECT THE RIGHT OF DISPOSAL.                       
-
-  TITLE ABSOLUTE
-
-
-
-  1.   (10.12.2013) PROPRIETOR: %ARON JASPER (DUKE OF LAUNCESTON)% of 50  
-     High Street, *Plymouth* PL1 1AA.        
-
-
-  C: CHARGES REGISTER
-  THIS REGISTER CONTAINS ANY CHARGES AND OTHER MATTERS THAT AFFECT THE LAND. 
-
-
-
-  1.   (09.12.2013) REGISTERED CHARGE dated 9 December 2013.               
-
-  2.   (09.12.2013) Proprietor: #ALBION HOME LOANS LIMITED# (Co. Regn. No. 
-     2426562) of 105 Albion Street, Leeds LS1 5AS.      
-          </textarea>      
         </div>    
       </div>
 
@@ -170,13 +95,15 @@ THIS REGISTER CONTAINS ANY CHARGES AND OTHER MATTERS THAT AFFECT THE LAND.
 
 
     <div id="seller-tp" class="full-width"> 
-      <div id="current-tp" class="current-tp">
+      <div id="seller-tp" class="seller-tp">
         <h4>Seller's Title Plan</h4>      
         <img class="img-current-tp" src="/static/images/map.png" alt="some_text">       
       </div>
+
+      <br><br>     
     </div>
 
-    <br>
+    <h2><br></h2>
     
     <div id="bottom-buttons" class="bottom-buttons">
       <a href="#draft-register" class="button">Refer</a>
