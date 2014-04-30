@@ -1,0 +1,119 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "lr-base.html" %}
+{% block main_grid %}
+
+<div class="caseworker-case">
+
+    <div class="full-width">
+
+      <h1 class="heading-48">
+        <span class="heading-27">Land registry</span>
+        Case Processing System
+      </h1>
+
+      <div id="top" class="full-width">
+	      <form>
+	      	<label for="appn">Application: </label><input id="appn" type="text" value="X123-TP-124"/>
+
+	      	<label class="middle-label" for="status">Status: </label><input id="status" type="text" value="New"/>
+	      </form>
+      </div>
+
+      <div id="middle-block" class="full-width">
+      	<div id="draft-register" class="draft-register">
+         <!--<div style="background: red">-->
+          <h4>Draft Register</h4>
+
+          <img src="/static/images/draft-register.png"/>
+      	</div>
+      	
+      	
+      	<div id="left-container" class="left-container">
+
+  	      	<div id="daylist" class="daylist">
+              <h4 class="h-centre">Day list</h4>
+              <ul>
+                <li>NT: EX901675</li>
+                <li>OT: EX802883</li>
+              </ul>
+  	      	</div>
+
+  	      	<div id="gold" class="gold">
+              <h4 class="h-centre">Gold</h4>
+              <ul>
+                <li>TEXT - random text</li>
+                <li>CN500 - CRE codes</li>
+              </ul>
+  	      	</div>
+
+  	      	<div id="fee" class="fee">
+              <h4 class="h-centre">Fee</h4>
+              <ul>
+                <li>Total: £45</li>
+              </ul>
+  	      	</div>
+
+            <div id="evidence" class="evidence">
+              <h4 class="h-centre">Evidence</h4>
+                <ul>
+                  <li>SDLT Return</li>
+                </ul>
+            </div>            
+          </div>
+
+
+      </div>
+
+      <br>
+
+
+  	  <div id="bottom-block" class="full-width">
+  	  	<div id="draft-tp" class="draft-tp">
+          <h4>Draft Title Plan</h4>
+
+          <img class="img-draft-tp" src="/static/images/map.png" alt="some_text">  
+          <br><br> 
+          <a href="#draft-register" class="button">Amend</a>
+  	  	</div>
+
+      </div>
+      
+      <br><br>
+
+      <div id="seller-info" class="full-width">
+        <div id="register" class="register">
+          <h4>Seller's Register</h4>
+
+          <img src="/static/images/current-register.png"/>
+        </div>    
+      </div>
+
+    <br>
+
+
+    <div id="seller-tp" class="full-width"> 
+      <div id="seller-tp" class="seller-tp">
+        <h4>Seller's Title Plan</h4>      
+        <img class="img-current-tp" src="/static/images/map.png" alt="some_text">       
+      </div>
+
+      <br><br>     
+    </div>
+
+    <h2><br></h2>
+    
+    <div id="bottom-buttons" class="bottom-buttons">
+      <a href="#draft-register" class="button">Refer</a>
+      <a href="#draft-register" class="button">Cancel</a>
+      <a href="#draft-register" class="button">Store</a>
+      <a href="#draft-register" class="button">Requisitions</a>
+      <a href="#draft-register" class="button">Notices</a>        
+    </div>
+
+  </div>
+
+
+
+</div>
+
+{% endblock %}
