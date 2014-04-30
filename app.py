@@ -139,12 +139,12 @@ def map():
             x2,y2 = transform(inProj,outProj,latlng[1],latlng[0])
         else:
             x2 = 14708.755563011973
-            y2 = 6761018.225448865              
+            y2 = 6761018.225448865
     else:
         x2 = 14708.755563011973
         y2 = 6761018.225448865
 
-    geojson_point = json.dumps(geojson.Point([x2, y2], crs={"type": "name","properties": {"name": "EPSG:3857"}}))   
+    geojson_point = json.dumps(geojson.Point([x2, y2], crs={"type": "name","properties": {"name": "EPSG:3857"}}))
     return render_template('/map.html', postcode_centre=geojson_point, geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
 
 
@@ -161,7 +161,7 @@ def map_search_results():
         if geo.is_postcode(search_term):
             latlng = geo.postcode_to_latlng(search_term)
         else:
-            latlng = geo.geocode_place_name(search_term)    
+            latlng = geo.geocode_place_name(search_term)
 
         #if we have a location, then do a search
         if latlng:
@@ -172,12 +172,12 @@ def map_search_results():
             postcode_4326 = json.dumps(geojson.Point([latlng[1], latlng[0]], crs={"type": "name","properties": {"name": "EPSG:4326"}}))
         else:
             x2 = 14708.755563011973
-            y2 = 6761018.225448865              
+            y2 = 6761018.225448865
     else:
         x2 = 14708.755563011973
         y2 = 6761018.225448865
 
-    geojson_point = json.dumps(geojson.Point([x2, y2], crs={"type": "name","properties": {"name": "EPSG:3857"}}))   
+    geojson_point = json.dumps(geojson.Point([x2, y2], crs={"type": "name","properties": {"name": "EPSG:3857"}}))
     return render_template('/map_search_results.html', postcode_centre=geojson_point, postcode_4326=postcode_4326, geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
 
 
@@ -263,7 +263,7 @@ def solicitor_initiate_exchange():
 
 @app.route('/solicitors/initiate-exchange/done')
 def solicitor_initiate_exchange_done():
-    send_sms("XXX Solicitors has agreed to transact with YYY Solicitors on the purchase of ZZZ", BUYER_RECIPIENT_PHONE_NO) #buyer   
+    send_sms("XXX Solicitors has agreed to transact with YYY Solicitors on the purchase of ZZZ", BUYER_RECIPIENT_PHONE_NO) #buyer
     send_sms("XXX Solicitors has agreed to transact with YYY Solicitors on the sale ZZZ", SELLER_RECIPIENT_PHONE_NO) #seller
     return render_template('solicitor_initiate_exchange_done.html')
 
@@ -322,7 +322,7 @@ def team_leader_casework_status():
 
 @app.route('/team-leader/allocation-rules') #route to a team leader's casework allocation view.
 def team_leader_allocation_rules():
-    return render_template('allocation_rules.html')    
+    return render_template('allocation_rules.html')
 
 @app.route('/caseworker/worklist') # route to a caseworker's worklist view
 def caseworker_worklist():
@@ -348,10 +348,6 @@ def sign_in():
             return redirect(url_for('authorise_solicitor_confirm'))
 
     return render_template('sign-in.html')
-
-@app.route('/map-lasso-search')
-def map_lasso_search():
-    return render_template('/map_lasso_search.html', geo_url=os.environ.get('GEO_SCHEME_DOMAIN_PORT', 'http://172.16.42.43:8005'))
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
