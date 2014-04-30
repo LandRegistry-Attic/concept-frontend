@@ -64,7 +64,6 @@
 </form>
 
         </div>
-        
       </div>
     </header><!--end header-->
   <div class="header-context group"><!-- deliberately empty --></div>
@@ -91,9 +90,14 @@
     <nav class="in-page-navigation"><h2>Contents</h2>
       <ol>
           <li><a href="#about-this-document">About this document</a></li>
-          <li><a href="#property-register">Property Register</a></li>
-          <li><a href="#proprietership-register">Proprietorship Register</a></li>
-          <li><a href="#charges-register">Charges Register</a></li>
+          <li><a href="#property-register">Registers</a>
+             <ol>
+             <li><a href="#charges-register">Property register</a> (about the property)</li>
+            <li><a href="#proprietorship-register">Proprietorship register</a> (about the owners)</li>
+            <li><a href="#charges-register">Charges register</a> (charges etc affecting the property)</li>
+            </ol>
+          </li>
+          <li><a href="#title-plan">Title plan</a></li>
           <li><a href="#history">History of this document</a></li>
       </ol>
     </nav>
@@ -104,33 +108,38 @@
     <div class="govspeak">
       <p>Note: This is a demonstration, and not an official copy of the register.</p>
 
-    <h2 id="about-this-document"><span class="number">1. </span>About this document</h2>
+    <h2 id="about-this-document"><span class="number">1</span>About this document</h2>
     <p>
       An official copy of the register, admissible in evidence in a court to the same extent as the original.
       A person is entitled to be indemnified by the registrar if he suffers loss by reason of a mistake in an official copy.
-      This extract shows information current on {{ title['published_date'] }} and does not take account of any application made after that time even if pending in the Land Registry when this extract was issued. 
+      This extract shows information current on {{ title['published_date'] }} and does not take account of any application made after that time even if pending in the Land Registry when this extract was issued.
     </p>
 
-    <h2 id="property-register"><span class="number">2. </span>Property Register</h2>
+    <h2 id="property-register"><span class="number">2A</span>Property register</h2>
       {% for entry in title['property_register'] %}
         <p><code>{{ entry.text|replace("\n", "<br>")|safe }}</code></p>
       {% endfor %}
 
-      <h2 id="proprietorship-register"><span class="number">3. </span>Proprietorship Register</h2>
+      <h2 id="proprietorship-register"><span class="number">2B</span>Proprietorship register</h2>
       {% for entry in title['proprietorship_register'] %}
         <p><code>{{ entry.text|replace("\n", "<br>")|safe }}</code></p>
       {% endfor %}
 
-      <h2 id="charges-register"><span class="number">4. </span>Charges Register</h2>
+      <h2 id="charges-register"><span class="number">2C</span>Charges register</h2>
       {% for entry in title['charges_register'] %}
         <p><code>{{ entry.text|replace("\n", "<br>")|safe }}</code></p>
       {% endfor %}
 
-      <h2 id="history"><span class="number">5.</span>History of this document</h2>
+      <h2 id="title-plan"><span class="number">3</span>Title plan</h2>
+      <div class="map">
+        <div id="map" class="inner-block"></div>
+      </div>
+
+      <h2 id="history"><span class="number">4</span>History of this document</h2>
           <p>
           <ul>
             <li>
-              <h3>15th September 2013</h3>
+              <span>15th September 2013</span>
               <div class="commit">
                   <a href="version/691083de20183940ecaeb19cdcd1aef16a84dbfe" class="hash-full">691083de20183940ecaeb19cdcd1aef16a84dbfe</a>
               </div>
@@ -191,6 +200,20 @@
     <script src="https://assets.digital.cabinet-office.gov.uk/static/libs/jquery/jquery-1.7.2-2ce4706f8f7193defaa9e7df2b641e9a.js" type="text/javascript"></script>
     <script src="https://assets.digital.cabinet-office.gov.uk/static/header-footer-only-b786915b9d42b621d5e99cd1e8021899.js" type="text/javascript"></script>
     <script src="https://assets.digital.cabinet-office.gov.uk/government/assets/application-c1f5ccdd9f520f928379957812f55971.js" type="text/javascript"></script>
+
+  <script src="/static/javascripts/vendor/ol.js" type="text/javascript"></script>
+  <script src="/static/javascripts/map-search.js" type="text/javascript"></script>
+  <script src="/static/javascripts/single-extent-map.js" type="text/javascript"></script>
+
+
+{% block extra_js %}
+  <script>
+    window.LR.extentMap = new LR.SingleExtentMap({
+      el: '#map',
+      extent: {{ title_extent_json|safe }},
+    });
+  </script>
+{% endblock %}
 
 </body>
 </html>
