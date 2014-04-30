@@ -118,7 +118,7 @@ table th {
             <li style="list-style-type: upper-alpha"><a href="#charges-register">Charges register (charges etc affecting the property)</a></li>
             </ol>
           </li>
-          <li><a href="#title-plan">Map of title plan</a></li>
+          <li><a href="#title-plan">Title plan (with map)</a></li>
           <li><a href="#history">History of the title</a></li>
       </ol>
     </nav>
@@ -129,29 +129,60 @@ table th {
     <div class="govspeak">
       <p>Note: This is a demonstration, and not an official copy of the register.</p>
 
-    <h2 id="about-this-document"><span class="number">1</span>About this document</h2>
+    <h2 id="about-this-document"><span class="number">1 </span>About this document</h2>
     <p>
-      An official copy of the register, admissible in evidence in a court to the same extent as the original.
-      A person is entitled to be indemnified by the registrar if he suffers loss by reason of a mistake in an official copy.
-      This extract shows information current on {{ title['published_date'] }} and does not take account of any application made after that time even if pending in the Land Registry when this extract was issued.
+      An official copy of the register, admissible in evidence in a court to the same extent as the original.</p>
+      <p>A person is entitled to be indemnified by the registrar if he suffers loss by reason of a mistake in an official copy.</p>
+      <p>This extract shows information current on <abbr class="published-at date" title="2014-04-23T09:33:23+01:00">23 April 2014 09:22:23 GMT</abbr> and does not take account of any application made after that time even if pending in the Land Registry when this extract was issued.
     </p>
 
-    <h2 id="property-register"><span class="number">2A</span>Property register</h2>
+    <h2 id="property-register"><span class="number">2A </span>Property register</h2>
+    <p style="font-weight: bold">This register describes the land and estate comprised in the title. Except as mentioned below, the title includes any legal easements granted by the registered lease but is subject to any rights that it reserves, so far as those easements and rights exist and benefit or affect the registered land.</p>
+      <ol>
       {% for entry in title['property_register'] %}
-        <p>{{ entry.text|replace("\n", "<br>")|safe }}</p>
-      {% endfor %}
+        <li style="margin-bottom: 10px">{{ entry.text|replace("\n", "<br>")|safe }}
 
-      <h2 id="proprietorship-register"><span class="number">2B</span>Proprietorship register</h2>
+        {% if entry.date %}
+        (added <a href="#history-1">{{ entry.date|safe }})</a>
+        {% endif %}
+
+        </li>
+      {% endfor %}
+       </ol>
+
+      <h2 id="proprietorship-register"><span class="number">2B </span>Proprietorship register</h2>
+      <p style="font-weight: bold">This register specifies the class of title and identifies the owner. It contains any entries that affect the right of disposal.</p>
+      <ol>
       {% for entry in title['proprietorship_register'] %}
-        <p>{{ entry.text|replace("\n", "<br>")|safe }}</p>
-      {% endfor %}
+        <li style="margin-bottom: 10px">{{ entry.text|replace("\n", "<br>")|safe }}
 
-      <h2 id="charges-register"><span class="number">2C</span>Charges register</h2>
+        {% if entry.date %}
+        (added <a href="#history-2">{{ entry.date|safe }})</a>
+        {% endif %}
+
+        </li>
+      {% endfor %}
+      </ol>
+
+      <h2 id="charges-register"><span class="number">2C </span>Charges register</h2>
+
+      <p style="font-weight: bold">This register contains charges and any other matters that affect the land.</p>
+      <ol>
       {% for entry in title['charges_register'] %}
-        <p>{{ entry.text|replace("\n", "<br>")|safe }}</p>
-      {% endfor %}
+        <li style="margin-bottom: 10px">{{ entry.text|replace("\n", "<br>")|safe }}
 
-      <h2 id="title-plan"><span class="number">3</span>Title plan</h2>
+        {% if entry.date %}
+        (added <a href="#history-3">{{ entry.date|safe }})</a>
+        {% endif %}
+
+        </li>
+      {% endfor %}
+      </ol>
+
+      <h2 id="title-plan"><span class="number">3 </span>Title plan</h2>
+
+      <p> This extract shows information current at <abbr class="published-at date" title="2014-04-23T09:33:23+01:00">23 April 2014 09:22:23 GMT</abbr> and does not take account of any application made after that time even if pending in the Land Registry when this extract was issued.</p>
+
       <div class="map">
         <div id="map" class="inner-block"></div>
       </div>
