@@ -119,17 +119,17 @@
 
     <h2 id="property-register"><span class="number">2A</span>Property register</h2>
       {% for entry in title['property_register'] %}
-        <p><code>{{ entry.text|replace("\n", "<br>")|safe }}</code></p>
+        <p>{{ entry.text|replace("\n", "<br>")|safe }}</p>
       {% endfor %}
 
       <h2 id="proprietorship-register"><span class="number">2B</span>Proprietorship register</h2>
       {% for entry in title['proprietorship_register'] %}
-        <p><code>{{ entry.text|replace("\n", "<br>")|safe }}</code></p>
+        <p>{{ entry.text|replace("\n", "<br>")|safe }}</p>
       {% endfor %}
 
       <h2 id="charges-register"><span class="number">2C</span>Charges register</h2>
       {% for entry in title['charges_register'] %}
-        <p><code>{{ entry.text|replace("\n", "<br>")|safe }}</code></p>
+        <p>{{ entry.text|replace("\n", "<br>")|safe }}</p>
       {% endfor %}
 
       <h2 id="title-plan"><span class="number">3</span>Title plan</h2>
