@@ -1,66 +1,66 @@
 {% extends "base.html" %}
 {% block landregistry_grid %}
 
-  <div class="solicitor-transfer-property">
+<div class="solicitor-transfer-property">
 
-  <div class="full-width">
+  <h1 class="heading-48">
+    <span class="heading-27">Land registry</span>
+    Apply to change register
+  </h1>
 
-    <h1 class="heading-48">
-      <span class="heading-27">Land Registry</span>
-      Apply to change register
-    </h1>
+  <nav class="progress-indicator progress-indicator-horizontal grid-space">
+    <ol>
+      <li><a href="">1. Title details</a></li>
+      <li class="active">2. New property details</li>
+      <li>3. Provisions</li>
+      <li>4. New mortgage</li>
+      <li>5. Confirmation &amp; payment</li>
+    </ol>
+  </nav>
 
-  <div>
-    
-      <nav class="progress-indicator progress-indicator-horizontal">
-        <ol>
-          <li><a href="">1. Title details</a></li>
-          <li class="active">2. New property details</li>
-          <li>3. Provisions</li>
-          <li>4. New mortgage</li>
-           <li>5. Confirmation &amp; payment</li>
-        </ol>
-      </nav>
-      
+  <div class="grid-wrapper grid-space">
+    <div class="grid grid-2-3">
+      <div class="inner-block">
+        <label class="form-label-bold">
+          Describe the property
+          <p class="form-hint">For example, postal address or 'land at the back of...'</p>
+        </label>
+        <textarea rows="10" cols="80" id="q" name="q" /> </textarea>
+      </div>
+    </div>
   </div>
 
-  </div>
-  <div class="text full-width">
-  <fieldset>
-  <div class="form-group">
-    <label class="form-label" for="q">New property description</label>
-    <p class="form-hint">Eg, Postal address or 'Land at the back of...'</p>
-    <textarea rows="10" cols="80" id="q" name="q" /> </textarea>
-  </div>
-</fieldset>
+  <div class="grid-wrapper grid-space">
+    <div class="grid grid-1-2">
+      <div class="inner-block">
+        <h2 class="heading-24 no-top-margin">Proposed title plan</h2>
+        <p>This plan must reflect the final extent and all matters referred to in the transfer.</p>
+      </div>
+    </div>
+    <div class="grid grid-1-2">
+      <div class="inner-block">
+        <p><a href="">Upload new plan</a></p>
+      </div>
+    </div>
+    <div class="grid grid-2-3">
+      <div class="inner-block">
+        <img src="/static/images/map.png" alt="some_text" class="max-image">
+      </div>
+    </div>
   </div>
 
-<div class="full-width">
-  <div class="grid grid-1-2">
-     <h2 class="heading-no-margin">Proposed title plan</h2>
-  </div>
-  <div class="grid grid-1-2">
-   <a href="">Upload new plan</a>
+  <div class="grid-wrapper grid-space">
+    <div class="grid">
+      <div class="inner-block">
+        <ul>
+          <li><a href="/solicitors/transfer_provisions" class="button">Continue</a></li>
+          <li><a href="/solicitors">Save and return later</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 
 </div>
-
-<div class="full-width">
-  <p>This plan must reflect the final extent and all matters referred to in the transfer.</p>
-</div>
-
-<div class="full-width">
-  <img src="/static/images/map.png" alt="some_text">   
-</div>  
-
-<div class="full-width"><br></div>
-
-<div class="full-width">
-  <div class="grid grid-1-3">
-     <a href="/solicitors/transfer_provisions" class="button">Next</a>
-     <a href="/solicitors">Save and return later</a>
-  </div>  
-</div>  
 {% endblock %}
 
 

@@ -1,0 +1,134 @@
+// Layout
+// ==========================================================================
+
+#wrapper {
+  text-align: center;
+  padding-bottom: $gutter;
+  @include media(desktop) {
+    padding-bottom: $gutter*3;
+  }
+}
+
+#content {
+  text-align: left;
+  @include outer-block;
+  @include contain-floats; // TODO: awaiting merge into front end toolkit
+}
+
+// Use .outer-block to create a max width block of 1020px,
+// Use .inner-block to create padding that matches the header and footer
+
+.outer-block {
+  @include outer-block;
+}
+
+.inner-block {
+  @include inner-block;
+}
+
+// Grid wrapper
+@mixin grid-wrapper {
+  @extend %contain-floats;
+  @include media(tablet) {
+    padding-left: $gutter-half;
+    padding-right: $gutter-half;
+  }
+}
+
+.grid-wrapper {
+  @include grid-wrapper;
+  @include media(tablet) {
+    margin-bottom: 5px;
+  }
+}
+
+// Reset grid padding if inside inner block
+.inner-block .grid-wrapper,
+.inner-block .full-width {
+  @include grid-wrapper;
+  @include media(tablet) {
+    margin-left: (-$gutter);
+    margin-right: (-$gutter);
+  }
+}
+
+// Grid units take 100% width, unless a .grid-width class is applied
+.grid {
+  float: left;
+  width: 100%;
+}
+
+// Grid 'inner-block' aligns grid content with header and footer
+.grid .inner-block {
+  padding-left: 0;
+  padding-right: 0;
+  @include media(tablet) {
+    padding-left: $gutter-half;
+    padding-right: $gutter-half;
+  }
+}
+
+.grid-1-4 {
+  width: 100%;
+  @include media(tablet) {
+    width: 25%;
+  }
+}
+
+.grid-1-3 {
+  width: 100%;
+  @include media(tablet) {
+    width: 33.333333333%;
+  }
+}
+
+.grid-1-2 {
+  width: 100%;
+  @include media(tablet) {
+    width: 50%;
+  }
+}
+
+.grid-2-3 {
+  width: 100%;
+  @include media(tablet) {
+    width: 66.666666667%;
+  }
+}
+
+.grid-3-4 {
+  width: 100%;
+  @include media(tablet) {
+    width: 75%;
+  }
+}
+
+// Create spacing between grid items
+.grid-space,
+.inner-block .grid-space {
+  margin-bottom: $gutter;
+  @include media(tablet) {
+    margin-bottom: $gutter*1.5;
+  }
+}
+
+.grid-double-space,
+.inner-block .grid-double-space {
+  margin-bottom: $gutter*1.5;
+  @include media(tablet) {
+    margin-bottom: $gutter*3;
+  }
+}
+
+// Dividing line
+.divider {
+  border-top: 1px solid $border-colour;
+  padding-top: $gutter;
+  margin-top: $gutter;
+}
+
+.align-right {
+  @include media(tablet) {
+    text-align: right;
+  }
+}

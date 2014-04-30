@@ -3,65 +3,82 @@
 {% block landregistry_grid %}
 
 <div class="solicitor-transfer-provisions">
-  <div class="full-width">
-    <h1 class="heading-48">      
-      <span class="heading-27">Land Registry</span>
-      Apply to change register
-    </h1>
 
-    <div>
-      <nav class="progress-indicator progress-indicator-horizontal">
-        <ol>
-          <li><a href="">1. Title details</a></li>
-          <li><a href="">2. New property details</a></li>
-          <li class="active">3. Provisions</li>
-          <li>4. New mortgage</li>
-          <li>5. Confirmation &amp; payment</li>
-        </ol>
-      </nav>
+  <h1 class="heading-48">
+    <span class="heading-27">Land registry</span>
+    Apply to change register
+  </h1>
+
+  <nav class="progress-indicator progress-indicator-horizontal grid-space">
+    <ol>
+      <li><a href="">1. Title details</a></li>
+      <li><a href="">2. New property details</a></li>
+      <li class="active">3. Provisions</li>
+      <li>4. New mortgage</li>
+      <li>5. Confirmation &amp; payment</li>
+    </ol>
+  </nav>
+
+  <div class="grid-section">
+    <h2 class="heading-36">Add provisions</h2>
+    <p>Select all the provisions that apply</p>
+  </div>
+
+  <form action="" class="form-group">
+
+    <div class="form-group-related">
+      <label for="checkbox-definitions" class="block-label" data-target="enter-definitions">
+        <input id="checkbox-definitions" type="checkbox" name="checkbox-definitions" value="">
+        Definitions
+      </label>
+    </div>
+    <div class="form-group toggle-content" id="enter-definitions">
+      <label for="" class="form-label">Enter definitions from your deed</label>
+      <textarea class="form-control"></textarea>
     </div>
 
-    <h2>Add new provisions</h2>
-    <p>Please cut and paste from the deed</p> 
-    <br>
-    <br>
+    <div class="form-group-related">
+      <label for="checkbox-easements" class="block-label" data-target="enter-easements">
+        <input id="checkbox-easements" type="checkbox" name="checkbox-easements" value="">
+        Easements
+      </label>
+    </div>
+    <div class="form-group toggle-content" id="enter-easements">
+      <label for="" class="form-label">Enter easements from your deed</label>
+      <textarea class="form-control"></textarea>
+    </div>
 
-    <div id="provisions" class="accordian" data-collapse="accordion persist">
-      <h2 id="definitions" class="open">Definitions</h2>
-      <div>
-        <textarea id="definitions-text"></textarea>
-        <br>
-        <a id="def-next" href="#easements" class="button">Next</a>
-        <input id="no-def-checkbox" type="checkbox" value="no-definitions">No definitions</input>
-      </div>
-      <h2 id="easements">Easements</h2>
-      <div>
-        <textarea id="easements-text"></textarea>
-        <br>
-        <a id="ease-next" href="#covenants" class="button">Next</a>
-        <input id="no-easements-checkbox" type="checkbox" value="no-easements">No easements</input>
-      </div>  
-      <h2 id="covenants">Covenants</h2>
-      <div>
-        <textarea id="covenants-text"></textarea>
-        <br>
-        <a id="cov-next" href="#other" class="button">Next</a>
-        <input id="no-covenants-checkbox" type="checkbox" value="no-covenants">No covenants</input>
-      </div>  
-      <h2 id="other">Other provisions</h2>
-      <div>
-        <textarea id="others-text"></textarea>   
-        <br>
-        <a  id="next" class="button">Next</a>   
-        <input id="no-others-checkbox" type="checkbox" value="no-others">No other provisions</input>
-      </div>  
-    </div>   
+    <div class="form-group-related">
+      <label for="checkbox-covenants" class="block-label" data-target="enter-covenants">
+        <input id="checkbox-covenants" type="checkbox" name="checkbox-covenants" value="">
+        Covenants
+      </label>
+    </div>
+    <div class="form-group toggle-content" id="enter-covenants">
+      <label for="" class="form-label">Enter covenants from your deed</label>
+      <textarea class="form-control"></textarea>
+    </div>
 
+    <div class="form-group-related">
+      <label for="checkbox-other" class="block-label" data-target="enter-other">
+        <input id="checkbox-other" type="checkbox" name="checkbox-other" value="">
+        Other provisions
+      </label>
+    </div>
+    <div class="form-group toggle-content" id="enter-other">
+      <label for="" class="form-label">Enter other provisions from your deed</label>
+      <textarea class="form-control"></textarea>
+    </div>
 
-    <br><br>
+  </form>
 
-    <a href="/">Save and return later</a> 
+  <div class="grid-section">
+    <ul>
+      <li><a href="/solicitors/transfer_mortgage" id="next" class="button">Continue</a></li>
+      <li><a href="">Save and return later</a></li>
+    </ul>
   </div>
+
 </div>
 
 {% endblock %}
@@ -69,47 +86,47 @@
 {% block extra_js %}
   <script>
 
-  var defComplete = false;
-  var easeComplete = false;
-  var covComplete = false;
-  var provComplete = false;
-  
-  $("#def-next").click(function() {
-    if ((document.getElementById("definitions-text").value != "") || (document.getElementById("no-def-checkbox").checked)) {
-      $('#definitions').removeClass().addClass('complete');
-      defComplete = true;
-    }  
-    document.getElementById("easements").children[0].click();
-  });
+  // var defComplete = false;
+  // var easeComplete = false;
+  // var covComplete = false;
+  // var provComplete = false;
 
-  $("#ease-next").click(function() {
-    if ((document.getElementById("easements-text").value != "") || (document.getElementById("no-easements-checkbox").checked)) {
-       $('#easements').removeClass().addClass('complete');
-       easeComplete = true;
-    }      
-    document.getElementById("covenants").children[0].click();
-  });
+  // $("#def-next").click(function() {
+  //   if ((document.getElementById("definitions-text").value != "") || (document.getElementById("no-def-checkbox").checked)) {
+  //     $('#definitions').removeClass().addClass('complete');
+  //     defComplete = true;
+  //   }
+  //   document.getElementById("easements").children[0].click();
+  // });
 
-  $("#cov-next").click(function() {
-    if ((document.getElementById("covenants-text").value != "") || (document.getElementById("no-covenants-checkbox").checked)) {
-       $('#covenants').removeClass().addClass('complete');
-       covComplete = true;
-    }      
-    document.getElementById("other").children[0].click();
-  });
+  // $("#ease-next").click(function() {
+  //   if ((document.getElementById("easements-text").value != "") || (document.getElementById("no-easements-checkbox").checked)) {
+  //      $('#easements').removeClass().addClass('complete');
+  //      easeComplete = true;
+  //   }
+  //   document.getElementById("covenants").children[0].click();
+  // });
 
-  $("#next").click(function() {
-    if ((document.getElementById("others-text").value != "") || (document.getElementById("no-others-checkbox").checked)) {
-       $('#other').removeClass().addClass('complete');
-      provComplete = true;
-    }      
+  // $("#cov-next").click(function() {
+  //   if ((document.getElementById("covenants-text").value != "") || (document.getElementById("no-covenants-checkbox").checked)) {
+  //      $('#covenants').removeClass().addClass('complete');
+  //      covComplete = true;
+  //   }
+  //   document.getElementById("other").children[0].click();
+  // });
+
+  // $("#next").click(function() {
+  //   if ((document.getElementById("others-text").value != "") || (document.getElementById("no-others-checkbox").checked)) {
+  //      $('#other').removeClass().addClass('complete');
+  //     provComplete = true;
+  //   }
 
 
-    if (defComplete && easeComplete && covComplete && provComplete) {
-        window.location.href = '/solicitors/transfer_mortgage';
-    } 
+  //   if (defComplete && easeComplete && covComplete && provComplete) {
+  //       window.location.href = '/solicitors/transfer_mortgage';
+  //   }
 
-  });
+  // });
   </script>
 
 {% endblock %}

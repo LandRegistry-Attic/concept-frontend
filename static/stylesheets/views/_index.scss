@@ -11,15 +11,12 @@
       @include core-36;
     }
     .button {
-      @include core-27;
+      @include core-24;
     }
 
   }
 
   .alternate-routes {
-    padding-top: $gutter;
-    border-top: 1px solid $border-colour;
-
     h2 {
       @include bold-24;
     }
