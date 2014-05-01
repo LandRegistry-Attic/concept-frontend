@@ -47,8 +47,15 @@
             <dl>
               <dt>Title number:</dt>
               <dd>{{ title['title_number'] }}</dd>
-            </dl>
           </div>
+          <div class="grid grid-1-4">
+           <dt></dt>
+           <dd> 
+              <div class="map">
+               <div id="map" class="inner-block"></div>
+              </div>
+            </dd>
+          </dl>
         </div>
       </li>
     {% endfor %}
@@ -63,4 +70,13 @@
 
 </div>
 
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    window.LR.extentMap = new LR.SingleExtentMap({
+      el: '#map',
+      extent: {{ title_extent_json|safe }},
+    });
+  </script>
 {% endblock %}
