@@ -36,7 +36,6 @@
       {% if titles %}
         <ul class="results" id="ordered">
         {% for title in titles %}
-          <!--li class="result" onclick="myFunction(this.id)">{{ title['searlised_extent']|safe }} -->
           <li class="result" onclick="setExtent('{{ title['searlised_extent']|safe }}')">Click here
             <h3>
               <a href="/properties/{{ title['title_number'] }}">{{ title['address'] | safe }}</a>
@@ -85,19 +84,8 @@
     });
 
   
-  function myFunction(id)
-  {
-      
-    console.log(document.getElementById(id).innerHTML);
-    var myObject = eval('(' + document.getElementById(id).innerHTML + ')');
-    window.LR.extentMap.setExtent( myObject );
-    window.LR.extentMap.setCenter( myObject );
-  }
-
   function setExtent(extent)
-  {
-      
-    console.log(extent);
+  {      
     var myObject = eval('(' + extent + ')');
     window.LR.extentMap.setExtent( myObject );
     window.LR.extentMap.setCenter( myObject );
