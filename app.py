@@ -102,6 +102,9 @@ def search():
     form = forms.SearchForm()
     titles = []
     latlng = False
+    extents = []
+    title_extent_json = None
+    n = 0
 
     if 'q' in request.args:
         search_term = request.args['q']
@@ -126,10 +129,12 @@ def search():
 
             for title in titles:
                 title['address'] = title['address'].replace(',', ',<br>').replace('(', '<br>').replace(')', '')
+                extents.append(json.dumps(title.get('extent', {})))
 
             title_extent_json = json.dumps(titles[0].get('extent', {}))
 
-    return render_template('/search.html', title_extent_json=title_extent_json, titles=titles, form=form, search_term=search_term, latlng=latlng, q=request.args.get('q'))
+
+    return render_template('/search.html', title_extent_json=title_extent_json, extents=extents, titles=titles, form=form, search_term=search_term, latlng=latlng, q=request.args.get('q'))
 
 @app.route('/map')
 def map():

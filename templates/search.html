@@ -34,24 +34,9 @@
   <div class="full-width">
     <div class="grid grid-1-2">
       {% if titles %}
-        <ul class="results">
-        {% for title in titles %}
-          <li class="result">
-            <h3>
-              <a href="/properties/{{ title['title_number'] }}">{{ title['address'] | safe }}</a>
-            </h3>
-            <div class="meta">
-              <div class="grid grid-1-4">
-                <a href="/properties/{{ title['title_number'] }}">View full details</a>
-              </div>
-              <div class="grid grid-1-4">
-                <dl>
-                  <dt>Title number:</dt>
-                  <dd>{{ title['title_number'] }}</dd>
-                </dl>
-              </div>
-            </div>  
-          </li>
+        <ul class="results" id="ordered">
+        {% for extent in extents %}
+          <li class="result" onclick="myFunction(this.id)">{{ extent|safe }}</li>
         {% endfor %}
         </ul>
       {% endif %}
@@ -78,5 +63,22 @@
       el: '#map',
       extent: {{ title_extent_json|safe }},
     });
+  
+    $('#ordered li').each(function(i,el){
+      el.id = i+1;
+    });
+
+  function myFunction(id)
+  {
+      
+    console.log(document.getElementById(id).innerHTML);
+    var myObject = eval('(' + document.getElementById(id).innerHTML + ')');
+    window.LR.extentMap.setExtent( myObject );
+    window.LR.extentMap.setCenter( myObject );
+  }
+
   </script>
+
+ 
+
 {% endblock %}
