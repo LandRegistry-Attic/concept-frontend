@@ -129,6 +129,7 @@ def search():
 
             for title in titles:
                 title['address'] = title['address'].replace(',', ',<br>').replace('(', '<br>').replace(')', '')
+                title['searlised_extent'] = json.dumps(title.get('extent', {}))
                 extents.append(json.dumps(title.get('extent', {})))
 
             title_extent_json = json.dumps(titles[0].get('extent', {}))

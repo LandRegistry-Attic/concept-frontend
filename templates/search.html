@@ -35,8 +35,8 @@
     <div class="grid grid-1-2">
       {% if titles %}
         <ul class="results" id="ordered">
-        {% for extent in extents %}
-          <li class="result" onclick="myFunction(this.id)">{{ extent|safe }}</li>
+        {% for title in titles %}
+          <li class="result" onclick="myFunction(this.id)">{{ title['searlised_extent']|safe }}</li>
         {% endfor %}
         </ul>
       {% endif %}
