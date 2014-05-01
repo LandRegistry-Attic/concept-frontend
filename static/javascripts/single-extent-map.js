@@ -46,7 +46,7 @@
       target: this.$el[0],
       view: new ol.View2D({
         center: [0, 0],
-        zoom: 18
+        zoom: options.zoom || 18
       })
     });
 
