@@ -6,11 +6,42 @@
     @include core-36;
   }
 
+  .metadata {
+    .address {
+      padding-bottom: $gutter-half;
+      p {
+        @include bold-48;
+        margin: 0 0 $gutter-half;
+      }
+    }
+
+    dl {
+    @extend %contain-floats;
+      margin-bottom: $gutter;
+    }
+
+    dt {
+      width: 160px;
+      float: left;
+      clear: left;
+      font-weight: bold;
+    }
+    dd {
+      float: left;
+    }
+
+    button {
+      @include button;
+      display: block;
+    }
+  }
+
   .results {
     display: none;
   }
 
   .result {
+    @include contain-floats;
     border-bottom: 1px solid $border-colour;
     margin-bottom: $gutter;
 
