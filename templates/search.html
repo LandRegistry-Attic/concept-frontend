@@ -36,7 +36,23 @@
       {% if titles %}
         <ul class="results" id="ordered">
         {% for title in titles %}
-          <li class="result" onclick="myFunction(this.id)">{{ title['searlised_extent']|safe }}</li>
+          <!--li class="result" onclick="myFunction(this.id)">{{ title['searlised_extent']|safe }} -->
+          <li class="result" onclick="setExtent('{{ title['searlised_extent']|safe }}')">Click here
+            <h3>
+              <a href="/properties/{{ title['title_number'] }}">{{ title['address'] | safe }}</a>
+            </h3>
+            <div class="meta">
+              <div class="grid grid-1-4">
+                <a href="/properties/{{ title['title_number'] }}">View full details</a>
+              </div>
+              <div class="grid grid-1-4">
+                <dl>
+                  <dt>Title number:</dt>
+                  <dd>{{ title['title_number'] }}</dd>
+                </dl>
+              </div>
+            </div>
+        </li>
         {% endfor %}
         </ul>
       {% endif %}
@@ -68,6 +84,7 @@
       el.id = i+1;
     });
 
+  
   function myFunction(id)
   {
       
@@ -77,7 +94,16 @@
     window.LR.extentMap.setCenter( myObject );
   }
 
-  </script>
+  function setExtent(extent)
+  {
+      
+    console.log(extent);
+    var myObject = eval('(' + extent + ')');
+    window.LR.extentMap.setExtent( myObject );
+    window.LR.extentMap.setCenter( myObject );
+  }
+
+ </script>
 
  
 

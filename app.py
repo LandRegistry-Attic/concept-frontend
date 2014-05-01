@@ -14,6 +14,12 @@ import geojson
 from utils import geo
 from twilio.rest import TwilioRestClient
 from pyproj import Proj, transform
+from xml.sax.saxutils import escape
+
+html_escape_table = {
+    '"': "&quot;",
+    "'": "&apos;"
+}
 
 TITLES_SCHEME_DOMAIN_PORT = os.environ.get('TITLES_SCHEME_DOMAIN_PORT', os.environ.get('TITLES_1_PORT_8004_TCP', '').replace('tcp://', 'http://'))
 GEO_SCHEME_DOMAIN_PORT = os.environ.get('GEO_SCHEME_DOMAIN_PORT', os.environ.get('GEO_1_PORT_8005_TCP', '').replace('tcp://', 'http://'))
@@ -129,13 +135,12 @@ def search():
 
             for title in titles:
                 title['address'] = title['address'].replace(',', ',<br>').replace('(', '<br>').replace(')', '')
-                title['searlised_extent'] = json.dumps(title.get('extent', {}))
-                extents.append(json.dumps(title.get('extent', {})))
-
+                title['searlised_extent'] = escape(json.dumps(title.get('extent', {})), html_escape_table)
+            
             title_extent_json = json.dumps(titles[0].get('extent', {}))
 
 
-    return render_template('/search.html', title_extent_json=title_extent_json, extents=extents, titles=titles, form=form, search_term=search_term, latlng=latlng, q=request.args.get('q'))
+    return render_template('/search.html', title_extent_json=title_extent_json, titles=titles, form=form, search_term=search_term, latlng=latlng, q=request.args.get('q'))
 
 @app.route('/map')
 def map():
