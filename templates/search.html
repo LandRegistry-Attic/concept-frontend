@@ -36,7 +36,7 @@
       {% if titles %}
         <ul class="results" id="ordered">
         {% for title in titles %}
-          <li class="result" onclick="setExtent('{{ title['searlised_extent']|safe }}')">Click here
+          <li class="result" onmouseover="setExtent('{{ title['searlised_extent']|safe }}')">
             <h3>
               <a href="/properties/{{ title['title_number'] }}">{{ title['address'] | safe }}</a>
             </h3>
