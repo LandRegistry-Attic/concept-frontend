@@ -22,37 +22,44 @@
 
   <div class="full-width"> <!--row -->
     <p class="lede text">You can search the Land Registry for information on property or land such as title number, lease and purchase history. Interactive maps are also available.</p>
-
     <form action="/search" method="get">
       <fieldset>
         <div class="form-group">
           <label class="form-label" for="q">Search for property or land </label>
           <p class="form-hint">e.g. postcode, street name, town or city</p>
-          <input type="text" class="form-control" id="q" name="q" />
+          <input type="text" class="form-control" id="q" name="q" /> <button type="submit" class="button">Search</button>
         </div>
       </fieldset>
 
       <div class="form-group">
-        <button type="submit" class="button">Search</button> You can also search using <a href="/map">advanced map based tools</a>.
+        You can also search using <a href="/map">advanced map based tools</a>.
       </div>
     </form>
-
-    <h2>Before you start</h2>
-
-    <p>To access the full details of a property you need to <a href="#">create an identity profile</a>.<br>
-      <a href="#">Already registered?</a></p>
-    <p>Available in England and Wales only</p>
   </div>
 
   <div class="full-width">
     <div class="alternate-routes">
-      <h2 class="grid grid-1-2">Help with your property</h2>
-      <h2 class="grid grid-1-2">For solicitors and conveyancers</h2>
-      <p class="grid grid-1-2"><a href="#">Authorise a solicitor or conveyancer</a><br>
-        <a href="#">Sign up for alerts or notifications</a><br>
-        <a href="#">Register a new title</a><br>
-        <a href="#">Change the register</a></p>
-      <p class="grid grid-1-2"><a href="#">Sign in with GOV.UK</a></p>
+      <div class="grid grid-1-2">
+        <h2>Help with your property</h2>
+        <br><a href="/authorise-solicitor" class="button">Authorise a solicitor or conveyancer</a>
+        <br><a href="/" class="button">Update Register</a>
+        <br><a href="/" class="button">Change Owner Name</a>
+        <br><a href="/" class="button">Register Land</a>
+      </div>
+      <div class="grid grid-1-2">
+        <h2>Guides</h2>
+        <br><a href="/authorise-solicitor" class="button-link">guide 1</a>
+        <br><a href="/" class="button-link">guide 2</a>
+        <br><a href="/" class="button-link">guide 3</a>
+        <br><a href="/" class="button-link">guide 4</a><br><br>
+      </div>
+    </div>
+  </div> 
+
+  <div class="full-width">
+    <div class="alternate-routes">
+      <h2> For solicitors and conveyancers</h2>
+      <a href="#">Sign in with GOV.UK</a>
     </div>
   </div>
 
