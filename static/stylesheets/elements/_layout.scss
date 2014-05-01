@@ -12,7 +12,7 @@
 #content {
   text-align: left;
   @include outer-block;
-  @include contain-floats; // TODO: awaiting merge into front end toolkit
+  @include contain-floats;
 }
 
 // Use .outer-block to create a max width block of 1020px,
@@ -43,8 +43,7 @@
 }
 
 // Reset grid padding if inside inner block
-.inner-block .grid-wrapper,
-.inner-block .full-width {
+.inner-block .grid-wrapper {
   @include grid-wrapper;
   @include media(tablet) {
     margin-left: (-$gutter);
@@ -131,4 +130,9 @@
   @include media(tablet) {
     text-align: right;
   }
+}
+
+// Leave in full width as clearfix
+.full-width {
+  @extend %contain-floats;
 }

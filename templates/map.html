@@ -4,21 +4,15 @@
   <link href="/static/stylesheets/vendor/ol.css" media="all" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block landregistry_content %}
-  
- <div class="map">
-  
-  <div class="full-width">
-    <div class="grid grid-3-4">
-      <div class="ol-container"></div>
-      <div class="map-info"></div>
-    </div>
-    <div class="grid grid-1-4">
-      <p>You can also search by <a href="/map-lasso-search">defining an area on the map</a>.</p>
+  <div class="map">
+    <div class="ol-container"></div>
+    <div class="map-info"></div>
+    <button class="button start-drawing-button">Search by drawing an area</button>
+    <div class="drawing-help">
+      <p>Draw an area by clicking on the map.</p>
+      <button class="button stop-drawing-button">Stop searching</div>
     </div>
   </div>
-
-  
-</div>  
 {% endblock %}
 {% block extra_js %}
   <script>
@@ -26,6 +20,9 @@
       el: '.ol-container',
       infoEl: '.map-info',
       geoUrl: '{{ geo_url }}',
+      startDrawingButton: '.start-drawing-button',
+      stopDrawingButton: '.stop-drawing-button',
+      drawingHelp: '.drawing-help',
       postcodeCentre: {{ postcode_centre|safe }}
     });
   </script>

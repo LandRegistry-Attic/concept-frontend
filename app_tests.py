@@ -60,7 +60,7 @@ class HomeTestCase(unittest.TestCase):
             }
         get_mock.return_value = MockResponse()
         rv = self.app.get('/properties/EX1354')
-        assert 'Your property' in rv.data
+        assert 'Property' in rv.data
         assert '123 Fake St' in rv.data
 
     @mock.patch('requests.get')
