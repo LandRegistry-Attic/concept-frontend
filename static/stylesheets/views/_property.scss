@@ -1,13 +1,8 @@
 .property {
-  @include grid-wrapper;
   @include core-19;
 
   .inner-block {
     margin-bottom: $gutter;
-  }
-
-  .heading-row {
-    @extend %contain-floats;
   }
 
   .row {
@@ -28,13 +23,13 @@
     color: $secondary-text-colour;
   }
 
-  .metadata,
-  .map {
-    @include media(tablet) {
-      float: left;
-      width: 50%;
-    }
-  }
+  // .metadata,
+  // .map {
+  //   @include media(tablet) {
+  //     float: left;
+  //     width: 50%;
+  //   }
+  // }
 
   .metadata {
     .address {
@@ -70,17 +65,7 @@
     height: 350px;
   }
 
-  .dashboard {
-    @include media(tablet) {
-      width: 100%;
-      float: left;
-    }
-  }
-
   .dashboard-item {
-    float: left;
-    width: 25%;
-    text-align: left;
 
     h2 {
       @include bold-24;
@@ -103,6 +88,10 @@
 
     .data-bad {
       color: $red;
+    }
+
+    .data-text {
+      margin-bottom: 0;
     }
   }
 
