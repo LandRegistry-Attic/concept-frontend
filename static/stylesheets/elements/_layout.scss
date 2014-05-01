@@ -38,16 +38,16 @@
 .grid-wrapper {
   @include grid-wrapper;
   @include media(tablet) {
-    margin-bottom: 5px;
+    margin-left: (-$gutter);
+    margin-right: (-$gutter);
   }
 }
 
-// Reset grid padding if inside inner block
-.inner-block .grid-wrapper {
-  @include grid-wrapper;
+.grid-row {
+  @extend %contain-floats;
+  margin-bottom: $gutter;
   @include media(tablet) {
-    margin-left: (-$gutter);
-    margin-right: (-$gutter);
+    margin-bottom: $gutter*2;
   }
 }
 
