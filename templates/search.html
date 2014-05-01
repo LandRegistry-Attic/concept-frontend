@@ -31,37 +31,37 @@
   <div class="text full-width">
     <h1>Search results for &ldquo;{{search_term}}&rdquo;</h1>
   </div>
-
-  {% if titles %}
-    <ul class="results">
-    {% for title in titles %}
-      <li class="result">
-        <h3>
-          <a href="/properties/{{ title['title_number'] }}">{{ title['address'] | safe }}</a>
-        </h3>
-        <div class="meta">
-          <div class="grid grid-1-4">
-            <a href="/properties/{{ title['title_number'] }}">View full details</a>
-          </div>
-          <div class="grid grid-1-4">
-            <dl>
-              <dt>Title number:</dt>
-              <dd>{{ title['title_number'] }}</dd>
-          </div>
-          <div class="grid grid-1-4">
-           <dt></dt>
-           <dd> 
-              <div class="map">
-               <div id="map" class="inner-block"></div>
+  <div class="full-width">
+    <div class="grid grid-1-2">
+      {% if titles %}
+        <ul class="results">
+        {% for title in titles %}
+          <li class="result">
+            <h3>
+              <a href="/properties/{{ title['title_number'] }}">{{ title['address'] | safe }}</a>
+            </h3>
+            <div class="meta">
+              <div class="grid grid-1-4">
+                <a href="/properties/{{ title['title_number'] }}">View full details</a>
               </div>
-            </dd>
-          </dl>
-        </div>
-      </li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-
+              <div class="grid grid-1-4">
+                <dl>
+                  <dt>Title number:</dt>
+                  <dd>{{ title['title_number'] }}</dd>
+                </dl>
+              </div>
+            </div>  
+          </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="grid grid-1-2">
+      <div class="map">
+        <div id="map" class="inner-block"></div>
+      </div>
+    </div>  
+  </div>
   <div class="text full-width">
     <p>
       <a href="/search-map-results?place={{search_term}}">View </a> the search results on a map for &ldquo;{{search_term}}&rdquo;

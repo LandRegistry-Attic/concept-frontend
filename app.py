@@ -128,7 +128,6 @@ def search():
                 title['address'] = title['address'].replace(',', ',<br>').replace('(', '<br>').replace(')', '')
 
             title_extent_json = json.dumps(titles[0].get('extent', {}))
-            print(title_extent_json)
 
     return render_template('/search.html', title_extent_json=title_extent_json, titles=titles, form=form, search_term=search_term, latlng=latlng, q=request.args.get('q'))
 
