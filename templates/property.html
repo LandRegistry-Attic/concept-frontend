@@ -1,44 +1,44 @@
-{% extends "base.html" %}
-{% block landregistry_grid %}
+  {% extends "base.html" %}
+  {% block landregistry_grid %}
 
-  <div class="property">
-    <div class="heading-row">
-      <div class="inner-block">
-        <h1>Property</h1>
-      </div>
-    </div>
+  <div class="property grid-wrapper">
 
-    <div class="row">
-      <div class="metadata">
+    <div class="grid-row">
+      <div class="grid">
         <div class="inner-block">
-          <div class="address">
-            <p>{{ title["address"] }}</p>
-          </div>
-          <dl>
-            <dt>Council</dt>
-            <dd>Harlow City Council</dd>
-            <dt>Owner</dt>
-            <dd>Ms Fiona Wright</dd>
-            <dt>Type</dt>
-            <dd>Semi-detached house</dd>
-            <dt>Title number</dt>
-            <dd>{{ title["title_number"] }} </dd>
-            <dt>Price paid</dt>
-            <dd>£178,000 (4th March 2009)</dd>
-          </dl>
-
-          <a href="/authorise-solicitor" class="button">Authorise a solicitor or conveyancer</a>
+          <h1>Property details</h1>
         </div>
       </div>
-
-      <div class="map">
-        <div id="map" class="inner-block"></div>
+      <div class="grid grid-1-2">
+        <div class="inner-block">
+          <div class="metadata">
+            <div class="address">
+              <p>{{ title["address"] }}</p>
+            </div>
+            <dl>
+              <dt>Council</dt>
+              <dd>Harlow City Council</dd>
+              <dt>Owner</dt>
+              <dd>Ms Fiona Wright</dd>
+              <dt>Type</dt>
+              <dd>Semi-detached house</dd>
+              <dt>Title number</dt>
+              <dd>{{ title["title_number"] }} </dd>
+              <dt>Price paid</dt>
+              <dd>£178,000 (4th March 2009)</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-1-2">
+        <div class="inner-block">
+          <img src="/static/images/map.png" alt="Map" class="max-image">
+        </div>
       </div>
     </div>
 
-
-    <div class="row">
-      <div class="dashboard bloc">
+    <div class="grid-row">
+      <div class="grid grid-1-4">
         <div class="inner-block">
           <div class="dashboard-item">
             <h2>Council tax band</h2>
@@ -47,6 +47,10 @@
             </div>
             <a href="#">What does this mean?</a>
           </div>
+        </div>
+      </div>
+      <div class="grid grid-1-4">
+        <div class="inner-block">
           <div class="dashboard-item">
             <h2>Flood risk</h2>
             <div class="data-bad data-small">
@@ -54,6 +58,10 @@
             </div>
             <a href="#">View flood warnings</a>
           </div>
+        </div>
+      </div>
+      <div class="grid grid-1-4">
+        <div class="inner-block">
           <div class="dashboard-item">
             <h2>Energy performance</h2>
             <div class="data-good data-small">
@@ -61,160 +69,107 @@
             </div>
             <a href="#">View energy report</a>
           </div>
+        </div>
+      </div>
+      <div class="grid grid-1-4">
+        <div class="inner-block">
           <div class="dashboard-item">
-            <h2>Bin day</h2>
-            <div class="data-small">
-              Monday
-            </div>
-            <a href="#">View calendar</a>
+            <h2>Building status</h2>
+            <p class="data-text">Grade 2 listed</p>
+            <p>Planning application agreed</p>
+            <a href="#">View status</a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="things block">
+    <div class="grid-row">
+      <div class="grid grid-2-3">
         <div class="inner-block">
-          <h2>Things which affect your property</h2>
-          <ul class="list-bullet">
-            <li>There is a passageway passing through your property. <a href="#">Read full restriction on the register</a></li>
-            <li>You can't build anything taller than 60 feet. <a href="#">Read full restriction on the register</a></li>
-            <li>You're in a conservation area so there may be restrictions on what you can do with your property. <a href="#">Find out more</a></li>
-            <li>You can't sell your property without the permission of Weyford Building Society. <a href="#">View mortgage details</a></li>
+
+          <h2 class="heading-36">Things that affect this property</h2>
+          <p class="grid-space">
+            There may be rights and restrictions on this property held by either the local authority or the land registry.
+          </p>
+
+          <h3 class="heading-19">
+            What you can and can't do to this property according to the Land Registry
+          </h3>
+
+          <p class="list-lead-in">For more detail, log in to <a href="#">view the full register</a></p>
+          <ul class="list-bullet grid-space">
+            <li>There are three restrictions (restrictive covenants) affecting the property.</li>
+            <li>There are rights of way affecting this property</li>
+            <li>This property has a right of way over another property</li>
+            <li>The current lease started on 12/11/2003 and is for 999 years</li>
+            <li>This property has exclusive use of the parking space tinted blue above</li>
+            <li>Consent to purchase will be required from Weyford Building Society</li>
           </ul>
-        </div>
-      </div>
-      <div class="block actions">
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="block third">
-        <div class="inner-block">
-          <h2>Common tasks</h2>
-          <ul>
-            <li><a href="#">Change your details</a></li>
-            <li><a href="#">Sign up for alerts</a></li>
-            <li><a href="#">Pay your council tax</a></li>
-            <li><a href="#">Authorise a solicitor</a></li>
+
+          <h3 class="heading-19">
+            What you can and can't do to this property according to the local authority
+          </h3>
+          <p>For more detail, <a href="#">contact the local authority</a></p>
+
+          <ul class="list-bullet grid-space">
+            <li>This is a listed building, so there maybe restrictions on what can be done with it.</li>
+            <li>There is a proposed tree perservation order on a tree in your garden</li>
+            <li>This property is in a conservation area so there may be restrictions on what can be done with it</li>
           </ul>
-        </div>
-      </div>
 
-      <div class="block third">
-        <div class="inner-block">
-          <h2>Historical information</h2>
-          <ul>
-            <li><a href="#">Purchase prices</a></li>
-            <li><a href="#">Boundary changes and historical maps</a></li>
-            <li><a href="#">Previous owners</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="block third">
-        <div class="inner-block">
-          <h2>Related documents</h2>
-          <ul>
-            <li><a href="#">Register of title</a></li>
-            <li><a href="#">Title plan</a></li>
-            <li><a href="#">Lease</a></li>
-            <li><a href="#">Title deed (1826)</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="half block">
-        <div class="inner-block">
-          <h2>Authorised solicitors</h2>
-          <p>These solicitors can manage this property on your behalf:</p>
-          <ul class="list-bullet">
-            <li><strong>Hart Brown Solicitors</strong></li>
-          </ul>
-          <p><a href="#">Authorise a new solicitor</a></p>
-        </div>
-
-
-        <div class="inner-block">
-          <h2>Activity</h2>
-          <ul>
-            <li>
-              <h3>15th September 2013</h3>
-              <div class="commit">
-                  <a href="version/691083de20183940ecaeb19cdcd1aef16a84dbfe" class="version">
-                      <abbr title="691083de20183940ecaeb19cdcd1aef16a84dbfe" class="hash-short">691083de20…</abbr>
-                  </a>
-              </div>
-              <p>Office copy ordered</p>
-            </li>
-            <li>
-              <h3>2nd September 2013</h3>
-              <div class="commit">
-                  <a href="version/2101bda6d09ac18c1947465fbd54f52a30276518" class="version">
-                      <abbr title="2101bda6d09ac18c1947465fbd54f52a30276518" class="hash-short">2101bda6d0…</abbr>
-                  </a>
-              </div>
-              <p>Office copy ordered</p>
-            </li>
-            <li>
-              <h3>4th March 2009</h3>
-              <div class="commit">
-                  <a href="version/614c6ee80f9012b711c61dd679c3c763999f1c84" class="version">
-                      <abbr title="614c6ee80f9012b711c61dd679c3c763999f1c84" class="hash-short">614c6ee80f…</abbr>
-                  </a>
-              </div>
-              <p>The title from Angela Smith to Paul John Dawkins</p>
-            </li>
-            <li>
-              <h3>18th January 2009</h3>
-              <p>Official search ordered</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="half block">
-
-        <div class="inner-block">
-          <h2>Current mortgages</h2>
-          <table class="table">
-            <tr>
-              <th>Date</th>
-              <th>Lender</th>
-            </tr>
-            <tr>
-              <td>15 July 2002</td>
-              <td>Weyford Building Society</td>
-            </tr>
+          <h3 class="heading-24">Planning applications</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>12/06/2015</td>
+                <td>Erection of rear roof extensions</td>
+                <td>Approved</td>
+              </tr>
+              <tr>
+                <td>24/02/2015</td>
+                <td>Erection of rear roof extensions</td>
+                <td>Rejected</td>
+              </tr>
+            </tbody>
           </table>
-        </div>
 
-        <div class="inner-block">
-          <h2>Related titles</h2>
-            {% if title['related_titles'] is defined %}
-              {% if title['related_titles'][0] is defined %}
-                <ul class="list-bullet">
-                {% for title in title['related_titles'] %}
-                  <li><strong><a href="/properties/{{ title['title_number'] }}">{{ title['title_number'] }}</a></strong></li>
-                {% endfor %}
-              {% else %}
-                <p>No related titles.</p>
-              {% endif %}
-            {% else %}
-              <p>No related titles.</p>
-            {% endif %}
         </div>
       </div>
     </div>
-  </div>
-{% endblock %}
 
-{% block extra_js %}
-  <script>
-    window.LR.extentMap = new LR.SingleExtentMap({
-      el: '#map',
-      extent: {{ title_extent_json|safe }},
-    });
-  </script>
-{% endblock %}
+    <!-- Documents available -->
+    <div class="grid-row">
+      <div class="grid">
+        <div class="inner-block">
+
+          <h2 class="heading-24 no-top-margin">Documents and further information</h2>
+          <ul>
+            <li><a href="#todo">Official copy of register</a></li>
+            <li><a href="#">Deeds</a></li>
+            <li><a href="#">Related land</a></li>
+            <li><a href="#">Title history</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {% endblock %}
+
+  {% block extra_js %}
+    <script>
+      window.LR.extentMap = new LR.SingleExtentMap({
+        el: '#map',
+        extent: {{ title_extent_json|safe }},
+      });
+    </script>
+  {% endblock %}
