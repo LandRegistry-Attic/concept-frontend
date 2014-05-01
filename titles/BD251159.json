@@ -1,53 +1,7 @@
 {
-  "current_proprietorship_date": "1987-06-01", 
-  "proprietors": [
-    {
-      "postcode": "CR0 2AQ", 
-      "name": "Secretary Of State For Communities And Local Government", 
-      "address": [
-        "Land Registry Head Office", 
-        "Trafalgar House 1 Bedford Park", 
-        "Croydon"
-      ]
-    }
-  ], 
-  "title_number": "HS18112", 
-  "documents": [
-    {
-      "date": "1974-12-04", 
-      "entry_number": "C4", 
-      "plan_only": false, 
-      "type": "20", 
-      "filed_under": null
-    }, 
-    {
-      "date": "1976-11-01", 
-      "entry_number": "A2", 
-      "plan_only": false, 
-      "type": "90", 
-      "filed_under": null
-    }, 
-    {
-      "date": "1992-01-30", 
-      "entry_number": "L1", 
-      "plan_only": false, 
-      "type": "90", 
-      "filed_under": "HS210063"
-    }, 
-    {
-      "date": "2011-12-09", 
-      "entry_number": "L2", 
-      "plan_only": false, 
-      "type": "90", 
-      "filed_under": "HS364683"
-    }, 
-    {
-      "date": "1992-01-30", 
-      "entry_number": "C6", 
-      "plan_only": false, 
-      "type": "90", 
-      "filed_under": null
-    }
+  "address": [
+    "land on the South side of Caughey Street", 
+    "Kingston upon Hull"
   ], 
   "charges_register": [
     {
@@ -81,15 +35,46 @@
       "type": "Subjective Easements - C Register"
     }
   ], 
+  "current_proprietorship_date": "1987-06-01", 
+  "documents": [
+    {
+      "date": "1974-12-04", 
+      "entry_number": "C4", 
+      "filed_under": null, 
+      "plan_only": false, 
+      "type": "20"
+    }, 
+    {
+      "date": "1976-11-01", 
+      "entry_number": "A2", 
+      "filed_under": null, 
+      "plan_only": false, 
+      "type": "90"
+    }, 
+    {
+      "date": "1992-01-30", 
+      "entry_number": "L1", 
+      "filed_under": "HS210063", 
+      "plan_only": false, 
+      "type": "90"
+    }, 
+    {
+      "date": "2011-12-09", 
+      "entry_number": "L2", 
+      "filed_under": "HS364683", 
+      "plan_only": false, 
+      "type": "90"
+    }, 
+    {
+      "date": "1992-01-30", 
+      "entry_number": "C6", 
+      "filed_under": null, 
+      "plan_only": false, 
+      "type": "90"
+    }
+  ], 
   "extent": {
     "geometry": {
-      "crs": {
-        "type": "name", 
-        "properties": {
-          "name": "EPSG:3857"
-        }
-      }, 
-      "type": "MultiPolygon", 
       "coordinates": [
         [
           [
@@ -155,13 +140,31 @@
             ]
           ]
         ]
-      ]
+      ], 
+      "crs": {
+        "properties": {
+          "name": "EPSG:3857"
+        }, 
+        "type": "name"
+      }, 
+      "type": "MultiPolygon"
     }
   }, 
-  "address": [
-    "land on the South side of Caughey Street", 
-    "Kingston upon Hull"
+  "leases": [
+    {
+      "date": "1976-11-01", 
+      "parties": [
+        "Kingston upon Hull City Council", 
+        "Blue Circle Investments Limited"
+      ], 
+      "rent": "As therein mentioned", 
+      "term": "99 years from 1 April 1975"
+    }
   ], 
+  "lenders": [], 
+  "official_copy_date": "2014-03-27T12:12:46", 
+  "postcode": null, 
+  "price_paid": null, 
   "property_register": [
     {
       "date": "1977-05-30", 
@@ -194,6 +197,17 @@
       "type": "Plan Related"
     }
   ], 
+  "proprietors": [
+    {
+      "address": [
+        "Land Registry Head Office", 
+        "Trafalgar House 1 Bedford Park", 
+        "Croydon"
+      ], 
+      "name": null, 
+      "postcode": "CR0 2AQ"
+    }
+  ], 
   "proprietorship_register": [
     {
       "date": "1987-06-01", 
@@ -206,15 +220,28 @@
       "type": "Implied Covenants"
     }
   ], 
-  "leases": [
+  "restrictive_charges": [
     {
-      "date": "1976-11-01", 
-      "term": "99 years from 1 April 1975", 
-      "rent": "As therein mentioned", 
-      "parties": [
-        "Kingston upon Hull City Council", 
-        "Blue Circle Investments Limited"
-      ]
+      "date": null, 
+      "text": "A Conveyance of the freehold estate in the land tinted pink on the filed plan dated 1 June 1847 made between (1) The Reverend Samuel William Hall (2) William Foale and James Jones (3) Richard Grasby the Younger and (4) Charles Alfred Lee contains restrictive covenants but neither the original deed nor a certified copy or examined abstract thereof was produced on first registration.", 
+      "type": "Restrictive Covenants/Stipulations - Deed"
+    }, 
+    {
+      "date": null, 
+      "text": "A Conveyance of the freehold estate in the land tinted blue on the filed plan dated 14 September 1847 made between (1) The Reverend Foale and James Jones (2) William Good and (3) Hunter Estill contains restrictive covenants but neither the original deed nor a certified copy or examined abstract thereof was produced on first registration.", 
+      "type": "Restrictive Covenants/Stipulations - Deed"
+    }, 
+    {
+      "date": null, 
+      "text": "The freehold estate in the land tinted yellow on the filed plan is subject to such restrictive covenants as may have been imposed thereon before 10 April 1948 and are still subsisting and capable of being enforced.", 
+      "type": "Restrictive Covenants/Stipulations - Register"
+    }, 
+    {
+      "date": null, 
+      "text": "An Agreement dated 4 December 1974 made between (1) The Yorkshire Electricity Board and (2) The Associated Portland Cement Manufacturers Limited relates to the supply of electricity.\n NOTE: Copy filed.", 
+      "type": "Restrictive Covenants/Stipulations - Deed"
     }
-  ]
+  ], 
+  "restrictive_proprietorship": [], 
+  "title_number": "HS18112"
 }
