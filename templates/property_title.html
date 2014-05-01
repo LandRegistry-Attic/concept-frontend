@@ -43,20 +43,11 @@ ins {
     background-color: #c6ffc6;
     text-decoration: none;
 }
-
 del {
     background-color: #ffc6c6;
 }
-
-div, table, h3, input, label {
-    margin: 10px;
-}
-
-table th {
-    width: 30%;
-}
-
 </style>
+<link href="/static/stylesheets/vendor/ol.css" media="all" rel="stylesheet" type="text/css">
 </head>
 <body class="website government html-publication">
     <script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script><div id="skiplink-container">
@@ -97,28 +88,82 @@ table th {
     <div class="headings">
       <p class="document-type">Land Registry</p>
       <h1>Official copy of the register for title number <a href="/properties/{{ title['title_number'] }}">{{ title['title_number'] }}</a></h1>
-      <p>
+
+      <div style="width: 80%; margin-bottom: 30px">
+      <span style="color: white">
       <strong>Address:</strong>
-       <span class="adr">
+       <span style="color: white" class="adr">
         <span class="street-address">{{ title['address'][0] }}, </span>
-        <span class="locality">{{ title['address'][1] }}</span>
+        <span class="locality">{{ title['address'][1] }}{% if title['address'][2] %}, {% endif %}
+        </span>
         <span class="region">{{ title['address'][2] }}</span>
+        {% if title['postcode'] %}<span class="postal-code">{{ title['postcode'] }}</span>{% endif %}
        </span>
-      </p>
-      <p><strong>Last updated:</strong> <abbr class="published-at date" title="2014-04-23T09:33:23+01:00">23 April 2014 09:22:23 GMT</abbr></p>
+      </span><br/>
+       <span style="color: white"><strong>Price stated:</strong> 
+       {% if title['price_paid'] %} 
+         &pound;{{ title['price_paid'] }} 
+       {% else %}
+         None stated
+       {% endif %}
+       </span><br/>
+       <span style="color: white"><strong>Registered owner(s):</strong> 
+      {% for proprietor in title['proprietors'] %}
+        {% if proprietor.name %}
+        {{ proprietor.name }} of
+        {% endif %}
+        {% for line in proprietor.address %} {{ line }} {% endfor %}
+        {{ proprietor.postcode}}
+        {% if loop.index != title['proprietors']|length %} and {% endif %}
+      {% endfor %}
+      {{ title[''] }}</span><br/>
+      {% if title['lenders']|length != 0 %}
+       <span style="color: white"><strong>Lender(s):</strong>
+      {% for lender in title['lenders'] %}
+        {{ lender.text }}
+        {% endfor %}
+      {% endif %}
+        </span><br/>
+    </div>
     </div>
 
     <nav class="in-page-navigation"><h2>Contents</h2>
       <ol>
           <li><a href="#about-this-document">About this document</a></li>
-          <li><a href="#property-register">Registers</a>
+          <li>
              <ol>
-             <li style="list-style-type: upper-alpha"><a href="#charges-register">Property register (about the property)</a></li>
-            <li style="list-style-type: upper-alpha"><a href="#proprietorship-register">Proprietorship register (about the owners)</a></li>
-            <li style="list-style-type: upper-alpha"><a href="#charges-register">Charges register (charges etc affecting the property)</a></li>
+             <li style="list-style-type: upper-alpha"><a href="#property-register">Property register ({{ title['property_register']|length }} entries)</a></li>
+            <li style="list-style-type: upper-alpha">
+              <a href="#proprietorship-register"
+              >Proprietorship register
+                ({{ title['proprietorship_register']|length }}
+                {% if title['proprietorship_register']|length %}
+                entries,
+                {% if title['restrictive_proprietorship']|length %}
+                  {{ title['restrictive_proprietorship']|length }} restrictive)
+                {% endif %}
+              {% else %}
+                entries)
+               {% endif %}
+
+              </a></li>
+            <li style="list-style-type: upper-alpha">
+              <a href="#charges-register">
+              Charges register
+              ({{ title['charges_register']|length }}
+              {% if title['restrictive_charges']|length %}
+                entries,
+                {% if title['restrictive_charges']|length %}
+                  {{ title['restrictive_charges']|length }} restrictive)
+                {% endif %}
+              {% else %}
+                entries)
+              {% endif %}
+              </a></li>
             </ol>
           </li>
-          <li><a href="#title-plan">Title plan (with map)</a></li>
+          <li><a href="#title-plan">Title plan</a></li>
+          <li><a href="#related-documents">Related documents</a></li>
           <li><a href="#history">History of the title</a></li>
       </ol>
     </nav>
@@ -129,78 +174,96 @@ table th {
     <div class="govspeak">
       <p>Note: This is a demonstration, and not an official copy of the register.</p>
 
-    <h2 id="about-this-document"><span class="number">1 </span>About this document</h2>
+    <h2 id="about-this-document">1. About this document</h2>
     <p>
-      An official copy of the register, admissible in evidence in a court to the same extent as the original.</p>
-      <p>A person is entitled to be indemnified by the registrar if he suffers loss by reason of a mistake in an official copy.</p>
-      <p>This extract shows information current on <abbr class="published-at date" title="2014-04-23T09:33:23+01:00">23 April 2014 09:22:23 GMT</abbr> and does not take account of any application made after that time even if pending in the Land Registry when this extract was issued.
+      An official copy of the register, admissible in evidence in a court to the same extent as the original. A person is entitled to be indemnified by the registrar if he suffers loss by reason of a mistake in an official copy.</p>
+      <p>This extract shows information current on <abbr class="published-at date" title="{{ title['official_copy_date'] }}">{{ title['official_copy_date'] }}</abbr> and does not take account of any application made after that time even if pending in the Land Registry when this extract was issued.
     </p>
 
-    <h2 id="property-register"><span class="number">2A </span>Property register</h2>
+    <h2 id="property-register">2A. Property register</h2>
     <p style="font-weight: bold">This register describes the land and estate comprised in the title. Except as mentioned below, the title includes any legal easements granted by the registered lease but is subject to any rights that it reserves, so far as those easements and rights exist and benefit or affect the registered land.</p>
       <ol>
       {% for entry in title['property_register'] %}
-        <li style="margin-bottom: 10px">{{ entry.text|replace("\n", "<br>")|safe }}
-
-        {% if entry.date %}
-        (added <a href="#history-1">{{ entry.date|safe }})</a>
+        <li class="entry" style="margin-bottom: 10px">
+        {% if entry.type %}
+        <span style="font-weight: bold">{{ entry.type }}</span><br/>
         {% endif %}
-
+        {{ entry.text|replace("\n", "<br>")|safe }}
+<!--         {% if entry.date %}
+        <br/><span style="font-size: 16px">Added <a href="#history-1">{{ entry.date|safe }}</a>.</span>
+        {% endif %} -->
         </li>
       {% endfor %}
        </ol>
 
-      <h2 id="proprietorship-register"><span class="number">2B </span>Proprietorship register</h2>
+      <h2 id="proprietorship-register">2B. Proprietorship register</h2>
       <p style="font-weight: bold">This register specifies the class of title and identifies the owner. It contains any entries that affect the right of disposal.</p>
       <ol>
       {% for entry in title['proprietorship_register'] %}
-        <li style="margin-bottom: 10px">{{ entry.text|replace("\n", "<br>")|safe }}
-
-        {% if entry.date %}
-        (added <a href="#history-2">{{ entry.date|safe }})</a>
+        <li class="entry" style="margin-bottom: 10px">
+        {% if entry.type %}
+        <span style="font-weight: bold">{{ entry.type }}</span><br/>
         {% endif %}
-
+        {{ entry.text|replace("\n", "<br>")|safe }}
+<!--         {% if entry.date %}
+        <br/>Added <a href="#history-3">{{ entry.date|safe }}</a>.
+        {% endif %} -->
         </li>
       {% endfor %}
       </ol>
 
-      <h2 id="charges-register"><span class="number">2C </span>Charges register</h2>
+      <h2 id="charges-register">2C. Charges register</h2>
 
       <p style="font-weight: bold">This register contains charges and any other matters that affect the land.</p>
       <ol>
       {% for entry in title['charges_register'] %}
-        <li style="margin-bottom: 10px">{{ entry.text|replace("\n", "<br>")|safe }}
-
-        {% if entry.date %}
-        (added <a href="#history-3">{{ entry.date|safe }})</a>
+        <li class="entry" style="margin-bottom: 10px">
+        {% if entry.type %}
+        <span style="font-weight: bold">{{ entry.type }}</span><br/>
         {% endif %}
-
+        {{ entry.text|replace("\n", "<br>")|safe }}
+<!--         {% if entry.date %}
+        <br/>Added <a href="#history-3">{{ entry.date|safe }}</a>.
+        {% endif %} -->
         </li>
       {% endfor %}
       </ol>
 
-      <h2 id="title-plan"><span class="number">3 </span>Title plan</h2>
+      <h2 id="title-plan">3. Title plan</h2>
 
-      <p> This extract shows information current at <abbr class="published-at date" title="2014-04-23T09:33:23+01:00">23 April 2014 09:22:23 GMT</abbr> and does not take account of any application made after that time even if pending in the Land Registry when this extract was issued.</p>
+      <p> This extract shows information current at <abbr class="published-at date" title="{{ title['official_copy_date'] }}">{{ title['official_copy_date'] }}</abbr> and does not take account of any application made after that time even if pending in the Land Registry when this extract was issued.</p>
 
-      <div class="map">
-        <div id="map" class="inner-block"></div>
+      <div class="map" style="margin-bottom: 10px">
+        <div id="map" class="inner-block" style='height: 500px'></div>
       </div>
 
-      <h2 id="history"><span class="number">4 </span>History of the title</h2>
+      <h2 id="related-documents">4. Related documents</h2>
 
-      <p><strong>Past history of the title: 16 entries between 1st November 1933 and 15th September 2013.</strong></p>
+      <p>Scans of documents related to title number {{ title['title_number'] }} held in the register.</p>
 
-      <h3>15th September 2013</h3>
-      <p>33 words deleted.</p>
+      <h4 id="related-documents-1">14th November 1998</h4>
+
+      <img src="/static/images/current-register.png" alt="Scanned document 1" style="width: 200px; border: 1px solid #ccc" />
+      <img src="/static/images/draft-register.png" alt="Scanned document 2" style="width: 200px; border: 1px solid #ccc" />
+
+      <h4 id="related-documents-2">3rd July 1998</h4>
+
+      <img src="/static/images/map.png" alt="Scanned document 2" width="200" style="width: 200px; border: 1px solid #ccc" />
+
+      <h2 id="history">5. History of the title</h2>
+
+      <p><strong>16 additions and 8 deletions between 1st November 1933 and 15th September 2013.</strong></p>
+
+      <h4 id="history-1">15th September 2013</h4>
+      <p>33 words deleted in section 2B (Proprietorship register).</p>
       <div id="wrapper">
-          <table id="history-1">
+          <table>
               <thead>
                   <tr>
-                      <th style="width: 20%">Section</th>
-                      <th>Change</th>
-                      <th>Original version</th>
-                      <th>New version</th>
+                      <th style="width: 10%">Section</th>
+                      <th style="width: 30%">Change</th>
+                      <th style="width: 30%">Original version</th>
+                      <th style="width: 30%">New version</th>
                   </tr>
               </thead>
               <tbody>
@@ -214,15 +277,16 @@ table th {
           </table>
       </div>
 
-      <h3>12th July 1995</h3>
+      <h4 id="history-2">12th July 1995</h4>
+      <p>33 words added in Section 2C (Charges register).</p>
       <div id="wrapper">
-          <table id="history-2">
+          <table>
               <thead>
                   <tr>
-                  <th style="width: 20%">Section</th>
-                   <th>Change</th>
-                      <th>Original version</th>
-                      <th>New version</th>
+                      <th style="width: 10%">Section</th>
+                      <th style="width: 30%">Change</th>
+                      <th style="width: 30%">Original version</th>
+                      <th style="width: 30%">New version</th>
                   </tr>
               </thead>
               <tbody>
@@ -234,11 +298,10 @@ A Conveyance of the freehold estate in the land tinted blue on the filed plan da
 The freehold estate in the land tinted yellow on the filed plan is subject to such restrictive covenants as may have been imposed thereon before 10 April 1948 and are still subsisting and capable of being enforced.
 The parts of the land affected thereby are subject to the leases set out in the schedule of leases hereto.
 The leases grant and reserve easements as therein mentioned.</td>
-                      <td class="changed">A Conveyance of the freehold estate in the land tinted pink on the filed plan dated 1 June 1847 made between (1) The Reverend Samuel William Hall (2) William Foale and James Jones (3) Richard Grasby the Younger and (4) Charles Alfred Lee contains restrictive covenants but neither the original deed nor a certified copy or examined abstract thereof was produced on first registration.
+                      <td class="changed">An Agreement dated 12th July 1995 made between (1) The Yorkshire Electricity Board and (2) The Associated Portland Cement Manufacturers Limited relates to the supply of electricity. NOTE: Copy filed.
+A Conveyance of the freehold estate in the land tinted pink on the filed plan dated 1 June 1847 made between (1) The Reverend Samuel William Hall (2) William Foale and James Jones (3) Richard Grasby the Younger and (4) Charles Alfred Lee contains restrictive covenants but neither the original deed nor a certified copy or examined abstract thereof was produced on first registration.
 A Conveyance of the freehold estate in the land tinted blue on the filed plan dated 14 September 1847 made between (1) The Reverend Foale and James Jones (2) William Good and (3) Hunter Estill contains restrictive covenants but neither the original deed nor a certified copy or examined abstract thereof was produced on first registration.
 The freehold estate in the land tinted yellow on the filed plan is subject to such restrictive covenants as may have been imposed thereon before 10 April 1948 and are still subsisting and capable of being enforced.
-An Agreement dated 4 December 1974 made between (1) The Yorkshire Electricity Board and (2) The Associated Portland Cement Manufacturers Limited relates to the supply of electricity.
-NOTE: Copy filed.
 The parts of the land affected thereby are subject to the leases set out in the schedule of leases hereto.
 The leases grant and reserve easements as therein mentioned.</td>
                   </tr>
@@ -246,15 +309,16 @@ The leases grant and reserve easements as therein mentioned.</td>
           </table>
       </div>
 
-      <h3>3rd December 1998</h3>
+      <h4 id="history-3">3rd December 1998</h4>
+      <p>44 words added and 22 words deleted in section 2B (Proprietorship register).</p>
       <div id="wrapper">
-          <table id="history-3">
+          <table>
               <thead>
                   <tr>
-                  <th style="width: 20%">Section</th>
-                      <th>Change</th>
-                      <th>Original version</th>
-                      <th>New version</th>
+                      <th style="width: 10%">Section</th>
+                      <th style="width: 30%">Change</th>
+                      <th style="width: 30%">Original version</th>
+                      <th style="width: 30%">New version</th>
                   </tr>
               </thead>
               <tbody>
@@ -268,8 +332,6 @@ The leases grant and reserve easements as therein mentioned.</td>
           </table>
       </div>
 
-      <a href="#">show all history</a>
-
         </div>
       </div>
 
@@ -277,6 +339,14 @@ The leases grant and reserve easements as therein mentioned.</td>
 
 
       <div class="js-back-to-content back-to-content">
+<!--       <ol style="list-style-type: none">
+        <li>1. About this document</li>
+        <li>2A. Property register</li>
+        <li>2B. Proprietorship register</li>
+        <li>2C. Charges register</li>
+        <li>3. Title plan</li>
+        <li>4. History of the title</li>
+        </ol> -->
         <a href="#contents">Back to contents</a>
       </div>
       <div class="js-back-to-content-stop"></div>
@@ -319,13 +389,28 @@ The leases grant and reserve easements as therein mentioned.</td>
 
 {% block extra_js %}
   <script>
+
+    // Set up map.
     window.LR.extentMap = new LR.SingleExtentMap({
       el: '#map',
       extent: {{ title_extent_json|safe }},
+      zoom: 19
     });
 
-  $('#wrapper tr').prettyTextDiff({
-  });
+    // Add links to title plans etc.
+    $( "li.entry" ).html(function() {
+      var html = $(this).html().replace("title plan", "<a href='#title-plan'>title plan</a>");
+      html = html.replace("plan of the above Title", "<a href='#title-plan'>plan of the above Title</a>");
+      html = html.replace("plan of the above title", "<a href='#title-plan'>plan of the above title</a>");
+
+      html = html.replace("NOTE: Copy filed.", "NOTE: Copy filed. <a href='#related-documents-1'>View related documents</a>");
+      html = html.replace("\u00c2\u00a3", "&pound;");
+      return html;
+    });
+
+    // Set up text diffs.
+    $('#wrapper tr').prettyTextDiff({
+    });
   </script>
 {% endblock %}
 
