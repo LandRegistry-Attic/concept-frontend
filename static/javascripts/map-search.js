@@ -17,6 +17,7 @@
       this.currentHighlight = null;
       this.currentTitles = null;
       this.drawInteraction = null;
+      this.isDrawing = false;
 
       // Init buttons
       this.$startDrawingButton.click(_.bind(this.startDrawing, this));
@@ -102,21 +103,22 @@
     },
 
     fetchTitlesWithinViewExtent: function() {
-      this.fetchTitlesWithinPolygon(this.getViewExtentAsGeoJSON());
+      this.fetchTitlesWithinPolygon(this.getViewExtentAsGeoJSON(), this.onGeoSuccess);
     },
 
     // Fetch the titles within a polygon and display them on the map
-    fetchTitlesWithinPolygon: function(polygon) {
+    fetchTitlesWithinPolygon: function(polygon, onSuccess) {
       console.log('Updating map', polygon);
       var url = this.geoUrl + '/titles?partially_contained_by=' + encodeURIComponent(JSON.stringify(polygon))
       $.ajax({
         url: url,
         dataType: 'jsonp',
-        success: _.bind(this.onGeoSuccess, this),
+        success: _.bind(onSuccess, this),
       });
     },
 
     onGeoSuccess: function(results) {
+
       this.removeVectorLayer();
 
       var vectorLayer = new ol.layer.Vector({
@@ -138,9 +140,42 @@
         return [title['title_number'], title];
       }));
 
-      this.setVectorLayer(vectorLayer);
+      if(this.isDrawing == false)
+      { 
+        this.setVectorLayer(vectorLayer);
+      }
+          
     },
 
+    onDrawingGeoSuccess: function(results) {
+
+      this.removeVectorLayer();
+
+      var vectorLayer = new ol.layer.Vector({
+        source: this.getSourceFromTitles(results['objects']),
+        style: [new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: 'red',
+            width: 1
+          }),
+          fill: new ol.style.Fill({
+            color: 'rgba(255, 0, 0, 0.1)'
+          })
+        })],
+      });
+
+      // hash indexed by title number
+      this.currentTitles = _.object(_.map(results['objects'], function(title) {
+        title['address'] = title['address'].replace(',', ',<br>').replace('(', '<br>').replace(')', '')
+        return [title['title_number'], title];
+      }));
+
+      if(this.isDrawing == true)
+      { 
+        this.setVectorLayer(vectorLayer);
+      }
+         
+    },
     getSourceFromTitles: function(titles) {
       var features = _.map(titles, function(title) {
         return {
@@ -211,6 +246,7 @@
     },
 
     startDrawing: function() {
+      this.isDrawing = true;
       this.removeVectorLayer();
       this.drawInteraction = new ol.interaction.Draw({
         type: 'Polygon'
@@ -223,16 +259,18 @@
 
     onDrawEnd: function(e) {
       var geojson = new ol.format.GeoJSON().writeFeature(e.feature);
-      this.fetchTitlesWithinPolygon(geojson['geometry']);
+      this.fetchTitlesWithinPolygon(geojson['geometry'], this.onDrawingGeoSuccess);
     },
 
     stopDrawing: function() {
+      this.isDrawing = false;
       this.map.removeInteraction(this.drawInteraction);
       this.drawInteraction = null;
       this.fetchTitlesWithinViewExtent();
       this.removeVectorLayer();
       this.$startDrawingButton.show();
       this.$drawingHelp.hide();
+     
     }
   };
 })();
