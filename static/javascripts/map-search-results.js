@@ -33,7 +33,12 @@
                     this.postcodeCentre['coordinates'][1]
           ],
           zoom: 16
-        })
+        }),
+        interactions: [new ol.interaction.DoubleClickZoom({delta: 0}), 
+                     new ol.interaction.DragPan({}),
+                     new ol.interaction.MouseWheelZoom({}),
+                     new ol.interaction.PinchRotate({}),
+                     new ol.interaction.PinchZoom({})]
       });
       this.map.on('moveend', this.onMoveend, this);
       this.featureOverlay = new ol.FeatureOverlay({

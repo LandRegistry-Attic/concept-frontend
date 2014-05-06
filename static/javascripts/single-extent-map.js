@@ -47,7 +47,12 @@
       view: new ol.View2D({
         center: [0, 0],
         zoom: options.zoom || 18
-      })
+      }),
+      interactions: [new ol.interaction.DoubleClickZoom({delta: 0}), 
+                     new ol.interaction.DragPan({}),
+                     new ol.interaction.MouseWheelZoom({}),
+                     new ol.interaction.PinchRotate({}),
+                     new ol.interaction.PinchZoom({})]
     });
 
     if (this.extent) {
