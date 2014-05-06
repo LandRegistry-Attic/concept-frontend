@@ -6,7 +6,7 @@
     this.$infoEl = $(options.infoEl);
     this.$startDrawingButton = $(options.startDrawingButton);
     this.$stopDrawingButton = $(options.stopDrawingButton);
-    this.$drawingHelp = $(options.drawingHelp);
+    this.$drawParagraph = $(options.drawParagraph);
     this.geoUrl = options.geoUrl;
     this.postcodeCentre = options.postcodeCentre;
     this.init();
@@ -21,6 +21,10 @@
       // Init buttons
       this.$startDrawingButton.click(_.bind(this.startDrawing, this));
       this.$stopDrawingButton.click(_.bind(this.stopDrawing, this));
+
+      // Hide these until startDrawingButton is clicked
+      this.$stopDrawingButton.hide();
+      this.$drawParagraph.hide();
 
       // Init map
       var layer = new ol.layer.Tile({
@@ -218,7 +222,8 @@
       this.drawInteraction.on('drawend', _.bind(this.onDrawEnd, this));
       this.map.addInteraction(this.drawInteraction);
       this.$startDrawingButton.hide();
-      this.$drawingHelp.show();
+      this.$stopDrawingButton.show();
+      this.$drawParagraph.show();
     },
 
     onDrawEnd: function(e) {
@@ -232,7 +237,8 @@
       this.fetchTitlesWithinViewExtent();
       this.removeVectorLayer();
       this.$startDrawingButton.show();
-      this.$drawingHelp.hide();
+      this.$stopDrawingButton.hide();
+      this.$drawParagraph.hide();
     }
   };
 })();
