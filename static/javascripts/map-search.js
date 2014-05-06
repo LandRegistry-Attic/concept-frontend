@@ -144,8 +144,8 @@
       }));
 
       return vectorLayer;
-    },
 
+    },
     onGeoSuccess: function(results) {
 
       var vectorLayer = this.replaceVectorLayer(results);
@@ -154,7 +154,6 @@
       { 
         this.setVectorLayer(vectorLayer);
       }
-          
     },
     onDrawingGeoSuccess: function(results) {
 
@@ -262,6 +261,7 @@
       this.$startDrawingButton.show();
       this.$stopDrawingButton.hide();
       this.$drawParagraph.hide();
+
     }
   };
 })();
