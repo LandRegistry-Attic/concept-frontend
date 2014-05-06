@@ -47,11 +47,11 @@
         style: function(feature, resolution) {
           return [new ol.style.Style({
             stroke: new ol.style.Stroke({
-              color: '#f00',
+              color: 'blue',
               width: 1
             }),
             fill: new ol.style.Fill({
-              color: 'rgba(255,0,0,0.2)'
+              color: 'rgba(0,0,255,0.2)'
             }),
           })];
         }
@@ -106,11 +106,11 @@
         source: this.getSourceFromTitles(results['objects']),
         style: [new ol.style.Style({
           stroke: new ol.style.Stroke({
-            color: 'red',
+            color: 'blue',
             width: 1
           }),
           fill: new ol.style.Fill({
-            color: 'rgba(255, 0, 0, 0.1)'
+            color: 'rgba(0, 0, 255, 0.1)'
           })
         })],
       });

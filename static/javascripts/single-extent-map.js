@@ -4,21 +4,21 @@
   var styles = {
     'MultiPolygon': [new ol.style.Style({
       stroke: new ol.style.Stroke({
-        color: 'red',
+        color: 'blue',
         width: 1
       }),
       fill: new ol.style.Fill({
-        color: 'rgba(255,0,0,0.2)'
+        color: 'rgba(0,0,255,0.2)'
       })
     })],
     'Polygon': [new ol.style.Style({
       stroke: new ol.style.Stroke({
-        color: 'red',
+        color: 'blue',
         lineDash: [4],
         width: 3
       }),
       fill: new ol.style.Fill({
-        color: 'rgba(255,0,0,0.2)'
+        color: 'rgba(0,0,255,0.2)'
       })
     })],
   };
