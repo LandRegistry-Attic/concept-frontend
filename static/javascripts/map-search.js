@@ -120,8 +120,7 @@
         success: _.bind(onSuccess, this),
       });
     },
-
-    onGeoSuccess: function(results) {
+    replaceVectorLayer: function(results){
 
       this.removeVectorLayer();
 
@@ -144,35 +143,22 @@
         return [title['title_number'], title];
       }));
 
+      return vectorLayer;
+    },
+
+    onGeoSuccess: function(results) {
+
+      var vectorLayer = this.replaceVectorLayer(results);
+
       if(this.isDrawing == false)
       { 
         this.setVectorLayer(vectorLayer);
       }
           
     },
-
     onDrawingGeoSuccess: function(results) {
 
-      this.removeVectorLayer();
-
-      var vectorLayer = new ol.layer.Vector({
-        source: this.getSourceFromTitles(results['objects']),
-        style: [new ol.style.Style({
-          stroke: new ol.style.Stroke({
-            color: 'red',
-            width: 1
-          }),
-          fill: new ol.style.Fill({
-            color: 'rgba(255, 0, 0, 0.1)'
-          })
-        })],
-      });
-
-      // hash indexed by title number
-      this.currentTitles = _.object(_.map(results['objects'], function(title) {
-        title['address'] = title['address'].replace(',', ',<br>').replace('(', '<br>').replace(')', '')
-        return [title['title_number'], title];
-      }));
+      var vectorLayer = this.replaceVectorLayer(results);
 
       if(this.isDrawing == true)
       { 
