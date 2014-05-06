@@ -11,7 +11,7 @@ deploy:
   provider: heroku
   api_key:
     secure: iiz+tNyeFB/76aLDd6dIKCUjJW7MQG6Ukg0RxghxhaTwm8GOh7CBQQxyME+GPSatkF3glT2DLnrgZviKAqfsT5VbUjVuxFeybVuzsWkbuVjIu8DOrxZ8qU7diSN8qORblduc/GiFDzObVJ7iTIFBj+8pProeYEDEHKw1Yf68fFE=
-  app: lr-concept-my-property
+  app: lr-concept-frontend
   on:
-    repo: LandRegistry/concept-my-property
+    repo: LandRegistry/concept-frontend
   strategy: git
