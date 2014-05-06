@@ -5,14 +5,21 @@
 {% endblock %}
 {% block landregistry_content %}
   <div class="map">
+
+
     <div class="ol-container"></div>
     <div class="map-info"></div>
-    <button class="button start-drawing-button">Search by drawing an area</button>
-    <div class="drawing-help">
-      <p>Draw an area by clicking on the map.</p>
-      <button class="button stop-drawing-button">Stop searching</div>
-    </div>
+    
+      <div class="drawing-help">
+        <p class="draw-paragraph">Draw an area by clicking on the map.</p>
+        <br><br>
+        <button class="button stop-drawing-button"/>Stop searching
+        <button class="button start-drawing-button">Search by drawing an area</button>
+      </div>
+    
+
   </div>
+  <div class="drawing-thing"></div>
 {% endblock %}
 {% block extra_js %}
   <script>
@@ -22,7 +29,7 @@
       geoUrl: '{{ geo_url }}',
       startDrawingButton: '.start-drawing-button',
       stopDrawingButton: '.stop-drawing-button',
-      drawingHelp: '.drawing-help',
+      drawParagraph: '.draw-paragraph',
       postcodeCentre: {{ postcode_centre|safe }}
     });
   </script>
