@@ -42,6 +42,17 @@
     }
   }
 
+  .right-column {
+    width: 100%;
+    position: relative;
+  }
+
+  .floating-map {
+    height: 300px;
+    width: 480px;
+    position: fixed;
+  }
+
   dt, dd {
     float: left;
   }
