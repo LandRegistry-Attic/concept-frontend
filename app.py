@@ -98,6 +98,17 @@ def property_title(property_id):
     else:
         return abort(404)
 
+
+@app.route('/experian-ida-sign-in')
+def experian_ida_sign_in():
+    if 'title_number' in request.args:
+        search_term = request.args['title_number']
+        return render_template('experian_sign_in.html', title_number=search_term)
+    else:
+        return abort(404)
+
+
+
 @app.route('/properties')
 def properties():
     return "Request for all titles not supported", 403
@@ -373,5 +384,8 @@ def sign_in():
 
     return render_template('sign-in.html')
 
+
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
+
