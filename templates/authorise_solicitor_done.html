@@ -35,7 +35,7 @@
         </div>
         <dl>
           <dt>Council</dt>
-          <dd>Exeter City Council</dd>
+          <dd>Harlow County Council</dd>
           <dt>Property type</dt>
           <dd>Semi-detached house</dd>
           <dt>Type of tenure</dt>
@@ -45,7 +45,13 @@
           <dt>Last sale price</dt>
           <dd>£178,000 (4 March 2009)</dd>
           <dt>Proprietor</dt>
-          <dd>Paul John Dawkins</dd>
+          <dd>        
+            {% if session.user == "seller" %}
+              Fiona Wright
+            {% else %}
+              Geoff Bridges
+            {% endif %}
+          </dd>
 
         </dl>
         <p><a href="#">See property details</a></p>
