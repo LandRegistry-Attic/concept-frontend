@@ -88,16 +88,13 @@ def property(property_id):
 
 @app.route('/properties/<property_id>/title')
 def property_title(property_id):
-    title_info = load_title(property_id)
-    if title_info:
-        title_extent_json = json.dumps(title_info['title'].get('extent', {}))
-        return render_template("property_title.html",
-            title=title_info['title'],
-            title_extent_json=title_extent_json
-        )
-    else:
-        return abort(404)
-
+    path = os.path.join(os.path.dirname(__file__), 'titles/BD251159.json')
+    with open(path) as fh:
+        title = json.load(fh)
+    return render_template("property_title.html",
+        title=title,
+        title_extent_json=json.dumps(title.get('extent', {}))
+    )
 
 @app.route('/experian-ida-sign-in')
 def experian_ida_sign_in():
@@ -149,7 +146,7 @@ def search():
             for title in titles:
                 title['address'] = title['address'].replace(',', ',<br>').replace('(', '<br>').replace(')', '')
                 title['searlised_extent'] = escape(json.dumps(title.get('extent', {})), html_escape_table)
-            
+
             title_extent_json = json.dumps(titles[0].get('extent', {}))
 
 
@@ -388,4 +385,3 @@ def sign_in():
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
-
