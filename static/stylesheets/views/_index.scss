@@ -4,6 +4,12 @@
 
     padding-top: $gutter;
 
+    input {
+      width: 450px;
+      margin-right: $gutter / 2;
+      margin-top: 0;
+    }
+
     label.form-label {
       @include core-27;
     }
@@ -12,6 +18,7 @@
     }
     .button {
       @include core-24;
+      padding: 14px 20px 12px;
     }
 
   }
