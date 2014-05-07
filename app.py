@@ -88,13 +88,26 @@ def property(property_id):
 
 @app.route('/properties/<property_id>/title')
 def property_title(property_id):
-    path = os.path.join(os.path.dirname(__file__), 'titles/%s.json') % property_id
-    with open(path) as fh:
-        title = json.load(fh)
-    return render_template("property_title.html",
-        title=title,
-        title_extent_json=json.dumps(title.get('extent', {}))
-    )
+    title_info = load_title(property_id)
+    if title_info:
+        title_extent_json = json.dumps(title_info['title'].get('extent', {}))
+        return render_template("property_title.html",
+            title=title_info['title'],
+            title_extent_json=title_extent_json
+        )
+    else:
+        return abort(404)
+
+
+@app.route('/experian-ida-sign-in')
+def experian_ida_sign_in():
+    if 'title_number' in request.args:
+        search_term = request.args['title_number']
+        return render_template('experian_sign_in.html', title_number=search_term)
+    else:
+        return abort(404)
+
+
 
 @app.route('/properties')
 def properties():
@@ -371,5 +384,8 @@ def sign_in():
 
     return render_template('sign-in.html')
 
+
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8001)
+
