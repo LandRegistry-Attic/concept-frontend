@@ -13,20 +13,7 @@
 
 <div class="search">
 
-  <div class="text full-width">
 
-    <form action="/search" method="get">
-
-      <div class="form-group">
-        <label class="form-label" for="q">Search the land registry</label>
-        <p class="form-hint">E.g. postcode, city or town, street name</p>
-        <input type="text" class="form-control" id="q" name="q" />
-        <button type="submit" class="button">Search</button>
-      </div>
-
-    </form>
-
-  </div>
 
   <div class="text full-width">
     <h1>Search results for &ldquo;{{search_term}}&rdquo;</h1>
@@ -58,7 +45,7 @@
     </div>
     <div class="grid grid-1-2">
       <div class="right-colum">
-        <div id="floating-map-div" class="floating-map js-stick-at-top-when-scrolling" >
+        <div id="floating-map-div" class="floating-map" >
           <div class="map">
             <div id="map" class="inner-block"></div>
           </div>
@@ -72,6 +59,20 @@
     </p>
   </div>
 
+  <div class="text full-width">
+
+    <form action="/search" method="get">
+
+      <div class="form-group">
+        <label class="form-label" for="q">Search the land registry</label>
+        <p class="form-hint">E.g. postcode, city or town, street name</p>
+        <input type="text" class="form-control" id="q" name="q" />
+        <button type="submit" class="button">Search</button>
+      </div>
+
+    </form>
+
+  </div>
 </div>
 
 {% endblock %}
