@@ -17,6 +17,7 @@
       this.currentHighlight = null;
       this.currentTitles = null;
       this.drawInteraction = null;
+      this.isDrawing = false;
 
       // Init buttons
       this.$startDrawingButton.click(_.bind(this.startDrawing, this));
@@ -113,21 +114,21 @@
     },
 
     fetchTitlesWithinViewExtent: function() {
-      this.fetchTitlesWithinPolygon(this.getViewExtentAsGeoJSON());
+      this.fetchTitlesWithinPolygon(this.getViewExtentAsGeoJSON(), this.onGeoSuccess);
     },
 
     // Fetch the titles within a polygon and display them on the map
-    fetchTitlesWithinPolygon: function(polygon) {
+    fetchTitlesWithinPolygon: function(polygon, onSuccess) {
       console.log('Updating map', polygon);
       var url = this.geoUrl + '/titles?partially_contained_by=' + encodeURIComponent(JSON.stringify(polygon))
       $.ajax({
         url: url,
         dataType: 'jsonp',
-        success: _.bind(this.onGeoSuccess, this),
+        success: _.bind(onSuccess, this),
       });
     },
+    replaceVectorLayer: function(results){
 
-    onGeoSuccess: function(results) {
       this.removeVectorLayer();
 
       var vectorLayer = new ol.layer.Vector({
@@ -149,9 +150,28 @@
         return [title['title_number'], title];
       }));
 
-      this.setVectorLayer(vectorLayer);
-    },
+      return vectorLayer;
 
+    },
+    onGeoSuccess: function(results) {
+
+      var vectorLayer = this.replaceVectorLayer(results);
+
+      if(this.isDrawing == false)
+      { 
+        this.setVectorLayer(vectorLayer);
+      }
+    },
+    onDrawingGeoSuccess: function(results) {
+
+      var vectorLayer = this.replaceVectorLayer(results);
+
+      if(this.isDrawing == true)
+      { 
+        this.setVectorLayer(vectorLayer);
+      }
+         
+    },
     getSourceFromTitles: function(titles) {
       var features = _.map(titles, function(title) {
         return {
@@ -222,6 +242,7 @@
     },
 
     startDrawing: function() {
+      this.isDrawing = true;
       this.removeVectorLayer();
       this.drawInteraction = new ol.interaction.Draw({
         type: 'Polygon'
@@ -235,10 +256,11 @@
 
     onDrawEnd: function(e) {
       var geojson = new ol.format.GeoJSON().writeFeature(e.feature);
-      this.fetchTitlesWithinPolygon(geojson['geometry']);
+      this.fetchTitlesWithinPolygon(geojson['geometry'], this.onDrawingGeoSuccess);
     },
 
     stopDrawing: function() {
+      this.isDrawing = false;
       this.map.removeInteraction(this.drawInteraction);
       this.drawInteraction = null;
       this.fetchTitlesWithinViewExtent();
@@ -246,6 +268,7 @@
       this.$startDrawingButton.show();
       this.$stopDrawingButton.hide();
       this.$drawParagraph.hide();
+
     }
   };
 })();
