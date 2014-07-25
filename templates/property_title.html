@@ -136,14 +136,12 @@ del {
               <a href="#proprietorship-register"
               >Proprietorship register
                 ({{ title['proprietorship_register']|length }}
-                {% if title['proprietorship_register']|length %}
-                entries,
                 {% if title['restrictive_proprietorship']|length %}
+                  entries,
                   {{ title['restrictive_proprietorship']|length }} restrictive)
+                {% else %}
+                  entries)
                 {% endif %}
-              {% else %}
-                entries)
-               {% endif %}
 
               </a></li>
             <li style="list-style-type: upper-alpha">
@@ -152,9 +150,7 @@ del {
               ({{ title['charges_register']|length }}
               {% if title['restrictive_charges']|length %}
                 entries,
-                {% if title['restrictive_charges']|length %}
-                  {{ title['restrictive_charges']|length }} restrictive)
-                {% endif %}
+                {{ title['restrictive_charges']|length }} restrictive)
               {% else %}
                 entries)
               {% endif %}
